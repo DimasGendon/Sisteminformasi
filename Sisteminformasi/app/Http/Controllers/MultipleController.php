@@ -9,11 +9,12 @@ use Illuminate\Http\Request;
 class MultipleController extends Controller
 {
     public function index()
-    {
-        // Fetch all multiples along with their related menus
-        $items = Multiple::with('menu')->get();
-        return view('multiple.index', compact('items')); // Pass $items to the view
-    }
+{
+    // Fetch all records and assign them to $data
+    $data = Multiple::with('menus')->get(); // Adjust the relation as necessary
+    return view('multiple.index', compact('data')); // Pass $data to the view
+}
+
 
     public function create()
     {
