@@ -5,6 +5,25 @@
         .ck-editor__editable_inline {
             height: 450px;
         }
+        .sidebar {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-right: 1px solid #dee2e6;
+        }
+        .sidebar h2 {
+            margin-bottom: 20px;
+        }
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            margin: 10px 0;
+        }
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #007bff;
+        }
     </style>
 @endpush
 
@@ -13,7 +32,6 @@
     <script>
         let editor;
 
-        // Function to create CKEditor
         function createEditor() {
             ClassicEditor
                 .create(document.querySelector('#editor'), {
@@ -29,7 +47,6 @@
                 });
         }
 
-        // Function to switch between CKEditor and textarea
         function toggleDescriptionField() {
             const typeSelect = document.querySelector('#type');
             const descriptionField = document.querySelector('#editor');
@@ -37,23 +54,20 @@
 
             if (typeSelect.value === 'Multiple') {
                 if (editor) {
-                    editor.destroy(); // Destroy the CKEditor instance
+                    editor.destroy();
                 }
-                descriptionField.style.display = 'none'; // Hide the CKEditor
-                descriptionTextarea.style.display = 'block'; // Show the textarea
+                descriptionField.style.display = 'none';
+                descriptionTextarea.style.display = 'block';
             } else {
                 if (descriptionTextarea.style.display === 'block') {
-                    descriptionTextarea.style.display = 'none'; // Hide the textarea
-                    createEditor(); // Recreate the CKEditor
+                    descriptionTextarea.style.display = 'none';
+                    createEditor();
                 }
             }
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize CKEditor on page load
             createEditor();
-
-            // Add event listener to type select
             document.querySelector('#type').addEventListener('change', toggleDescriptionField);
         });
     </script>
@@ -61,17 +75,16 @@
 
 @section('content')
     <div class="container">
-
         @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
             </div>
         @endif
 
-        <form action="{{ route('menu.store') }}" method="POST">
+        <form action="{{ route('multiple.store') }}" method="POST">
             @csrf
 
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label for="name">Name Menu</label>
                 <input type="text" name="name" id="name" class="form-control" required>
                 @error('name')
@@ -79,7 +92,7 @@
                 @enderror
             </div>
 
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label for="type">Tipe Menu</label>
                 <select name="type" id="type" class="form-control" required>
                     <option value="" disabled selected>Pilih Tipe</option>
@@ -89,7 +102,7 @@
                 @error('type')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
-            </div>
+            </div> --}}
 
             <div class="form-group">
                 <label for="description">Description</label>
@@ -101,4 +114,15 @@
             <a href="{{ route('menu.index') }}" class="btn btn-secondary">Kembali</a>
         </form>
     </div>
+@endsection
+
+@section('sidebar')
+    <nav class="sidebar">
+        <h2>Admin Menu</h2>
+        <ul>
+            <li><a href="{{ route('multiple.index') }}">Menu</a></li>
+            {{-- <li><a href="{{ route('other.route') }}">Other Section</a></li> --}}
+            <!-- Add more links as needed -->
+        </ul>
+    </nav>
 @endsection

@@ -11,4 +11,9 @@ class Menu extends Model
 
     protected $fillable = ['name', 'type', 'description'];
 
+    // Define the relationship with Multiple
+    public function multiples()
+    {
+        return $this->hasMany(Multiple::class, 'menus_id');
+    }
 }

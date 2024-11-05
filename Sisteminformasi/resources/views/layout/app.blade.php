@@ -59,7 +59,7 @@
                       <i class="ti ti-menu"></i> <span>Menu</span>
                   </a>
               </li>
-              
+
             </ul>
 
         </div>
@@ -220,7 +220,7 @@
     <!-- Custom scripts -->
     <script src="assets/js/app-script.js"></script>
 
-   
+
 
     @stack('script')
 

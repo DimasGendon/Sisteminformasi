@@ -77,7 +77,8 @@
                                 </span>
                                 <div class="dropdown-menu p-0 m-0">
                                     <form>
-                                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                                        <input class="form-control" type="search" placeholder="Search"
+                                            aria-label="Search">
                                     </form>
                                 </div>
                             </div>
@@ -95,7 +96,8 @@
                                             <span class="success"><i class="ti-user"></i></span>
                                             <div class="media-body">
                                                 <a href="#">
-                                                    <p><strong>Martin</strong> has added a <strong>customer</strong> Successfully
+                                                    <p><strong>Martin</strong> has added a <strong>customer</strong>
+                                                        Successfully
                                                     </p>
                                                 </a>
                                             </div>
@@ -114,7 +116,8 @@
                                             <span class="danger"><i class="ti-bookmark"></i></span>
                                             <div class="media-body">
                                                 <a href="#">
-                                                    <p><strong>Robin</strong> marked a <strong>ticket</strong> as unsolved.
+                                                    <p><strong>Robin</strong> marked a <strong>ticket</strong> as
+                                                        unsolved.
                                                     </p>
                                                 </a>
                                             </div>
@@ -133,7 +136,8 @@
                                             <span class="success"><i class="ti-image"></i></span>
                                             <div class="media-body">
                                                 <a href="#">
-                                                    <p><strong> James.</strong> has added a<strong>customer</strong> Successfully
+                                                    <p><strong> James.</strong> has added a<strong>customer</strong>
+                                                        Successfully
                                                     </p>
                                                 </a>
                                             </div>
@@ -179,22 +183,40 @@
             <div class="quixnav-scroll">
                 <ul class="metismenu" id="menu">
                     <li class="nav-label first">Main Menu</li>
-                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                                class="icon icon-single-04"></i><span class="nav-text">Dashboard</span></a>
-                        <ul aria-expanded="false">
-                            <li><a href="./index.html">Dashboard 1</a></li>
-                            <li><a href="./index2.html">Dashboard 2</a></li>
-                        </ul>
+                    <li>
+                        <a href="{{ route('dashboard') }}" aria-expanded="false">
+                            <i class="icon icon-globe-2"></i>
+                            <span class="nav-text">Dashboard</span>
+                        </a>
                     </li>
                     <li class="nav-label">Apps</li>
-                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                        class="icon icon-app-store"></i><span class="nav-text">Apps</span></a>
-                    <ul aria-expanded="false">
-                        <li><a href="./app-profile.html">Profile</a></li>
-                        <li><a href="{{ route('menu.index') }}">Menu</a></li> <!-- New Menu Item -->
-                    </ul>
-                </li>
-                
+                    <li>
+                        <a class="has-arrow" href="javascript:void(0)" aria-expanded="false">
+                            <i class="icon icon-app-store"></i>
+                            <span class="nav-text">Apps</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="./app-profile.html">Profile</a></li>
+                            <li><a href="{{ route('menu.index') }}">menu utama</a></li>
+
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="icon icon-single-04"></i>
+                            <span class="nav-text">submenu</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            @foreach ($menus as $menu)
+                                <li>
+                                    <a href="{{ route('multiple.show', $menu->id) }}">{{ $menu->name }}</a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </li>
+
+
                 </ul>
             </div>
 
@@ -222,7 +244,7 @@
         <div class="footer">
             <div class="copyright">
                 <p>Copyright © Designed &amp; Developed by <a href="#" target="_blank">Quixkit</a> 2019</p>
-                <p>Distributed by <a href="https://themewagon.com/" target="_blank">Themewagon</a></p> 
+                <p>Distributed by <a href="https://themewagon.com/" target="_blank">Themewagon</a></p>
             </div>
         </div>
         <!--**********************************
@@ -247,36 +269,36 @@
         Scripts
     ***********************************-->
     <!-- Required vendors -->
-    <script src="{{ asset('Admin/vendor/global/global.min.js')}}"></script>
-    <script src="{{ asset('Admin/js/quixnav-init.js')}}"></script>
-    <script src="{{ asset('Admin/js/custom.min.js')}}"></script>
+    <script src="{{ asset('Admin/vendor/global/global.min.js') }}"></script>
+    <script src="{{ asset('Admin/js/quixnav-init.js') }}"></script>
+    <script src="{{ asset('Admin/js/custom.min.js') }}"></script>
 
 
     <!-- Vectormap -->
-    <script src="{{ asset('Admin/vendor/raphael/raphael.min.js')}}"></script>
-    <script src="{{ asset('Admin/vendor/morris/morris.min.js')}}"></script>
+    <script src="{{ asset('Admin/vendor/raphael/raphael.min.js') }}"></script>
+    <script src="{{ asset('Admin/vendor/morris/morris.min.js') }}"></script>
 
 
-    <script src="{{ asset('Admin/vendor/circle-progress/circle-progress.min.js')}}"></script>
-    <script src="{{ asset('Admin/vendor/chart.js/Chart.bundle.min.js')}}"></script>
+    <script src="{{ asset('Admin/vendor/circle-progress/circle-progress.min.js') }}"></script>
+    <script src="{{ asset('Admin/vendor/chart.js/Chart.bundle.min.js') }}"></script>
 
-    <script src="{{ asset('Admin/vendor/gaugeJS/dist/gauge.min.js')}}"></script>
+    <script src="{{ asset('Admin/vendor/gaugeJS/dist/gauge.min.js') }}"></script>
 
     <!--  flot-chart js -->
-    <script src="{{ asset('Admin/vendor/flot/jquery.flot.js')}}"></script>
-    <script src="{{ asset('Admin/vendor/flot/jquery.flot.resize.js')}}"></script>
+    <script src="{{ asset('Admin/vendor/flot/jquery.flot.js') }}"></script>
+    <script src="{{ asset('Admin/vendor/flot/jquery.flot.resize.js') }}"></script>
 
     <!-- Owl Carousel -->
-    <script src="{{ asset('Admin/vendor/owl-carousel/js/owl.carousel.min.js')}}"></script>
+    <script src="{{ asset('Admin/vendor/owl-carousel/js/owl.carousel.min.js') }}"></script>
 
     <!-- Counter Up -->
-    <script src="{{ asset('Admin/vendor/jqvmap/js/jquery.vmap.min.js')}}"></script>
-    <script src="{{ asset('Admin/vendor/jqvmap/js/jquery.vmap.usa.js')}}"></script>
-    <script src="{{ asset('Admin/vendor/jquery.counterup/jquery.counterup.min.js')}}"></script>
+    <script src="{{ asset('Admin/vendor/jqvmap/js/jquery.vmap.min.js') }}"></script>
+    <script src="{{ asset('Admin/vendor/jqvmap/js/jquery.vmap.usa.js') }}"></script>
+    <script src="{{ asset('Admin/vendor/jquery.counterup/jquery.counterup.min.js') }}"></script>
     @stack('script')
 
 
-    <script src="{{ asset('Admin/js/dashboard/dashboard-1.js')}}"></script>
+    <script src="{{ asset('Admin/js/dashboard/dashboard-1.js') }}"></script>
 
 </body>
 

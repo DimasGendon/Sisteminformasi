@@ -15,7 +15,7 @@ class MenuController extends Controller
         $menus = Menu::all(); // Ambil semua data menu
         return view('menu.index', compact('menus')); // Mengirim data ke view
     }
-    
+
 
     /**
      * Show the form for creating a new menu.
@@ -35,19 +35,19 @@ class MenuController extends Controller
             'type' => 'required|string|in:Single Multi,Multiple', // Pastikan opsi ini sesuai
             'description' => 'required|', // Validasi untuk description
         ]);
-    
+
         Menu::create($request->only('name', 'type', 'description')); // Mengambil semua field yang diperlukan
-    
+
         return redirect()->route('menu.index')->with('success', 'Menu berhasil ditambahkan.');
     }
-    
+
 
     /**
      * Display the specified menu.
      */
     public function show(Menu $menu)
     {
-        return view('menu.show', compact('menu'));
+        return view('sidebar', compact('menu'));
     }
 
     /**
