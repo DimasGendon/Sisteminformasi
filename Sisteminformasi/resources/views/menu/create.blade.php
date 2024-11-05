@@ -91,7 +91,7 @@
 
             <!-- Description group initially hidden, shown based on type selection -->
             <div class="form-group" id="description-group">
-                <label for="description">Description :</label>
+                <label for="description">Deskripsi :</label>
                 <textarea name="description" id="editor" class="form-control"></textarea>
             </div>
 
