@@ -77,7 +77,7 @@
 
         <div class="form-group">
             <label for="name">Name Menu :</label>
-            <input type="text" name="name" id="name" class="form-control" value="{{ $menu->name }}" required>
+            <input type="text" name="name" id="name" class="form-control" value="{{ old('name', $menu->name) }}" required>
             @error('name')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
@@ -86,8 +86,7 @@
         <div class="form-group">
             <label for="type">Tipe Menu :</label>
             <select name="type" id="type" class="form-control" required>
-                <option value="" disabled>Pilih Tipe</option>
-                <option value="single" {{ $menu->type === 'single' ? 'selected' : '' }}>Single Multi</option>
+                <option value="single" {{ $menu->type === 'single' ? 'selected' : '' }}>Single</option>
                 <option value="multi" {{ $menu->type === 'multi' ? 'selected' : '' }}>Multiple</option>
             </select>
             @error('type')
@@ -97,7 +96,7 @@
 
         <div class="form-group" id="description-container">
             <label for="editor">Deskripsi :</label>
-            <textarea name="description" id="editor" class="form-control">{{ $menu->description }}</textarea>
+            <textarea name="description" id="editor" class="form-control">{{ old('description', $menu->description) }}</textarea>
             @error('description')
                 <div class="text-danger">{{ $message }}</div>
             @enderror

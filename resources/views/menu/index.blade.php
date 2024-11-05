@@ -1,6 +1,5 @@
 @extends('layout.admin')
-
-@extends('layout.admin')
+ 
 
 @push('script')
     <!-- Tambahkan SweetAlert JS -->

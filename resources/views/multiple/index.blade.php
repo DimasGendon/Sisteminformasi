@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="container">
-        <h1>YOUR A MODELS</h1>
         <a href="{{ route('multiple.create') }}" class="btn btn-primary mb-3">Tambah</a>
 
         <script>

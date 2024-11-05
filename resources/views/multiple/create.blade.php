@@ -59,19 +59,13 @@
     @endpush
 
     <div class="container mt-4">
-        <h1 class="mb-4">Add Multiple Item</h1>
 
         <form action="{{ route('multiple.store') }}" method="POST">
             @csrf
 
             <div class="form-group">
-                <label for="menus_id">Select Menu</label>
-                <select name="menus_id" id="menus_id" class="form-control" required>
-                    <option value="">Choose Menu</option>
-                    @foreach ($menus as $menu)
-                        <option value="{{ $menu->id }}">{{ $menu->name }}</option>
-                    @endforeach
-                </select>
+                <label for="menus_id">Judul</label>
+                <input type="text" name="menus_id" class="form-control">
             </div>
 
             <div class="form-group">

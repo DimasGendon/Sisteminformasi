@@ -24,6 +24,7 @@ Route::get('/', [DashboardController::class, 'index'])->name('dashboard'); // Un
 Route::get('/menu', [MenuController::class, 'index'])->name('menu.index'); // Untuk daftar menu
 Route::get('/createmenu', [MenuController::class, 'create'])->name('menu.create'); // Untuk membuka form tambah menu
 Route::post('/post', [MenuController::class, 'store'])->name('menu.store'); // Untuk menyimpan menu baru
+Route::get('/show-menu/{id}', [MenuController::class, 'show'])->name('multiple.show'); // Untuk membuka form edit menu
 Route::get('/editmenu/{menu}', [MenuController::class, 'edit'])->name('menu.edit'); // Untuk membuka form edit menu
 Route::put('/menu/{menu}', [MenuController::class, 'update'])->name('menu.update'); // Untuk memperbarui data menu
 Route::delete('/delete/{menu}', [MenuController::class, 'destroy'])->name('menu.destroy'); // Untuk menghapus menu
