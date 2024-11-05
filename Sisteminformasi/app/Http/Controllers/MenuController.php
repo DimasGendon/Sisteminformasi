@@ -15,7 +15,6 @@ class MenuController extends Controller
         $menus = Menu::all(); // Ambil semua data menu
         return view('menu.index', compact('menus')); // Mengirim data ke view
     }
-    
 
     /**
      * Show the form for creating a new menu.
@@ -33,14 +32,13 @@ class MenuController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'type' => 'required|string|in:Single Multi,Multiple', // Pastikan opsi ini sesuai
-            'description' => 'required|', // Validasi untuk description
+            'description' => 'nullable|', // Validasi untuk description
         ]);
-    
+
         Menu::create($request->only('name', 'type', 'description')); // Mengambil semua field yang diperlukan
-    
+
         return redirect()->route('menu.index')->with('success', 'Menu berhasil ditambahkan.');
     }
-    
 
     /**
      * Display the specified menu.
@@ -65,9 +63,11 @@ class MenuController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'type' => 'required|string|in:Single Multi,Multiple', // Validasi tipe saat update
+            'description' => 'nullable|', // Boleh kosong saat update
         ]);
 
-        $menu->update($request->only('name'));
+        $menu->update($request->only('name', 'type', 'description'));
 
         return redirect()->route('menu.index')->with('success', 'Menu berhasil diperbarui.');
     }

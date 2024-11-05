@@ -1,4 +1,4 @@
-@extends('layout.admin') <!-- Ganti dengan layout Anda -->
+@extends('layout.admin')
 
 @push('style')
     <style>
@@ -12,7 +12,7 @@
     <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
     <script>
         let editor;
-        
+
         // Function to create CKEditor
         function createEditor() {
             ClassicEditor
@@ -29,29 +29,27 @@
                 });
         }
 
-        // Function to switch between CKEditor and textarea
+        // Function to toggle description field based on type selection
         function toggleDescriptionField() {
             const typeSelect = document.querySelector('#type');
+            const descriptionGroup = document.querySelector('#description-group');
             const descriptionField = document.querySelector('#editor');
-            const descriptionTextarea = document.querySelector('#description-textarea');
 
-            if (typeSelect.value === 'Multiple') {
+            if (typeSelect.value === 'Single Multi') {
+                descriptionGroup.style.display = 'block'; // Show the description section
+                createEditor(); // Initialize CKEditor
+            } else if (typeSelect.value === 'Multiple') {
                 if (editor) {
-                    editor.destroy(); // Destroy the CKEditor instance
+                    editor.destroy(); // Destroy CKEditor instance if it exists
+                    editor = null;
                 }
-                descriptionField.style.display = 'none'; // Hide the CKEditor
-                descriptionTextarea.style.display = 'block'; // Show the textarea
-            } else {
-                if (descriptionTextarea.style.display === 'block') {
-                    descriptionTextarea.style.display = 'none'; // Hide the textarea
-                    createEditor(); // Recreate the CKEditor
-                }
+                descriptionGroup.style.display = 'none'; // Hide the description section
             }
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize CKEditor on page load
-            createEditor();
+            // Initially hide the entire description group
+            document.querySelector('#description-group').style.display = 'none';
 
             // Add event listener to type select
             document.querySelector('#type').addEventListener('change', toggleDescriptionField);
@@ -72,7 +70,7 @@
             @csrf
 
             <div class="form-group">
-                <label for="name">Name Menu</label>
+                <label for="name">Name Menu :</label>
                 <input type="text" name="name" id="name" class="form-control" required>
                 @error('name')
                     <div class="text-danger">{{ $message }}</div>
@@ -80,7 +78,7 @@
             </div>
 
             <div class="form-group">
-                <label for="type">Tipe Menu</label>
+                <label for="type">Tipe Menu :</label>
                 <select name="type" id="type" class="form-control" required>
                     <option value="" disabled selected>Pilih Tipe</option>
                     <option value="Single Multi">Single Multi</option>
@@ -91,10 +89,10 @@
                 @enderror
             </div>
 
-            <div class="form-group">
-                <label for="description">Description</label>
-                <textarea name="description" id="description-textarea" class="form-control" style="display: none;"></textarea>
-                <textarea type="text" name="description" id="editor" class="form-control"></textarea>
+            <!-- Description group initially hidden, shown based on type selection -->
+            <div class="form-group" id="description-group">
+                <label for="description">Description :</label>
+                <textarea name="description" id="editor" class="form-control"></textarea>
             </div>
 
             <button type="submit" class="btn btn-primary">Simpan</button>
