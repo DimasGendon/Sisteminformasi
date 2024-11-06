@@ -75,8 +75,8 @@
                     @endforeach
                 </select>
             </div>
-            
-            
+
+
 
             <div class="form-group">
                 <label for="description">Description</label>
@@ -85,7 +85,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Kirim</button>
-            <a href="{{ route('multiple.index') }}" class="btn btn-secondary">Kembali</a>
+            <a href="{{ route('multiple.index', $data->id) }}" class="btn btn-secondary">Kembali</a>
         </form>
     </div>
 @endsection

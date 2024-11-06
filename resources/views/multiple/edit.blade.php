@@ -40,7 +40,7 @@
     @endpush
 
     <div class="container mt-4">
-        <h1 class="mb-4">Edit Multiple Item</h1>
+        <h1 class="mb-4">Update</h1>
 
         <form action="{{ route('multiple.update', $multiple->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
@@ -63,6 +63,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Update</button>
+            <a href="{{ route('multiple.index', $multiple->menus_id) }}" class="btn btn-secondary">Kembali</a>
         </form>
     </div>
 @endsection

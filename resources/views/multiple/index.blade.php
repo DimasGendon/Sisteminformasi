@@ -2,36 +2,71 @@
 
 @section('content')
     <div class="container">
-        <h1>YOUR A MODELS</h1>
-        <a href="{{ route('multiple.create') }}" class="btn btn-primary mb-3">Tambah</a>
+        <h1>Multipel Tabel</h1>
 
-        <script>
-            $(document).ready(function() {
-                // Initialize TinyMCE for each textarea when the modal opens
-                $('.modal').on('shown.bs.modal', function() {
-                    var modalId = $(this).attr('id');
-                    tinyMCE.init({
-                        selector: `#description-${modalId.split('-')[1]}`, // Adjust the selector based on modal ID
-                        menubar: false,
-                        plugins: 'lists link image',
-                        toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright | bullist numlist | link image',
-                        setup: function(editor) {
-                            editor.on('init', function() {
-                                editor.setContent($(this).val());
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                    @if (session('success'))
+                        <script>
+                            Swal.fire({
+                                toast: true,
+                                icon: 'success',
+                                title: '{{ session('success') }}',
+                                animation: true,
+                                position: 'top-right',
+                                showConfirmButton: false,
+                                timer: 3000,
+                                timerProgressBar: true,
+                                didOpen: (toast) => {
+                                    toast.addEventListener('mouseenter', Swal.stopTimer);
+                                    toast.addEventListener('mouseleave', Swal.resumeTimer);
+                                }
                             });
-                        }
-                    });
-                });
+                        </script>
+                    @endif
 
-                // Clean up TinyMCE instance when modal is closed
-                $('.modal').on('hidden.bs.modal', function() {
-                    var modalId = $(this).attr('id');
-                    tinyMCE.get(`description-${modalId.split('-')[1]}`).remove();
-                });
-            });
-        </script>
+                    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                    @if (session('info'))
+                        <script>
+                            Swal.fire({
+                                toast: true,
+                                icon: 'info',
+                                title: '{{ session('info') }}',
+                                animation: true,
+                                position: 'top-right',
+                                showConfirmButton: false,
+                                timer: 3000,
+                                timerProgressBar: true,
+                                didOpen: (toast) => {
+                                    toast.addEventListener('mouseenter', Swal.stopTimer);
+                                    toast.addEventListener('mouseleave', Swal.resumeTimer);
+                                }
+                            });
+                        </script>
+                    @endif
 
-        <a href="{{ route('multiple.create', $data->id) }}" class="btn btn-primary mb-3">Tambah</a>
+                    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                    @if (session('error'))
+                        <script>
+                            Swal.fire({
+                                toast: true,
+                                icon: 'error',
+                                title: '{{ session('error') }}',
+                                animation: true,
+                                position: 'top-right',
+                                showConfirmButton: false,
+                                timer: 3000,
+                                timerProgressBar: true,
+                                didOpen: (toast) => {
+                                    toast.addEventListener('mouseenter', Swal.stopTimer);
+                                    toast.addEventListener('mouseleave', Swal.resumeTimer);
+                                }
+                            });
+                        </script>
+                    @endif
+
+
+        <a href="{{ route('multiple.create', $data->id) }}" class="btn btn-primary mb-3">
+        </a>
 
         <table class="table table-bordered">
             <thead>
@@ -57,8 +92,8 @@
                         <td>
 
 
-                            <a href="{{ route('multiple.edit', $multiple) }}" class="btn btn-warning">Edit</a>
-                            <form action="{{ route('multiple.destroy', $multiple) }}" method="POST"
+                            <a href="{{ route('multiple.edit', $multiple->id) }}" class="btn btn-warning">Edit</a>
+                            <form action="{{ route('multiple.hapus', $multiple->id) }}" method="POST"
                                 style="display:inline;">
                                 @csrf
                                 @method('DELETE')

@@ -84,12 +84,14 @@ class MenuController extends Controller
     /**
      * Remove the specified menu from storage.
      */
-    public function destroy(Menu $menu)
+    public function destroy($id)
     {
+        $menu = Menu::findOrFail($id);
         $menu->delete();
 
-        return redirect()->route('menu.index')->with('success', 'Menu berhasil dihapus.');
+            return redirect()->route('menu.index')->with('success', 'Menu deleted successfully.');
     }
+
     public function showMultiple($id)
     {
         $data = Menu::findOrFail($id);
@@ -101,6 +103,6 @@ class MenuController extends Controller
     {
         $menus = Menu::all();
         $data = Menu::findOrFail($id);
-        return view('multiple.index', compact('menus', 'data'));
+        return view('sidebare', compact('menus', 'data'));
     }
 }

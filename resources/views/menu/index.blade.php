@@ -1,4 +1,6 @@
 @extends('layout.admin')
+<<<<<<< HEAD
+=======
 
 
 @push('script')
@@ -22,6 +24,7 @@
         });
     </script>
 @endpush
+>>>>>>> 15332da4bb83d11517f94f339faafeb76ca1b258
 
 @section('content')
     <div class="container">
