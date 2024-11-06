@@ -64,9 +64,15 @@
             @csrf
 
             <div class="form-group">
-                <label for="menus_id">Judul</label>
-                <input type="text" name="menus_id" class="form-control">
+                <label for="type">Tipe Menu</label>
+                <select name="type" id="type" class="form-control" required>
+                    <option value="">Pilih Tipe</option>
+                    <option value="single multi">Single Multi</option>
+                    <option value="multiple">Multiple</option>
+                </select>
             </div>
+            
+            
 
             <div class="form-group">
                 <label for="description">Description</label>
@@ -75,6 +81,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Kirim</button>
+            <a href="{{ route('multiple.index') }}" class="btn btn-secondary">Kembali</a>
         </form>
     </div>
 @endsection

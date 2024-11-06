@@ -57,6 +57,8 @@ class MenuController extends Controller
     public function edit(Menu $menu)  // Menggunakan dependency injection langsung
     {
         // Mengirimkan data menu yang ditemukan ke view
+        $menus = Menu::all(); // Ambil data menu
+
         return view('menu.edit', compact('menu'));  // Ganti variabel $menus menjadi $menu
     }
 

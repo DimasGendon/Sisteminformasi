@@ -10,10 +10,10 @@ class MultipleController extends Controller
 {
     public function index()
     {
-        // Fetch all records and assign them to $data
-        $data = Multiple::with('menus')->get(); // Adjust the relation as necessary
-        return view('multiple.index', compact('data')); // Pass $data to the view
+        $menus = Menu::all(); // Mengambil semua data menu
+        return view('multiple.index', compact('menus')); // Kirimkan data menus ke view
     }
+
 
 
     public function create()

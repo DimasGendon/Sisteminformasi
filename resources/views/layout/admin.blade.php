@@ -196,10 +196,15 @@
                             <span class="nav-text">Apps</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="./app-profile.html">Profile</a></li>
                             <li><a href="{{ route('menu.index') }}">Menu utama</a></li>
 
-
+                            <ul aria-expanded="false">
+                                @foreach ($menus as $menu)
+                                    <li>
+                                        <a href="{{ route('multiple.show', $menu->id) }}">{{ $menu->name }}</a>
+                                    </li>
+                                @endforeach
+                            </ul>
                         </ul>
                     </li>
                     <li>
@@ -207,13 +212,7 @@
                             <i class="icon icon-single-04"></i>
                             <span class="nav-text">Menu</span>
                         </a>
-                        <ul aria-expanded="false">
-                            @foreach ($menus as $menu)
-                                <li>
-                                    <a href="{{ route('multiple.show', $menu->id) }}">{{ $menu->name }}</a>
-                                </li>
-                            @endforeach
-                        </ul>
+                       
                         
                         
                     </li>
