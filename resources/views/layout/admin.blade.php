@@ -189,30 +189,24 @@
                             <span class="nav-text">Dashboard</span>
                         </a>
                     </li>
-                    <li class="nav-label">Apps</li>
                     <li>
-                        <a class="has-arrow" href="javascript:void(0)" aria-expanded="false">
-                            <i class="icon icon-app-store"></i>
-                            <span class="nav-text">Apps</span>
+                        <a href="{{ route('menu.index') }}" aria-expanded="false">
+                            <i class="icon icon-globe-2"></i>
+                            <span class="nav-text">Menu Utama</span>
                         </a>
-                        <ul aria-expanded="false">
-                            <li><a href="{{ route('menu.index') }}">Menu utama</a></li>
-
-                            <ul aria-expanded="false">
-                                @foreach ($menus as $menu)
-                                    <li>
-                                        <a href="{{ route('multiple.show', $menu->id) }}">{{ $menu->name }}</a>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </ul>
                     </li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="icon icon-single-04"></i>
                             <span class="nav-text">Menu</span>
                         </a>
-                       
+                        <ul aria-expanded="false">
+                            @foreach ($menus as $menu)
+                                <li>
+                                    <a href="{{ route('multiple.index', $menu->id) }}">{{ $menu->name }}</a>
+                                </li>
+                            @endforeach
+                        </ul>
                         
                         
                     </li>
@@ -232,7 +226,6 @@
         ***********************************-->
         <div class="content-body">
             <!-- row -->
-            
             @yield('content')
         </div>
         <!--**********************************

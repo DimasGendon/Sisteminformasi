@@ -28,13 +28,14 @@ Route::get('/show-menu/{id}', [MenuController::class, 'show'])->name('multiple.s
 Route::get('/editmenu/{menu}', [MenuController::class, 'edit'])->name('menu.edit'); // Untuk membuka form edit menu
 Route::put('/menu/{menu}', [MenuController::class, 'update'])->name('menu.update'); // Untuk memperbarui data menu
 Route::delete('/delete/{menu}', [MenuController::class, 'destroy'])->name('menu.destroy'); // Untuk menghapus menu
+Route::get('/multiple/{id}', [MenuController::class, 'showMultiple'])->name('multiple.index'); // Untuk menghapus menu
 
-Route::get('/multiple', [MultipleController::class, 'index'])->name('multiple.index'); // Untuk daftar menu
-Route::get('/createmultiple', [MultipleController::class, 'create'])->name('multiple.create'); // Untuk membuka form tambah menu
+// Route::get('/multiple/{menu}', [MultipleController::class, 'index'])->name('multiple.index'); // Untuk daftar menu
+Route::get('/create/{menu}', [MultipleController::class, 'create'])->name('multiple.create');
 Route::post('/postmultiple', [MultipleController::class, 'store'])->name('multiple.store'); // Untuk menyimpan menu baru
-Route::get('/show-multiple/{id}', [MultipleController::class, 'show'])->name('multiple.show'); // Untuk membuka form edit menu
-Route::get('/edit/{multiple}', [MultipleController::class, 'edit'])->name('multiple.edit'); // Untuk membuka form edit menu
-Route::put('/menu/{multiple}', [MultipleController::class, 'update'])->name('multiple.update'); // Untuk memperbarui data menu
+Route::get('/show-multiple/{menu}', [MultipleController::class, 'show'])->name('multiple.show'); // Untuk membuka form edit menu
+Route::get('/multiple/{id}/edit', [MultipleController::class, 'edit'])->name('multiple.edit');
+Route::put('/multipost/{id}', [MultipleController::class, 'update'])->name('multiple.update');
 Route::delete('/delete/{multiple}', [MultipleController::class, 'destroy'])->name('multiple.destroy'); // Untuk menghapus menu
 
 Route::post('/images', [EditorController::class, 'editor_image'])->name('store.image');

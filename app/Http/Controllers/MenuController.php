@@ -35,7 +35,7 @@ class MenuController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'type' => 'required|string|in:Single Multi,Multiple', // Pastikan opsi ini sesuai
-            'description' => 'nullable|', // Validasi untuk description
+            'description' => 'required|', // Validasi untuk description
         ]);
 
         Menu::create($request->only('name', 'type', 'description')); // Mengambil semua field yang diperlukan
@@ -90,7 +90,13 @@ class MenuController extends Controller
 
         return redirect()->route('menu.index')->with('success', 'Menu berhasil dihapus.');
     }
-
+    public function showMultiple($id)
+    {
+        $data = Menu::findOrFail($id);
+        // dd($data);
+        $menus = Menu::all();
+        return view('multiple.index', compact('data', 'menus'));
+    }
     public function show($id)
     {
         $menus = Menu::all();
