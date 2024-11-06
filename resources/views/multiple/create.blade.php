@@ -60,7 +60,6 @@
     @endpush
 
     <div class="container mt-4">
-        <h1 class="mb-4">Add Multiple Item</h1>
 
         <form action="{{ route('multiple.store') }}" method="POST">
             @csrf

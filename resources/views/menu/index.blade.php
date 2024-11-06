@@ -1,5 +1,28 @@
 @extends('layout.admin')
 
+
+@push('script')
+    <!-- Tambahkan SweetAlert JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Menampilkan SweetAlert sebagai toast jika ada pesan sukses
+            @if (session('success'))
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil!',
+                    text: '{{ session('success') }}',
+                    toast: true,            // Mengaktifkan mode toast
+                    position: 'top-end',   // Posisi toast (ubah sesuai kebutuhan)
+                    showConfirmButton: false,
+                    timer: 1500,
+                    timerProgressBar: true  // Menambahkan progres bar pada toast
+                });
+            @endif
+        });
+    </script>
+@endpush
+
 @section('content')
     <div class="container">
         @if (session('success'))

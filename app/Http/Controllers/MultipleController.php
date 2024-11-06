@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class MultipleController extends Controller
 {
+    public function index()
+    {
+        // Fetch all records and assign them to $data
+        $data = Multiple::with('menus')->get(); // Adjust the relation as necessary
+        return view('multiple.index', compact('data')); // Pass $data to the view
+    }
 
     public function create($menu)
     {
@@ -76,9 +82,9 @@ class MultipleController extends Controller
 
     public function show($menu)
     {
-        $data = Menu::findOrFail($menu); // Fetch the menu or fail if not found
-        $menus = Menu::all();
-        return view('multiple.show', compact('data', 'menus')); // Pass the multiple to the view
+        $menus = Menu::all(); // Mengambil semua menu
+        $data = Menu::findOrFail($id); // Mencari menu berdasarkan id
+        return view('multiple.index', compact('menus', 'data')); // Kirim data ke view
     }
 
 

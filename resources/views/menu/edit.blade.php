@@ -38,8 +38,8 @@
         @method('PUT') <!-- Menandakan bahwa ini adalah request PUT -->
 
         <div class="form-group">
-            <label for="name">Name Menu</label>
-            <input type="text" name="name" id="name" class="form-control" value="{{ $menu->name }}" required>
+            <label for="name">Name Menu :</label>
+            <input type="text" name="name" id="name" class="form-control" value="{{ old('name', $menu->name) }}" required>
             @error('name')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
@@ -48,18 +48,17 @@
         <div class="form-group">
             <label for="type">Tipe Menu</label>
             <select name="type" id="type" class="form-control" required>
-                <option value="" disabled>Pilih Tipe</option>
                 <option value="single" {{ $menu->type === 'single' ? 'selected' : '' }}>Single</option>
-                <option value="multi" {{ $menu->type === 'multi' ? 'selected' : '' }}>Multi</option>
+                <option value="multi" {{ $menu->type === 'multi' ? 'selected' : '' }}>Multiple</option>
             </select>
             @error('type')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
         </div>
 
-        <div class="form-group">
-            <label for="editor">Deskripsi</label>
-            <textarea name="description" id="editor" class="form-control">{{ $menu->description }}</textarea>
+        <div class="form-group" id="description-container">
+            <label for="editor">Deskripsi :</label>
+            <textarea name="description" id="editor" class="form-control">{{ old('description', $menu->description) }}</textarea>
             @error('description')
                 <div class="text-danger">{{ $message }}</div>
             @enderror

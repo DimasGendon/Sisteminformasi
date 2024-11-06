@@ -197,7 +197,7 @@
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="./app-profile.html">Profile</a></li>
-                            <li><a href="{{ route('menu.index') }}">menu utama</a></li>
+                            <li><a href="{{ route('menu.index') }}">Menu utama</a></li>
 
 
                         </ul>
@@ -205,7 +205,7 @@
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="icon icon-single-04"></i>
-                            <span class="nav-text">submenu</span>
+                            <span class="nav-text">Menu</span>
                         </a>
                         <ul aria-expanded="false">
                             @foreach ($menus as $menu)
@@ -214,6 +214,8 @@
                                 </li>
                             @endforeach
                         </ul>
+                        
+                        
                     </li>
 
 
