@@ -25,7 +25,7 @@
 
 @section('content')
 <div class="container">
-    <h1>Edit Menu: {{ $menu->nama }}</h1>
+    <h1>Edit Menu: {{ $data->nama }}</h1>
 
     @if (session('success'))
         <div class="alert alert-success">
@@ -33,13 +33,13 @@
         </div>
     @endif
 
-    <form action="{{ route('menu.update', $menu->id) }}" method="POST">
+    <form action="{{ route('menu.update', $data->id) }}" method="POST">
         @csrf
         @method('PUT') <!-- Menandakan bahwa ini adalah request PUT -->
 
         <div class="form-group">
             <label for="name">Name Menu :</label>
-            <input type="text" name="name" id="name" class="form-control" value="{{ old('name', $menu->name) }}" required>
+            <input type="text" name="name" id="name" class="form-control" value="{{ old('name', $data->name) }}" required>
             @error('name')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
@@ -48,8 +48,8 @@
         <div class="form-group">
             <label for="type">Tipe Menu</label>
             <select name="type" id="type" class="form-control" required>
-                <option value="single" {{ $menu->type === 'single' ? 'selected' : '' }}>Single</option>
-                <option value="multi" {{ $menu->type === 'multi' ? 'selected' : '' }}>Multiple</option>
+                <option value="single" {{ $data->type === 'single' ? 'selected' : '' }}>Single</option>
+                <option value="multi" {{ $data->type === 'multi' ? 'selected' : '' }}>Multiple</option>
             </select>
             @error('type')
                 <div class="text-danger">{{ $message }}</div>
@@ -58,7 +58,7 @@
 
         <div class="form-group" id="description-container">
             <label for="editor">Deskripsi :</label>
-            <textarea name="description" id="editor" class="form-control">{{ old('description', $menu->description) }}</textarea>
+            <textarea name="description" id="editor" class="form-control">{{ old('description', $data->description) }}</textarea>
             @error('description')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
