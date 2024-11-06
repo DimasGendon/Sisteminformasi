@@ -21,6 +21,10 @@ use App\Http\Controllers\DashboardController;
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard'); // Untuk daftar menu
 
 
+Route::get('/user', function () {
+    return view('layout.user');
+});
+
 Route::get('/menu', [MenuController::class, 'index'])->name('menu.index'); // Untuk daftar menu
 Route::get('/createmenu', [MenuController::class, 'create'])->name('menu.create'); // Untuk membuka form tambah menu
 Route::post('/post', [MenuController::class, 'store'])->name('menu.store'); // Untuk menyimpan menu baru
