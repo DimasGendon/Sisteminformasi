@@ -34,8 +34,8 @@ class MenuController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'type' => 'required|string|in:Single Multi,Multiple', // Pastikan opsi ini sesuai
-            'description' => 'required|', // Validasi untuk description
+            'type' => 'required|string|in:Single Data,Multiple', // Pastikan opsi ini sesuai
+            'description' => 'nullable', // Validasi untuk description
         ]);
 
         Menu::create($request->only('name', 'type', 'description')); // Mengambil semua field yang diperlukan
@@ -57,9 +57,10 @@ class MenuController extends Controller
     public function edit(Menu $menu)  // Menggunakan dependency injection langsung
     {
         // Mengirimkan data menu yang ditemukan ke view
-        $menus = Menu::all(); // Ambil data menu
+        $data = Menu::findOrFail($menu->id); // Ambil data menu
+        $menus = Menu::all();
 
-        return view('menu.edit', compact('menu'));  // Ganti variabel $menus menjadi $menu
+        return view('menu.edit', compact('data', 'menus'));  // Ganti variabel $menus menjadi $menu
     }
 
     /**

@@ -25,11 +25,7 @@
 
 @section('content')
     <div class="container">
-        @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
+        
 
         <!-- Tombol Tambah Menu yang Mengarah ke Halaman Create Menu -->
         <a href="{{ route('menu.create') }}" class="btn btn-primary mb-3">

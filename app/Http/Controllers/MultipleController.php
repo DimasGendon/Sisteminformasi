@@ -10,9 +10,20 @@ class MultipleController extends Controller
 {
     public function index()
     {
-        $menus = Menu::all(); // Mengambil semua data menu
-        return view('multiple.index', compact('menus')); // Kirimkan data menus ke view
+        // Ambil semua data menu
+        $menus = Menu::all();
+
+        // Cek apakah ada tipe "Single Data" dan alihkan langsung ke halaman edit
+        foreach ($menus as $menu) {
+            if ($menu->type === 'Single Data') {
+                return redirect()->route('menu.edit', $menu->id);
+            }
+        }
+
+        // Kirimkan data menus ke view jika tidak ada tipe "Single Data"
+        return view('multiple.index', compact('menus'));
     }
+
 
     public function create($menu)
     {
@@ -70,7 +81,7 @@ class MultipleController extends Controller
 
     public function destroy($menu)
     {
-    // Find the Multiple entry by ID or fail if not found
+        // Find the Multiple entry by ID or fail if not found
         $multiple = Multiple::findOrFail($menu);
         // Delete the Multiple entry
         $multiple->delete();
@@ -82,10 +93,7 @@ class MultipleController extends Controller
     public function show($menu)
     {
         $menus = Menu::all(); // Mengambil semua menu
-        $data = Menu::findOrFail($id); // Mencari menu berdasarkan id
+        $data = Menu::findOrFail(); // Mencari menu berdasarkan id
         return view('multiple.index', compact('menus', 'data')); // Kirim data ke view
     }
-
-
-
 }

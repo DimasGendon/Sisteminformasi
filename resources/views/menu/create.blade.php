@@ -32,6 +32,7 @@
         // Function to switch between CKEditor and textarea
         function toggleDescriptionField() {
             const typeSelect = document.querySelector('#type');
+            const descriptionLabel = document.querySelector('#description-label');
             const descriptionField = document.querySelector('#editor');
             const descriptionTextarea = document.querySelector('#description-textarea');
 
@@ -40,18 +41,25 @@
                     editor.destroy(); // Destroy the CKEditor instance
                 }
                 descriptionField.style.display = 'none'; // Hide the CKEditor
-                descriptionTextarea.style.display = 'block'; // Show the textarea
+                descriptionTextarea.style.display = 'none'; // Hide the textarea
+                descriptionLabel.style.display = 'none'; // Hide the label
+            } else if (typeSelect.value === 'Single Data') {
+                descriptionTextarea.style.display = 'none'; // Hide the textarea
+                createEditor(); // Recreate the CKEditor
+                descriptionField.style.display = 'block'; // Show the CKEditor
+                descriptionLabel.style.display = 'block'; // Show the label
             } else {
-                if (descriptionTextarea.style.display === 'block') {
-                    descriptionTextarea.style.display = 'none'; // Hide the textarea
-                    createEditor(); // Recreate the CKEditor
-                }
+                descriptionField.style.display = 'none'; // Hide the CKEditor if no option selected
+                descriptionTextarea.style.display = 'none'; // Hide the textarea if no option selected
+                descriptionLabel.style.display = 'none'; // Hide the label if no option selected
             }
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize CKEditor on page load
-            createEditor();
+            // Hide editor, textarea, and label on page load
+            document.querySelector('#editor').style.display = 'none';
+            document.querySelector('#description-textarea').style.display = 'none';
+            document.querySelector('#description-label').style.display = 'none';
 
             // Add event listener to type select
             document.querySelector('#type').addEventListener('change', toggleDescriptionField);
@@ -81,9 +89,9 @@
 
             <div class="form-group">
                 <label for="type">Tipe Menu</label>
-                <select name="type" id="type" class="form-control" required>
+                <select name="type" id="type" class="form-control">
                     <option value="" disabled selected>Pilih Tipe</option>
-                    <option value="Single Multi">Single Multi</option>
+                    <option value="Single Data">Single Data</option>
                     <option value="Multiple">Multiple</option>
                 </select>
                 @error('type')
@@ -92,7 +100,7 @@
             </div>
 
             <div class="form-group">
-                <label for="description">Description</label>
+                <label for="description" id="description-label">Description</label>
                 <textarea name="description" id="description-textarea" class="form-control" style="display: none;"></textarea>
                 <textarea type="text" name="description" id="editor" class="form-control"></textarea>
             </div>
