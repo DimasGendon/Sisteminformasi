@@ -11,8 +11,8 @@ class Multiple extends Model
 
     protected $fillable = ['menus_id', 'description'];
 
-    public function menu()
+    public function menus()
     {
-        return $this->belongsTo(Menu::class);
+        return $this->belongsTo(Menu::class, 'menus_id'); // Adjust the foreign key if necessary
     }
 }

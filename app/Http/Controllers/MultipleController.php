@@ -8,58 +8,79 @@ use Illuminate\Http\Request;
 
 class MultipleController extends Controller
 {
-    public function index()
-{
-    // Fetch all records and assign them to $data
-    $data = Multiple::with('menus')->get(); // Adjust the relation as necessary
-    return view('multiple.index', compact('data')); // Pass $data to the view
-}
 
-
-    public function create()
+    public function create($menu)
     {
-        $menus = Menu::all(); // Fetch menus for the create form
-        return view('multiple.create', compact('menus'));
+        $data = Menu::findOrFail($menu); // Fetch the menu or fail if not found
+        $menus = Menu::all();
+        return view('multiple.create', compact('data', 'menus')); // Pass the menu to the view
     }
-
     public function store(Request $request)
     {
         $request->validate([
-            'menus_id' => 'required|exists:menus,id',
-            'description' => 'required',
+            'menus_id' => 'required|exists:menus,id', // Validate that the menu exists
+            'description' => 'required', // Ensure description is provided
         ]);
 
-        Multiple::create($request->all());
-        return redirect()->route('multiple.index')->with('success', 'Item created successfully.');
+        // Create the Multiple entry, ensuring menus_id is set correctly
+        Multiple::create([
+            'menus_id' => $request->menus_id,
+            'description' => $request->description,
+        ]);
+
+        Multiple::create($request->all()); // Create the Multiple entry
+
+        return redirect()->route('multiple.index', $request->menus_id)->with('success', 'Item created successfully.');
     }
 
-    public function edit(Multiple $multiple)
+    public function edit($id)
     {
-        $menus = Menu::all(); // Fetch menus for the edit form
-        return view('multiple.edit', compact('multiple', 'menus'));
+        $multiple = Multiple::findOrFail($id); // Fetch the existing record
+        $menus = Menu::all(); // Fetch all menus
+        return view('multiple.edit', compact('multiple', 'menus')); // Return the edit view
     }
 
-    public function update(Request $request, Multiple $multiple)
+
+    public function update(Request $request, $id)
     {
         $request->validate([
             'menus_id' => 'required|exists:menus,id',
             'description' => 'required',
         ]);
 
-        $multiple->update($request->all());
-        return redirect()->route('multiple.index')->with('success', 'Item updated successfully.');
+        $multiple = Multiple::findOrFail($id);
+
+        // Update description
+        $multiple->description = $request->description;
+
+        // Update menu ID
+        $multiple->menus_id = $request->menus_id;
+
+        $multiple->save();
+
+        return redirect()->route('multiple.index', $multiple->menus_id)->with('success', 'Item updated successfully.');
     }
 
-    public function destroy(Multiple $multiple)
+
+
+    public function destroy($menu)
     {
+    // Find the Multiple entry by ID or fail if not found
+        $multiple = Multiple::findOrFail($menu);
+        // Delete the Multiple entry
         $multiple->delete();
-        return redirect()->route('multiple.index')->with('success', 'Item deleted successfully.');
+
+        // Redirect back to the index page with a success message
+        return redirect()->route('multiple.index', $multiple->menus_id)->with('success', 'Item deleted successfully.');
     }
 
-    public function show($id)
+    public function show($menu)
     {
+        $data = Menu::findOrFail($menu); // Fetch the menu or fail if not found
         $menus = Menu::all();
-        $data = Menu::findOrFail($id);
-        return view('multiple.index', compact('menus', 'data'));
+        return view('multiple.show', compact('data', 'menus')); // Pass the multiple to the view
     }
+
+
+
 }

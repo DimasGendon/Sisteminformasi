@@ -8,8 +8,7 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
     public function index() {
-        $menus = Menu::all();
-        return view('welcome', compact('menus'));
+        $menus = Menu::all(); // Fetching all menus
+        return view('welcome', compact('menus')); // Passing menus to the view
     }
-
 }

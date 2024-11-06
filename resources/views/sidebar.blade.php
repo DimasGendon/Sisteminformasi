@@ -84,25 +84,6 @@
         <form action="{{ route('multiple.store') }}" method="POST">
             @csrf
 
-            {{-- <div class="form-group">
-                <label for="name">Name Menu</label>
-                <input type="text" name="name" id="name" class="form-control" required>
-                @error('name')
-                    <div class="text-danger">{{ $message }}</div>
-                @enderror
-            </div>
-
-            {{-- <div class="form-group">
-                <label for="type">Tipe Menu</label>
-                <select name="type" id="type" class="form-control" required>
-                    <option value="" disabled selected>Pilih Tipe</option>
-                    <option value="Single Multi">Single Multi</option>
-                    <option value="Multiple">Multiple</option>
-                </select>
-                @error('type')
-                    <div class="text-danger">{{ $message }}</div>
-                @enderror
-            </div> --}}
 
             <div class="form-group">
                 <label for="description">Description</label>

@@ -15,17 +15,17 @@ class MenuController extends Controller
         $menus = Menu::all(); // Ambil semua data menu
         return view('menu.index', compact('menus')); // Mengirim data ke view
     }
-<<<<<<< HEAD:Sisteminformasi/app/Http/Controllers/MenuController.php
 
-=======
->>>>>>> 9ea14ac18d42f4d5f785c25fa73e82a62bf87fee:app/Http/Controllers/MenuController.php
 
     /**
      * Show the form for creating a new menu.
      */
     public function create()
     {
-        return view('menu.create');
+        // $menus = Menu::all(); // Ambil semua d/ata menu
+        $menus = Menu::all();
+
+        return view('menu.create', compact('menus'));
     }
 
     /**
@@ -36,17 +36,14 @@ class MenuController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'type' => 'required|string|in:Single Multi,Multiple', // Pastikan opsi ini sesuai
-            'description' => 'nullable|', // Validasi untuk description
+            'description' => 'required|', // Validasi untuk description
         ]);
 
         Menu::create($request->only('name', 'type', 'description')); // Mengambil semua field yang diperlukan
 
         return redirect()->route('menu.index')->with('success', 'Menu berhasil ditambahkan.');
     }
-<<<<<<< HEAD:Sisteminformasi/app/Http/Controllers/MenuController.php
 
-=======
->>>>>>> 9ea14ac18d42f4d5f785c25fa73e82a62bf87fee:app/Http/Controllers/MenuController.php
 
     /**
      * Display the specified menu.
@@ -71,11 +68,9 @@ class MenuController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'type' => 'required|string|in:Single Multi,Multiple', // Validasi tipe saat update
-            'description' => 'nullable|', // Boleh kosong saat update
         ]);
 
-        $menu->update($request->only('name', 'type', 'description'));
+        $menu->update($request->only('name'));
 
         return redirect()->route('menu.index')->with('success', 'Menu berhasil diperbarui.');
     }
@@ -88,5 +83,13 @@ class MenuController extends Controller
         $menu->delete();
 
         return redirect()->route('menu.index')->with('success', 'Menu berhasil dihapus.');
+    }
+
+    public function showMultiple($id)
+    {
+        $data = Menu::findOrFail($id);
+        // dd($data);
+        $menus = Menu::all();
+        return view('multiple.index', compact('data', 'menus'));
     }
 }

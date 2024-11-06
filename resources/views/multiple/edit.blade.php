@@ -33,44 +33,24 @@
                     });
             }
 
-            function toggleDescriptionField() {
-                const typeSelect = document.querySelector('#type');
-                const descriptionField = document.querySelector('#editor');
-                const descriptionTextarea = document.querySelector('#description-textarea');
-
-                if (typeSelect.value === 'Multiple') {
-                    if (editor) {
-                        editor.destroy();
-                    }
-                    descriptionField.style.display = 'none';
-                    descriptionTextarea.style.display = 'block';
-                } else {
-                    if (descriptionTextarea.style.display === 'block') {
-                        descriptionTextarea.style.display = 'none';
-                        createEditor();
-                    }
-                }
-            }
-
             document.addEventListener('DOMContentLoaded', function() {
                 createEditor();
-                document.querySelector('#type').addEventListener('change', toggleDescriptionField);
             });
         </script>
     @endpush
 
     <div class="container mt-4">
-        <h1 class="mb-4">Add Multiple Item</h1>
+        <h1 class="mb-4">Edit Multiple Item</h1>
 
-        <form action="{{ route('multiple.store') }}" method="POST">
+        <form action="{{ route('multiple.update', $multiple->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
 
             <div class="form-group" hidden>
                 <label for="menus_id">Select Menu</label>
                 <select name="menus_id" id="menus_id" class="form-control" required>
-                    <option value="">Choose Menu</option>
                     @foreach ($menus as $menu)
-                        <option value="{{ $menu->id }}" {{ $menu->id == $data->id ? 'selected' : '' }}>
+                        <option value="{{ $menu->id }}" {{ $menu->id == $multiple->menus_id ? 'selected' : '' }}>
                             {{ $menu->name }}
                         </option>
                     @endforeach
@@ -79,11 +59,10 @@
 
             <div class="form-group">
                 <label for="description">Description</label>
-                <textarea name="description" id="description-textarea" class="form-control" style="display: none;"></textarea>
-                <textarea type="text" name="description" id="editor" class="form-control"></textarea>
+                <textarea name="description" id="editor" class="form-control">{{ $multiple->description }}</textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary">Kirim</button>
+            <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>
 @endsection

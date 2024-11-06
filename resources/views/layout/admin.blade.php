@@ -210,7 +210,7 @@
                         <ul aria-expanded="false">
                             @foreach ($menus as $menu)
                                 <li>
-                                    <a href="{{ route('multiple.show', $menu->id) }}">{{ $menu->name }}</a>
+                                    <a href="{{ route('multiple.index', $menu->id) }}">{{ $menu->name }}</a>
                                 </li>
                             @endforeach
                         </ul>
@@ -231,7 +231,6 @@
         ***********************************-->
         <div class="content-body">
             <!-- row -->
-            
             @yield('content')
         </div>
         <!--**********************************
