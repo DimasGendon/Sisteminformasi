@@ -5,6 +5,8 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\EditorController;
 use App\Http\Controllers\MultipleController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Auth\LoginController;
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -18,12 +20,19 @@ use App\Http\Controllers\DashboardController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/', [DashboardController::class, 'index'])->name('dashboard'); // Untuk daftar menu
+// Route::get('/', [DashboardController::class, 'index'])->name('dashboard'); // Untuk daftar menu
 
+Auth::routes();
 
-Route::get('/user', function () {
-    return view('layout.user');
+Route::get('/admin', function () {
+    return view('layout.admin');
 });
+Route::get('/', function () {
+    return view('home');
+});
+
+Route::post('/login', [LoginController::class, 'store'])->name('store.login');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/menu', [MenuController::class, 'index'])->name('menu.index'); // Untuk daftar menu
 Route::get('/createmenu', [MenuController::class, 'create'])->name('menu.create'); // Untuk membuka form tambah menu
@@ -44,3 +53,4 @@ Route::delete('/multiple/{menu}', [MultipleController::class, 'destroy'])->name(
 
 Route::post('/images', [EditorController::class, 'editor_image'])->name('store.image');
 
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

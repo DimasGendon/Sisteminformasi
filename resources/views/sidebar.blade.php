@@ -1,4 +1,4 @@
-@extends('layout.admin') <!-- Ganti dengan layout Anda -->
+@extends('layout.admin')
 
 @push('style')
     <style>
