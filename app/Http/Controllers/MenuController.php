@@ -33,15 +33,23 @@ class MenuController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'type' => 'required|string|in:Single Data,Multiple', // Pastikan opsi ini sesuai
-            'description' => 'nullable', // Validasi untuk description
+            'name' => 'required|string|max:255', // Menjamin 'name' harus diisi
+            'type' => 'required|string|in:Single Data,Multiple', // Menjamin 'type' harus dipilih antara 'Single Data' atau 'Multiple'
+            'description' => 'nullable', // 'description' tetap bersifat opsional
+        ], [
+            // Pesan custom untuk validasi
+            'name.required' => 'Nama menu harus diisi.',
+            'type.required' => 'Tipe menu harus dipilih.',
+            'type.in' => 'Tipe menu hanya boleh dipilih antara "Single Data" dan "Multiple".',
         ]);
 
-        Menu::create($request->only('name', 'type', 'description')); // Mengambil semua field yang diperlukan
+        // Menyimpan data yang divalidasi ke dalam database
+        Menu::create($request->only('name', 'type', 'description'));
 
+        // Redirect dengan pesan sukses
         return redirect()->route('menu.index')->with('success', 'Menu berhasil ditambahkan.');
     }
+
 
     /**
      * Display the specified menu.
@@ -71,8 +79,8 @@ class MenuController extends Controller
         // Validasi input
         $request->validate([
             'name' => 'required|string|max:255',
-            'type' => 'required|string|in:single,multi',  // Perbaiki validasi tipe
-            'description' => 'nullable|string',  // Validasi deskripsi jika ada
+            'type' => 'required|string|in:Single Data,Multiple',  // Perbaiki validasi tipe
+            'description' => 'nullable',  // Validasi deskripsi jika ada
         ]);
 
         // Update menu
@@ -89,7 +97,7 @@ class MenuController extends Controller
     {
         $menu->delete();
 
-        return redirect()->route('menu.index')->with('success', 'Menu berhasil dihapus.');
+        return redirect()->route('menu.index')->with('error', 'Menu berhasil dihapus.');
     }
     public function showMultiple($id)
     {
