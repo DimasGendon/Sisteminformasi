@@ -198,21 +198,16 @@
                         </a>
                         <ul aria-expanded="false">
                             @foreach ($menus as $menu)
-                                <li>
-                                    <a href="{{ route('multiple.index', $menu->id) }}">{{ $menu->name }}</a>
-                                </li>
+                                @if ($menu->type === 'Multiple Data')
+                                    <li>
+                                        <a href="{{ route('multiple.index', $menu->id) }}">{{ $menu->name }}</a>
+                                    </li>
+                                @elseif ($menu->type === 'Image')
+                                    <li>
+                                        <a href="{{ route('image.index', $menu->id) }}">{{ $menu->name }}</a>
+                                    </li>
+                                @endif
                             @endforeach
-                        </ul>
-
-                        <ul aria-expanded="false">
-                            @foreach ($menus as $menu)
-                            @foreach ($menu->images as $image)
-                                <li>
-                                    <a href="{{ route('image.index', $image->id) }}">{{ $menu->name }}</a>
-                                </li>
-                            @endforeach
-                            @endforeach
-                        </ul>
                     </li>
                 </ul>
             </div>

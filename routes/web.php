@@ -30,11 +30,12 @@ Route::get('/admin', function () {
     return view('layout.admin');
 });
 
-Route::get('/', [DashboardController::class, 'index'])->name('image.index');
-Route::get('/tambah', [DashboardController::class, 'create'])->name('image.create')->middleware('auth');
-Route::post('/post', [DashboardController::class, 'store'])->name('image.store')->middleware('auth');
-Route::get('/images/{id}/edit', [DashboardController::class, 'edit'])->name('images.edit')->middleware('auth');
-Route::put('/images/{id}', [DashboardController::class, 'update'])->name('images.update')->middleware('auth');
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
+Route::get('/foto', [ImageController::class, 'index'])->name('image.index')->middleware('auth');
+Route::get('/tambah', [ImageController::class, 'create'])->name('image.create')->middleware('auth');
+Route::get('/images/{id}/edit', [ImageController::class, 'edit'])->name('images.edit')->middleware('auth');
+Route::put('/images/{id}', [ImageController::class, 'update'])->name('images.update')->middleware('auth');
 
 
 
@@ -48,6 +49,7 @@ Route::get('/show-menu/{id}', [MenuController::class, 'show'])->name('multiple.s
 Route::get('/editmenu/{menu}', [MenuController::class, 'edit'])->name('menu.edit')->middleware('auth'); // Untuk membuka form edit menu
 Route::put('/menu/{menu}', [MenuController::class, 'update'])->name('menu.update')->middleware('auth'); // Untuk memperbarui data menu
 Route::delete('/menu/{menu}', [MenuController::class, 'destroy'])->name('menu.destroy')->middleware('auth'); // Untuk menghapus menu
+Route::post('/image', [ImageController::class, 'store'])->name('store.image')->middleware('auth');
 Route::get('/multiple/{id}', [MenuController::class, 'showMultiple'])->name('multiple.index')->middleware('auth'); // Untuk menghapus menu
 
 // Route::get('/multiple/{menu}', [MultipleController::class, 'index'])->name('multiple.index')->middleware('auth'); // Untuk daftar menu
