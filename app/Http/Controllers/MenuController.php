@@ -35,15 +35,23 @@ class MenuController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'type' => 'required|string|in:Single Data,Multiple',
-            'description' => 'nullable',
+            'name' => 'required|string|max:255', // Menjamin 'name' harus diisi
+            'type' => 'required', // Menjamin 'type' harus dipilih antara 'Single Data' atau 'Multiple'
+            'description' => 'nullable', // 'description' tetap bersifat opsional
+        ], [
+            // Pesan custom untuk validasi
+            'name.required' => 'Nama menu harus diisi.',
+            'type.required' => 'Tipe menu harus dipilih.',
+            'type.in' => 'Tipe menu hanya boleh dipilih antara "Single Data" dan "Multiple".',
         ]);
 
+        // Menyimpan data yang divalidasi ke dalam database
         Menu::create($request->only('name', 'type', 'description'));
 
-        return redirect()->route('menu.index')->with('success', 'Menu berhasil ditambahkan');
+        // Redirect dengan pesan sukses
+        return redirect()->route('menu.index')->with('success', 'Menu berhasil ditambahkan.');
     }
+
 
     /**
      * Display the specified menu.
@@ -72,8 +80,8 @@ class MenuController extends Controller
         // Validasi input
         $request->validate([
             'name' => 'required|string|max:255',
-            'type' => 'required|string|in:single,multi',
-            'description' => 'nullable|string',
+            'type' => 'required',  // Perbaiki validasi tipe
+            'description' => 'nullable',  // Validasi deskripsi jika ada
         ]);
 
         // Update menu
@@ -91,7 +99,7 @@ class MenuController extends Controller
         $menu = Menu::findOrFail($id);
         $menu->delete();
 
-            return redirect()->route('menu.index')->with('success', 'Menu berhasil dihapus');
+        return redirect()->route('menu.index')->with('error', 'Menu berhasil dihapus.');
     }
 
     public function showMultiple($id)

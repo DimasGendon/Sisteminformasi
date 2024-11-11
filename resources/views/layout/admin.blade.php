@@ -42,9 +42,9 @@
         ***********************************-->
         <div class="nav-header">
             <a href="index.html" class="brand-logo">
-                <img class="logo-abbr" src="{{ asset('Admin/images/logo.png') }}" alt="">
+                <img class="w-32 h-32 rounded-full" src="{{ asset('Admin/images/li.png') }}" alt="Nama Brand" style="width: 70px; height: 90px; border-radius: 40%;">
                 <img class="logo-compact" src="{{ asset('Admin/images/logo-text.png') }}" alt="">
-                <img class="brand-title" src="{{ asset('Admin/images/logo-text.png') }}" alt="">
+                <img class="brand-title" src="{{ asset('Admin/images/lo.png') }}" alt="">
             </a>
 
             <div class="nav-control">
@@ -176,20 +176,21 @@
         <div class="quixnav">
             <div class="quixnav-scroll">
                 <ul class="metismenu" id="menu">
-                    <li class="nav-label first">Menu</li>
+                    <!-- Tambahkan Label -->
+                    <li class="nav-label first">Main Menu</li>
                     <li>
-                        <a href="{{ route('home') }}" aria-expanded="false">
-                            <i class="fas fa-home"></i>
+                        <a href="{{ route('dashboard') }}" aria-expanded="false">
+                            <i class="fa fa-home"></i> <!-- Ikon Dashboard -->
                             <span class="nav-text">Dashboard</span>
                         </a>
                     </li>
+
                     <li>
                         <a href="{{ route('menu.index') }}" aria-expanded="false">
-                            <i class="fas fa-bars"></i>
+                            <i class="fa fa-list"></i> <!-- Ikon Menu Utama -->
                             <span class="nav-text">Menu Utama</span>
                         </a>
                     </li>
-
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="fas fa-bars"></i>
@@ -236,8 +237,8 @@
         ***********************************-->
         <div class="footer">
             <div class="copyright">
-                <p>Copyright © Designed &amp; Developed by <a href="#" target="_blank">Quixkit</a> 2019</p>
-                <p>Distributed by <a href="https://themewagon.com/" target="_blank">Themewagon</a></p>
+                <p>Copyright © Designed &amp; Developed by <a href="#" target="_blank">Hummatech Sempu</a></p>
+                {{-- <p>Distributed by <a href="https://themewagon.com/" target="_blank">Themewagon</a></p> --}}
             </div>
         </div>
         <!--**********************************

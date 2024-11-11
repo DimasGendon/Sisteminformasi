@@ -17,6 +17,42 @@
                     timerProgressBar: true
                 });
             @endif
+            @if (session('error'))
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Berhasil!',
+                    text: '{{ session('error') }}',
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    timerProgressBar: true
+                });
+            @endif
+
+            // SweetAlert untuk tombol hapus
+            const deleteButtons = document.querySelectorAll('.btn-delete');
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const form = this.closest('form');
+                    const menuName = this.getAttribute('data-menu-name');
+
+                    Swal.fire({
+                        title: 'Apakah Anda yakin?',
+                        text: `Anda akan menghapus menu "${menuName}"!`,
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#d33',
+                        cancelButtonColor: '#3085d6',
+                        confirmButtonText: 'Ya, hapus!',
+                        cancelButtonText: 'Batal'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            form.submit();
+                        }
+                    });
+                });
+            });
         });
 
         function confirmDelete(menuId) {
@@ -40,70 +76,48 @@
 
 @section('content')
     <div class="container">
-
-
         <!-- Tombol Tambah Menu yang Mengarah ke Halaman Create Menu -->
         <a href="{{ route('menu.create') }}" class="btn btn-primary mb-3">
-            Tambah Menu
+            <i class="fas fa-plus"></i> <!-- Ikon plus untuk tombol tambah -->
         </a>
 
-        <table class="display table table-bordered">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Nama Menu</th>
-                    <th>Tipe</th>
-                    <th>Deskripsi</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($menus as $index => $menu)
+        <div class="table-responsive">
+            <table class="table table-bordered" style="background-color: #ffffff; color: #333;">
+                <thead>
                     <tr>
-                        <td>{{ $index + 1 }}</td>
-                        <td>{{ $menu->name }}</td>
-                        <td>{{ $menu->type }}</td>
-                        <td>
-                            <a href="#" data-toggle="modal" class="btn btn-primary btn-sm" data-target="#descriptionModal{{ $menu->id }}" data-whatever>
-                                <i class="fas fa-eye"></i>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="{{ route('menu.edit', $menu->id) }}" class="btn btn-warning btn-sm" title="Edit">
-                                <i class="fas fa-edit"></i>
-                            </a>
-                            <form id="delete-form-{{ $menu->id }}" action="{{ route('menu.destroy', $menu->id) }}" method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="button" class="btn btn-danger btn-sm" title="Hapus"
-                                    onclick="confirmDelete({{ $menu->id }})">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </form>
-                        </td>
+                        <th style="width: 5%; text-align: center;">No</th>
+                        <th style="width: 20%; text-align: center;">Nama Menu</th>
+                        <th style="width: 20%; text-align: center;">Tipe</th>
+                        <th style="width: 15%; text-align: center;">Deskripsi</th>
+                        <th style="width: 10%; text-align: center;">Aksi</th>
                     </tr>
-
-                    <!-- Modal untuk Deskripsi -->
-                    <div class="modal fade" id="descriptionModal{{ $menu->id }}" tabindex="-1" role="dialog" aria-labelledby="descriptionModalLabel{{ $menu->id }}" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="descriptionModalLabel{{ $menu->id }}">Deskripsi</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
+                </thead>
+                <tbody>
+                    @foreach ($menus as $index => $menu)
+                        <tr>
+                            <td>{{ $index + 1 }}</td>
+                            <td>{{ $menu->name }}</td>
+                            <td>{{ $menu->type }}</td>
+                            <td>
+                                <a href="#" data-toggle="modal" class="btn btn-sm btn-primary text-white" data-target="#descriptionModal{{ $menu->id }}" data-whatever><i class="fas fa-eye"></i></a> <!-- Ikon mata warna primary -->
+                            </td>
+                            <td>
+                                <a href="{{ route('menu.edit', $menu->id) }}" class="btn btn-sm btn-warning">
+                                    <i class="fas fa-edit"></i> <!-- Ikon pensil untuk tombol edit -->
+                                </a>
+                                <form action="{{ route('menu.destroy', $menu->id) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="button" class="btn btn-sm btn-danger btn-delete" data-menu-name="{{ $menu->name }}">
+                                        <i class="fas fa-trash-alt"></i> <!-- Ikon tong sampah untuk tombol hapus -->
                                     </button>
-                                </div>
-                                <div class="modal-body">
-                                    {{ $menu->description }}
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </tbody>
-        </table>
+                                </form>
+                            </td>
+                        </tr>
+                        @include('menu.description')
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 @endsection

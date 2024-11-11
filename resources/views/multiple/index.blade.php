@@ -1,5 +1,17 @@
 @extends('layout.admin')
 
+@push('script')
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Check if the menu type is 'single' and redirect to the edit page
+            const menuType = "{{ $data->type }}";
+            if (menuType === 'Single Data') {
+                window.location.href = "{{ route('menu.edit', $data->id) }}";
+            }
+        });
+    </script>
+@endpush
+
 @section('content')
     <div class="container">
         <h1>Multiple Table</h1>
