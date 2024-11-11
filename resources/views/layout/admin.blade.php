@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Focus - Bootstrap Admin Dashboard </title>
+    <title>Sistem informasi BKK SMKS Muhammadiyah 1 Genteng</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('Admin/images/favicon.png') }}">
     <link rel="stylesheet" href="{{ asset('Admin/vendor/owl-carousel/css/owl.carousel.min.css') }}">
@@ -16,13 +16,9 @@
     @stack('style')
 
     <link href="{{ asset('Admin/css/style.css') }}" rel="stylesheet">
-
-
-
 </head>
 
 <body>
-
     <!--*******************
         Preloader start
     ********************-->
@@ -36,8 +32,6 @@
     <!--*******************
         Preloader end
     ********************-->
-
-
     <!--**********************************
         Main wrapper start
     ***********************************-->
@@ -161,7 +155,7 @@
                                         <i class="icon-envelope-open"></i>
                                         <span class="ml-2">Inbox </span>
                                     </a>
-                                    <a href="./page-login.html" class="dropdown-item">
+                                    <a href="{{ route('logout') }}" class="dropdown-item">
                                         <i class="icon-key"></i>
                                         <span class="ml-2">Logout </span>
                                     </a>
@@ -182,22 +176,23 @@
         <div class="quixnav">
             <div class="quixnav-scroll">
                 <ul class="metismenu" id="menu">
-                    <li class="nav-label first">Main Menu</li>
+                    <li class="nav-label first">Menu</li>
                     <li>
-                        <a href="{{ route('dashboard') }}" aria-expanded="false">
-                            <i class="icon icon-globe-2"></i>
+                        <a href="{{ route('home') }}" aria-expanded="false">
+                            <i class="fas fa-home"></i>
                             <span class="nav-text">Dashboard</span>
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('menu.index') }}" aria-expanded="false">
-                            <i class="icon icon-globe-2"></i>
+                            <i class="fas fa-bars"></i>
                             <span class="nav-text">Menu Utama</span>
                         </a>
                     </li>
+
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon icon-single-04"></i>
+                            <i class="fas fa-bars"></i>
                             <span class="nav-text">Menu</span>
                         </a>
                         <ul aria-expanded="false">
@@ -207,15 +202,19 @@
                                 </li>
                             @endforeach
                         </ul>
-                        
-                        
+
+                        <ul aria-expanded="false">
+                            @foreach ($menus as $menu)
+                            @foreach ($menu->images as $image)
+                                <li>
+                                    <a href="{{ route('image.index', $image->id) }}">{{ $menu->name }}</a>
+                                </li>
+                            @endforeach
+                            @endforeach
+                        </ul>
                     </li>
-
-
                 </ul>
             </div>
-
-
         </div>
         <!--**********************************
             Sidebar end
@@ -231,7 +230,6 @@
         <!--**********************************
             Content body end
         ***********************************-->
-
 
         <!--**********************************
             Footer start
@@ -253,9 +251,7 @@
         <!--**********************************
            Support ticket button end
         ***********************************-->
-
-
-    </div>
+        </div>
     <!--**********************************
         Main wrapper end
     ***********************************-->
@@ -268,15 +264,11 @@
     <script src="{{ asset('Admin/js/quixnav-init.js') }}"></script>
     <script src="{{ asset('Admin/js/custom.min.js') }}"></script>
 
-
     <!-- Vectormap -->
     <script src="{{ asset('Admin/vendor/raphael/raphael.min.js') }}"></script>
     <script src="{{ asset('Admin/vendor/morris/morris.min.js') }}"></script>
-
-
     <script src="{{ asset('Admin/vendor/circle-progress/circle-progress.min.js') }}"></script>
     <script src="{{ asset('Admin/vendor/chart.js/Chart.bundle.min.js') }}"></script>
-
     <script src="{{ asset('Admin/vendor/gaugeJS/dist/gauge.min.js') }}"></script>
 
     <!--  flot-chart js -->
@@ -291,10 +283,6 @@
     <script src="{{ asset('Admin/vendor/jqvmap/js/jquery.vmap.usa.js') }}"></script>
     <script src="{{ asset('Admin/vendor/jquery.counterup/jquery.counterup.min.js') }}"></script>
     @stack('script')
-
-
     <script src="{{ asset('Admin/js/dashboard/dashboard-1.js') }}"></script>
-
 </body>
-
 </html>

@@ -1,29 +1,37 @@
 <?php
+namespace App\Http\Controllers;
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+use Illuminate\Http\Request;
+use App\Models\Image;
+use App\Models\Menu; // Pastikan Anda mengimpor model Menu
+use Illuminate\Support\Facades\Storage;
 
-return new class extends Migration
+class ImageController extends Controller
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    // Menampilkan form untuk upload gambar
+    public function create()
     {
-        Schema::create('images', function (Blueprint $table) {
-            $table->id();
-            $table->string('image');
-            $table->foreignId('menus_id')->constrained('menus')->onUpdate('RESTRICT')->onDelete('CASCADE');
-            $table->timestamps();
-        });
+        $menus = Menu::all(); // Ambil semua menu untuk dropdown
+        return view('images.create', compact('menus'));
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    // Menyimpan gambar ke database
+    public function store(Request $request)
     {
-        Schema::dropIfExists('images');
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'menus_id' => 'required|exists:menus,id', // Validasi menu ID
+        ]);
+
+        // Menyimpan gambar
+        $path = $request->file('image')->store('images', 'public');
+
+        // Menyimpan informasi gambar ke database
+        Image::create([
+            'image' => $path,
+            'menus_id' => $request->menus_id,
+        ]);
+
+        return redirect()->route('images.create')->with('success', 'Image uploaded successfully.');
     }
-};
+}

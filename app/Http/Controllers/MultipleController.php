@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Multiple;
 use App\Models\Menu;
+use App\Models\Image;
 use Illuminate\Http\Request;
 
 class MultipleController extends Controller
@@ -12,6 +13,7 @@ class MultipleController extends Controller
     {
         // Ambil semua data menu
         $menus = Menu::all();
+        $images = Image::all();
 
         // Cek apakah ada tipe "Single Data" dan alihkan langsung ke halaman edit
         foreach ($menus as $menu) {
@@ -21,7 +23,7 @@ class MultipleController extends Controller
         }
 
         // Kirimkan data menus ke view jika tidak ada tipe "Single Data"
-        return view('multiple.index', compact('menus'));
+        return view('multiple.index', compact('menus', 'images'));
     }
 
 
@@ -29,7 +31,8 @@ class MultipleController extends Controller
     {
         $data = Menu::findOrFail($menu); // Fetch the menu or fail if not found
         $menus = Menu::all();
-        return view('multiple.create', compact('data', 'menus')); // Pass the menu to the view
+        $images = Image::all();
+        return view('multiple.create', compact('data', 'menus', 'images ')); // Pass the menu to the view
     }
     public function store(Request $request)
 {

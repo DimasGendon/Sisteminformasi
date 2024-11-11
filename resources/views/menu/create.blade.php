@@ -1,4 +1,4 @@
-@extends('layout.admin') <!-- Ganti dengan layout Anda -->
+@extends('layout.admin')
 
 @push('style')
     <style>
@@ -13,21 +13,23 @@
     <script>
         let editor;
 
-        // Function to create CKEditor
-        function createEditor() {
-            ClassicEditor
-                .create(document.querySelector('#editor'), {
-                    ckfinder: {
-                        uploadUrl: "{{ route('store.image', ['_token' => csrf_token()]) }}",
-                    }
-                })
-                .then(newEditor => {
-                    editor = newEditor;
-                })
-                .catch(error => {
-                    console.log(error);
-                });
-        }
+        <
+        script >
+            function createEditor() {
+                ClassicEditor
+                    .create(document.querySelector('#editor'), {
+                        ckfinder: {
+                            uploadUrl: "{{ route('menu.store', ['_token' => csrf_token()]) }}",
+                        }
+                    })
+                    .then(newEditor => {
+                        editor = newEditor;
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
+            }
+
 
         // Function to switch between CKEditor and textarea
         function toggleDescriptionField() {

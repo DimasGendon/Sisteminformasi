@@ -60,10 +60,8 @@
     @endpush
 
     <div class="container mt-4">
-
         <form action="{{ route('multiple.store') }}" method="POST">
             @csrf
-
             <div class="form-group" hidden>
                 <label for="menus_id">Select Menu</label>
                 <select name="menus_id" id="menus_id" class="form-control" required>
@@ -76,7 +74,10 @@
                 </select>
             </div>
 
-
+            <div class="form-group">
+                <label for="image">Upload Image</label>
+                <input type="file" name="image" id="image" class="form-control" accept="image/*">
+            </div>
 
             <div class="form-group">
                 <label for="description">Description</label>

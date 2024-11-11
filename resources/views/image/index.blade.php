@@ -12,18 +12,15 @@
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Nama Menu</th>
-                    <th>Tipe</th>
-                    <th>Deskripsi</th>
+                    <th>Foto</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($menus as $index => $menu)
+                @foreach ($images as $image)
                     <tr>
-                        <td>{{ $index + 1 }}</td>
-                        <td>{{ $menu->name }}</td>
-                        <td>{{ $menu->type }}</td>
+                        <td>{{ $images + 1 }}</td>
+                        <td>{{ $image->foto }}</td>
                         {{-- <td>{{ $menu->type }}</td> --}}
                         <td>
                             <a href="#" data-toggle="modal" class="btn btn-primary" data-target="#descriptionModal{{ $menu->id }}"
