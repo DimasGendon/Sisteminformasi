@@ -12,8 +12,8 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $menus = Menu::all(); // Ambil semua data menu
-        return view('menu.index', compact('menus')); // Kirim data menus ke view
+        $menus = Menu::all();
+        return view('menu.index', compact('menus'));
     }
 
 
@@ -22,8 +22,8 @@ class MenuController extends Controller
      */
     public function create()
     {
-        $menus = Menu::all(); // Ambil data menu
-        return view('menu.create', compact('menus')); // Kirimkan ke view
+        $menus = Menu::all();
+        return view('menu.create', compact('menus'));
     }
 
 
@@ -34,7 +34,7 @@ class MenuController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255', // Menjamin 'name' harus diisi
-            'type' => 'required|string|in:Single Data,Multiple', // Menjamin 'type' harus dipilih antara 'Single Data' atau 'Multiple'
+            'type' => 'required', // Menjamin 'type' harus dipilih antara 'Single Data' atau 'Multiple'
             'description' => 'nullable', // 'description' tetap bersifat opsional
         ], [
             // Pesan custom untuk validasi
@@ -62,24 +62,23 @@ class MenuController extends Controller
     /**
      * Show the form for editing the specified menu.
      */
-    public function edit(Menu $menu)  // Menggunakan dependency injection langsung
+    public function edit(Menu $menu)
     {
-        // Mengirimkan data menu yang ditemukan ke view
-        $data = Menu::findOrFail($menu->id); // Ambil data menu
+        $data = Menu::findOrFail($menu->id);
         $menus = Menu::all();
 
-        return view('menu.edit', compact('data', 'menus'));  // Ganti variabel $menus menjadi $menu
+        return view('menu.edit', compact('data', 'menus'));
     }
 
     /**
      * Update the specified menu in storage.
      */
-    public function update(Request $request, Menu $menu)  // Menggunakan dependency injection
+    public function update(Request $request, Menu $menu)
     {
         // Validasi input
         $request->validate([
             'name' => 'required|string|max:255',
-            'type' => 'required|string|in:Single Data,Multiple',  // Perbaiki validasi tipe
+            'type' => 'required',  // Perbaiki validasi tipe
             'description' => 'nullable',  // Validasi deskripsi jika ada
         ]);
 
@@ -87,18 +86,20 @@ class MenuController extends Controller
         $menu->update($request->only('name', 'type', 'description'));
 
         // Redirect kembali ke index dengan pesan sukses
-        return redirect()->route('menu.index')->with('success', 'Menu berhasil diperbarui.');
+        return redirect()->route('menu.index')->with('success', 'Menu berhasil diperbarui');
     }
 
     /**
      * Remove the specified menu from storage.
      */
-    public function destroy(Menu $menu)
+    public function destroy($id)
     {
+        $menu = Menu::findOrFail($id);
         $menu->delete();
 
         return redirect()->route('menu.index')->with('error', 'Menu berhasil dihapus.');
     }
+
     public function showMultiple($id)
     {
         $data = Menu::findOrFail($id);
@@ -110,6 +111,6 @@ class MenuController extends Controller
     {
         $menus = Menu::all();
         $data = Menu::findOrFail($id);
-        return view('multiple.index', compact('menus', 'data'));
+        return view('sidebare', compact('menus', 'data'));
     }
 }

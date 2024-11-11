@@ -60,10 +60,8 @@
     @endpush
 
     <div class="container mt-4">
-
         <form action="{{ route('multiple.store') }}" method="POST">
             @csrf
-
             <div class="form-group" hidden>
                 <label for="menus_id">Select Menu</label>
                 <select name="menus_id" id="menus_id" class="form-control" required>
@@ -75,9 +73,6 @@
                     @endforeach
                 </select>
             </div>
-            
-            
-
             <div class="form-group">
                 <label for="description">Description</label>
                 <textarea name="description" id="description-textarea" class="form-control" style="display: none;"></textarea>
@@ -85,7 +80,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Kirim</button>
-            <a href="{{ route('multiple.index') }}" class="btn btn-secondary">Kembali</a>
+            <a href="{{ route('multiple.index', $data->id) }}" class="btn btn-secondary">Kembali</a>
         </form>
     </div>
 @endsection

@@ -32,22 +32,20 @@ class MultipleController extends Controller
         return view('multiple.create', compact('data', 'menus')); // Pass the menu to the view
     }
     public function store(Request $request)
-    {
-        $request->validate([
-            'menus_id' => 'required|exists:menus,id', // Validate that the menu exists
-            'description' => 'required', // Ensure description is provided
-        ]);
+{
+    $request->validate([
+        'menus_id' => 'required|exists:menus,id', // Validate that the menu exists
+        'description' => 'required', // Ensure description is provided
+    ]);
 
-        // Create the Multiple entry, ensuring menus_id is set correctly
-        Multiple::create([
-            'menus_id' => $request->menus_id,
-            'description' => $request->description,
-        ]);
+    // Create the Multiple entry with validated data
+    Multiple::create([
+        'menus_id' => $request->menus_id,
+        'description' => $request->description,
+    ]);
 
-        Multiple::create($request->all()); // Create the Multiple entry
-
-        return redirect()->route('multiple.index', $request->menus_id)->with('success', 'Item created successfully.');
-    }
+    return redirect()->route('multiple.index', $request->menus_id)->with('success', 'Anda Berhasil Menambahkan Data Ini');
+}
 
     public function edit($id)
     {
@@ -74,7 +72,7 @@ class MultipleController extends Controller
 
         $multiple->save();
 
-        return redirect()->route('multiple.index', $multiple->menus_id)->with('success', 'Item updated successfully.');
+        return redirect()->route('multiple.index', $multiple->menus_id)->with('info', 'Anda Berhasil Memperbaharui Data Ini');
     }
 
 
@@ -87,13 +85,13 @@ class MultipleController extends Controller
         $multiple->delete();
 
         // Redirect back to the index page with a success message
-        return redirect()->route('multiple.index', $multiple->menus_id)->with('success', 'Item deleted successfully.');
+        return redirect()->route('multiple.index', $multiple->menus_id)->with('error', 'Anda Berhasil Menghapus Data Ini');
     }
 
     public function show($menu)
     {
         $menus = Menu::all(); // Mengambil semua menu
-        $data = Menu::findOrFail(); // Mencari menu berdasarkan id
+        $data = Menu::findOrFail($menu); // Mencari menu berdasarkan id
         return view('multiple.index', compact('menus', 'data')); // Kirim data ke view
     }
 }

@@ -1,4 +1,4 @@
-@extends('layout.admin') <!-- Ganti dengan layout Anda -->
+@extends('layout.admin')
 
 @push('style')
     <style>
@@ -13,7 +13,6 @@
     <script>
         let editor;
 
-        // Function to create CKEditor
         function createEditor() {
             ClassicEditor
                 .create(document.querySelector('#editor'), {

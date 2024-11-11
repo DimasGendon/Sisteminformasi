@@ -14,9 +14,72 @@
 
 @section('content')
     <div class="container">
-        <h1>YOUR A MODELS</h1>
+        <h1>Multiple Table</h1>
 
-        <a href="{{ route('multiple.create', $data->id) }}" class="btn btn-primary mb-3">Tambah</a>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        @if (session('success'))
+            <script>
+                Swal.fire({
+                    toast: true,
+                    icon: 'success',
+                    title: '{{ session('success') }}',
+                    animation: true,
+                    position: 'top-right',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer);
+                        toast.addEventListener('mouseleave', Swal.resumeTimer);
+                    }
+                });
+            </script>
+        @endif
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        @if (session('info'))
+            <script>
+                Swal.fire({
+                    toast: true,
+                    icon: 'info',
+                    title: '{{ session('info') }}',
+                    animation: true,
+                    position: 'top-right',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer);
+                        toast.addEventListener('mouseleave', Swal.resumeTimer);
+                    }
+                });
+            </script>
+        @endif
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        @if (session('error'))
+            <script>
+                Swal.fire({
+                    toast: true,
+                    icon: 'error',
+                    title: '{{ session('error') }}',
+                    animation: true,
+                    position: 'top-right',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer);
+                        toast.addEventListener('mouseleave', Swal.resumeTimer);
+                    }
+                });
+            </script>
+        @endif
+
+        <div class="text-center mb-4">
+            <a href="{{ route('multiple.create', $data->id) }}" class="btn btn-primary mb-3">
+                <i class="fas fa-plus"></i></a>
+        </div>
 
         <table class="table table-bordered">
             <thead>
@@ -34,22 +97,25 @@
                             <button class="btn btn-primary" data-toggle="modal"
                                 data-target="#descriptionModal{{ $multiple->id }}"
                                 data-description="{{ $multiple->description }}" data-menu="{{ $data->name }}"
-                                data-image="{{ $multiple->image_url }}">
+                                data-image="{{ $multiple->image_url }}"> 
                                 <i class="fas fa-eye"></i>
                             </button>
                         </td>
                         <td>
-                            <a href="{{ route('multiple.edit', $multiple) }}" class="btn btn-warning">Edit</a>
-                            <form action="{{ route('multiple.destroy', $multiple) }}" method="POST" style="display:inline;">
+                            <a href="{{ route('multiple.edit', $multiple->id) }}" class="btn btn-warning">
+                                <i class="fas fa-edit"></i></a>
+                            <form action="{{ route('multiple.hapus', $multiple->id) }}" method="POST"
+                                style="display:inline;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?');">Delete</button>
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?');">
+                                    <i class="fas fa-trash-alt"></i></button>
                             </form>
                         </td>
                     </tr>
 
-                    <!-- Modal untuk Deskripsi -->
-                    <div class="modal fade" id="descriptionModal{{ $multiple->id }}" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="descriptionModal{{ $multiple->id }}" tabindex="-1" role="dialog"
+                        aria-labelledby="defaultModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -62,7 +128,8 @@
                                     {!! $multiple->description !!}
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Tutup</button>
+                                    <button type="button" class="btn mb-2 btn-secondary"
+                                        data-dismiss="modal">Tutup</button>
                                 </div>
                             </div>
                         </div>
@@ -78,4 +145,6 @@
             height: auto;
         }
     </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 @endsection
