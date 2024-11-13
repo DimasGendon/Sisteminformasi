@@ -86,6 +86,7 @@
                 @enderror
             </div>
 
+<<<<<<< Updated upstream
             <div class="form-group">
                 <label for="type">Tipe Menu :</label>
                 <select name="type" id="type" class="form-control" required>
@@ -96,6 +97,18 @@
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
+=======
+        <div class="form-group">
+            <label for="type">Tipe Menu</label>
+            <select name="type" id="type" class="form-control" required>
+                <option value="Single Data" {{ $data->type === 'Single Data' ? 'selected' : '' }}>Single Data</option>
+                <option value="Multiple Data" {{ $data->type === 'Multiple Data' ? 'selected' : '' }}>Multiple Data</option>
+            </select>
+            @error('type')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+>>>>>>> Stashed changes
 
             <div class="form-group" id="description-container">
                 <label for="editor">Deskripsi :</label>

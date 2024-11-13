@@ -94,7 +94,7 @@
                 <select name="type" id="type" class="form-control">
                     <option value="" disabled selected>Pilih Tipe</option>
                     <option value="Single Data">Single Data</option>
-                    <option value="Multiple">Multiple</option>
+                    <option value="Multiple Data">Multiple Data</option>
                 </select>
                 @error('type')
                     <div class="text-danger">{{ $message }}</div>
