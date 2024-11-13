@@ -5,6 +5,10 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\EditorController;
 use App\Http\Controllers\MultipleController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\ImageController;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Menu;
 
 
 
@@ -18,29 +22,42 @@ use App\Http\Controllers\DashboardController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/', [DashboardController::class, 'index'])->name('dashboard'); // Untuk daftar menu
+// Route::get('/', [DashboardController::class, 'index'])->name('dashboard'); // Untuk daftar menu
 
+Auth::routes();
 
-Route::get('/user', function () {
-    return view('layout.user');
+Route::get('/admin', function () {
+    return view('layout.admin');
 });
 
-Route::get('/menu', [MenuController::class, 'index'])->name('menu.index'); // Untuk daftar menu
-Route::get('/createmenu', [MenuController::class, 'create'])->name('menu.create'); // Untuk membuka form tambah menu
-Route::post('/post', [MenuController::class, 'store'])->name('menu.store'); // Untuk menyimpan menu baru
-Route::get('/show-menu/{id}', [MenuController::class, 'show'])->name('multiple.show'); // Untuk membuka form edit menu
-Route::get('/editmenu/{menu}', [MenuController::class, 'edit'])->name('menu.edit'); // Untuk membuka form edit menu
-Route::put('/menu/{menu}', [MenuController::class, 'update'])->name('menu.update'); // Untuk memperbarui data menu
-Route::delete('/menu/{menu}', [MenuController::class, 'destroy'])->name('menu.destroy'); // Untuk menghapus menu
-Route::get('/multiple/{id}', [MenuController::class, 'showMultiple'])->name('multiple.index'); // Untuk menghapus menu
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-// Route::get('/multiple/{menu}', [MultipleController::class, 'index'])->name('multiple.index'); // Untuk daftar menu
-Route::get('/create/{menu}', [MultipleController::class, 'create'])->name('multiple.create');
-Route::post('/postmultiple', [MultipleController::class, 'store'])->name('multiple.store'); // Untuk menyimpan menu baru
-Route::get('/show-multiple/{menu}', [MultipleController::class, 'show'])->name('multiple.show'); // Untuk membuka form edit menu
-Route::get('/multiple/{id}/edit', [MultipleController::class, 'edit'])->name('multiple.edit');
-Route::put('/multipost/{id}', [MultipleController::class, 'update'])->name('multiple.update');
-Route::delete('/multiple/{menu}', [MultipleController::class, 'destroy'])->name('multiple.hapus'); // Untuk menghapus menu
+Route::get('/foto', [ImageController::class, 'index'])->name('image.index')->middleware('auth');
+Route::get('/tambah', [ImageController::class, 'create'])->name('image.create')->middleware('auth');
+Route::get('/images/{id}/edit', [ImageController::class, 'edit'])->name('images.edit')->middleware('auth');
+Route::put('/images/{id}', [ImageController::class, 'update'])->name('images.update')->middleware('auth');
 
-Route::post('/images', [EditorController::class, 'editor_image'])->name('store.image');
 
+
+Route::post('/login', [LoginController::class, 'store'])->name('store.login');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('/menu', [MenuController::class, 'index'])->name('menu.index')->middleware('auth'); // Untuk daftar menu
+Route::get('/createmenu', [MenuController::class, 'create'])->name('menu.create')->middleware('auth'); // Untuk membuka form tambah menu
+Route::post('/post', [MenuController::class, 'store'])->name('menu.store')->middleware('auth'); // Untuk menyimpan menu baru
+Route::get('/show-menu/{id}', [MenuController::class, 'show'])->name('multiple.show')->middleware('auth'); // Untuk membuka form edit menu
+Route::get('/editmenu/{menu}', [MenuController::class, 'edit'])->name('menu.edit')->middleware('auth'); // Untuk membuka form edit menu
+Route::put('/menu/{menu}', [MenuController::class, 'update'])->name('menu.update')->middleware('auth'); // Untuk memperbarui data menu
+Route::delete('/menu/{menu}', [MenuController::class, 'destroy'])->name('menu.destroy')->middleware('auth'); // Untuk menghapus menu
+Route::post('/image', [ImageController::class, 'store'])->name('store.image')->middleware('auth');
+Route::get('/multiple/{id}', [MenuController::class, 'showMultiple'])->name('multiple.index')->middleware('auth'); // Untuk menghapus menu
+
+// Route::get('/multiple/{menu}', [MultipleController::class, 'index'])->name('multiple.index')->middleware('auth'); // Untuk daftar menu
+Route::get('/create/{menu}', [MultipleController::class, 'create'])->name('multiple.create')->middleware('auth');
+Route::post('/postmultiple', [MultipleController::class, 'store'])->name('multiple.store')->middleware('auth'); // Untuk menyimpan menu baru
+Route::get('/show-multiple/{menu}', [MultipleController::class, 'show'])->name('multiple.show')->middleware('auth'); // Untuk membuka form edit menu
+Route::get('/multiple/{id}/edit', [MultipleController::class, 'edit'])->name('multiple.edit')->middleware('auth');
+Route::put('/multipost/{id}', [MultipleController::class, 'update'])->name('multiple.update')->middleware('auth');
+Route::delete('/multiple/{menu}', [MultipleController::class, 'destroy'])->name('multiple.hapus')->middleware('auth'); // Untuk menghapus menu
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

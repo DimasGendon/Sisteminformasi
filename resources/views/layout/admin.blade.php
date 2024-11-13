@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Focus - Bootstrap Admin Dashboard </title>
+    <title>Sistem informasi BKK SMKS Muhammadiyah 1 Genteng</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('Admin/images/favicon.png') }}">
     <link rel="stylesheet" href="{{ asset('Admin/vendor/owl-carousel/css/owl.carousel.min.css') }}">
@@ -16,13 +16,9 @@
     @stack('style')
 
     <link href="{{ asset('Admin/css/style.css') }}" rel="stylesheet">
-
-
-
 </head>
 
 <body>
-
     <!--*******************
         Preloader start
     ********************-->
@@ -36,8 +32,6 @@
     <!--*******************
         Preloader end
     ********************-->
-
-
     <!--**********************************
         Main wrapper start
     ***********************************-->
@@ -48,9 +42,9 @@
         ***********************************-->
         <div class="nav-header">
             <a href="index.html" class="brand-logo">
-                <img class="logo-abbr" src="{{ asset('Admin/images/logo.png') }}" alt="">
+                <img class="w-32 h-32 rounded-full" src="{{ asset('Admin/images/li.png') }}" alt="Nama Brand" style="width: 70px; height: 90px; border-radius: 40%;">
                 <img class="logo-compact" src="{{ asset('Admin/images/logo-text.png') }}" alt="">
-                <img class="brand-title" src="{{ asset('Admin/images/logo-text.png') }}" alt="">
+                <img class="brand-title" src="{{ asset('Admin/images/lo.png') }}" alt="">
             </a>
 
             <div class="nav-control">
@@ -161,7 +155,7 @@
                                         <i class="icon-envelope-open"></i>
                                         <span class="ml-2">Inbox </span>
                                     </a>
-                                    <a href="./page-login.html" class="dropdown-item">
+                                    <a href="{{ route('logout') }}" class="dropdown-item">
                                         <i class="icon-key"></i>
                                         <span class="ml-2">Logout </span>
                                     </a>
@@ -182,40 +176,41 @@
         <div class="quixnav">
             <div class="quixnav-scroll">
                 <ul class="metismenu" id="menu">
+                    <!-- Tambahkan Label -->
                     <li class="nav-label first">Main Menu</li>
                     <li>
                         <a href="{{ route('dashboard') }}" aria-expanded="false">
-                            <i class="icon icon-globe-2"></i>
+                            <i class="fa fa-home"></i> <!-- Ikon Dashboard -->
                             <span class="nav-text">Dashboard</span>
                         </a>
                     </li>
+
                     <li>
                         <a href="{{ route('menu.index') }}" aria-expanded="false">
-                            <i class="icon icon-globe-2"></i>
+                            <i class="fa fa-list"></i> <!-- Ikon Menu Utama -->
                             <span class="nav-text">Menu Utama</span>
                         </a>
                     </li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon icon-single-04"></i>
+                            <i class="fas fa-bars"></i>
                             <span class="nav-text">Menu</span>
                         </a>
                         <ul aria-expanded="false">
                             @foreach ($menus as $menu)
-                                <li>
-                                    <a href="{{ route('multiple.index', $menu->id) }}">{{ $menu->name }}</a>
-                                </li>
+                                @if ($menu->type === 'Multiple Data')
+                                    <li>
+                                        <a href="{{ route('multiple.index', $menu->id) }}">{{ $menu->name }}</a>
+                                    </li>
+                                @elseif ($menu->type === 'Image')
+                                    <li>
+                                        <a href="{{ route('image.index', $menu->id) }}">{{ $menu->name }}</a>
+                                    </li>
+                                @endif
                             @endforeach
-                        </ul>
-                        
-                        
                     </li>
-
-
                 </ul>
             </div>
-
-
         </div>
         <!--**********************************
             Sidebar end
@@ -232,14 +227,13 @@
             Content body end
         ***********************************-->
 
-
         <!--**********************************
             Footer start
         ***********************************-->
         <div class="footer">
             <div class="copyright">
-                <p>Copyright © Designed &amp; Developed by <a href="#" target="_blank">Quixkit</a> 2019</p>
-                <p>Distributed by <a href="https://themewagon.com/" target="_blank">Themewagon</a></p>
+                <p>Copyright © Designed &amp; Developed by <a href="#" target="_blank">Hummatech Sempu</a></p>
+                {{-- <p>Distributed by <a href="https://themewagon.com/" target="_blank">Themewagon</a></p> --}}
             </div>
         </div>
         <!--**********************************
@@ -253,9 +247,7 @@
         <!--**********************************
            Support ticket button end
         ***********************************-->
-
-
-    </div>
+        </div>
     <!--**********************************
         Main wrapper end
     ***********************************-->
@@ -268,15 +260,11 @@
     <script src="{{ asset('Admin/js/quixnav-init.js') }}"></script>
     <script src="{{ asset('Admin/js/custom.min.js') }}"></script>
 
-
     <!-- Vectormap -->
     <script src="{{ asset('Admin/vendor/raphael/raphael.min.js') }}"></script>
     <script src="{{ asset('Admin/vendor/morris/morris.min.js') }}"></script>
-
-
     <script src="{{ asset('Admin/vendor/circle-progress/circle-progress.min.js') }}"></script>
     <script src="{{ asset('Admin/vendor/chart.js/Chart.bundle.min.js') }}"></script>
-
     <script src="{{ asset('Admin/vendor/gaugeJS/dist/gauge.min.js') }}"></script>
 
     <!--  flot-chart js -->
@@ -291,10 +279,6 @@
     <script src="{{ asset('Admin/vendor/jqvmap/js/jquery.vmap.usa.js') }}"></script>
     <script src="{{ asset('Admin/vendor/jquery.counterup/jquery.counterup.min.js') }}"></script>
     @stack('script')
-
-
     <script src="{{ asset('Admin/js/dashboard/dashboard-1.js') }}"></script>
-
 </body>
-
 </html>

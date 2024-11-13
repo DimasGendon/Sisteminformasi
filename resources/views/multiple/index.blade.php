@@ -1,8 +1,20 @@
 @extends('layout.admin')
 
+@push('script')
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Check if the menu type is 'single' and redirect to the edit page
+            const menuType = "{{ $data->type }}";
+            if (menuType === 'Single Data') {
+                window.location.href = "{{ route('menu.edit', $data->id) }}";
+            }
+        });
+    </script>
+@endpush
+
 @section('content')
     <div class="container">
-        <h1>Multipel Tabel</h1>
+        <h1>Multiple Table</h1>
 
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         @if (session('success'))
@@ -64,7 +76,6 @@
             </script>
         @endif
 
-
         <div class="text-center mb-4">
             <a href="{{ route('multiple.create', $data->id) }}" class="btn btn-primary mb-3">
                 <i class="fas fa-plus"></i></a>
@@ -79,7 +90,6 @@
                 </tr>
             </thead>
             <tbody>
-                {{-- @foreach ($menus as $menu) --}}
                 @foreach ($data->multiples as $multiple)
                     <tr>
                         <td>{{ $multiple->id }}</td>
@@ -87,16 +97,13 @@
                             <button class="btn btn-primary" data-toggle="modal"
                                 data-target="#descriptionModal{{ $multiple->id }}"
                                 data-description="{{ $multiple->description }}" data-menu="{{ $data->name }}"
-                                data-image="{{ $multiple->image_url }}"> <!-- Include image URL if applicable -->
+                                data-image="{{ $multiple->image_url }}"> 
                                 <i class="fas fa-eye"></i>
                             </button>
                         </td>
                         <td>
-
-
                             <a href="{{ route('multiple.edit', $multiple->id) }}" class="btn btn-warning">
                                 <i class="fas fa-edit"></i></a>
-
                             <form action="{{ route('multiple.hapus', $multiple->id) }}" method="POST"
                                 style="display:inline;">
                                 @csrf
@@ -128,11 +135,9 @@
                         </div>
                     </div>
                 @endforeach
-                {{-- @endforeach --}}
             </tbody>
         </table>
     </div>
-
 
     <style>
         .modal-content img {
@@ -141,6 +146,5 @@
         }
     </style>
 
-    <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 @endsection
