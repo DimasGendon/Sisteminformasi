@@ -5,16 +5,12 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\EditorController;
 use App\Http\Controllers\MultipleController;
 use App\Http\Controllers\DashboardController;
-<<<<<<< Updated upstream
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ImageController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Menu;
-
-
-=======
 use App\Http\Controllers\GuestController;
->>>>>>> Stashed changes
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,11 +26,11 @@ use App\Http\Controllers\GuestController;
 
 Auth::routes();
 
-<<<<<<< Updated upstream
+
 Route::get('/admin', function () {
     return view('layout.admin');
 });
-=======
+
 // Route::get('/user', function () {
 //     return view('layout.user');
     Route::get('/guest', [GuestController::class, 'index'])->name(name: 'guest');
@@ -42,7 +38,7 @@ Route::get('/admin', function () {
     Route::get('/guest/multiple/{id}', [GuestController::class, 'showMultiple_data'])->name(name: 'showMultiple_data.guest');
 
 // });
->>>>>>> Stashed changes
+
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 

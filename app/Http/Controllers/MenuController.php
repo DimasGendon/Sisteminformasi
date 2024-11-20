@@ -35,7 +35,6 @@ class MenuController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-<<<<<<< Updated upstream
             'name' => 'required|string|max:255', // Menjamin 'name' harus diisi
             'type' => 'required', // Menjamin 'type' harus dipilih antara 'Single Data' atau 'Multiple'
             'description' => 'nullable', // 'description' tetap bersifat opsional
@@ -44,11 +43,6 @@ class MenuController extends Controller
             'name.required' => 'Nama menu harus diisi.',
             'type.required' => 'Tipe menu harus dipilih.',
             'type.in' => 'Tipe menu hanya boleh dipilih antara "Single Data" dan "Multiple".',
-=======
-            'name' => 'required|string|max:255',
-            'type' => 'required', // Pastikan opsi ini sesuai
-            'description' => 'nullable', // Validasi untuk description
->>>>>>> Stashed changes
         ]);
 
         // Menyimpan data yang divalidasi ke dalam database
