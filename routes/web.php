@@ -9,7 +9,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ImageController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Menu;
-
+use App\Http\Controllers\GuestController;
 
 
 /*
@@ -26,9 +26,19 @@ use App\Models\Menu;
 
 Auth::routes();
 
+
 Route::get('/admin', function () {
     return view('layout.admin');
 });
+
+// Route::get('/user', function () {
+//     return view('layout.user');
+    Route::get('/guest', [GuestController::class, 'index'])->name(name: 'guest');
+    Route::get('/guest/single//{id}', [GuestController::class, 'showSingle_data'])->name(name: 'showSingle_data.guest');
+    Route::get('/guest/multiple/{id}', [GuestController::class, 'showMultiple_data'])->name(name: 'showMultiple_data.guest');
+
+// });
+
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
