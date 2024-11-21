@@ -13,23 +13,20 @@
     <script>
         let editor;
 
-        <
-        script >
-            function createEditor() {
-                ClassicEditor
-                    .create(document.querySelector('#editor'), {
-                        ckfinder: {
-                            uploadUrl: "{{ route('store.image', ['_token' => csrf_token()]) }}",
-                        }
-                    })
-                    .then(newEditor => {
-                        editor = newEditor;
-                    })
-                    .catch(error => {
-                        console.log(error);
-                    });
-            }
-
+        function createEditor() {
+            ClassicEditor
+                .create(document.querySelector('#editor'), {
+                    ckfinder: {
+                        uploadUrl: "{{ route('store.image', ['_token' => csrf_token()]) }}",
+                    }
+                })
+                .then(newEditor => {
+                    editor = newEditor;
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        }
 
         // Function to switch between CKEditor and textarea
         function toggleDescriptionField() {
@@ -82,19 +79,20 @@
             @csrf
 
             <div class="form-group">
-                <label for="name">Name Menu</label>
-                <input type="text" name="name" id="name" class="form-control" required>
+                <label for="name">Name Menu :</label>
+                <input type="text" name="name" id="name" class="form-control" placeholder="Tambah Menu">
                 @error('name')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
 
             <div class="form-group">
-                <label for="type">Tipe Menu</label>
+                <label for="type">Tipe Menu :</label>
                 <select name="type" id="type" class="form-control">
                     <option value="" disabled selected>Pilih Tipe</option>
                     <option value="Single Data">Single Data</option>
-                    <option value="Multiple">Multiple</option>
+                    <option value="Multiple Data">Multiple Data</option>
+                    <option value="Image Data">Image Data</option>
                 </select>
                 @error('type')
                     <div class="text-danger">{{ $message }}</div>
@@ -102,13 +100,14 @@
             </div>
 
             <div class="form-group">
-                <label for="description" id="description-label">Description</label>
+                <label for="description" id="description-label">Deskripsi :</label>
                 <textarea name="description" id="description-textarea" class="form-control" style="display: none;"></textarea>
                 <textarea type="text" name="description" id="editor" class="form-control"></textarea>
             </div>
 
             <button type="submit" class="btn btn-primary">Simpan</button>
-            <a href="{{ route('menu.index') }}" class="btn btn-secondary">Kembali</a>
+            <a href="{{ route('menu.index') }}" class="btn btn-dark">Kembali</a>
         </form>
+
     </div>
 @endsection

@@ -42,7 +42,8 @@
         ***********************************-->
         <div class="nav-header">
             <a href="index.html" class="brand-logo">
-                <img class="w-32 h-32 rounded-full" src="{{ asset('Admin/images/li.png') }}" alt="Nama Brand" style="width: 70px; height: 90px; border-radius: 40%;">
+                <img class="w-32 h-32 rounded-full" src="{{ asset('Admin/images/li.png') }}" alt="Nama Brand"
+                    style="width: 70px; height: 90px; border-radius: 40%;">
                 <img class="logo-compact" src="{{ asset('Admin/images/logo-text.png') }}" alt="">
                 <img class="brand-title" src="{{ asset('Admin/images/lo.png') }}" alt="">
             </a>
@@ -198,18 +199,24 @@
                         </a>
                         <ul aria-expanded="false">
                             @foreach ($menus as $menu)
-                                @if ($menu->type === 'Multiple Data')
-                                    <li>
-                                        <a href="{{ route('multiple.index', $menu->id) }}">{{ $menu->name }}</a>
-                                    </li>
-                                @elseif ($menu->type === 'Image')
-                                    <li>
-                                        <a href="{{ route('image.index', $menu->id) }}">{{ $menu->name }}</a>
-                                    </li>
-                                @endif
+                                <li>
+                                    <a href="{{ route('multiple.index', $menu->id) }}">{{ $menu->name }}</a>
+                                </li>
                             @endforeach
                     </li>
                 </ul>
+
+                <li>
+                    <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                        <i class="fas fa-image"></i>
+                        <span class="nav-text">Image</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        @foreach ($menus as $menu)
+                            <li>
+                                <a href="{{ route('image.index', $menu->id) }}">{{ $menu->name }}</a>
+                            </li>
+                        @endforeach
             </div>
         </div>
         <!--**********************************
@@ -247,7 +254,7 @@
         <!--**********************************
            Support ticket button end
         ***********************************-->
-        </div>
+    </div>
     <!--**********************************
         Main wrapper end
     ***********************************-->
@@ -281,4 +288,5 @@
     @stack('script')
     <script src="{{ asset('Admin/js/dashboard/dashboard-1.js') }}"></script>
 </body>
+
 </html>

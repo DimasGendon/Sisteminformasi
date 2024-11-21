@@ -76,10 +76,8 @@
             </script>
         @endif
 
-        <div class="text-center mb-4">
             <a href="{{ route('multiple.create', $data->id) }}" class="btn btn-primary mb-3">
                 <i class="fas fa-plus"></i></a>
-        </div>
 
         <table class="table table-bordered">
             <thead>
@@ -97,7 +95,7 @@
                             <button class="btn btn-primary" data-toggle="modal"
                                 data-target="#descriptionModal{{ $multiple->id }}"
                                 data-description="{{ $multiple->description }}" data-menu="{{ $data->name }}"
-                                data-image="{{ $multiple->image_url }}"> 
+                                data-image="{{ $multiple->image_url }}">
                                 <i class="fas fa-eye"></i>
                             </button>
                         </td>

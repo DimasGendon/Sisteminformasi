@@ -75,11 +75,6 @@
             </div>
 
             <div class="form-group">
-                <label for="image">Upload Image</label>
-                <input type="file" name="image" id="image" class="form-control" accept="image/*">
-            </div>
-
-            <div class="form-group">
                 <label for="description">Description</label>
                 <textarea name="description" id="description-textarea" class="form-control" style="display: none;"></textarea>
                 <textarea type="text" name="description" id="editor" class="form-control"></textarea>

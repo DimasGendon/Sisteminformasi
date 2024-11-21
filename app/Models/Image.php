@@ -9,7 +9,7 @@ class Image extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['menus_id', 'image'];
+    protected $fillable = ['image', 'menus_id'];
 
     public function menus()
     {

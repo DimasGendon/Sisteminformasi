@@ -4,92 +4,99 @@ namespace App\Http\Controllers;
 
 use App\Models\Image;
 use App\Models\Menu;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
 class ImageController extends Controller
 {
-    public function index()
+    public function index($id)
     {
-        // Mengambil semua data gambar dari database
+        $menus = menu::all();
+        $data = Menu::find($id);
         $images = Image::all();
-        $menus = Menu::all();
 
         // Menampilkan view dengan data gambar
-        return view('image.index', compact('images', 'menus'));
+        return view('image.index', compact('data','images', 'menus'));
     }
 
 
-    public function create()
+    public function create($id)
     {
+        $menus = menu::all();
+        $data = Menu::find($id);
+        $images = Image::all();
         // Menampilkan form untuk membuat gambar baru
-        return view('image.create');
+        return view('image.create', compact('data','images', 'menus'));
     }
 
     public function store(Request $request)
     {
-        // Validasi input
-        $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            // Tambahkan aturan validasi lain jika perlu
+        // Validate the request data
+        $validated = $request->validate([
+            'image' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048',  // File validation
         ]);
 
-        // Menyimpan gambar
+        // Store the image in storage (public directory)
         $imagePath = $request->file('image')->store('images', 'public');
 
-        // Membuat entri baru di database
-        Image::create([
-            'path' => $imagePath,
-            // Tambahkan field lain jika perlu
-        ]);
-
+        // Create a new image record in the database
+        $image = new Image();
+        $image->image = $imagePath;
+        $image->menus_id = $request->menus_id; // Make sure menus_id is being passed
+        $image->save();
         // Redirect atau mengarahkan kembali setelah sukses
-        return redirect()->route('image.index')->with('success', 'Image uploaded successfully.');
+        return redirect()->route('image.index', $request->menus_id)->with('success', 'Image uploaded successfully.');
     }
+
 
     public function edit($id)
     {
-        $image = Image::findOrFail($id); // Mencari gambar berdasarkan ID
-        return view('images.edit', compact('image'));
+        $image = Image::findOrFail($id); // Temukan gambar berdasarkan ID
+        $menus = Menu::all(); // Ambil semua menu (atau sesuai kebutuhan)
+        return view('image.edit', compact('image', 'menus')); // Kembalikan view edit
     }
 
+    // Fungsi untuk memperbarui gambar
     public function update(Request $request, $id)
     {
-            $request->validate([
-                'description' => 'required|string',
-                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            ]);
+        $request->validate([
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
 
-            $image = Image::findOrFail($id);
-            $image->description = $request->description; // Update deskripsi
+        $imageModel = Image::findOrFail($id);
 
-            // Cek jika ada file gambar baru
-            if ($request->hasFile('image')) {
-                // Hapus gambar lama dari folder
-                $oldImagePath = public_path('uploads/' . $image->image);
-                if (file_exists($oldImagePath)) {
-                    unlink($oldImagePath);
-                }
-
-                // Simpan gambar baru
-                $file = $request->file('image');
-                $fileName = time() . '-' . $file->getClientOriginalName();
-                $file->move(public_path('uploads'), $fileName);
-                $image->image = $fileName; // Update path gambar
+        // Cek apakah ada gambar baru yang di-upload
+        if ($request->hasFile('image')) {
+            // Hapus gambar lama jika perlu
+            if ($imageModel->image) {
+                Storage::delete('public/' . $imageModel->image);
             }
 
-            $image->save(); // Simpan perubahan
+            // Simpan gambar baru
+            $path = $request->file('image')->store('images', 'public'); // Atur lokasi penyimpanan sesuai kebutuhan
+            $imageModel->image = $path;
+        }
 
-        return redirect()->route('images.index')->with('success', 'Image updated successfully.');
+        // Simpan perubahan di database
+        $imageModel->save();
+
+        // Redirect ke halaman yang sesuai dengan pesan sukses
+        return redirect()->route('image.index', $imageModel->menus_id)->with('success', 'Gambar berhasil diperbarui.');
+
     }
 
 
 
 
-    public function show($id)
+    public function destroy($id)
     {
-        $image = Image::findOrFail($id); // Mencari gambar berdasarkan ID
-        $menus = Menu::all();
-        return view('images.show', compact('image', 'menus'));
+        // Find the Multiple entry by ID or fail if not found
+        $image = image::findOrFail($id);
+        // Delete the image entry
+        $image->delete();
+
+        // Redirect back to the index page with a success message
+        return redirect()->route('image.index', $image->menus_id)->with('error', 'Anda Berhasil Menghapus Data Ini');
     }
 
 }

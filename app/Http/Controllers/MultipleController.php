@@ -13,7 +13,6 @@ class MultipleController extends Controller
     {
         // Ambil semua data menu
         $menus = Menu::all();
-        $images = Image::all();
 
         // Cek apakah ada tipe "Single Data" dan alihkan langsung ke halaman edit
         foreach ($menus as $menu) {
@@ -23,7 +22,7 @@ class MultipleController extends Controller
         }
 
         // Kirimkan data menus ke view jika tidak ada tipe "Single Data"
-        return view('multiple.index', compact('menus', 'images'));
+        return view('multiple.index', compact('menus'));
     }
 
 
@@ -31,8 +30,7 @@ class MultipleController extends Controller
     {
         $data = Menu::findOrFail($menu); // Fetch the menu or fail if not found
         $menus = Menu::all();
-        $images = Image::all();
-        return view('multiple.create', compact('data', 'menus', 'images ')); // Pass the menu to the view
+        return view('multiple.create', compact('data', 'menus')); // Pass the menu to the view
     }
     public function store(Request $request)
 {
