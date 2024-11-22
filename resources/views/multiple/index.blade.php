@@ -62,17 +62,12 @@
                 });
             @endif
 
-<<<<<<< HEAD
             // SweetAlert untuk tombol hapus
             const deleteButtons = document.querySelectorAll('.btn-delete');
             deleteButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const form = this.closest('form');
                     const menuName = this.getAttribute('data-menu-name');
-=======
-            <a href="{{ route('multiple.create', $data->id) }}" class="btn btn-primary mb-3">
-                <i class="fas fa-plus"></i></a>
->>>>>>> e6e5df1301064bf931f2380cea8525ee781f353b
 
                     Swal.fire({
                         title: 'Apakah Anda yakin?',

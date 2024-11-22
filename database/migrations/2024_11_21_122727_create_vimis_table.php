@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kontaks', function (Blueprint $table) {
+        Schema::create('vimis', function (Blueprint $table) {
             $table->id();
-            $table->string('maps');
-            $table->bigInteger('whatsapp');
-            $table->string('facebook');
-            $table->string('instagram');
+            $table->longText('description');
             $table->timestamps();
         });
     }
@@ -26,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kontaks');
+        Schema::dropIfExists('vimis');
     }
 };
