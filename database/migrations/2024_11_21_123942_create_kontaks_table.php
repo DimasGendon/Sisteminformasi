@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('kontaks', function (Blueprint $table) {
             $table->id();
-            $table->string('maps');
-            $table->bigInteger('whatsapp');
+            $table->string('whatsapp');
             $table->string('facebook');
             $table->string('instagram');
             $table->timestamps();

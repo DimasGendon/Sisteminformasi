@@ -7,15 +7,15 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Sistem informasi BKK SMKS Muhammadiyah 1 Genteng</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('Admin/images/favicon.png') }}">
-    <link rel="stylesheet" href="{{ asset('Admin/vendor/owl-carousel/css/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('Admin/vendor/owl-carousel/css/owl.theme.default.min.css') }}">
-    {{-- <link rel="stylesheet" href="{{ asset('Admin/icons/font-awesome-old/css/font-awesome.min.css') }}"> --}}
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('TemplateAdmin/images/favicon.png') }}">
+    <link rel="stylesheet" href="{{ asset('TemplateAdmin/vendor/owl-carousel/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('TemplateAdmin/vendor/owl-carousel/css/owl.theme.default.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('TemplateAdmin/icons/font-awesome-old/css/font-awesome.min.css') }}"> --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="{{ asset('Admin/vendor/jqvmap/css/jqvmap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('TemplateAdmin/vendor/jqvmap/css/jqvmap.min.css') }}" rel="stylesheet">
     @stack('style')
 
-    <link href="{{ asset('Admin/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('TemplateAdmin/css/style.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -42,10 +42,10 @@
         ***********************************-->
         <div class="nav-header">
             <a href="index.html" class="brand-logo">
-                <img class="w-32 h-32 rounded-full" src="{{ asset('Admin/images/li.png') }}" alt="Nama Brand"
+                <img class="w-32 h-32 rounded-full" src="{{ asset('TemplateAdmin/images/li.png') }}" alt="Nama Brand"
                     style="width: 70px; height: 90px; border-radius: 40%;">
-                <img class="logo-compact" src="{{ asset('Admin/images/logo-text.png') }}" alt="">
-                <img class="brand-title" src="{{ asset('Admin/images/lo.png') }}" alt="">
+                <img class="logo-compact" src="{{ asset('TemplateAdmin/images/logo-text.png') }}" alt="">
+                <img class="brand-title" src="{{ asset('TemplateAdmin/images/lo.png') }}" alt="">
             </a>
 
             <div class="nav-control">
@@ -178,13 +178,14 @@
             <div class="quixnav-scroll">
                 <ul class="metismenu" id="menu">
                     <!-- Tambahkan Label -->
-                    <li class="nav-label first">Main Menu</li>
+                    <li class="nav-label first">Dashboard</li>
                     <li class="{{ Route::is('dashboard') ? 'mm-active' : '' }}">
                         <a href="{{ route('dashboard') }}" aria-expanded="false">
                             <i class="fa fa-home"></i> <!-- Ikon Dashboard -->
                             <span class="nav-text">Dashboard</span>
                         </a>
                     </li>
+                    <li class="nav-label first">Menu</li>
                     <li class="{{ Route::is('slide') ? 'mm-active' : '' }}">
                         <a href="{{ route('slide') }}" aria-expanded="false">
                             <i class="fa fa-image"></i> <!-- Ikon Gambar -->
@@ -199,13 +200,46 @@
                         </a>
                     </li>
 
+                    <li class="{{ Route::is('informasi') ? 'mm-active' : '' }}">
+                        <a href="{{ route('informasi') }}" aria-expanded="false">
+                            <i class="fa fa-lightbulb"></i>
+                            <span class="nav-text">Informasi</span>
+                        </a>
+                    </li>
+
                     <li class="{{ Route::is('vimi.create', 'vimi.edit') ? 'mm-active' : '' }}">
                         <a href="{{ route('vimi.navigate') }}" aria-expanded="false">
                             <i class="fa fa-bullseye"></i> <!-- Ikon untuk Visi Misi -->
                             <span class="nav-text">Visi Misi</span>
                         </a>
                     </li>
+                    <li class="{{ Route::is('mitra.index') ? 'mm-active' : '' }}">
+                        <a href="{{ route('mitra.index') }}" aria-expanded="false">
+                            <i class="fas fa-handshake"></i> <!-- Ikon Menu Utama -->
+                            <span class="nav-text">Mitra</span>
+                        </a>
+                    </li>
 
+                    <li class="{{ Route::is('lokers.index') ? 'mm-active' : '' }}">
+                        <a href="{{ route('lokers.index') }}" aria-expanded="false">
+                            <i class="fas fa-briefcase"></i> <!-- Ikon Menu Utama -->
+                            <span class="nav-text">Loker</span>
+                        </a>
+                    </li>
+
+                    <li class="{{ Route::is('alumni.index') ? 'mm-active' : '' }}">
+                        <a href="{{ route('alumni.index') }}" aria-expanded="false">
+                            <i class="fa fa-graduation-cap"></i>
+                            <span class="nav-text">Alumni</span>
+                        </a>
+                    </li>
+                    <li class="{{ Route::is('kontak.create', 'kontak.edit') ? 'mm-active' : '' }}">
+                        <a href="{{ route('kontak.navigate') }}" aria-expanded="false">
+                            <i class="fa fa-phone"></i>
+                            <span class="nav-text">Kontak</span>
+                        </a>
+                    </li>
+                    <li class="nav-label first">Menu Baru</li>
                     <li class="{{ Route::is('menu.index', 'menu.create', 'menu.edit') ? 'mm-active' : '' }}">
                         <a href="{{ route('menu.index') }}" aria-expanded="false">
                             <i class="fas fa-bars"></i> <!-- Ikon Menu Utama -->
@@ -223,48 +257,22 @@
                                     <a href="{{ route('multiple.index', $menu->id) }}">{{ $menu->name }}</a>
                                 </li>
                             @endforeach
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="fas fa-image"></i>
+                            <span class="nav-text">Image</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            @foreach ($menus as $menu)
+                                <li>
+                                    <a href="{{ route('image.index', $menu->id) }}">{{ $menu->name }}</a>
+                                </li>
+                            @endforeach
+                        </ul>
                     </li>
                 </ul>
-                <li>
-                    <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                        <i class="fas fa-image"></i>
-                        <span class="nav-text">Image</span>
-                    </a>
-                    <ul aria-expanded="false">
-                        @foreach ($menus as $menu)
-                            <li>
-                                <a href="{{ route('image.index', $menu->id) }}">{{ $menu->name }}</a>
-                            </li>
-                        @endforeach
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="{{ route('mitra.index') }}" aria-expanded="false">
-                        <i class="fas fa-handshake"></i> <!-- Ikon Menu Utama -->
-                        <span class="nav-text">Mitra</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="{{ route('lokers.index') }}" aria-expanded="false">
-                        <i class="fas fa-briefcase"></i> <!-- Ikon Menu Utama -->
-                        <span class="nav-text">Loker</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="{{ route('alumni.index') }}" aria-expanded="false">
-                        <i class="fa fa-graduation-cap"></i>
-                        <span class="nav-text">Alumni</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('kontak.index') }}" aria-expanded="false">
-                        <i class="fa fa-phone"></i>
-                        <span class="nav-text">Kontak</span>
-                    </a>
-                </li>
             </div>
         </div>
         <!--**********************************
@@ -311,22 +319,22 @@
         Scripts
     ***********************************-->
     <!-- Required vendors -->
-    <script src="{{ asset('Admin/vendor/global/global.min.js') }}"></script>
-    <script src="{{ asset('Admin/js/quixnav-init.js') }}"></script>
-    <script src="{{ asset('Admin/js/custom.min.js') }}"></script>
+    <script src="{{ asset('TemplateAdmin/vendor/global/global.min.js') }}"></script>
+    <script src="{{ asset('TemplateAdmin/js/quixnav-init.js') }}"></script>
+    <script src="{{ asset('TemplateAdmin/js/custom.min.js') }}"></script>
 
 
     <!--  flot-chart js -->
-    <script src="{{ asset('Admin/vendor/flot/jquery.flot.js') }}"></script>
-    <script src="{{ asset('Admin/vendor/flot/jquery.flot.resize.js') }}"></script>
+    <script src="{{ asset('TemplateAdmin/vendor/flot/jquery.flot.js') }}"></script>
+    <script src="{{ asset('TemplateAdmin/vendor/flot/jquery.flot.resize.js') }}"></script>
 
     <!-- Owl Carousel -->
-    <script src="{{ asset('Admin/vendor/owl-carousel/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('TemplateAdmin/vendor/owl-carousel/js/owl.carousel.min.js') }}"></script>
 
     <!-- Counter Up -->
-    <script src="{{ asset('Admin/vendor/jqvmap/js/jquery.vmap.min.js') }}"></script>
-    <script src="{{ asset('Admin/vendor/jqvmap/js/jquery.vmap.usa.js') }}"></script>
-    <script src="{{ asset('Admin/vendor/jquery.counterup/jquery.counterup.min.js') }}"></script>
+    <script src="{{ asset('TemplateAdmin/vendor/jqvmap/js/jquery.vmap.min.js') }}"></script>
+    <script src="{{ asset('TemplateAdmin/vendor/jqvmap/js/jquery.vmap.usa.js') }}"></script>
+    <script src="{{ asset('TemplateAdmin/vendor/jquery.counterup/jquery.counterup.min.js') }}"></script>
     @stack('script')
 </body>
 

@@ -5,10 +5,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Sistem informasi BKK SMKS Muhammadiyah 1 Genteng</title>
+    <title>Sistem Informasi BKK SMKS Muhammadiyah 1 Genteng</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('Admin/images/favicon.png') }}">
-    <link href="{{ asset('Admin/css/style.css') }}" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('TemplateAdmin/images/favicon.png') }}">
+    <link href="{{ asset('TemplateAdmin/css/style.css') }}" rel="stylesheet">
 
 </head>
 
@@ -53,9 +53,9 @@
         Scripts
     ***********************************-->
     <!-- Required vendors -->
-    <script src="{{ asset('Admin/vendor/global/global.min.js') }}"></script>
-    <script src="{{ asset('Admin/js/quixnav-init.js') }}"></script>
-    <script src="{{ asset('Admin/js/custom.min.js') }}"></script>
+    <script src="{{ asset('TemplateAdmin/vendor/global/global.min.js') }}"></script>
+    <script src="{{ asset('TemplateAdmin/js/quixnav-init.js') }}"></script>
+    <script src="{{ asset('TemplateAdmin/js/custom.min.js') }}"></script>
 
 </body>
 

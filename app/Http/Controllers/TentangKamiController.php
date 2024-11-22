@@ -54,7 +54,7 @@ class TentangKamiController extends Controller
 
         // Mengarahkan ke halaman edit untuk deskripsi yang baru saja disimpan
         return redirect()->route('tentang_kami.edit', $tentangKami->id)
-            ->with('success', 'Deskripsi berhasil disimpan!');
+            ->with('Berhasil', 'Tentang Kami Berhasil Di Tambah!');
     }
 
     // Menampilkan form untuk mengedit description
@@ -83,16 +83,6 @@ class TentangKamiController extends Controller
 
         // Redirect kembali ke halaman edit dengan ID yang sesuai
         return redirect()->route('tentang_kami.edit', $id)
-            ->with('success', 'Deskripsi berhasil diperbarui!');
-    }
-
-
-    // Menghapus description
-    public function destroy($id)
-    {
-        $tentangKami = TentangKami::findOrFail($id);
-        $tentangKami->delete();
-
-        return redirect()->route('tentang_kami.index')->with('success', 'description berhasil dihapus!');
+            ->with('Berhasil', 'Tentang Kami Berhasil diperbarui!');
     }
 }

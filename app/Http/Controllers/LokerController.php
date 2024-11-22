@@ -12,18 +12,23 @@ class LokerController extends Controller
     public function index(){
         $lokers= Loker::all();
         $menus = Menu::all();
-        return view('lokers.index', compact('lokers', 'menus'));
+        return view('admin.loker.index', compact('lokers', 'menus'));
     }
     public function store(Request $request)
     {
         $request->validate([
             'foto.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ], [
+            'foto.*.required' => 'Harap pilih foto untuk diunggah.',
+            'foto.*.image' => 'File yang dipilih harus berupa gambar.',
+            'foto.*.mimes' => 'File yang dipilih harus memiliki format jpeg, png, jpg, atau gif.',
+            'foto.*.max' => 'Ukuran file tidak boleh lebih dari 2MB.',
         ]);
 
         if ($request->hasFile('foto')) {
             foreach ($request->file('foto') as $fotoFile) {
                 // Buat nama file unik
-                $fotoName = uniqid() . '.' . $fotoFile->getClientOriginalExtension();
+                $photoName = uniqid() . '.jpg';  // Pastikan ekstensi file selalu .jpg
 
                 // Lokasi penyimpanan di direktori public/storage/slide
                 $folderPath = public_path('storage/loker');
@@ -34,7 +39,7 @@ class LokerController extends Controller
                 }
 
                 // Path lengkap untuk menyimpan foto
-                $path = $folderPath . '/' . $fotoName;
+                $path = $folderPath . '/' . $photoName;
 
                 // Ubah ukuran foto menggunakan Intervention Image dan simpan
                 Image::make($fotoFile)->resize(300, 300, function ($constraint) {
@@ -44,11 +49,11 @@ class LokerController extends Controller
 
                 // Simpan path foto ke database
                 Loker::create([
-                    'foto' => 'loker/' . $fotoName,
+                    'foto' => 'loker/' . $photoName,
                 ]);
             }
 
-        return redirect()->route('lokers.index')->with('success', 'Mitra berhasil ditambahkan!');
+        return redirect()->route('lokers.index')->with('Berhasil', 'Loker berhasil ditambahkan!');
     }
 }
 
@@ -57,6 +62,6 @@ class LokerController extends Controller
         $loker = Loker::findOrFail($id);
         $loker->delete();
 
-        return redirect()->route('lokers.index')->with('error', 'Menu berhasil dihapus.');
+        return redirect()->route('lokers.index')->with('Berhasil', 'Loker berhasil dihapus.');
     }
 }

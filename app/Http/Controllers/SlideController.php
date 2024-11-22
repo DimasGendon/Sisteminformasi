@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Slide;
@@ -19,43 +20,46 @@ class SlideController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'photos.*' => 'required'
+            'photo' => 'required|image' // Validasi foto yang diupload
         ]);
-
-        if ($request->hasFile('photos')) {
-            foreach ($request->file('photos') as $photoFile) {
-                // Buat nama file unik
-                $photoName = uniqid() . '.' . $photoFile->getClientOriginalExtension();
-
-                // Lokasi penyimpanan di direktori public/storage/slide
-                $folderPath = public_path('storage/slide');
-
-                // Membuat folder jika belum ada
-                if (!file_exists($folderPath)) {
-                    mkdir($folderPath, 0777, true); // Folder dan semua subfoldernya akan dibuat jika belum ada
-                }
-
-                // Path lengkap untuk menyimpan foto
-                $path = $folderPath . '/' . $photoName;
-
-                // Ubah ukuran foto menggunakan Intervention Image dan simpan
-                Image::make($photoFile)->resize(300, 300, function ($constraint) {
+    
+        if ($request->hasFile('photo')) {
+            // Ambil file foto yang diupload
+            $photoFile = $request->file('photo');
+    
+            // Buat nama file unik
+            $photoName = uniqid() . '.jpg';  // Pastikan ekstensi file selalu .jpg
+    
+            // Lokasi penyimpanan di direktori public/storage/slide
+            $folderPath = public_path('storage/slide');
+    
+            // Membuat folder jika belum ada
+            if (!file_exists($folderPath)) {
+                mkdir($folderPath, 0777, true); // Folder dan semua subfoldernya akan dibuat jika belum ada
+            }
+    
+            // Path lengkap untuk menyimpan foto
+            $path = $folderPath . '/' . $photoName;
+    
+            // Ubah ukuran foto menggunakan Intervention Image dan simpan dalam format jpg
+            Image::make($photoFile)->encode('jpg', 75)  // Memastikan gambar disimpan dalam format .jpg
+                ->resize(300, 300, function ($constraint) {
                     $constraint->aspectRatio();
                     $constraint->upsize();
                 })->save($path);
-
-                // Simpan path foto ke database
-                Slide::create([
-                    'judul' => $request->judul,
-                    'photo_path' => 'slide/' . $photoName,
-                ]);
-            }
-
-            return redirect()->route('slide')->with('Berhasil', 'Semua foto berhasil diupload!');
+    
+            // Simpan path foto ke database
+            Slide::create([
+                'judul' => $request->judul,
+                'photo_path' => 'slide/' . $photoName,
+            ]);
+    
+            return redirect()->route('slide')->with('Berhasil', 'Foto berhasil diupload!');
         }
-
+    
         return back()->with('error', 'Gagal mengupload foto.');
     }
+    
 
     public function destroy($id)
     {

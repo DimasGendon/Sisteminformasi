@@ -9,5 +9,5 @@ class Slide extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fillable = ['judul', 'photo_path'];
 }

@@ -2,7 +2,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="defaultModalLabel">Upload Multiple Images</h5>
+                <h5 class="modal-title" id="defaultModalLabel">Upload Image</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -17,7 +17,7 @@
                         </div>
                         <div class="form-group col-md-12">
                             <label>Foto</label>
-                            <input type="file" name="photos[]" class="form-control" multiple>
+                            <input type="file" name="photo" class="form-control">
                         </div>
                     </div>
                 </div>

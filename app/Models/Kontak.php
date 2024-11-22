@@ -9,5 +9,5 @@ class Kontak extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['maps', 'whatsapp', 'facebook', 'instagram'];
+    protected $fillable = ['whatsapp', 'facebook', 'instagram'];
 }

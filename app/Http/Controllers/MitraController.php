@@ -9,23 +9,31 @@ use Illuminate\Http\Request;
 
 class MitraController extends Controller
 {
-    public function index(){
-        $mitras= Mitra::all();
+    public function index()
+    {
+        $mitras = Mitra::all();
         $menus = Menu::all();
-        return view('mitra.index', compact('mitras', 'menus'));
+        return view('admin.mitra.index', compact('mitras', 'menus'));
     }
     public function store(Request $request)
     {
+        // Validasi input dengan pesan kustom
         $request->validate([
             'foto.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ], [
+            'foto.*.required' => 'Harap pilih foto untuk diunggah.',
+            'foto.*.image' => 'File yang dipilih harus berupa gambar.',
+            'foto.*.mimes' => 'File yang dipilih harus memiliki format jpeg, png, jpg, atau gif.',
+            'foto.*.max' => 'Ukuran file tidak boleh lebih dari 2MB.',
         ]);
 
+        // Pastikan ada file yang diupload
         if ($request->hasFile('foto')) {
             foreach ($request->file('foto') as $fotoFile) {
                 // Buat nama file unik
-                $fotoName = uniqid() . '.' . $fotoFile->getClientOriginalExtension();
+                $photoName = uniqid() . '.jpg';  // Pastikan ekstensi file selalu .jpg
 
-                // Lokasi penyimpanan di direktori public/storage/slide
+                // Lokasi penyimpanan di direktori public/storage/mitra
                 $folderPath = public_path('storage/mitra');
 
                 // Membuat folder jika belum ada
@@ -34,7 +42,7 @@ class MitraController extends Controller
                 }
 
                 // Path lengkap untuk menyimpan foto
-                $path = $folderPath . '/' . $fotoName;
+                $path = $folderPath . '/' . $photoName;
 
                 // Ubah ukuran foto menggunakan Intervention Image dan simpan
                 Image::make($fotoFile)->resize(300, 300, function ($constraint) {
@@ -44,20 +52,23 @@ class MitraController extends Controller
 
                 // Simpan path foto ke database
                 Mitra::create([
-                    'foto' => 'mitra/' . $fotoName,
+                    'foto' => 'mitra/' . $photoName,
                 ]);
             }
 
-        return redirect()->route('mitra.index')->with('success', 'Mitra berhasil ditambahkan!');
+            return redirect()->route('mitra.index')->with('Berhasil', 'Mitra berhasil ditambahkan!');
+        }
+
+        return back()->with('error', 'Gagal mengupload foto.');
     }
-}
+
+
 
     public function destroy($id)
     {
         $mitra = Mitra::findOrFail($id);
         $mitra->delete();
 
-        return redirect()->route('mitra.index')->with('error', 'Menu berhasil dihapus.');
+        return redirect()->route('mitra.index')->with('Berhasil', 'Mitra berhasil dihapus.');
     }
-
 }

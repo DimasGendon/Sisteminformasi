@@ -54,7 +54,7 @@ class VimiController extends Controller
 
         // Mengarahkan ke halaman edit untuk deskripsi yang baru saja disimpan
         return redirect()->route('vimi.edit', $vimis->id)
-            ->with('success', 'Deskripsi berhasil disimpan!');
+            ->with('Berhasil', 'Visi Misi berhasil Di Tambah!');
     }
 
     // Menampilkan form untuk mengedit description
@@ -83,16 +83,7 @@ class VimiController extends Controller
 
         // Redirect kembali ke halaman edit dengan ID yang sesuai
         return redirect()->route('vimi.edit', $id)
-            ->with('success', 'Deskripsi berhasil diperbarui!');
+            ->with('Berhasil', 'Visi Misi berhasil diperbarui!');
     }
 
-
-    // Menghapus description
-    public function destroy($id)
-    {
-        $vimis = Vimi::findOrFail($id);
-        $vimis->delete();
-
-        return redirect()->route('vimi.index')->with('success', 'description berhasil dihapus!');
-    }
 }
