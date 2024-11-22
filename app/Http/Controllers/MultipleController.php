@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Multiple;
 use App\Models\Menu;
+use App\Models\Image;
 use Illuminate\Http\Request;
 
 class MultipleController extends Controller

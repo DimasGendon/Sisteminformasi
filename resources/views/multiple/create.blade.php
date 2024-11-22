@@ -73,6 +73,7 @@
                     @endforeach
                 </select>
             </div>
+
             <div class="form-group">
                 <label for="description">Description</label>
                 <textarea name="description" id="description-textarea" class="form-control" style="display: none;"></textarea>

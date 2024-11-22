@@ -12,7 +12,7 @@ class EditorController extends Controller
             $file = $request->file('upload');
             $fileName = time() . '-' . $file->getClientOriginalName();
             $file->move(public_path('uploads'), $fileName);
-            
+
             $url = asset('uploads/' . $fileName);
             return response()->json([
                 'fileName' => $fileName,
@@ -20,7 +20,7 @@ class EditorController extends Controller
                 'url' => $url
             ]);
         }
-    
+
         return response()->json(['uploaded' => 0, 'error' => ['message' => 'File upload failed.']]);
     }
 }

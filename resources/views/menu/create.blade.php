@@ -77,7 +77,7 @@
 
         <form action="{{ route('menu.store') }}" method="POST">
             @csrf
-        
+
             <div class="form-group">
                 <label for="name">Name Menu :</label>
                 <input type="text" name="name" id="name" class="form-control" placeholder="Tambah Menu">
@@ -85,28 +85,29 @@
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
-        
+
             <div class="form-group">
                 <label for="type">Tipe Menu :</label>
                 <select name="type" id="type" class="form-control">
                     <option value="" disabled selected>Pilih Tipe</option>
                     <option value="Single Data">Single Data</option>
-                    <option value="Multiple">Multiple</option>
+                    <option value="Multiple Data">Multiple Data</option>
+                    <option value="Image Data">Image Data</option>
                 </select>
                 @error('type')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
-        
+
             <div class="form-group">
                 <label for="description" id="description-label">Deskripsi :</label>
                 <textarea name="description" id="description-textarea" class="form-control" style="display: none;"></textarea>
                 <textarea type="text" name="description" id="editor" class="form-control"></textarea>
             </div>
-        
+
             <button type="submit" class="btn btn-primary">Simpan</button>
             <a href="{{ route('menu.index') }}" class="btn btn-dark">Kembali</a>
         </form>
-        
+
     </div>
 @endsection

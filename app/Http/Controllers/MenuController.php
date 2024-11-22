@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Menu;
+use App\Models\Image;
 use Illuminate\Http\Request;
 
 class MenuController extends Controller
@@ -12,8 +13,9 @@ class MenuController extends Controller
      */
     public function index()
     {
+        $images = Image::all();
         $menus = Menu::all();
-        return view('menu.index', compact('menus'));
+        return view('menu.index', compact('images','menus'));
     }
 
 

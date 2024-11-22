@@ -16,4 +16,9 @@ class Menu extends Model
     {
         return $this->hasMany(Multiple::class, 'menus_id');
     }
+
+    public function images()
+    {
+        return $this->hasMany(Image::class, 'menus_id');
+    }
 }
