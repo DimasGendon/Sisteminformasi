@@ -44,23 +44,17 @@ Route::get('/guest/multiple/{id}', [GuestController::class, 'showMultiple_data']
 
 //Menu
 Route::get('/menu', [MenuController::class, 'index'])->name('menu.index')->middleware('auth'); // Untuk daftar menu
-Route::get('/createmenu', [MenuController::class, 'create'])->name('menu.create')->middleware('auth'); // Untuk membuka form tambah menu
 Route::post('/post', [MenuController::class, 'store'])->name('menu.store')->middleware('auth'); // Untuk menyimpan menu baru
-Route::get('/show-menu/{id}', [MenuController::class, 'show'])->name('multiple.show')->middleware('auth'); // Untuk membuka form edit menu
-Route::get('/editmenu/{menu}', [MenuController::class, 'edit'])->name('menu.edit')->middleware('auth'); // Untuk membuka form edit menu
-Route::put('/menu/{menu}', [MenuController::class, 'update'])->name('menu.update')->middleware('auth'); // Untuk memperbarui data menu
 Route::delete('/menu/{menu}', [MenuController::class, 'destroy'])->name('menu.destroy')->middleware('auth'); // Untuk menghapus menu
 Route::post('/images', [EditorController::class, 'editor_image'])->name('store.image')->middleware('auth');
-Route::get('/multiple/{id}', [MenuController::class, 'showMultiple'])->name('multiple.index')->middleware('auth'); // Untuk menghapus menu
 
 //Multipe Data
-// Route::get('/multiple/{menu}', [MultipleController::class, 'index'])->name('multiple.index')->middleware('auth'); // Untuk daftar menu
 Route::get('/create/{menu}', [MultipleController::class, 'create'])->name('multiple.create')->middleware('auth');
-Route::post('/postmultiple', [MultipleController::class, 'store'])->name('multiple.store')->middleware('auth'); // Untuk menyimpan menu baru
-Route::get('/show-multiple/{menu}', [MultipleController::class, 'show'])->name('multiple.show')->middleware('auth'); // Untuk membuka form edit menu
+Route::post('/postmultiple', [MultipleController::class, 'store'])->name('multiple.store')->middleware('auth');
+Route::get('/show-multiple/{menu}', [MultipleController::class, 'show'])->name('multiple.show')->middleware('auth');
 Route::get('/multiple/{id}/edit', [MultipleController::class, 'edit'])->name('multiple.edit')->middleware('auth');
 Route::put('/multipost/{id}', [MultipleController::class, 'update'])->name('multiple.update')->middleware('auth');
-Route::delete('/multiple/{menu}', [MultipleController::class, 'destroy'])->name('multiple.hapus')->middleware('auth'); // Untuk menghapus menu
+Route::delete('/multiple/{menu}', [MultipleController::class, 'destroy'])->name('multiple.hapus')->middleware('auth');
 
 //Image
 Route::get('/image/{id}', [ImageController::class, 'index'])->name('image.index')->middleware('auth');

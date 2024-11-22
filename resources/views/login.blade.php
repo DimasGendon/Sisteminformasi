@@ -26,18 +26,27 @@
                                         @csrf
                                         <div class="form-group">
                                             <label><strong>Email</strong></label>
-                                            <input type="email" name="email" class="form-control" placeholder="email@gmail.com">
+                                            <input type="email" name="email" class="form-control"
+                                                placeholder="email@gmail.com" value="{{ old('email') }}">
+                                            @error('email')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
                                             <label><strong>Password</strong></label>
                                             <input type="password" name="password" class="form-control">
+                                            @error('password')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
+
                                         <div class="text-center">
                                             <button type="submit" class="btn btn-primary btn-block">Masuk</button>
                                         </div>
                                     </form>
                                     <div class="new-account mt-3">
-                                        <p>Don't have an account? <a class="text-primary" href="./page-register.html">Sign up</a></p>
+                                        <p>Don't have an account? <a class="text-primary"
+                                                href="./page-register.html">Sign up</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -56,6 +65,26 @@
     <script src="{{ asset('TemplateAdmin/vendor/global/global.min.js') }}"></script>
     <script src="{{ asset('TemplateAdmin/js/quixnav-init.js') }}"></script>
     <script src="{{ asset('TemplateAdmin/js/custom.min.js') }}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @if (session('Gagal'))
+        <script>
+            Swal.fire({
+                toast: true,
+                icon: 'error',
+                title: '{{ session('Gagal') }}',
+                animation: true,
+                position: 'top-right',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer);
+                    toast.addEventListener('mouseleave', Swal.resumeTimer);
+                }
+            });
+        </script>
+    @endif
 
 </body>
 

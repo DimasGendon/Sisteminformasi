@@ -1,5 +1,25 @@
 @extends('layout.admin')
-
+@push('script')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @if (session('Berhasil'))
+        <script>
+            Swal.fire({
+                toast: true,
+                icon: 'success',
+                title: '{{ session('Berhasil') }}',
+                animation: true,
+                position: 'top-right',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer);
+                    toast.addEventListener('mouseleave', Swal.resumeTimer);
+                }
+            });
+        </script>
+    @endif
+@endpush
 @section('content')
     <div class="container-fluid">
         <div class="row">
