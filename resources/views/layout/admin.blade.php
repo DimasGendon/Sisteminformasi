@@ -185,6 +185,12 @@
                             <span class="nav-text">Dashboard</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ route('slide') }}" aria-expanded="false">
+                            <i class="fa fa-home"></i> <!-- Ikon Dashboard -->
+                            <span class="nav-text">Slide</span>
+                        </a>
+                    </li>
 
                     <li>
                         <a href="{{ route('menu.index') }}" aria-expanded="false">

@@ -115,4 +115,4 @@ class MenuController extends Controller
         $data = Menu::findOrFail($id);
         return view('sidebare', compact('menus', 'data'));
     }
-}
+} 

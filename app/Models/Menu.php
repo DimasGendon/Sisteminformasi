@@ -9,7 +9,7 @@ class Menu extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'type', 'description'];
+    protected $fillable = ['name', 'type', 'description',];
 
     // Define the relationship with Multiple
     public function multiples()
