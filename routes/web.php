@@ -6,6 +6,7 @@ use App\Http\Controllers\EditorController;
 use App\Http\Controllers\MultipleController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\SubmenuController;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -20,16 +21,17 @@ use Illuminate\Support\Facades\Auth;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-// Route::get('/', [DashboardController::class, 'index'])->name('dashboard'); // Untuk daftar menu
+
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard'); // Untuk daftar menu
 
 Auth::routes();
 
 Route::get('/admin', function () {
     return view('layout.admin');
 });
-Route::get('/', function () {
-    return view('home');
-});
+// Route::get('/', function () {
+//     return view('home');
+// });
 
 Route::post('/login', [LoginController::class, 'store'])->name('store.login');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
@@ -53,4 +55,14 @@ Route::delete('/multiple/{menu}', [MultipleController::class, 'destroy'])->name(
 
 Route::post('/images', [EditorController::class, 'editor_image'])->name('store.image');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('submenus', [SubmenuController::class, 'index'])->name('submenus.index');
+Route::get('submenus/create', [SubmenuController::class, 'create'])->name('submenus.create');
+Route::post('submenus', [SubmenuController::class, 'store'])->name('submenus.store');
+Route::get('submenus/{submenu}', [SubmenuController::class, 'show'])->name('submenus.show');
+Route::get('submenus/{submenu}/edit', [SubmenuController::class, 'edit'])->name('submenus.edit');
+Route::put('submenus/{submenu}', [SubmenuController::class, 'update'])->name('submenus.update');
+Route::delete('submenus/{submenu}', [SubmenuController::class, 'destroy'])->name('submenus.destroy');
+
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

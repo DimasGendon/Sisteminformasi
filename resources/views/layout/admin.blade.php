@@ -5,9 +5,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Sistem informasi BKK SMKS Muhammadiyah 1 Genteng</title>
+    <title>BKK SMKS Muhammadiyah 1 Genteng</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('Admin/images/favicon.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('Admin/icons/logo1.webp') }}">
     <link rel="stylesheet" href="{{ asset('Admin/vendor/owl-carousel/css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('Admin/vendor/owl-carousel/css/owl.theme.default.min.css') }}">
     {{-- <link rel="stylesheet" href="{{ asset('Admin/icons/font-awesome-old/css/font-awesome.min.css') }}"> --}}
@@ -184,7 +184,14 @@
                             <span class="nav-text">Dashboard</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ route('submenus.index') }}" aria-expanded="false">
+                            <i class="fa fa-list"></i> <!-- Ikon Menu Utama -->
+                            <span class="nav-text">Submenu</span>
+                        </a>
+                    </li>
         
+                    <li class="nav-label">Apps</li>
                     <li>
                         <a href="{{ route('menu.index') }}" aria-expanded="false">
                             <i class="fa fa-list"></i> <!-- Ikon Menu Utama -->
@@ -192,19 +199,21 @@
                         </a>
                     </li>
         
+                    
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="fas fa-bars"></i>
                             <span class="nav-text">Menu</span>
                         </a>
-                        <ul aria-expanded="false">
+                        {{-- <ul aria-expanded="false">
                             @foreach ($menus as $menu)
                                 <li>
                                     <a href="{{ route('multiple.index', $menu->id) }}">{{ $menu->name }}</a>
                                 </li>
                             @endforeach
-                        </ul>
+                        </ul> --}}
                     </li>
+                   
                 </ul>
             </div>
         </div>
