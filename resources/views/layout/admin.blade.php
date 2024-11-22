@@ -179,20 +179,34 @@
                 <ul class="metismenu" id="menu">
                     <!-- Tambahkan Label -->
                     <li class="nav-label first">Main Menu</li>
-                    <li>
+                    <li class="{{ Route::is('dashboard') ? 'mm-active' : '' }}">
                         <a href="{{ route('dashboard') }}" aria-expanded="false">
                             <i class="fa fa-home"></i> <!-- Ikon Dashboard -->
                             <span class="nav-text">Dashboard</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ Route::is('slide') ? 'mm-active' : '' }}">
                         <a href="{{ route('slide') }}" aria-expanded="false">
-                            <i class="fa fa-home"></i> <!-- Ikon Dashboard -->
-                            <span class="nav-text">Slide</span>
+                            <i class="fa fa-image"></i> <!-- Ikon Gambar -->
+                            <span class="nav-text">Foto Slide</span>
                         </a>
                     </li>
-
-                    <li>
+                    
+                    <li class="{{ Route::is('tentang_kami.create', 'tentang_kami.edit') ? 'mm-active' : '' }}">
+                        <a href="{{ route('tentang_kami.navigate') }}" aria-expanded="false">
+                            <i class="fa fa-info-circle"></i> <!-- Ikon untuk Tentang Kami -->
+                            <span class="nav-text">Tentang Kami</span> 
+                        </a>
+                    </li>
+                    
+                    <li class="{{ Route::is('vimi.create', 'vimi.edit') ? 'mm-active' : '' }}">
+                        <a href="{{ route('vimi.navigate') }}" aria-expanded="false">
+                            <i class="fa fa-bullseye"></i> <!-- Ikon untuk Visi Misi -->
+                            <span class="nav-text">Visi Misi</span>
+                        </a>
+                    </li>
+                    
+                    <li class="{{ Route::is('menu.index', 'menu.create', 'menu.edit') ? 'mm-active' : '' }}">
                         <a href="{{ route('menu.index') }}" aria-expanded="false">
                             <i class="fa fa-list"></i> <!-- Ikon Menu Utama -->
                             <span class="nav-text">Menu Utama</span>
@@ -223,6 +237,8 @@
                                 <a href="{{ route('image.index', $menu->id) }}">{{ $menu->name }}</a>
                             </li>
                         @endforeach
+                    </ul>
+                </li>
             </div>
         </div>
         <!--**********************************
@@ -273,12 +289,6 @@
     <script src="{{ asset('Admin/js/quixnav-init.js') }}"></script>
     <script src="{{ asset('Admin/js/custom.min.js') }}"></script>
 
-    <!-- Vectormap -->
-    <script src="{{ asset('Admin/vendor/raphael/raphael.min.js') }}"></script>
-    <script src="{{ asset('Admin/vendor/morris/morris.min.js') }}"></script>
-    <script src="{{ asset('Admin/vendor/circle-progress/circle-progress.min.js') }}"></script>
-    <script src="{{ asset('Admin/vendor/chart.js/Chart.bundle.min.js') }}"></script>
-    <script src="{{ asset('Admin/vendor/gaugeJS/dist/gauge.min.js') }}"></script>
 
     <!--  flot-chart js -->
     <script src="{{ asset('Admin/vendor/flot/jquery.flot.js') }}"></script>
@@ -292,7 +302,6 @@
     <script src="{{ asset('Admin/vendor/jqvmap/js/jquery.vmap.usa.js') }}"></script>
     <script src="{{ asset('Admin/vendor/jquery.counterup/jquery.counterup.min.js') }}"></script>
     @stack('script')
-    <script src="{{ asset('Admin/js/dashboard/dashboard-1.js') }}"></script>
 </body>
 
 </html>

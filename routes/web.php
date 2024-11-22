@@ -11,6 +11,8 @@ use App\Http\Controllers\EditorController;
 use App\Http\Controllers\MultipleController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SlideController;
+use App\Http\Controllers\TentangKamiController;
+use App\Http\Controllers\VimiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,3 +69,15 @@ Route::delete('/destroy/{id}', [ImageController::class, 'destroy'])->name('image
 Route::get('/slide', [SlideController::class, 'index'])->name('slide')->middleware('auth');
 Route::post('/slide', [SlideController::class, 'store'])->name('store.slide')->middleware('auth');
 Route::delete('slide/{id}', [SlideController::class, 'destroy'])->name('slide.destroy');
+
+Route::get('tentang/create', [TentangKamiController::class, 'create'])->name('tentang_kami.create');
+Route::get('tentang', [TentangKamiController::class, 'navigateToTentangKami'])->name('tentang_kami.navigate');
+Route::post('tentang', [TentangKamiController::class, 'store'])->name('tentang_kami.store');
+Route::get('tentang/{id}/edit', [TentangKamiController::class, 'edit'])->name('tentang_kami.edit');
+Route::put('tentang/{id}', [TentangKamiController::class, 'update'])->name('tentang_kami.update');
+
+Route::get('vimi/create', [VimiController::class, 'create'])->name('vimi.create');
+Route::get('vimi', [VimiController::class, 'navigateToVimi'])->name('vimi.navigate');
+Route::post('vimi', [VimiController::class, 'store'])->name('vimi.store');
+Route::get('vimi/{id}/edit', [VimiController::class, 'edit'])->name('vimi.edit');
+Route::put('vimi/{id}', [VimiController::class, 'update'])->name('vimi.update');
