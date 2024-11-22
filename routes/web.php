@@ -9,8 +9,9 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\EditorController;
 use App\Http\Controllers\MultipleController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SlideController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KontakController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,3 +68,11 @@ Route::delete('/destroy/{id}', [ImageController::class, 'destroy'])->name('image
 Route::get('/slide', [SlideController::class, 'index'])->name('slide')->middleware('auth');
 Route::post('/slide', [SlideController::class, 'store'])->name('store.slide')->middleware('auth');
 Route::delete('slide/{id}', [SlideController::class, 'destroy'])->name('slide.destroy');
+
+//Kontak
+Route::get('/kontak', [KontakController::class, 'index'])->name('kontak.index')->middleware('auth');
+Route::get('/kontak/create', [KontakController::class, 'create'])->name('kontak.create')->middleware('auth');
+Route::post('/kontak', [KontakController::class, 'store'])->name('kontak.store')->middleware('auth');
+Route::get('/kontak/{id}/edit', [KontakController::class, 'edit'])->name('kontak.edit')->middleware('auth');
+Route::put('/kontak/{id}', [KontakController::class, 'update'])->name('kontak.update')->middleware('auth');
+Route::delete('/kontak/{id}', [KontakController::class, 'destroy'])->name('kontak.destroy')->middleware('auth'); 

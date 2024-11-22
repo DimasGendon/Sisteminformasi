@@ -191,7 +191,6 @@
                             <span class="nav-text">Slide</span>
                         </a>
                     </li>
-
                     <li>
                         <a href="{{ route('menu.index') }}" aria-expanded="false">
                             <i class="fa fa-list"></i> <!-- Ikon Menu Utama -->
@@ -211,7 +210,6 @@
                             @endforeach
                     </li>
                 </ul>
-
                 <li>
                     <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                         <i class="fas fa-image"></i>
@@ -223,6 +221,14 @@
                                 <a href="{{ route('image.index', $menu->id) }}">{{ $menu->name }}</a>
                             </li>
                         @endforeach
+                    </ul>
+                </li>
+                <li>
+                    <a href="{{ route('kontak.index') }}" aria-expanded="false">
+                        <i class="fa fa-home"></i>
+                        <span class="nav-text">Kontak</span>
+                    </a>
+                </li>
             </div>
         </div>
         <!--**********************************
