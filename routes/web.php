@@ -11,6 +11,8 @@ use App\Http\Controllers\EditorController;
 use App\Http\Controllers\MultipleController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SlideController;
+use App\Http\Controllers\MitraController;
+use App\Http\Controllers\LokerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,3 +69,14 @@ Route::delete('/destroy/{id}', [ImageController::class, 'destroy'])->name('image
 Route::get('/slide', [SlideController::class, 'index'])->name('slide')->middleware('auth');
 Route::post('/slide', [SlideController::class, 'store'])->name('store.slide')->middleware('auth');
 Route::delete('slide/{id}', [SlideController::class, 'destroy'])->name('slide.destroy');
+
+//mitra
+Route::get('/mitra', [MitraController::class, 'index'])->name('mitra.index');
+Route::post('mitrapost', [MitraController::class, 'store'])->name('mitra.store');
+Route::delete('mitra/{id}', [MitraController::class, 'destroy'])->name('mitra.destroy');
+
+//lokers
+Route::get('/Loker', [LokerController::class, 'index'])->name('lokers.index');
+Route::post('Lokerpost', [LokerController::class, 'store'])->name('lokers.store');
+Route::delete('Loker/{id}', [LokerController::class, 'destroy'])->name('lokers.destroy');
+

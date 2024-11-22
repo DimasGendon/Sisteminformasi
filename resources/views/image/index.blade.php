@@ -16,7 +16,6 @@
                     <th>Foto</th>
                     <th>Aksi</th>
                 </tr>
-            </thead>
             <tbody>
                 @foreach ($images as $image)
                     <tr>

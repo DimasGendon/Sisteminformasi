@@ -185,6 +185,7 @@
                             <span class="nav-text">Dashboard</span>
                         </a>
                     </li>
+
                     <li>
                         <a href="{{ route('slide') }}" aria-expanded="false">
                             <i class="fa fa-home"></i> <!-- Ikon Dashboard -->
@@ -194,13 +195,13 @@
 
                     <li>
                         <a href="{{ route('menu.index') }}" aria-expanded="false">
-                            <i class="fa fa-list"></i> <!-- Ikon Menu Utama -->
+                            <i class="fas fa-bars"></i> <!-- Ikon Menu Utama -->
                             <span class="nav-text">Menu Utama</span>
                         </a>
                     </li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="fas fa-bars"></i>
+                            <i class="fas fa-list"></i>
                             <span class="nav-text">Menu</span>
                         </a>
                         <ul aria-expanded="false">
@@ -223,6 +224,23 @@
                                 <a href="{{ route('image.index', $menu->id) }}">{{ $menu->name }}</a>
                             </li>
                         @endforeach
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="{{ route('mitra.index') }}" aria-expanded="false">
+                        <i class="fas fa-handshake"></i> <!-- Ikon Menu Utama -->
+                        <span class="nav-text">Mitra</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('lokers.index') }}" aria-expanded="false">
+                        <i class="fas fa-briefcase"></i> <!-- Ikon Menu Utama -->
+                        <span class="nav-text">Loker</span>
+                    </a>
+                </li>
+
             </div>
         </div>
         <!--**********************************
