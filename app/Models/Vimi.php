@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Alumni extends Model
+class Vimi extends Model
 {
     use HasFactory;
+    protected $fillable = ['description'];
 
-    protected $fillable = ['foto', 'nama', 'jurusan', 'bekerja'];
 }

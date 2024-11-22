@@ -2,40 +2,40 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TentangKami;
+use App\Models\Vimi;
 use App\Models\Menu;
 use Illuminate\Http\Request;
 
-class TentangKamiController extends Controller
+class VimiController extends Controller
 {
 
     // Menampilkan form untuk membuat description baru
     public function create(Request $request)
     {
         // Cek apakah ada data TentangKami pertama
-        $tentangkamis = TentangKami::first();
+        $vimis = vimi::first();
 
         // Jika belum ada data TentangKami, tampilkan form untuk membuat data baru
-        if ($tentangkamis == null) {
+        if ($vimis == null) {
             $menus = Menu::all(); // Ambil data menus
-            return view('admin.tentang_kami.create', compact('menus'));
+            return view('admin.vimi.create', compact('menus'));
         } else {
             // Jika sudah ada data TentangKami, ambil data dan tampilkan form edit
             $menus = Menu::all();
-            return view('admin.tentang_kami.edit', $tentangkamis->id, compact('tentangkamis', 'menus'));
+            return view('admin.vimi.edit', $vimis->id, compact('vimi', 'menus'));
         }
     }
-    public function navigateToTentangKami()
+    public function navigateToVimi()
     {
         // Cek apakah sudah ada data TentangKami
-        $tentangkamis = TentangKami::first();
+        $vimis = Vimi::first();
 
         // Jika data sudah ada, arahkan ke halaman edit
-        if ($tentangkamis) {
-            return redirect()->route('tentang_kami.edit', $tentangkamis->id);
+        if ($vimis) {
+            return redirect()->route('vimi.edit', $vimis->id);
         } else {
             // Jika belum ada data, arahkan ke halaman create
-            return redirect()->route('tentang_kami.create');
+            return redirect()->route('vimi.create');
         }
     }
 
@@ -48,21 +48,21 @@ class TentangKamiController extends Controller
         ]);
 
         // Menyimpan deskripsi yang diterima dari CKEditor
-        $tentangKami = TentangKami::create([
+        $vimis = Vimi::create([
             'description' => $request->description,
         ]);
 
         // Mengarahkan ke halaman edit untuk deskripsi yang baru saja disimpan
-        return redirect()->route('tentang_kami.edit', $tentangKami->id)
+        return redirect()->route('vimi.edit', $vimis->id)
             ->with('success', 'Deskripsi berhasil disimpan!');
     }
 
     // Menampilkan form untuk mengedit description
     public function edit($id)
     {
-        $tentangKami = TentangKami::findOrFail($id);
+        $vimis = Vimi::findOrFail($id);
         $menus = Menu::all();
-        return view('admin.tentang_kami.edit', compact('tentangKami', 'menus'));
+        return view('admin.vimi.edit', compact('vimis', 'menus'));
     }
 
     // Mengupdate description yang ada
@@ -74,15 +74,15 @@ class TentangKamiController extends Controller
         ]);
 
         // Mencari data yang ingin diupdate
-        $tentangKami = TentangKami::findOrFail($id);
+        $vimis = Vimi::findOrFail($id);
 
         // Update deskripsi
-        $tentangKami->update([
+        $vimis->update([
             'description' => $request->description,
         ]);
 
         // Redirect kembali ke halaman edit dengan ID yang sesuai
-        return redirect()->route('tentang_kami.edit', $id)
+        return redirect()->route('vimi.edit', $id)
             ->with('success', 'Deskripsi berhasil diperbarui!');
     }
 
@@ -90,9 +90,9 @@ class TentangKamiController extends Controller
     // Menghapus description
     public function destroy($id)
     {
-        $tentangKami = TentangKami::findOrFail($id);
-        $tentangKami->delete();
+        $vimis = Vimi::findOrFail($id);
+        $vimis->delete();
 
-        return redirect()->route('tentang_kami.index')->with('success', 'description berhasil dihapus!');
+        return redirect()->route('vimi.index')->with('success', 'description berhasil dihapus!');
     }
 }

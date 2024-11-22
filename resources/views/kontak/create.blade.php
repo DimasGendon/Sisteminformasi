@@ -22,7 +22,7 @@
             <input type="text" name="instagram" id="instagram" class="form-control" value="{{ old('instagram') }}" required>
         </div>
         <button type="submit" class="btn btn-primary">Simpan</button>
-        <a href="{{ route('kontaks.index') }}" class="btn btn-secondary">Batal</a>
+        <a href="{{ route('kontak.index') }}" class="btn btn-secondary">Batal</a>
     </form>
 </div>
 @endsection

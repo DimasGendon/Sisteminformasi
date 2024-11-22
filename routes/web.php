@@ -12,6 +12,9 @@ use App\Http\Controllers\MultipleController;
 use App\Http\Controllers\SlideController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KontakController;
+use App\Http\Controllers\TentangKamiController;
+use App\Http\Controllers\VimiController;
+use App\Http\Controllers\AlumniController;
 
 /*
 |--------------------------------------------------------------------------
@@ -76,3 +79,24 @@ Route::post('/kontak', [KontakController::class, 'store'])->name('kontak.store')
 Route::get('/kontak/{id}/edit', [KontakController::class, 'edit'])->name('kontak.edit')->middleware('auth');
 Route::put('/kontak/{id}', [KontakController::class, 'update'])->name('kontak.update')->middleware('auth');
 Route::delete('/kontak/{id}', [KontakController::class, 'destroy'])->name('kontak.destroy')->middleware('auth'); 
+
+//Tentang Kami
+Route::get('tentang/create', [TentangKamiController::class, 'create'])->name('tentang_kami.create');
+Route::get('tentang', [TentangKamiController::class, 'navigateToTentangKami'])->name('tentang_kami.navigate');
+Route::post('tentang', [TentangKamiController::class, 'store'])->name('tentang_kami.store');
+Route::get('tentang/{id}/edit', [TentangKamiController::class, 'edit'])->name('tentang_kami.edit');
+Route::put('tentang/{id}', [TentangKamiController::class, 'update'])->name('tentang_kami.update');
+
+//Visi Misi
+Route::get('vimi/create', [VimiController::class, 'create'])->name('vimi.create');
+Route::get('vimi', [VimiController::class, 'navigateToVimi'])->name('vimi.navigate');
+Route::post('vimi', [VimiController::class, 'store'])->name('vimi.store');
+Route::get('vimi/{id}/edit', [VimiController::class, 'edit'])->name('vimi.edit');
+Route::put('vimi/{id}', [VimiController::class, 'update'])->name('vimi.update');
+
+Route::get('alumni', [AlumniController::class, 'index'])->name('alumni.index');
+Route::get('alumni/create', [AlumniController::class, 'create'])->name('alumni.create');
+Route::post('alumni', [AlumniController::class, 'store'])->name('alumni.store');
+Route::get('alumni/{alumni}/edit', [AlumniController::class, 'edit'])->name('alumni.edit');
+Route::put('alumni/{alumni}', [AlumniController::class, 'update'])->name('alumni.update');
+Route::delete('alumni/{alumni}', [AlumniController::class, 'destroy'])->name('alumni.destroy');

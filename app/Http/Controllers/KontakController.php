@@ -17,7 +17,8 @@ class KontakController extends Controller
 
     public function create()
     {
-        return view('kontak.create');
+        $menus = Menu::all();
+        return view('kontak.create', compact('menus'));
     }
 
     public function store(Request $request)

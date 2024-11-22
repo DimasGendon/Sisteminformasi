@@ -62,17 +62,12 @@
                 });
             @endif
 
-<<<<<<< HEAD
             // SweetAlert untuk tombol hapus
             const deleteButtons = document.querySelectorAll('.btn-delete');
             deleteButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const form = this.closest('form');
                     const menuName = this.getAttribute('data-menu-name');
-=======
-            <a href="{{ route('multiple.create', $data->id) }}" class="btn btn-primary mb-3">
-                <i class="fas fa-plus"></i></a>
->>>>>>> e6e5df1301064bf931f2380cea8525ee781f353b
 
                     Swal.fire({
                         title: 'Apakah Anda yakin?',
@@ -104,32 +99,9 @@
             <table class="table table-bordered" style="background-color: #ffffff; color: #333;">
                 <thead>
                     <tr>
-<<<<<<< HEAD
                         <th style="width: 2%; text-align: center;">NO</th>
                         <th style="width: 10%; text-align: center;">Deskripsi</th>
                         <th style="width: 15%; text-align: center;">Aksi</th>
-=======
-                        <td>{{ $multiple->id }}</td>
-                        <td>
-                            <button class="btn btn-primary" data-toggle="modal"
-                                data-target="#descriptionModal{{ $multiple->id }}"
-                                data-description="{{ $multiple->description }}" data-menu="{{ $data->name }}"
-                                data-image="{{ $multiple->image_url }}">
-                                <i class="fas fa-eye"></i>
-                            </button>
-                        </td>
-                        <td>
-                            <a href="{{ route('multiple.edit', $multiple->id) }}" class="btn btn-warning">
-                                <i class="fas fa-edit"></i></a>
-                            <form action="{{ route('multiple.hapus', $multiple->id) }}" method="POST"
-                                style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?');">
-                                    <i class="fas fa-trash-alt"></i></button>
-                            </form>
-                        </td>
->>>>>>> e6e5df1301064bf931f2380cea8525ee781f353b
                     </tr>
                 </thead>
                 <tbody>
