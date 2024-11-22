@@ -1,16 +1,16 @@
 <?php
 
+use App\Models\Menu;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\GuestController;
+use App\Http\Controllers\ImageController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\EditorController;
 use App\Http\Controllers\MultipleController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\ImageController;
-use Illuminate\Support\Facades\Auth;
-use App\Models\Menu;
-use App\Http\Controllers\GuestController;
-
+use App\Http\Controllers\SlideController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,10 +22,12 @@ use App\Http\Controllers\GuestController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-// Route::get('/', [DashboardController::class, 'index'])->name('dashboard'); // Untuk daftar menu
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard'); // Untuk daftar menu
 
-Auth::routes();
 
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'store'])->name('store.login');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/admin', function () {
     return view('layout.admin');
@@ -39,9 +41,6 @@ Route::get('/admin', function () {
 
 // });
 
-
-Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-
 Route::get('/image/{id}', [ImageController::class, 'index'])->name('image.index')->middleware('auth');
 Route::get('image/create/{id}', [ImageController::class, 'create'])->name('image.create')->middleware('auth');
 Route::post('/image', [ImageController::class, 'store'])->name('image.store')->middleware('auth');
@@ -52,8 +51,6 @@ Route::delete('/destroy/{id}', [ImageController::class, 'destroy'])->name('image
 
 
 
-Route::post('/login', [LoginController::class, 'store'])->name('store.login');
-Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/menu', [MenuController::class, 'index'])->name('menu.index')->middleware('auth'); // Untuk daftar menu
 Route::get('/createmenu', [MenuController::class, 'create'])->name('menu.create')->middleware('auth'); // Untuk membuka form tambah menu
@@ -73,4 +70,8 @@ Route::get('/multiple/{id}/edit', [MultipleController::class, 'edit'])->name('mu
 Route::put('/multipost/{id}', [MultipleController::class, 'update'])->name('multiple.update')->middleware('auth');
 Route::delete('/multiple/{menu}', [MultipleController::class, 'destroy'])->name('multiple.hapus')->middleware('auth'); // Untuk menghapus menu
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Slide
+Route::get('/slide', [SlideController::class, 'index'])->name('slide')->middleware('auth');
+Route::post('/slide', [SlideController::class, 'store'])->name('store.slide')->middleware('auth');
+
+
