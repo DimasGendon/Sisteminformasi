@@ -74,7 +74,7 @@
                         <td>
                             <!-- Tambahkan link gambar untuk Lightbox -->
                             <a href="{{ asset('storage/' . $slide->photo_path) }}" data-lightbox="gallery" data-title="{{ $slide->judul }}">
-                                <img src="{{ asset('storage/' . $slide->photo_path) }}" class="card-img-top" alt="..." style="width: 100px; height: auto;"> <!-- Mengurangi ukuran gambar -->
+                                <img src="{{ asset('storage/' . $slide->photo_path) }}" class="card-img-top" alt="..." style="width: 50px; "> <!-- Mengurangi ukuran gambar -->
                             </a>
                         </td>
                         <td>

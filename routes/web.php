@@ -114,3 +114,5 @@ Route::get('informasi', [InformasiController::class, 'index'])->name('informasi'
 Route::post('informasi', [InformasiController::class, 'store'])->name('store.informasi')->middleware('auth');
 Route::put('informasi/{id}', [InformasiController::class, 'update'])->name('update.informasi')->middleware('auth');
 Route::delete('informasi/{id}', [InformasiController::class, 'destroy'])->name('destroy.informasi')->middleware('auth');
+
+Route::get('/slide', [SlideController::class, 'indexUser'])->name('slide');
