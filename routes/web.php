@@ -30,17 +30,12 @@ use App\Http\Controllers\InformasiController;
 |
 */
 
-Route::get('/', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth'); // Untuk daftar menu
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth'); // Untuk daftar menu
 
 //Login
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'store'])->name('store.login');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
-
-//Guest
-Route::get('/guest', [GuestController::class, 'index'])->name(name: 'guest');
-Route::get('/guest/single//{id}', [GuestController::class, 'showSingle_data'])->name(name: 'showSingle_data.guest')->middleware('auth');
-Route::get('/guest/multiple/{id}', [GuestController::class, 'showMultiple_data'])->name(name: 'showMultiple_data.guest')->middleware('auth');
 
 //Menu
 Route::get('/menu', [MenuController::class, 'index'])->name('menu.index')->middleware('auth'); // Untuk daftar menu
@@ -115,4 +110,10 @@ Route::post('informasi', [InformasiController::class, 'store'])->name('store.inf
 Route::put('informasi/{id}', [InformasiController::class, 'update'])->name('update.informasi')->middleware('auth');
 Route::delete('informasi/{id}', [InformasiController::class, 'destroy'])->name('destroy.informasi')->middleware('auth');
 
-Route::get('/slide', [SlideController::class, 'indexUser'])->name('slide');
+
+
+//Guest
+Route::get('/', [GuestController::class, 'index'])->name(name: 'guest');
+Route::get('/guest/single//{id}', [GuestController::class, 'showSingle_data'])->name(name: 'showSingle_data.guest');
+Route::get('/guest/multiple/{id}', [GuestController::class, 'showMultiple_data'])->name(name: 'showMultiple_data.guest');
+Route::get('/slideGuest', [SlideController::class, 'index'])->name('slideGuest');

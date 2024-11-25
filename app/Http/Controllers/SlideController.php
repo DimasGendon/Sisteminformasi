@@ -85,9 +85,4 @@ class SlideController extends Controller
         return redirect()->route('slide')->with('Berhasil', 'Foto berhasil dihapus!');
     }
 
-    public function indexUser()
-    {
-        $slide = Slide::all();
-        return view('guest.slide', compact('slide', ));
-    }
 }

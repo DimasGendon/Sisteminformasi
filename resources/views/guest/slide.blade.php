@@ -1,22 +1,24 @@
-@ex
-<div class="slider-wrapper">
-    <?php foreach ($sliders as $slider): ?>
-        <div class="single-slider" style="background-image: url('<?php echo $slider['image_url']; ?>'); background-size: cover; background-position: center; height: 100vh;">
-            <div class="container">
-                <div class="row align-items-center justify-content-center text-center">
-                    <div class="col-lg-7">
-                        <div class="slider-text">
-                            <h1><?php echo htmlspecialchars($slider['title']); ?></h1>
-                            <p><?php echo htmlspecialchars($slider['description']); ?></p>
-                            <div class="slider-buttons">
-                                <?php if (!empty($slider['link'])): ?>
-                                    <a href="<?php echo $slider['link']; ?>" class="btn btn-primary">Learn More</a>
-                                <?php endif; ?>
+<section class="slider">
+    <div class="hero-slider">
+        <!-- Looping data slides -->
+        @foreach ($slides as $slide)
+            <div class="single-slider" style="background-image:url('{{ asset('storage/' . $slide->photo_path) }}')">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <div class="text">
+                                <h1>{{ $slide->judul ?? 'We Provide Medical Services That You Can Trust!' }}</h1>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed nisl
+                                    pellentesque, faucibus libero eu, gravida quam.</p>
+                                <div class="button">
+                                    <a href="#" class="btn">Get Appointment</a>
+                                    <a href="#" class="btn primary">Learn More</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    <?php endforeach; ?>
-</div>
+        @endforeach
+    </div>
+</section>

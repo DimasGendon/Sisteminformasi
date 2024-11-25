@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Menu;
 use App\Models\Multiple;
+use App\Models\Slide;
 use Illuminate\Http\Request;
 
 class GuestController extends Controller
@@ -12,7 +13,8 @@ class GuestController extends Controller
     {
         $menus = Menu::all();
         $multiples = Multiple::all();
-        return view('layout.guest', compact('menus','multiples'));
+        $slides = Slide::all();
+        return view('layout.guest', compact('menus','multiples', 'slides'));
     }
 
     public function showSingle_data($id)
