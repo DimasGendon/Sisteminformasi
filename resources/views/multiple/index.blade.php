@@ -122,7 +122,7 @@
                                     @csrf
                                     @method('DELETE')
                                     <button type="button" class="btn btn-sm btn-danger btn-delete" data-menu-name="{{ $multiple->id }}">
-                                        <i class="fas fa-trash-alt"></i> 
+                                        <i class="fas fa-trash"></i>
                                     </button>
                                 </form>
                             </td>

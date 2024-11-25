@@ -15,6 +15,7 @@
 
     @push('script')
         <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
             let editor;
 
@@ -36,6 +37,20 @@
 
             document.addEventListener('DOMContentLoaded', function() {
                 createEditor();
+
+                // SweetAlert2 untuk menampilkan pesan sukses
+                @if(session('success'))
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil!',
+                        text: '{{ session('success') }}',
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 1500,
+                        timerProgressBar: true
+                    });
+                @endif
             });
         </script>
     @endpush

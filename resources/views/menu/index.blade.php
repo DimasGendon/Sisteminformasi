@@ -109,8 +109,8 @@
                                         @csrf
                                         @method('DELETE')
                                         <button type="button" class="btn btn-sm btn-danger btn-delete" data-menu-name="{{ $menu->name }}">
-                                            <i class="fas fa-trash-alt"></i> <!-- Ikon tong sampah untuk tombol hapus -->
-                                        </button>
+                                            <i class="fas fa-trash"></i>
+                                            </button>
                                     </form>
                                 </td>
                             </tr>

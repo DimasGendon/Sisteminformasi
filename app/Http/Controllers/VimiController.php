@@ -8,26 +8,26 @@ use Illuminate\Http\Request;
 
 class VimiController extends Controller
 {
-
     // Menampilkan form untuk membuat description baru
     public function create(Request $request)
     {
-        // Cek apakah ada data TentangKami pertama
-        $vimis = vimi::first();
+        // Cek apakah ada data Vimi pertama
+        $vimis = Vimi::first();
 
-        // Jika belum ada data TentangKami, tampilkan form untuk membuat data baru
+        // Jika belum ada data Vimi, tampilkan form untuk membuat data baru
         if ($vimis == null) {
             $menus = Menu::all(); // Ambil data menus
             return view('admin.vimi.create', compact('menus'));
         } else {
-            // Jika sudah ada data TentangKami, ambil data dan tampilkan form edit
+            // Jika sudah ada data Vimi, ambil data dan tampilkan form edit
             $menus = Menu::all();
-            return view('admin.vimi.edit', $vimis->id, compact('vimi', 'menus'));
+            return view('admin.vimi.edit', compact('vimis', 'menus'));
         }
     }
+
     public function navigateToVimi()
     {
-        // Cek apakah sudah ada data TentangKami
+        // Cek apakah sudah ada data Vimi
         $vimis = Vimi::first();
 
         // Jika data sudah ada, arahkan ke halaman edit
@@ -39,7 +39,6 @@ class VimiController extends Controller
         }
     }
 
-    // Menyimpan data baru ke database
     // Menyimpan data baru ke database
     public function store(Request $request)
     {
@@ -81,11 +80,10 @@ class VimiController extends Controller
             'description' => $request->description,
         ]);
 
-        // Redirect kembali ke halaman edit dengan ID yang sesuai
+        // Redirect kembali ke halaman edit dengan ID yang sesuai dan flash success message
         return redirect()->route('vimi.edit', $id)
             ->with('success', 'Deskripsi berhasil diperbarui!');
     }
-
 
     // Menghapus description
     public function destroy($id)
@@ -93,6 +91,6 @@ class VimiController extends Controller
         $vimis = Vimi::findOrFail($id);
         $vimis->delete();
 
-        return redirect()->route('vimi.index')->with('success', 'description berhasil dihapus!');
+        return redirect()->route('vimi.index')->with('success', 'Deskripsi berhasil dihapus!');
     }
 }

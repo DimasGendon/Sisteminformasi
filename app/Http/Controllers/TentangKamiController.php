@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 
 class TentangKamiController extends Controller
 {
-
     // Menampilkan form untuk membuat description baru
     public function create(Request $request)
     {
@@ -22,14 +21,16 @@ class TentangKamiController extends Controller
         } else {
             // Jika sudah ada data TentangKami, ambil data dan tampilkan form edit
             $menus = Menu::all();
-            return view('admin.tentang_kami.edit', $tentangkamis->id, compact('tentangkamis', 'menus'));
+            return view('admin.tentang_kami.edit', compact('tentangkamis', 'menus'));
         }
     }
+
+    // Redirect ke halaman create atau edit Tentang Kami
     public function navigateToTentangKami()
     {
         // Cek apakah sudah ada data TentangKami
         $tentangkamis = TentangKami::first();
-
+        
         // Jika data sudah ada, arahkan ke halaman edit
         if ($tentangkamis) {
             return redirect()->route('tentang_kami.edit', $tentangkamis->id);
@@ -40,9 +41,9 @@ class TentangKamiController extends Controller
     }
 
     // Menyimpan data baru ke database
-    // Menyimpan data baru ke database
     public function store(Request $request)
     {
+        // Validasi deskripsi
         $request->validate([
             'description' => 'required', // Validasi description
         ]);
@@ -52,7 +53,7 @@ class TentangKamiController extends Controller
             'description' => $request->description,
         ]);
 
-        // Mengarahkan ke halaman edit untuk deskripsi yang baru saja disimpan
+        // Redirect ke halaman edit dan flash success message
         return redirect()->route('tentang_kami.edit', $tentangKami->id)
             ->with('success', 'Deskripsi berhasil disimpan!');
     }
@@ -81,11 +82,10 @@ class TentangKamiController extends Controller
             'description' => $request->description,
         ]);
 
-        // Redirect kembali ke halaman edit dengan ID yang sesuai
+        // Redirect kembali ke halaman edit dengan ID yang sesuai dan flash success message
         return redirect()->route('tentang_kami.edit', $id)
             ->with('success', 'Deskripsi berhasil diperbarui!');
     }
-
 
     // Menghapus description
     public function destroy($id)
@@ -93,6 +93,6 @@ class TentangKamiController extends Controller
         $tentangKami = TentangKami::findOrFail($id);
         $tentangKami->delete();
 
-        return redirect()->route('tentang_kami.index')->with('success', 'description berhasil dihapus!');
+        return redirect()->route('tentang_kami.index')->with('success', 'Deskripsi berhasil dihapus!');
     }
 }

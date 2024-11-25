@@ -15,10 +15,11 @@
 
     @push('script')
         <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
             let editor;
 
-            // Fungsi untuk membuat editor CKEditor
+            // Create CKEditor
             function createEditor() {
                 ClassicEditor
                     .create(document.querySelector('#editor'), {
@@ -36,6 +37,20 @@
 
             document.addEventListener('DOMContentLoaded', function() {
                 createEditor();
+
+                // SweetAlert2 for success message
+                @if(session('success'))
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil!',
+                        text: '{{ session('success') }}',
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 1500,
+                        timerProgressBar: true
+                    });
+                @endif
             });
         </script>
     @endpush
@@ -52,7 +67,6 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Update</button>
-            <!-- Tombol Kembali, arahkan ke halaman create -->
             <a href="{{ route('tentang_kami.create') }}" class="btn btn-secondary">Kembali</a>
         </form>
     </div>

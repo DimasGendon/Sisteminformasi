@@ -37,7 +37,7 @@
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm"
                                     onclick="return confirm('Apakah Anda yakin ingin menghapus image ini?')">
-                                    <i class="fas fa-trash-alt"></i></button>
+                                    <i class="fas fa-trash"></i>
                             </form>
                         </td>
                     </tr>
