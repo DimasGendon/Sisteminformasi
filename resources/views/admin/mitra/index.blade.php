@@ -49,6 +49,24 @@
             });
         </script>
     @endif
+    @if ($errors->has('foto'))
+    <script>
+        Swal.fire({
+            toast: true,
+            icon: 'error',
+            title: '{{ $errors->first('foto') }}',
+            animation: true,
+            position: 'top-right',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer);
+                toast.addEventListener('mouseleave', Swal.resumeTimer);
+            }
+        });
+    </script>
+@endif
 @endpush
 
 @section('content')

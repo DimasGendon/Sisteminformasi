@@ -1,4 +1,26 @@
 @extends('layout.admin')
+@push('script')
+    <!-- Tambahkan script JS untuk Lightbox -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @if (session('Berhasil'))
+        <script>
+            Swal.fire({
+                toast: true,
+                icon: 'success',
+                title: '{{ session('Berhasil') }}',
+                animation: true,
+                position: 'top-right',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer);
+                    toast.addEventListener('mouseleave', Swal.resumeTimer);
+                }
+            });
+        </script>
+    @endif
+@endpush
 
 @section('content')
     <div class="container">
@@ -8,7 +30,7 @@
             <!-- WhatsApp Field -->
             <div class="mb-3">
                 <label for="whatsapp" class="form-label">WhatsApp</label>
-                <input type="number" name="whatsapp" id="whatsapp" class="form-control"
+                <input type="text" name="whatsapp" id="whatsapp" class="form-control"
                     value="{{ old('whatsapp', $kontak->whatsapp) }}">
                 @error('whatsapp')
                     <div class="text-danger">{{ $message }}</div>

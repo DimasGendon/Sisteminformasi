@@ -74,7 +74,7 @@ class AlumniController extends Controller
                 'bekerja' => $request->bekerja,
             ]);
 
-            return redirect()->route('alumni.index')->with('Berhasil', 'Alumni berhasil ditambahkan');
+            return redirect()->route('alumni.index')->with('Berhasil', 'Alumni Berhasil Di Tambahkan');
         }
 
         return back()->with('error', 'Gagal mengupload foto.');

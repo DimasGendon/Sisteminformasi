@@ -15,10 +15,16 @@
                         <div class="form-group col-md-12">
                             <label>Judul</label>
                             <input type="text" name="judul" value="{{ old('judul', $informasi->judul) }}" class="form-control" placeholder="Masukan Judul">
+                            @error('judul')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group col-md-12">
                             <label>Deskripsi</label>
-                            <textarea name="deskripsi" class="form-control" placeholder="Masukan Deskripsi">{{ old('judul', $informasi->deskripsi) }}</textarea>
+                            <textarea name="deskripsi" class="form-control" placeholder="Masukan Deskripsi">{{ old('deskripsi', $informasi->deskripsi) }}</textarea>
+                            @error('deskripsi')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
                 </div>

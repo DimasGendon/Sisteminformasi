@@ -11,13 +11,19 @@
                 @csrf
                 <div class="modal-body">
                     <div class="form-row">
+                        <!-- Judul input field with validation error display -->
                         <div class="form-group col-md-12">
                             <label>Judul</label>
-                            <input type="text" name="judul" class="form-control" placeholder="Boleh kosong">
+                            <input type="text" name="judul" class="form-control @error('judul') is-invalid @enderror" placeholder="Boleh kosong" value="{{ old('judul') }}">
                         </div>
+
+                        <!-- Foto input field with validation error display -->
                         <div class="form-group col-md-12">
                             <label>Foto</label>
-                            <input type="file" name="photo" class="form-control">
+                            <input type="file" name="photo" class="form-control @error('photo') is-invalid @enderror">
+                            @error('photo')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
                 </div>

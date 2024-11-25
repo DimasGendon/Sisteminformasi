@@ -56,7 +56,10 @@ class MitraController extends Controller
                 ]);
             }
 
-            return redirect()->route('mitra.index')->with('Berhasil', 'Mitra berhasil ditambahkan!');
+            return redirect()->route('mitra.index')->with('Berhasil', 'Mitra Berhasil Di Tambahkan');
+        } else {
+            // If no file is uploaded, return an error message
+            return redirect()->back()->withErrors(['foto' => 'Harap pilih foto untuk diunggah.']);
         }
 
         return back()->with('error', 'Gagal mengupload foto.');
@@ -69,6 +72,6 @@ class MitraController extends Controller
         $mitra = Mitra::findOrFail($id);
         $mitra->delete();
 
-        return redirect()->route('mitra.index')->with('Berhasil', 'Mitra berhasil dihapus.');
+        return redirect()->route('mitra.index')->with('Berhasil', 'Mitra Berhasil Di Hapus.');
     }
 }

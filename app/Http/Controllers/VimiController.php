@@ -53,7 +53,7 @@ class VimiController extends Controller
 
         // Mengarahkan ke halaman edit untuk deskripsi yang baru saja disimpan
         return redirect()->route('vimi.edit', $vimis->id)
-            ->with('Berhasil', 'Visi Misi berhasil Di Tambah!');
+            ->with('Berhasil', 'Visi Misi berhasil Di Tambahkan');
     }
 
     // Menampilkan form untuk mengedit description
@@ -82,7 +82,7 @@ class VimiController extends Controller
 
         // Redirect kembali ke halaman edit dengan ID yang sesuai dan flash success message
         return redirect()->route('vimi.edit', $id)
-            ->with('Berhasil', 'Visi Misi berhasil diperbarui!');
+            ->with('Berhasil', 'Visi Misi berhasil Di Perbarui');
     }
 
 }

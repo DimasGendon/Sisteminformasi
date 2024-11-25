@@ -44,23 +44,20 @@ class KontakController extends Controller
     {
         // Validasi input
         $validated = $request->validate([
-            'whatsapp' => 'required|numeric',
-            'facebook' => 'required|string|max:255',
-            'instagram' => 'required|string|max:255',
+            'whatsapp' => 'required',
+            'facebook' => 'required|max:255',
+            'instagram' => 'required|max:255',
         ], [
             // Pesan validasi untuk 'whatsapp'
             'whatsapp.required' => 'Nomor WhatsApp wajib diisi.',
-            'whatsapp.numeric' => 'Nomor WhatsApp harus berupa angka.',
 
             // Pesan validasi untuk 'facebook'
-            'facebook.required' => 'URL Facebook wajib diisi.',
-            'facebook.string' => 'URL Facebook harus berupa teks.',
-            'facebook.max' => 'URL Facebook maksimal 255 karakter.',
+            'facebook.required' => ' Facebook wajib diisi.',
+            'facebook.max' => ' Facebook maksimal 255 karakter.',
 
             // Pesan validasi untuk 'instagram'
-            'instagram.required' => 'URL Instagram wajib diisi.',
-            'instagram.string' => 'URL Instagram harus berupa teks.',
-            'instagram.max' => 'URL Instagram maksimal 255 karakter.',
+            'instagram.required' => ' Instagram wajib diisi.',
+            'instagram.max' => ' Instagram maksimal 255 karakter.',
         ]);
 
         // Menyimpan data ke database
@@ -68,7 +65,7 @@ class KontakController extends Controller
 
         // Redirect setelah berhasil
         return redirect()->route('kontak.edit', $kontak->id)
-            ->with('Berhasil', 'Kontak berhasil ditambahkan!');
+            ->with('Berhasil', 'Kontak Berhasil Di Tambahkan');
     }
 
 
@@ -88,24 +85,20 @@ class KontakController extends Controller
     {
         // Validasi input
         $validated = $request->validate([
-            'maps' => 'required|url', // Validasi agar URL valid
-            'whatsapp' => 'required|numeric',
-            'facebook' => 'required|string|max:255',
-            'instagram' => 'required|string|max:255',
+            'whatsapp' => 'required',
+            'facebook' => 'required|max:255',
+            'instagram' => 'required|max:255',
         ], [
             // Pesan validasi untuk 'whatsapp'
             'whatsapp.required' => 'Nomor WhatsApp wajib diisi.',
-            'whatsapp.numeric' => 'Nomor WhatsApp harus berupa angka.',
 
             // Pesan validasi untuk 'facebook'
-            'facebook.required' => 'URL Facebook wajib diisi.',
-            'facebook.string' => 'URL Facebook harus berupa teks.',
-            'facebook.max' => 'URL Facebook maksimal 255 karakter.',
+            'facebook.required' => ' Facebook wajib diisi.',
+            'facebook.max' => ' Facebook maksimal 255 karakter.',
 
             // Pesan validasi untuk 'instagram'
-            'instagram.required' => 'URL Instagram wajib diisi.',
-            'instagram.string' => 'URL Instagram harus berupa teks.',
-            'instagram.max' => 'URL Instagram maksimal 255 karakter.',
+            'instagram.required' => ' Instagram wajib diisi.',
+            'instagram.max' => ' Instagram maksimal 255 karakter.',
         ]);
 
         $kontak = Kontak::findOrFail($id);
@@ -113,6 +106,6 @@ class KontakController extends Controller
         $kontak->update($validated);
 
         // Redirect setelah berhasil
-        return redirect()->route('kontak.edit', $id)->with('Berhasil', 'Kontak berhasil diperbarui.');
+        return redirect()->route('kontak.edit', $id)->with('Berhasil', 'Kontak Berhasil Di Perbarui');
     }
 }

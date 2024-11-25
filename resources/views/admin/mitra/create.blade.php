@@ -13,14 +13,16 @@
                     <div class="form-group">
                         <label for="foto">Unggah Foto</label>
                         <input type="file" class="form-control" id="foto" name="foto[]" multiple>
+                        
+                        <!-- Display error messages for 'foto' -->
                         @error('foto.*')
                             <div class="text-danger mt-1">{{ $message }}</div>
                         @enderror
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-primary">Simpan</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-primary">Tambah</button>
                     </div>
                 </form>
             </div>

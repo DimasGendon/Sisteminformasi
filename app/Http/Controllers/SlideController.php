@@ -20,7 +20,13 @@ class SlideController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'photo' => 'required|image' // Validasi foto yang diupload
+            'photo' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048', // Validasi foto
+        ], [
+            // Custom error messages in Indonesian
+            'photo.required' => 'Foto wajib diunggah.',
+            'photo.image' => 'File yang diunggah harus berupa gambar.',
+            'photo.mimes' => 'File gambar yang diizinkan hanya bertipe: jpg, jpeg, png, gif.',
+            'photo.max' => 'Ukuran file gambar maksimal 2MB.',
         ]);
     
         if ($request->hasFile('photo')) {

@@ -11,7 +11,7 @@
                     <div class="mb-3">
                         <label for="foto" class="form-label">Foto</label>
                         <input type="file" class="form-control @error('foto') is-invalid @enderror" id="foto"
-                            name="foto" accept="image/*" required>
+                            name="foto" accept="image/*">
                         @error('foto')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -20,7 +20,7 @@
                     <div class="mb-3">
                         <label for="nama" class="form-label">Nama</label>
                         <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama"
-                            name="nama" value="{{ old('nama') }}" required>
+                            name="nama" value="{{ old('nama') }}">
                         @error('nama')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -29,7 +29,7 @@
                     <div class="mb-3">
                         <label for="jurusan" class="form-label">Jurusan</label>
                         <select class="form-control @error('jurusan') is-invalid @enderror" id="jurusan"
-                            name="jurusan" required>
+                            name="jurusan">
                             <option value="">Pilih Jurusan</option>
                             <option value="Teknik Komputer Jaringan"
                                 {{ old('jurusan') == 'Teknik Komputer Jaringan' ? 'selected' : '' }}>TKJ</option>
@@ -54,7 +54,7 @@
                     <div class="mb-3">
                         <label for="bekerja" class="form-label">Bekerja</label>
                         <input type="text" class="form-control @error('bekerja') is-invalid @enderror" id="bekerja"
-                            name="bekerja" value="{{ old('bekerja') }}" required>
+                            name="bekerja" value="{{ old('bekerja') }}">
                         @error('bekerja')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror

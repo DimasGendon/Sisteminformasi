@@ -2,20 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\loker;
+use App\Models\Loker;
 use App\Models\Menu;
 use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
 
 class LokerController extends Controller
 {
-    public function index(){
-        $lokers= Loker::all();
+    public function index()
+    {
+        $lokers = Loker::all();
         $menus = Menu::all();
         return view('admin.loker.index', compact('lokers', 'menus'));
     }
     public function store(Request $request)
     {
+        // Validasi input dengan pesan kustom
         $request->validate([
             'foto.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ], [
@@ -25,12 +27,13 @@ class LokerController extends Controller
             'foto.*.max' => 'Ukuran file tidak boleh lebih dari 2MB.',
         ]);
 
+        // Pastikan ada file yang diupload
         if ($request->hasFile('foto')) {
             foreach ($request->file('foto') as $fotoFile) {
                 // Buat nama file unik
                 $photoName = uniqid() . '.jpg';  // Pastikan ekstensi file selalu .jpg
 
-                // Lokasi penyimpanan di direktori public/storage/slide
+                // Lokasi penyimpanan di direktori public/storage/loker
                 $folderPath = public_path('storage/loker');
 
                 // Membuat folder jika belum ada
@@ -53,9 +56,13 @@ class LokerController extends Controller
                 ]);
             }
 
-        return redirect()->route('lokers.index')->with('Berhasil', 'Loker berhasil ditambahkan!');
+            return redirect()->route('lokers.index')->with('Berhasil', 'Loker berhasil Di Tambahkan!');
+        } else {
+            // If no file is uploaded, return an error message
+            return redirect()->back()->withErrors(['foto' => 'Harap pilih foto untuk diunggah.']);
+        }
     }
-}
+
 
     public function destroy($id)
     {

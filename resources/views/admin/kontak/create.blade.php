@@ -7,7 +7,7 @@
             @csrf
             <div class="mb-3">
                 <label for="whatsapp" class="form-label">WhatsApp</label>
-                <input type="number" name="whatsapp" id="whatsapp" class="form-control" value="{{ old('whatsapp') }}">
+                <input type="text" name="whatsapp" id="whatsapp" class="form-control" value="{{ old('whatsapp') }}">
                 @error('whatsapp')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror

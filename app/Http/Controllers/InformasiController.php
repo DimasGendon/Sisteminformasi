@@ -22,12 +22,12 @@ class InformasiController extends Controller
             'deskripsi' => 'required',
         ], [
             // Pesan validasi untuk 'facebook'
-            'judul.required' => 'URL Facebook wajib diisi.',
-            'judul.string' => 'URL Facebook harus berupa teks.',
-            'judul.max' => 'URL Facebook maksimal 255 karakter.',
+            'judul.required' => 'Judul wajib diisi.',
+            'judul.string' => 'Judul harus berupa teks.',
+            'judul.max' => 'Judul maksimal 255 karakter.',
 
             // Pesan validasi untuk 'deskripsi'
-            'deskripsi.required' => 'URL Instagram wajib diisi.',
+            'deskripsi.required' => 'Deskripsi wajib diisi.',
         ]);
 
         Informasi::create([
@@ -39,12 +39,24 @@ class InformasiController extends Controller
 
     public function update(Request $request, $id)
     {
+        $validated = $request->validate([
+            'judul' => 'required|string|max:255',
+            'deskripsi' => 'required',
+        ], [
+            // Pesan validasi untuk 'facebook'
+            'judul.required' => 'Judul wajib diisi.',
+            'judul.string' => 'Judul harus berupa teks.',
+            'judul.max' => 'Judul maksimal 255 karakter.',
+
+            // Pesan validasi untuk 'deskripsi'
+            'deskripsi.required' => 'Deskripsi wajib diisi.',
+        ]);
         $informasi = Informasi::findOrFail($id);
         $informasi->update([
             'judul' => $request->judul,
             'deskripsi' => $request->deskripsi,
         ]);
-        return redirect()->route('informasi')->with('Berhasil', 'informasi Berhasil Di Edit');
+        return redirect()->route('informasi')->with('Berhasil', 'Informasi Berhasil Di Perbarui');
     }
 
     public function destroy($id)

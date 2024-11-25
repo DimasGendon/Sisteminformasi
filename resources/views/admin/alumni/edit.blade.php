@@ -27,7 +27,7 @@
                     <div class="mb-3">
                         <label for="nama" class="form-label">Nama</label>
                         <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama"
-                            name="nama" value="{{ old('nama', $alumni->nama) }}" required>
+                            name="nama" value="{{ old('nama', $alumni->nama) }}">
                         @error('nama')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -36,7 +36,7 @@
                     <div class="mb-3">
                         <label for="jurusan" class="form-label">Jurusan</label>
                         <select class="form-control @error('jurusan') is-invalid @enderror" id="jurusan"
-                            name="jurusan" required>
+                            name="jurusan">
                             <option value="">Pilih Jurusan</option>
                             <option value="Teknik Komputer Jaringan"
                                 {{ old('jurusan', $alumni->jurusan) == 'Teknik Komputer Jaringan' ? 'selected' : '' }}>
@@ -66,7 +66,7 @@
                     <div class="mb-3">
                         <label for="bekerja" class="form-label">Bekerja</label>
                         <input type="text" class="form-control @error('bekerja') is-invalid @enderror" id="bekerja"
-                            name="bekerja" value="{{ old('bekerja', $alumni->bekerja) }}" required>
+                            name="bekerja" value="{{ old('bekerja', $alumni->bekerja) }}">
                         @error('bekerja')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
