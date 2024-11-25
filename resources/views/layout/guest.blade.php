@@ -164,7 +164,7 @@
     <!-- End Header Area -->
 
     <!-- Slider Area -->
-    @include('guest.slide')
+    {{-- @include('guest.slide') --}}
     <!--/ End Slider Area -->
 
     <!-- Start Schedule Area -->
