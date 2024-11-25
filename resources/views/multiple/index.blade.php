@@ -92,7 +92,7 @@
 @section('content')
     <div class="container">
         <a href="{{ route('multiple.create', $data->id) }}" class="btn btn-primary mb-3">
-            <i class="fas fa-plus"></i> 
+            <i class="fas fa-plus"></i>
         </a>
 
         <div class="table-responsive">
@@ -109,26 +109,26 @@
                         <tr>
                             <td style="text-align: center;">{{ $multiple->id }}</td>
                             <td style="text-align: center;">
-                                <a href="#" data-toggle="modal" class="btn btn-sm btn-primary text-white" 
+                                <a href="#" data-toggle="modal" class="btn btn-sm btn-primary text-white"
                                     data-target="#descriptionModal{{ $multiple->id }}" data-whatever>
-                                    <i class="fas fa-eye"></i> 
+                                    <i class="fas fa-eye"></i>
                                 </a>
                             </td>
                             <td style="text-align: center;">
                                 <a href="{{ route('multiple.edit', $multiple->id) }}" class="btn btn-sm btn-warning">
-                                    <i class="fas fa-edit"></i> 
+                                    <i class="fas fa-edit"></i>
                                 </a>
                                 <form action="{{ route('multiple.hapus', $multiple->id) }}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="button" class="btn btn-sm btn-danger btn-delete" data-menu-name="{{ $multiple->id }}">
-                                        <i class="fas fa-trash"></i>
+                                        <i class="fas fa-trash-alt"></i>
                                     </button>
                                 </form>
                             </td>
                         </tr>
-        
-                        <div class="modal fade" id="descriptionModal{{ $multiple->id }}" tabindex="-1" role="dialog" 
+
+                        <div class="modal fade" id="descriptionModal{{ $multiple->id }}" tabindex="-1" role="dialog"
                              aria-labelledby="defaultModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -151,7 +151,7 @@
                 </tbody>
             </table>
         </div>
-        
+
     </div>
 @endsection
 

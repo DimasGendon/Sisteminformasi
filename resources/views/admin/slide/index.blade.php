@@ -53,7 +53,9 @@
 
 @section('content')
     <div class="container">
-        <a href="#" data-toggle="modal" class="btn btn-sm btn-primary text-white" data-target="#createModal" data-whatever><i class="fas fa-eye"></i></a>
+        <div class="mb-3">
+        <a href="#" data-toggle="modal" class="btn btn-sm btn-primary text-white" data-target="#createModal" data-whatever><i class="fas fa-plus"></i></a>
+    </div>
         
         <table class="table table-bordered">
             <thead>

@@ -59,6 +59,25 @@
                 document.querySelector('#type').addEventListener('change', toggleDescriptionField);
             });
         </script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        @if (session('Berhasil'))
+            <script>
+                Swal.fire({
+                    toast: true,
+                    icon: 'success',
+                    title: '{{ session('Berhasil') }}',
+                    animation: true,
+                    position: 'top-right',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer);
+                        toast.addEventListener('mouseleave', Swal.resumeTimer);
+                    }
+                });
+            </script>
+        @endif
     @endpush
 
     <div class="container mt-4">
@@ -70,7 +89,7 @@
                 <textarea name="description" id="editor" class="form-control"></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary">Kirim</button>
+            <button type="submit" class="btn btn-primary">Tambah</button>
         </form>
     </div>
 @endsection
