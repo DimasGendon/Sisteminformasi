@@ -44,7 +44,10 @@ Route::get('/guest/multiple/{id}', [GuestController::class, 'showMultiple_data']
 
 //Menu
 Route::get('/menu', [MenuController::class, 'index'])->name('menu.index')->middleware('auth'); // Untuk daftar menu
+Route::get('/menu/create', [MenuController::class, 'create'])->name('menu.create')->middleware('auth'); // Untuk halaman form create menu
 Route::post('/post', [MenuController::class, 'store'])->name('menu.store')->middleware('auth'); // Untuk menyimpan menu baru
+Route::get('/menu/{menu}/edit', [MenuController::class, 'edit'])->name('menu.edit')->middleware('auth'); // Untuk halaman form edit menu
+Route::put('/menu/{menu}', [MenuController::class, 'update'])->name('menu.update')->middleware('auth'); // Untuk mengupdate menu
 Route::delete('/menu/{menu}', [MenuController::class, 'destroy'])->name('menu.destroy')->middleware('auth'); // Untuk menghapus menu
 Route::post('/images', [EditorController::class, 'editor_image'])->name('store.image')->middleware('auth');
 

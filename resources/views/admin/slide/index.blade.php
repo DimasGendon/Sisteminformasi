@@ -9,7 +9,9 @@
     <!-- Tambahkan script JS untuk Lightbox -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script>
+        // Event listener for delete button
         document.querySelectorAll('.delete-team-btn').forEach(button => {
             button.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -30,9 +32,9 @@
                 });
             });
         });
-    </script>
-@if(session('Berhasil'))
-    <script>
+
+        // Show success message if session 'Berhasil' is set
+        @if(session('Berhasil'))
         Swal.fire({
             toast: true,
             icon: 'success',
@@ -47,8 +49,55 @@
                 toast.addEventListener('mouseleave', Swal.resumeTimer);
             }
         });
+        @endif
+
+        // Only show the error if there's an error related to 'foto' field
+        @if($errors->has('foto'))
+        Swal.fire({
+            toast: true,
+            icon: 'error',
+            title: '{{ $errors->first('foto') }}',
+            animation: true,
+            position: 'top-right',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer);
+                toast.addEventListener('mouseleave', Swal.resumeTimer);
+            }
+        });
+        @endif
+
+        // For general validation error when form is submitted with missing 'judul' or 'foto'
+        document.querySelector('#createSlideForm').addEventListener('submit', function(e) {
+            // Prevent form submission to check for validation
+            e.preventDefault();
+            let judul = document.querySelector('#judul').value.trim();
+            let foto = document.querySelector('#foto').files.length;
+
+            // Check if the required fields are missing
+            if (!judul || foto === 0) {
+                Swal.fire({
+                    toast: true,
+                    icon: 'error',
+                    title: 'Judul dan Foto harus diisi terlebih dahulu.',
+                    animation: true,
+                    position: 'top-right',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer);
+                        toast.addEventListener('mouseleave', Swal.resumeTimer);
+                    }
+                });
+            } else {
+                // Submit the form if validation passes
+                this.submit();
+            }
+        });
     </script>
-@endif
 @endpush
 
 @section('content')

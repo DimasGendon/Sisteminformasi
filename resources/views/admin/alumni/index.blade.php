@@ -1,4 +1,5 @@
 @extends('layout.admin')
+
 @push('style')
     <!-- Tambahkan link CSS untuk Lightbox (jika Anda menggunakan Lightbox2 atau plugin lainnya) -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
@@ -8,6 +9,8 @@
     <!-- Tambahkan script JS untuk Lightbox -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <!-- Delete confirmation alert script -->
     <script>
         document.querySelectorAll('.delete-alumni-btn').forEach(button => {
             button.addEventListener('click', function(e) {
@@ -30,6 +33,8 @@
             });
         });
     </script>
+    
+    <!-- Success Message from Session -->
     @if (session('Berhasil'))
         <script>
             Swal.fire({
@@ -48,7 +53,28 @@
             });
         </script>
     @endif
+
+    <!-- Error Message for missing data, triggered after form submission if validation fails -->
+    @if ($errors->any())
+        <script>
+            Swal.fire({
+                toast: true,
+                icon: 'error',
+                title: 'Alumni harus diisi terlebih dahulu.',
+                animation: true,
+                position: 'top-right',
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer);
+                    toast.addEventListener('mouseleave', Swal.resumeTimer);
+                }
+            });
+        </script>
+    @endif
 @endpush
+
 @section('content')
     <div class="container">
         <div class="mb-3">

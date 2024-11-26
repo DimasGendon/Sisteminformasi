@@ -9,6 +9,8 @@
     <!-- Tambahkan script JS untuk Lightbox -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- SweetAlert untuk konfirmasi hapus -->
     <script>
         document.querySelectorAll('.delete-informasi-btn').forEach(button => {
             button.addEventListener('click', function(e) {
@@ -31,6 +33,8 @@
             });
         });
     </script>
+
+    <!-- SweetAlert untuk Pesan Sukses -->
     @if (session('Berhasil'))
         <script>
             Swal.fire({
@@ -49,17 +53,41 @@
             });
         </script>
     @endif
+
+    <!-- SweetAlert untuk Pesan Error jika form gagal -->
+    @if ($errors->any())
+        <script>
+            Swal.fire({
+                toast: true,
+                icon: 'error',
+                title: 'Informasi harus diisi terlebih dahulu.',
+                animation: true,
+                position: 'top-right',
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer);
+                    toast.addEventListener('mouseleave', Swal.resumeTimer);
+                }
+            });
+        </script>
+    @endif
 @endpush
 
 @section('content')
     <div class="container">
-        <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#createModal">
-            <i class="fas fa-plus"></i>
-        </button>
+        <div class="mb-3">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createModal">
+                <i class="fas fa-plus"></i>     
+            </button>
+        </div>
+
+        <!-- Tabel Menampilkan Informasi -->
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>NO</th>
                     <th>Judul</th>
                     <th>Deskripsi</th>
                     <th>Aksi</th>
@@ -72,9 +100,8 @@
                         <td>{{ $informasi->judul }}</td>
                         <td>{{ $informasi->deskripsi }}</td>
                         <td>
-                            <!-- Tambahkan aksi jika perlu, misalnya edit atau delete -->
-                            <button class="btn btn-warning" data-toggle="modal" data-target="#updateModal{{ $informasi->id }}">
-                                <i class="fas fa-edit"></i>
+                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal{{ $informasi->id }}">
+                                <i class="fas fa-pencil-alt"></i>
                             </button>
                             <form action="{{ route('destroy.informasi', $informasi->id) }}" method="POST" style="display:inline;">
                                 @csrf
@@ -85,13 +112,12 @@
                             </form>
                         </td>
                     </tr>
-                    @include('admin.informasi.edit')
+                    @include('admin.informasi.edit')  <!-- Include modal untuk edit informasi -->
                 @endforeach
             </tbody>
         </table>
 
+        <!-- Modal untuk membuat informasi baru -->
         @include('admin.informasi.create')
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 @endsection

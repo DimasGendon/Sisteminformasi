@@ -138,7 +138,7 @@ class AlumniController extends Controller
         $alumni->save();
 
         // Redirect kembali ke halaman alumni dengan pesan sukses
-        return redirect()->route('alumni.index')->with('Berhasil', 'Alumni berhasil diperbarui');
+        return redirect()->route('alumni.index')->with('Berhasil', 'Alumni Berhasil Di Perbarui');
     }
 
     public function destroy($id)
@@ -146,6 +146,6 @@ class AlumniController extends Controller
         $alumni = Alumni::findOrFail($id);
         $alumni->delete();
 
-        return redirect()->route('alumni.index')->with('Berhasil', 'Alumni berhasil dihapus');
+        return redirect()->route('alumni.index')->with('Berhasil', 'Alumni Berhasil Di Hapus');
     }
 }

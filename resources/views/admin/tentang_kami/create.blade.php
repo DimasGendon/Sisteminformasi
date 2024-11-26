@@ -60,12 +60,33 @@
             });
         </script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        
         @if (session('Berhasil'))
             <script>
                 Swal.fire({
                     toast: true,
                     icon: 'success',
                     title: '{{ session('Berhasil') }}',
+                    animation: true,
+                    position: 'top-right',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer);
+                        toast.addEventListener('mouseleave', Swal.resumeTimer);
+                    }
+                });
+            </script>
+        @endif
+
+        <!-- SweetAlert for validation errors -->
+        @if ($errors->has('description'))
+            <script>
+                Swal.fire({
+                    toast: true,
+                    icon: 'error',
+                    title: 'Tentang Kami harus diisi terlebih dahulu.',
                     animation: true,
                     position: 'top-right',
                     showConfirmButton: false,
@@ -86,7 +107,10 @@
             @csrf
             <div class="form-group">
                 <label for="description">Deskripsi</label>
-                <textarea name="description" id="editor" class="form-control"></textarea>
+                <textarea name="description" id="editor" class="form-control">{{ old('description') }}</textarea>
+                @error('description')
+                    <div class="text-danger mt-1">{{ $message }}</div>
+                @enderror
             </div>
 
             <button type="submit" class="btn btn-primary">Tambah</button>

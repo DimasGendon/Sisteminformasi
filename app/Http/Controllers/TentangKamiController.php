@@ -46,6 +46,8 @@ class TentangKamiController extends Controller
         // Validasi deskripsi
         $request->validate([
             'description' => 'required', // Validasi description
+        ], [
+            'description.required' => 'Tentang Kami harus diisi terlebih dahulu.', // Update error message here
         ]);
 
         // Menyimpan deskripsi yang diterima dari CKEditor
@@ -72,6 +74,8 @@ class TentangKamiController extends Controller
         // Validasi deskripsi
         $request->validate([
             'description' => 'required',
+        ], [
+            'description.required' => 'Tentang Kami harus diisi terlebih dahulu.', // Update error message here
         ]);
 
         // Mencari data yang ingin diupdate

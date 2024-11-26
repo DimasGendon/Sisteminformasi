@@ -29,25 +29,35 @@ class ImageController extends Controller
         return view('image.create', compact('data','images', 'menus'));
     }
 
-    public function store(Request $request)
-    {
-        // Validate the request data
-        $validated = $request->validate([
-            'image' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048',  // File validation
-        ]);
+   // Method untuk menyimpan gambar dengan validasi
+   public function store(Request $request, $id)
+   {
+       // Validasi request yang masuk
+       $request->validate([
+           'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validasi gambar
+       ], [
+           'image.required' => 'Harap pilih gambar untuk diupload.',
+           'image.image' => 'File yang diunggah harus berupa gambar.',
+           'image.mimes' => 'Hanya file dengan format jpeg, png, jpg, gif, dan svg yang diperbolehkan.',
+           'image.max' => 'Ukuran gambar tidak boleh lebih dari 2MB.',
+       ]);
 
-        // Store the image in storage (public directory)
-        $imagePath = $request->file('image')->store('images', 'public');
+       // Jika file gambar ada, simpan ke storage
+       if ($request->hasFile('image')) {
+           $imagePath = $request->file('image')->store('images', 'public'); // Menyimpan gambar di folder 'images'
 
-        // Create a new image record in the database
-        $image = new Image();
-        $image->image = $imagePath;
-        $image->menus_id = $request->menus_id; // Make sure menus_id is being passed
-        $image->save();
-        // Redirect atau mengarahkan kembali setelah sukses
-        return redirect()->route('image.index', $request->menus_id)->with('success', 'Image uploaded successfully.');
-    }
+           // Simpan path gambar ke database
+           Image::create([
+               'image' => $imagePath,
+               'menu_id' => $id, // Id menu yang terkait
+           ]);
+       }
 
+       // Redirect dengan pesan sukses
+       return redirect()->route('image.index', $id)
+           ->with('Berhasil', 'Gambar berhasil ditambahkan!');
+   }
+   
 
     public function edit($id)
     {
