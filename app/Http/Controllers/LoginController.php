@@ -31,7 +31,7 @@ class LoginController extends Controller
 
         // Cek autentikasi
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect('/')->with('Berhasil', 'Berhasil masuk!');
+            return redirect('dashboard')->with('Berhasil', 'Berhasil masuk!');
         }
 
         return redirect('login')->with('Gagal', 'Email atau password yang Anda masukkan salah.');

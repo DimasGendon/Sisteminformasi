@@ -84,4 +84,5 @@ class SlideController extends Controller
         // Redirect kembali ke index dengan pesan sukses
         return redirect()->route('slide')->with('Berhasil', 'Foto berhasil dihapus!');
     }
+
 }
