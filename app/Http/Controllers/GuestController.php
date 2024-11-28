@@ -6,6 +6,9 @@ use App\Models\Menu;
 use App\Models\Multiple;
 use App\Models\Slide;
 use App\Models\Kontak;
+use App\Models\Alumni;
+use App\Models\Mitra;
+use App\Models\Informasi;
 use Illuminate\Http\Request;
 
 class GuestController extends Controller
@@ -14,9 +17,13 @@ class GuestController extends Controller
     {
         $menus = Menu::all();
         $multiples = Multiple::all();
-        $slides = Slide::all();
+        // $slides = Slide::all();
         $kontaks = Kontak::all();
-        return view('layout.guest', compact('menus','multiples', 'slides','kontaks'));
+        $alumnis = Alumni::all();
+        $mitras = Mitra::all();
+        $informasis = Informasi::all();
+        return view('layout.guest', compact('menus','multiples', 'slides',
+        'kontaks','alumnis','mitras','informasis'));
     }
 
     public function showSingle_data($id)

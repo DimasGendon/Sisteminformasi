@@ -21,7 +21,7 @@ use App\Http\Controllers\InformasiController;
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| Web Routesx
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
@@ -119,4 +119,3 @@ Route::delete('informasi/{id}', [InformasiController::class, 'destroy'])->name('
 Route::get('/', [GuestController::class, 'index'])->name(name: 'guest');
 Route::get('/guest/single//{id}', [GuestController::class, 'showSingle_data'])->name(name: 'showSingle_data.guest');
 Route::get('/guest/multiple/{id}', [GuestController::class, 'showMultiple_data'])->name(name: 'showMultiple_data.guest');
-Route::get('/slideGuest', [SlideController::class, 'index'])->name('slideGuest');

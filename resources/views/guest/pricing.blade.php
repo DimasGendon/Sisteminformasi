@@ -3,97 +3,30 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title">
-                    <h2>We Provide You The Best Treatment In Resonable Price</h2>
+                    <h2>We Provide You The Best Treatment In Reasonable Price</h2>
                     <img src="{{ asset('TemplateGuest/img/section-img.png') }}" alt="#">
                     <p>Lorem ipsum dolor sit amet consectetur adipiscing elit praesent aliquet. pretiumts</p>
                 </div>
             </div>
         </div>
         <div class="row">
+            @foreach ($informasis as $informasi)
             <!-- Single Table -->
             <div class="col-lg-4 col-md-12 col-12">
-                <div class="single-table">
+                <div class="single-table" style="border: 1px solid #ccc; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
                     <!-- Table Head -->
                     <div class="table-head">
-                        <div class="icon">
-                            <i class="icofont icofont-ui-cut"></i>
-                        </div>
-                        <h4 class="title">Plastic Suggery</h4>
-                        <div class="price">
-                            <p class="amount">$199<span>/ Per Visit</span></p>
-                        </div>
+                        <h4 class="title blue-background">{{ $informasi->judul }}</h4> <!-- Apply the new class here -->
                     </div>
                     <!-- Table List -->
                     <ul class="table-list">
-                        <li><i class="icofont icofont-ui-check"></i>Lorem ipsum dolor sit</li>
-                        <li><i class="icofont icofont-ui-check"></i>Cubitur sollicitudin fentum</li>
-                        <li class="cross"><i class="icofont icofont-ui-close"></i>Nullam interdum enim</li>
-                        <li class="cross"><i class="icofont icofont-ui-close"></i>Donec ultricies metus</li>
-                        <li class="cross"><i class="icofont icofont-ui-close"></i>Pellentesque eget nibh</li>
-                    </ul>
-                    <div class="table-bottom">
-                        <a class="btn" href="#">Book Now</a>
-                    </div>
-                    <!-- Table Bottom -->
+                        <li><strong>Description:</strong></li>
+                        <li>{{ $informasi->deskripsi }}</li>
+                    </ul>                   
                 </div>
             </div>
             <!-- End Single Table-->
-            <!-- Single Table -->
-            <div class="col-lg-4 col-md-12 col-12">
-                <div class="single-table">
-                    <!-- Table Head -->
-                    <div class="table-head">
-                        <div class="icon">
-                            <i class="icofont icofont-tooth"></i>
-                        </div>
-                        <h4 class="title">Teeth Whitening</h4>
-                        <div class="price">
-                            <p class="amount">$299<span>/ Per Visit</span></p>
-                        </div>
-                    </div>
-                    <!-- Table List -->
-                    <ul class="table-list">
-                        <li><i class="icofont icofont-ui-check"></i>Lorem ipsum dolor sit</li>
-                        <li><i class="icofont icofont-ui-check"></i>Cubitur sollicitudin fentum</li>
-                        <li><i class="icofont icofont-ui-check"></i>Nullam interdum enim</li>
-                        <li class="cross"><i class="icofont icofont-ui-close"></i>Donec ultricies metus</li>
-                        <li class="cross"><i class="icofont icofont-ui-close"></i>Pellentesque eget nibh</li>
-                    </ul>
-                    <div class="table-bottom">
-                        <a class="btn" href="#">Book Now</a>
-                    </div>
-                    <!-- Table Bottom -->
-                </div>
-            </div>
-            <!-- End Single Table-->
-            <!-- Single Table -->
-            <div class="col-lg-4 col-md-12 col-12">
-                <div class="single-table">
-                    <!-- Table Head -->
-                    <div class="table-head">
-                        <div class="icon">
-                            <i class="icofont-heart-beat"></i>
-                        </div>
-                        <h4 class="title">Heart Suggery</h4>
-                        <div class="price">
-                            <p class="amount">$399<span>/ Per Visit</span></p>
-                        </div>
-                    </div>
-                    <!-- Table List -->
-                    <ul class="table-list">
-                        <li><i class="icofont icofont-ui-check"></i>Lorem ipsum dolor sit</li>
-                        <li><i class="icofont icofont-ui-check"></i>Cubitur sollicitudin fentum</li>
-                        <li><i class="icofont icofont-ui-check"></i>Nullam interdum enim</li>
-                        <li><i class="icofont icofont-ui-check"></i>Donec ultricies metus</li>
-                        <li><i class="icofont icofont-ui-check"></i>Pellentesque eget nibh</li>
-                    </ul>
-                    <div class="table-bottom">
-                        <a class="btn" href="#">Book Now</a>
-                    </div>
-                    <!-- Table Bottom -->
-                </div>
-            </div>
-            <!-- End Single Table-->
+            @endforeach
         </div>
     </div>
-</section>              
+</section>

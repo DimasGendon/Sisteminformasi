@@ -164,7 +164,18 @@
     <!-- End Header Area -->
 
     <!-- Slider Area -->
-    {{-- @include('guest.slide') --}}
+    {{-- <section class="slider"> --}}
+        <div class="hero-slider owl-carousel owl-theme owl-loaded">
+            <!-- Start Single Slider -->
+            
+            <!-- End Single Slider -->
+            <!-- Start Single Slider -->
+            
+            <!-- Start End Slider -->
+            <!-- Start Single Slider -->
+            
+            <!-- End Single Slider -->
+       {{-- @include('guest.slide') --}}
     <!--/ End Slider Area -->
 
     <!-- Start Schedule Area -->
