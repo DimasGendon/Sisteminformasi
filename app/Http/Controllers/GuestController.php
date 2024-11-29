@@ -17,7 +17,7 @@ class GuestController extends Controller
     {
         $menus = Menu::all();
         $multiples = Multiple::all();
-        // $slides = Slide::all();
+        $slides = Slide::all();
         $kontaks = Kontak::all();
         $alumnis = Alumni::all();
         $mitras = Mitra::all();
