@@ -42,8 +42,11 @@ class VimiController extends Controller
     // Menyimpan data baru ke database
     public function store(Request $request)
     {
+        // Validasi input
         $request->validate([
-            'description' => 'required', // Validasi description
+            'description' => 'required',
+        ], [
+            'description.required' => 'Visi Misi harus diisi terlebih dahulu.', // Update error message here
         ]);
 
         // Menyimpan deskripsi yang diterima dari CKEditor
@@ -55,6 +58,7 @@ class VimiController extends Controller
         return redirect()->route('vimi.edit', $vimis->id)
             ->with('Berhasil', 'Visi Misi berhasil Di Tambahkan');
     }
+
 
     // Menampilkan form untuk mengedit description
     public function edit($id)
@@ -84,5 +88,4 @@ class VimiController extends Controller
         return redirect()->route('vimi.edit', $id)
             ->with('Berhasil', 'Visi Misi berhasil Di Perbarui');
     }
-
 }

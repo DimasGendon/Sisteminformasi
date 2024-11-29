@@ -164,7 +164,10 @@
     <!-- End Header Area -->
 
     <!-- Slider Area -->
-    {{-- @include('guest.slide') --}}
+    {{-- <section class="slider"> --}}
+            <!-- Start Single Slider -->
+            @include('guest.slide')
+            <!-- End Single Slider -->
     <!--/ End Slider Area -->
 
     <!-- Start Schedule Area -->
@@ -233,7 +236,7 @@
     <!--/End Start schedule Area -->
 
     <!-- Start Feautes -->
-    @include('guest.feature')
+    {{-- @include('guest.feature') --}}
     <!--/ End Feautes -->
 
     <!-- Start Fun-facts -->
@@ -249,7 +252,7 @@
     <!--/ End Call to action -->
 
     <!-- Start portfolio -->
-    @include('guest.portofolio')
+    @include('guest.alumni')
     <!--/ End portfolio -->
 
     <!-- Start service -->
@@ -257,7 +260,7 @@
     <!--/ End service -->
 
     <!-- Pricing Table -->
-    @include('guest.pricing')
+    @include('guest.informasi')
     <!--/ End Pricing Table -->
 
 
@@ -267,7 +270,7 @@
     <!-- End Blog Area -->
 
     <!-- Start clients -->
-    @include('guest.client')
+    @include('guest.mitra')
     <!--/Ens clients -->
 
     <!-- Start Appointment -->

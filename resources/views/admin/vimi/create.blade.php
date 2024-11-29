@@ -54,12 +54,33 @@
                 }
             }
 
+            // Validate form submission
+            document.querySelector('form').addEventListener('submit', function(e) {
+                const descriptionContent = editor.getData(); // Get content from CKEditor
+
+                if (!descriptionContent.trim()) {  // Check if description is empty
+                    e.preventDefault(); // Prevent form submission
+
+                    // Show SweetAlert if description is empty
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Form harus diisi!',
+                        text: 'Harap isi deskripsi terlebih dahulu.',
+                        showConfirmButton: true,
+                        timer: 3000
+                    });
+                }
+            });
+
             document.addEventListener('DOMContentLoaded', function() {
                 createEditor();
                 document.querySelector('#type').addEventListener('change', toggleDescriptionField);
             });
         </script>
+
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        <!-- SweetAlert for success or validation errors -->
         @if (session('Berhasil'))
             <script>
                 Swal.fire({
@@ -78,6 +99,26 @@
                 });
             </script>
         @endif
+
+        <!-- Update the error message here for Indonesian language -->
+        @if ($errors->has('description'))
+            <script>
+                Swal.fire({
+                    toast: true,
+                    icon: 'error',
+                    title: 'Visi Misi harus diisi terlebih dahulu.',
+                    animation: true,
+                    position: 'top-right',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer);
+                        toast.addEventListener('mouseleave', Swal.resumeTimer);
+                    }
+                });
+            </script>
+        @endif
     @endpush
 
     <div class="container mt-4">
@@ -86,7 +127,10 @@
             @csrf
             <div class="form-group">
                 <label for="description">Deskripsi</label>
-                <textarea name="description" id="editor" class="form-control"></textarea>
+                <textarea name="description" id="editor" class="form-control">{{ old('description') }}</textarea>
+                @error('description')
+                    <div class="text-danger mt-1">{{ $message }}</div>
+                @enderror
             </div>
 
             <button type="submit" class="btn btn-primary">Tambah</button>

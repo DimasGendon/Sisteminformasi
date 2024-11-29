@@ -21,7 +21,7 @@ use App\Http\Controllers\InformasiController;
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| Web Routesx
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
@@ -45,6 +45,11 @@ Route::get('/menuedit/{menu}', [MenuController::class, 'edit'])->name('menu.edit
 Route::post('/postedit/{menu}', [MenuController::class, 'update'])->name('menu.update')->middleware('auth'); // Untuk daftar menu
 Route::delete('/menu/{menu}', [MenuController::class, 'destroy'])->name('menu.destroy')->middleware('auth'); // Untuk menghapus menu
 Route::post('/images', [EditorController::class, 'editor_image'])->name('store.image')->middleware('auth');
+
+Route::get('/menu/create', [MenuController::class, 'create'])->name('menu.create')->middleware('auth'); // Untuk halaman form create menu
+Route::post('/post', [MenuController::class, 'store'])->name('menu.store')->middleware('auth'); // Untuk menyimpan menu baru
+Route::get('/menu/{menu}/edit', [MenuController::class, 'edit'])->name('menu.edit')->middleware('auth'); // Untuk halaman form edit menu
+Route::put('/menu/{menu}', [MenuController::class, 'update'])->name('menu.update')->middleware('auth'); // Untuk mengupdate menu
 
 //Multipe Data
 Route::get('/multiple/{menu}', [MultipleController::class, 'index'])->name('multiple.index')->middleware('auth');
@@ -119,4 +124,3 @@ Route::delete('informasi/{id}', [InformasiController::class, 'destroy'])->name('
 Route::get('/', [GuestController::class, 'index'])->name(name: 'guest');
 Route::get('/guest/single//{id}', [GuestController::class, 'showSingle_data'])->name(name: 'showSingle_data.guest');
 Route::get('/guest/multiple/{id}', [GuestController::class, 'showMultiple_data'])->name(name: 'showMultiple_data.guest');
-Route::get('/slideGuest', [SlideController::class, 'index'])->name('slideGuest');
