@@ -39,7 +39,10 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 //Menu
 Route::get('/menu', [MenuController::class, 'index'])->name('menu.index')->middleware('auth'); // Untuk daftar menu
+Route::get('/isi', [MenuController::class, 'create'])->name('menu.create')->middleware('auth'); // Untuk mengisi
 Route::post('/post', [MenuController::class, 'store'])->name('menu.store')->middleware('auth'); // Untuk menyimpan menu baru
+Route::get('/menuedit/{menu}', [MenuController::class, 'edit'])->name('menu.edit')->middleware('auth'); // Untuk edit
+Route::post('/postedit/{menu}', [MenuController::class, 'update'])->name('menu.update')->middleware('auth'); // Untuk daftar menu
 Route::delete('/menu/{menu}', [MenuController::class, 'destroy'])->name('menu.destroy')->middleware('auth'); // Untuk menghapus menu
 Route::post('/images', [EditorController::class, 'editor_image'])->name('store.image')->middleware('auth');
 
@@ -61,9 +64,9 @@ Route::put('/image/{id}', [ImageController::class, 'update'])->name('image.updat
 Route::delete('/destroy/{id}', [ImageController::class, 'destroy'])->name('image.destroy')->middleware('auth');
 
 //Slide
-Route::get('/slide', [SlideController::class, 'index'])->name('slide')->middleware('auth');
+Route::get('/slide', [SlideController::class, 'index'])->name('admin.slide.index')->middleware('auth');
 Route::post('/slide', [SlideController::class, 'store'])->name('store.slide')->middleware('auth');
-Route::delete('slide/{id}', [SlideController::class, 'destroy'])->name('slide.destroy')->middleware('auth');
+Route::delete('slide/{id}', [SlideController::class, 'destroy'])->name('admin.slide.destroy')->middleware('auth');
 
 //mitra
 Route::get('/mitra', [MitraController::class, 'index'])->name('mitra.index')->middleware('auth');

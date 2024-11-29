@@ -186,8 +186,8 @@
                         </a>
                     </li>
                     <li class="nav-label first">Menu</li>
-                    <li class="{{ Route::is('slide') ? 'mm-active' : '' }}">
-                        <a href="{{ route('slide') }}" aria-expanded="false">
+                    <li class="{{ Route::is('admin.slide.index') ? 'mm-active' : '' }}">
+                        <a href="{{ route('admin.slide.index') }}" aria-expanded="false">
                             <i class="fa fa-image"></i> <!-- Ikon Gambar -->
                             <span class="nav-text">Foto Slide</span>
                         </a>
