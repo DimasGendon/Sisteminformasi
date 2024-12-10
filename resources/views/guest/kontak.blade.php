@@ -40,9 +40,9 @@
                 </form>
             </div>
             <div class="col-lg-6 col-md-12">
-                <div class="appointment-image">
-                    <img src="{{ asset('TemplateGuest/img/contact-img.png') }}" alt="#">
-                </div>
+                    <iframe 
+                    src="https://www.google.com/maps/embed/v1/place?key=YOUR_GOOGLE_MAPS_API_KEY&q=YOUR_LOCATION"
+                    width="100%" height="400" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
             </div>
         </div>
     </div>

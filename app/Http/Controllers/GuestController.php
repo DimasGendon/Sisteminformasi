@@ -9,6 +9,8 @@ use App\Models\Kontak;
 use App\Models\Alumni;
 use App\Models\Mitra;
 use App\Models\Informasi;
+use App\Models\Loker;
+
 use Illuminate\Http\Request;
 
 class GuestController extends Controller
@@ -21,9 +23,10 @@ class GuestController extends Controller
         $kontaks = Kontak::all();
         $alumnis = Alumni::all();
         $mitras = Mitra::all();
+        $lokers = Loker::all();
         $informasis = Informasi::all();
         return view('layout.guest', compact('menus','multiples', 'slides',
-        'kontaks','alumnis','mitras','informasis'));
+        'kontaks','alumnis','mitras','informasis','lokers'));
     }
 
     public function showSingle_data($id)

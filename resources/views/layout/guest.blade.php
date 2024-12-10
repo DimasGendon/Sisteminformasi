@@ -66,94 +66,38 @@
     <!-- End Preloader -->
 
     <!-- Get Pro Button -->
-    <ul class="pro-features">
-        <a class="get-pro" href="#">Get Pro</a>
-        <li class="big-title">Pro Version Available on Themeforest</li>
-        <li class="title">Pro Version Features</li>
-        <li>2+ premade home pages</li>
-        <li>20+ html pages</li>
-        <li>Color Plate With 12+ Colors</li>
-        <li>Sticky Header / Sticky Filters</li>
-        <li>Working Contact Form With Google Map</li>
-    </ul>
-
+  
     <!-- Header Area -->
     <header class="header">
-        <!-- Topbar -->
-        <div class="topbar">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-5 col-12">
-                        <!-- Contact -->
-                        <ul class="top-link">
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Doctors</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">FAQ</a></li>
-                        </ul>
-                        <!-- End Contact -->
-                    </div>
-                    <div class="col-lg-6 col-md-7 col-12">
-                        <!-- Top Contact -->
-                        <ul class="top-contact">
-                            <li><i class="fa fa-phone"></i>+880 1234 56789</li>
-                            <li><i class="fa fa-envelope"></i><a
-                                    href="mailto:support@yourmail.com">support@yourmail.com</a></li>
-                        </ul>
-                        <!-- End Top Contact -->
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Topbar -->
         <!-- Header Inner -->
         <div class="header-inner">
             <div class="container">
                 <div class="inner">
-                    <div class="row">
+                    <div class="row align-items-center"> <!-- Menambahkan align-items-center untuk vertikal alignment -->
                         <div class="col-lg-3 col-md-3 col-12">
                             <!-- Start Logo -->
                             <div class="logo">
-                                <a href="index.html"><img src="{{ asset('TemplateGuest/img/logo.png') }}" alt="#"></a>
+                                <a href="index.html"><img src="{{ asset('foto/logo.png') }}" alt="#"></a>
                             </div>
                             <!-- End Logo -->
-                            <!-- Mobile Nav -->
-                            <div class="mobile-nav"></div>
-                            <!-- End Mobile Nav -->
                         </div>
-                        <div class="col-lg-7 col-md-9 col-12">
+                        <div class="col-lg-9 col-md-9 col-12">
                             <!-- Main Menu -->
                             <div class="main-menu">
                                 <nav class="navigation">
-                                    <ul class="nav menu">
-                                        <li class="active"><a href="#">Home <i
-                                                    class="icofont-rounded-down"></i></a>
-                                            <ul class="dropdown">
-                                                <li><a href="index.html">Home Page 1</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">Doctos </a></li>
-                                        <li><a href="#">Services </a></li>
-                                        <li><a href="#">Pages <i class="icofont-rounded-down"></i></a>
-                                            <ul class="dropdown">
-                                                <li><a href="404.html">404 Error</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">Blogs <i class="icofont-rounded-down"></i></a>
-                                            <ul class="dropdown">
-                                                <li><a href="blog-single.html">Blog Details</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="contact.html">Contact Us</a></li>
+                                    <ul class="nav menu d-flex justify-content-center"> <!-- Menambahkan d-flex justify-content-center untuk perataan menu -->
+                                        <li><a href="#">Home</a></li>
+                                        <li><a href="#">Tentang Kami</a></li>
+                                        <li><a href="#">Informasi</a></li>
+                                        <li><a href="#">Informasi</a></li>
+                                        <li><a href="#">Loker</a></li>
+                                        <li><a href="#">MOU</a></li>
+                                        <li><a href="#">Alumni</a></li>
+                                        <li><a href="#">Contact Us</a></li>
                                     </ul>
                                 </nav>
                             </div>
                             <!--/ End Main Menu -->
-                        </div>
-                        <div class="col-lg-2 col-12">
-                            <div class="get-quote">
-                                <a href="appointment.html" class="btn">Book Appointment</a>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -161,82 +105,22 @@
         </div>
         <!--/ End Header Inner -->
     </header>
+    
     <!-- End Header Area -->
 
+    {{-- @include('guest.home') --}}
+
     <!-- Slider Area -->
-    {{-- <section class="slider"> --}}
-            <!-- Start Single Slider -->
-            @include('guest.slide')
-            <!-- End Single Slider -->
+    
+       @include('guest.slide')
+        
     <!--/ End Slider Area -->
 
-    <!-- Start Schedule Area -->
-    {{-- <section class="schedule">
-		<div class="container">
-			<div class="schedule-inner">
-				<div class="row">
-					<div class="col-lg-4 col-md-6 col-12 ">
-						<!-- single-schedule -->
-						<div class="single-schedule first">
-							<div class="inner">
-								<div class="icon">
-									<i class="fa fa-ambulance"></i>
-								</div>
-								<div class="single-content">
-									<span>Lorem Amet</span>
-									<h4>Emergency Cases</h4>
-									<p>Lorem ipsum sit amet consectetur adipiscing elit. Vivamus et erat in lacus
-										convallis sodales.</p>
-									<a href="#">LEARN MORE<i class="fa fa-long-arrow-right"></i></a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6 col-12">
-						<!-- single-schedule -->
-						<div class="single-schedule middle">
-							<div class="inner">
-								<div class="icon">
-									<i class="icofont-prescription"></i>
-								</div>
-								<div class="single-content">
-									<span>Fusce Porttitor</span>
-									<h4>Doctors Timetable</h4>
-									<p>Lorem ipsum sit amet consectetur adipiscing elit. Vivamus et erat in lacus
-										convallis sodales.</p>
-									<a href="#">LEARN MORE<i class="fa fa-long-arrow-right"></i></a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-12 col-12">
-						<!-- single-schedule -->
-						<div class="single-schedule last">
-							<div class="inner">
-								<div class="icon">
-									<i class="icofont-ui-clock"></i>
-								</div>
-								<div class="single-content">
-									<span>Donec luctus</span>
-									<h4>Opening Hours</h4>
-									<ul class="time-sidual">
-										<li class="day">Monday - Fridayp <span>8.00-20.00</span></li>
-										<li class="day">Saturday <span>9.00-18.30</span></li>
-										<li class="day">Monday - Thusday <span>9.00-15.00</span></li>
-									</ul>
-									<a href="#">LEARN MORE<i class="fa fa-long-arrow-right"></i></a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section> --}}
-    <!--/End Start schedule Area -->
-
+  
+    
+   
     <!-- Start Feautes -->
-    {{-- @include('guest.feature') --}}
+    @include('guest.feature')
     <!--/ End Feautes -->
 
     <!-- Start Fun-facts -->
@@ -252,7 +136,7 @@
     <!--/ End Call to action -->
 
     <!-- Start portfolio -->
-    @include('guest.alumni')
+    @include('guest.loker')
     <!--/ End portfolio -->
 
     <!-- Start service -->
@@ -266,7 +150,7 @@
 
 
     <!-- Start Blog Area -->
-    @include('guest.blog')
+    @include('guest.alumni')
     <!-- End Blog Area -->
 
     <!-- Start clients -->
@@ -274,7 +158,7 @@
     <!--/Ens clients -->
 
     <!-- Start Appointment -->
-    @include('guest.appointment')
+    @include('guest.kontak')
     <!-- End Appointment -->
 
     <!-- Start Newsletter Area -->

@@ -1,94 +1,34 @@
-<section class="portfolio section">
+<section class="alumni section" id="alumni">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title">
-                    <h2>ALUMNI</h2>
+                    <h2>Keep up with Our Most Recent Alumni</h2>
+                    <img src="{{ asset('TemplateGuest/img/section-img.png') }}" alt="#">
+                    <p>Here you can find the latest alumni added to the list. Admin can add new alumni and manage them.</p>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-lg-8 col-md-10 col-12">
-                @if ($alumnis->count() > 1)
-                    <!-- Tampilan jika ada lebih dari satu data -->
-                    <div class="row">
-                        @foreach ($alumnis as $alumni)
-                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 text-center mb-4">
-                                <div class="single-pf">
-                                    <div class="image-container">
-                                        <img src="{{ asset('storage/' . $alumni->foto) }}" alt="Foto Alumni" class="img-fluid">
-                                        <div class="overlay">
-                                            <p class="alumni-name">{{ $alumni->nama }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                @else
-                    <!-- Tampilan jika hanya satu data -->
-                    @foreach ($alumnis as $alumni)
-                        <div class="single-pf text-center">
-                            <div class="image-container">
-                                <img src="{{ asset('storage/' . $alumni->foto) }}" alt="Foto Alumni" class="img-fluid">
-                                <div class="overlay">
-                                    <p class="alumni-name">{{ $alumni->nama }}</p>
-                                </div>
+        <div class="row">
+            @foreach ($alumnis as $alumni)
+                <div class="col-lg-4 col-md-6 col-12">
+                    <!-- Single Alumni -->
+                    <div class="single-alumni">
+                        <div class="alumni-head">
+                            <img src="{{ asset('storage/' . $alumni->foto) }}" alt="Foto Alumni" class="img-fluid">
+                        </div>
+                        <div class="alumni-body">
+                            <div class="alumni-content">
+                                <div class="date">Added on: {{ $alumni->created_at->format('d M, Y') }}</div>
+                                <h2><a href="#">{{ $alumni->nama }}</a></h2>
+                                <p class="text">Jurusan: {{ $alumni->jurusan }}</p>
+                                <p class="text">Working at: {{ $alumni->bekerja }}</p>
                             </div>
                         </div>
-                    @endforeach
-                @endif
-            </div>
+                    </div>
+                    <!-- End Single Alumni -->
+                </div>
+            @endforeach
         </div>
     </div>
 </section>
-
-<style>
-    /* Container dasar */
-    .image-container {
-        position: relative;
-        overflow: hidden;
-        width: 100%;
-        max-width: 200px; /* Lebar maksimal gambar */
-        height: 200px; /* Tinggi tetap gambar */
-        margin: auto;
-        border-radius: 10px; /* Membuat sudut gambar melengkung */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Memberikan efek bayangan */
-    }
-
-    /* Gambar */
-    .image-container img {
-        width: 100%; /* Gambar akan memenuhi lebar container */
-        height: 100%; /* Gambar akan menyesuaikan tinggi container */
-        object-fit: cover; /* Memastikan gambar terpotong sesuai ukuran container */
-        display: block;
-    }
-
-    /* Overlay efek hover */
-    .image-container .overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-
-    .image-container:hover .overlay {
-        opacity: 1;
-    }
-
-    .image-container .alumni-name {
-        color: #fff;
-        font-size: 14px;
-        font-weight: bold;
-        text-align: center;
-    }
-</style>
