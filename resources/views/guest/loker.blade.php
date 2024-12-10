@@ -1,6 +1,9 @@
 
+<<<<<<< Updated upstream:resources/views/guest/loker.blade.php
 
 
+=======
+>>>>>>> Stashed changes:resources/views/guest/portofolio.blade.php
 <section class="portfolio section">
     <div class="container">
         <div class="row">
