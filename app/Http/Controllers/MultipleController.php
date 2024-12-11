@@ -16,6 +16,11 @@ class MultipleController extends Controller
         return redirect()->route('menu.edit', $data->id);
     }
 
+    $data = Menu::findOrFail($menu); // Ambil menu berdasarkan ID
+    if ($data->type === 'Image Data') {
+        return redirect()->route('image.index', $data->id);
+    }
+
     $menus = Menu::all(); // Ambil semua menu jika tipe tidak 'Single Data'
     return view('multiple.index', compact('menus', 'data'));
 }

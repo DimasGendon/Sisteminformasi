@@ -19,11 +19,7 @@ class GuestController extends Controller
     {
         $menus = Menu::all();
         $multiples = Multiple::all();
-<<<<<<< Updated upstream
         $slides = Slide::all();
-=======
-        $slides = Slide::all(); 
->>>>>>> Stashed changes
         $kontaks = Kontak::all();
         $alumnis = Alumni::all();
         $mitras = Mitra::all();

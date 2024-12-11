@@ -42,7 +42,7 @@ class MenuController extends Controller
             // Pesan custom untuk validasi
             'name.required' => 'Nama menu harus diisi.',
             'type.required' => 'Tipe menu harus dipilih.',
-            'type.in' => 'Tipe menu hanya boleh dipilih antara "Single Data" dan "Multiple".',
+            'type.in' => 'Tipe menu hanya boleh dipilih antara "Single Data" dan "Multiple Data" dan "Image Data".',
         ]);
 
         // Menyimpan data yang divalidasi ke dalam database
@@ -115,4 +115,4 @@ class MenuController extends Controller
         $data = Menu::findOrFail($id);
         return view('sidebare', compact('menus', 'data'));
     }
-} 
+}

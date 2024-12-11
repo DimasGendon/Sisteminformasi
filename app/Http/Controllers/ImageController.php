@@ -11,9 +11,9 @@ class ImageController extends Controller
 {
     public function index($id)
     {
-        $menus = menu::all();
-        $data = Menu::find($id);
         $images = Image::all();
+        $menus = Menu::all();
+        $data = Menu::findOrFail($id);
 
         // Menampilkan view dengan data gambar
         return view('image.index', compact('data','images', 'menus'));
@@ -57,7 +57,7 @@ class ImageController extends Controller
        return redirect()->route('image.index', $id)
            ->with('Berhasil', 'Gambar berhasil ditambahkan!');
    }
-   
+
 
     public function edit($id)
     {

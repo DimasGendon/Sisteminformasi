@@ -185,6 +185,41 @@
                             <span class="nav-text">Dashboard</span>
                         </a>
                     </li>
+
+                    <li class="nav-label first">Menu Baru</li>
+                    <li class="{{ Route::is('menu.index', 'menu.create', 'menu.edit') ? 'mm-active' : '' }}">
+                        <a href="{{ route('menu.index') }}" aria-expanded="false">
+                            <i class="fas fa-bars"></i> <!-- Ikon Menu Utama -->
+                            <span class="nav-text">Menu Utama</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="fas fa-list"></i>
+                            <span class="nav-text">Menu</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            @foreach ($menus as $menu)
+                                <li>
+                                    <a href="{{ route('multiple.index', $menu->id) }}">{{ $menu->name }}</a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </li>
+                    {{-- <li>
+                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                            <i class="fas fa-image"></i>
+                            <span class="nav-text">Image</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            @foreach ($menus as $menu)
+                                <li>
+                                    <a href="{{ route('image.index', $menu->id) }}">{{ $menu->name }}</a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </li> --}}
+
                     <li class="nav-label first">Menu</li>
                     <li class="{{ Route::is('admin.slide.index') ? 'mm-active' : '' }}">
                         <a href="{{ route('admin.slide.index') }}" aria-expanded="false">
@@ -238,39 +273,6 @@
                             <i class="fa fa-phone"></i>
                             <span class="nav-text">Kontak</span>
                         </a>
-                    </li>
-                    <li class="nav-label first">Menu Baru</li>
-                    <li class="{{ Route::is('menu.index', 'menu.create', 'menu.edit') ? 'mm-active' : '' }}">
-                        <a href="{{ route('menu.index') }}" aria-expanded="false">
-                            <i class="fas fa-bars"></i> <!-- Ikon Menu Utama -->
-                            <span class="nav-text">Menu Utama</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="fas fa-list"></i>
-                            <span class="nav-text">Menu</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            @foreach ($menus as $menu)
-                                <li>
-                                    <a href="{{ route('multiple.index', $menu->id) }}">{{ $menu->name }}</a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="fas fa-image"></i>
-                            <span class="nav-text">Image</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            @foreach ($menus as $menu)
-                                <li>
-                                    <a href="{{ route('image.index', $menu->id) }}">{{ $menu->name }}</a>
-                                </li>
-                            @endforeach
-                        </ul>
                     </li>
                 </ul>
             </div>
