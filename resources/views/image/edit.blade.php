@@ -31,6 +31,9 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Perbarui Gambar</button>
+
+            <!-- Back button to go to image index page, passing the correct menu_id -->
+            <a href="{{ route('image.index', $image->menus_id) }}" class="btn btn-secondary">Kembali ke Daftar Gambar</a>
         </form>
     </div>
 @endsection

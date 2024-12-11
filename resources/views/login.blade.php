@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Sistem Informasi BKK SMKS Muhammadiyah 1 Genteng</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('TemplateAdmin/images/favicon.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('TemplateAdmin/images/logo1.webp') }}">
     <link href="{{ asset('TemplateAdmin/css/style.css') }}" rel="stylesheet">
 
 </head>

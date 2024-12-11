@@ -10,7 +10,7 @@
                 @method('PUT')
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="foto" class="form-label">Foto</label>
+                        <label for="foto" class="form-label">Foto :</label>
                         @if ($alumni->foto)
                             <div class="mb-2">
                                 <img src="{{ asset('storage/' . $alumni->foto) }}" alt="Foto Alumni"
@@ -25,7 +25,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="nama" class="form-label">Nama</label>
+                        <label for="nama" class="form-label">Nama :</label>
                         <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama"
                             name="nama" value="{{ old('nama', $alumni->nama) }}">
                         @error('nama')
@@ -34,7 +34,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="jurusan" class="form-label">Jurusan</label>
+                        <label for="jurusan" class="form-label">Jurusan :</label>
                         <select class="form-control @error('jurusan') is-invalid @enderror" id="jurusan"
                             name="jurusan">
                             <option value="">Pilih Jurusan</option>
@@ -64,7 +64,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="bekerja" class="form-label">Bekerja</label>
+                        <label for="bekerja" class="form-label">Bekerja :</label>
                         <input type="text" class="form-control @error('bekerja') is-invalid @enderror" id="bekerja"
                             name="bekerja" value="{{ old('bekerja', $alumni->bekerja) }}">
                         @error('bekerja')

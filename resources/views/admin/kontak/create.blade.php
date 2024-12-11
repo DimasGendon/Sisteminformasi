@@ -10,7 +10,7 @@
             Swal.fire({
                 toast: true,
                 icon: 'error',
-                title: 'Kontak harus diisi terlebih dahulu.',
+                title: 'Kontak Harus Di Isi Terlebih Dahulu!',
                 animation: true,
                 position: 'top-right',
                 showConfirmButton: false,
@@ -31,21 +31,21 @@
         <form action="{{ route('kontak.store') }}" method="POST">
             @csrf
             <div class="mb-3">
-                <label for="whatsapp" class="form-label">WhatsApp</label>
+                <label for="whatsapp" class="form-label">WhatsApp :</label>
                 <input type="text" name="whatsapp" id="whatsapp" class="form-control" value="{{ old('whatsapp') }}" placeholder="Masukkan Nomor">
                 @error('whatsapp')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
             <div class="mb-3">
-                <label for="facebook" class="form-label">Facebook</label>
+                <label for="facebook" class="form-label">Facebook :</label>
                 <input type="text" name="facebook" id="facebook" class="form-control" value="{{ old('facebook') }}" placeholder="Masukkan Email">
                 @error('facebook')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
             <div class="mb-3">
-                <label for="instagram" class="form-label">Instagram</label>
+                <label for="instagram" class="form-label">Instagram :</label>
                 <input type="text" name="instagram" id="instagram" class="form-control" value="{{ old('instagram') }}" placeholder="Masukkan Username">
                 @error('instagram')
                     <div class="text-danger">{{ $message }}</div>

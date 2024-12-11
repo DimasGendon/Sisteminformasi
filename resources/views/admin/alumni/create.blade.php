@@ -2,14 +2,14 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Tambah Alumni</h5>
+                <h5 class="modal-title">Tambah Alumni :</h5>
                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
             <form action="{{ route('alumni.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="foto" class="form-label">Foto</label>
+                        <label for="foto" class="form-label">Foto :</label>
                         <input type="file" class="form-control @error('foto') is-invalid @enderror" id="foto"
                             name="foto" accept="image/*">
                         @error('foto')
@@ -18,7 +18,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="nama" class="form-label">Nama</label>
+                        <label for="nama" class="form-label">Nama :</label>
                         <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama"
                             name="nama" value="{{ old('nama') }}">
                         @error('nama')
@@ -27,7 +27,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="jurusan" class="form-label">Jurusan</label>
+                        <label for="jurusan" class="form-label">Jurusan :</label>
                         <select class="form-control @error('jurusan') is-invalid @enderror" id="jurusan"
                             name="jurusan">
                             <option value="">Pilih Jurusan</option>
@@ -52,7 +52,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="bekerja" class="form-label">Bekerja</label>
+                        <label for="bekerja" class="form-label">Bekerja :</label>
                         <input type="text" class="form-control @error('bekerja') is-invalid @enderror" id="bekerja"
                             name="bekerja" value="{{ old('bekerja') }}">
                         @error('bekerja')

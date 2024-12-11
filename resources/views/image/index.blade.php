@@ -27,7 +27,8 @@
                         </td>
                         <td>
                             <a href="{{ route('image.edit', $image->id) }}" class="btn btn-warning btn-sm">
-                                <i class="fas fa-edit"></i></a>
+                                <i class="fas fa-pencil-alt"></i>
+                            </a>
                             <form action="{{ route('image.destroy', $image->id) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')

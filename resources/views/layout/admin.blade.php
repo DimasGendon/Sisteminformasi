@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Sistem informasi BKK SMKS Muhammadiyah 1 Genteng</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('TemplateAdmin/images/favicon.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('TemplateAdmin/images/logo1.webp') }}">
     <link rel="stylesheet" href="{{ asset('TemplateAdmin/vendor/owl-carousel/css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('TemplateAdmin/vendor/owl-carousel/css/owl.theme.default.min.css') }}">
     {{-- <link rel="stylesheet" href="{{ asset('TemplateAdmin/icons/font-awesome-old/css/font-awesome.min.css') }}"> --}}

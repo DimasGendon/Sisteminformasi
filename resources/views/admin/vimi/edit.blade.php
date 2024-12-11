@@ -63,7 +63,7 @@
                     animation: true,
                     position: 'top-right',
                     showConfirmButton: false,
-                    timer: 3000,
+                    timer: 1500,
                     timerProgressBar: true,
                     didOpen: (toast) => {
                         toast.addEventListener('mouseenter', Swal.stopTimer);
@@ -72,6 +72,25 @@
                 });
             </script>
         @endif
+        @if ($errors->has('description'))
+            <script>
+                Swal.fire({
+                    toast: true,
+                    icon: 'error',
+                    title: 'Visi Misi Harus Di Isi Terlebih Dahulu!',
+                    animation: true,
+                    position: 'top-right',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer);
+                        toast.addEventListener('mouseleave', Swal.resumeTimer);
+                    }
+                });
+            </script>
+        @endif
+
     @endpush
 
     <div class="container mt-4">
@@ -81,7 +100,7 @@
             @method('PUT')
 
             <div class="form-group">
-                <label for="description">Deskripsi</label>
+                <label for="description">Deskripsi :</label>
                 <textarea name="description" id="editor" class="form-control">{{ $vimis->description }}</textarea>
             </div>
 

@@ -59,7 +59,7 @@ class MitraController extends Controller
             return redirect()->route('mitra.index')->with('Berhasil', 'Mitra Berhasil Di Tambahkan');
         } else {
             // If no file is uploaded, return an error message
-            return redirect()->back()->withErrors(['foto' => 'Harap pilih foto untuk diunggah.']);
+            return redirect()->back()->withErrors(['foto' => 'Harap Pilih Foto Untuk Di Unggah!']);
         }
 
         return back()->with('error', 'Gagal mengupload foto.');

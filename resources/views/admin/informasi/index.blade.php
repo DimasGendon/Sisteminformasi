@@ -1,16 +1,16 @@
-@extends('layout.admin') <!-- Atau layout yang kamu gunakan -->
+@extends('layout.admin') <!-- Or your layout -->
 
 @push('style')
-    <!-- Tambahkan link CSS untuk Lightbox (jika Anda menggunakan Lightbox2 atau plugin lainnya) -->
+    <!-- Lightbox CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
 @endpush
 
 @push('script')
-    <!-- Tambahkan script JS untuk Lightbox -->
+    <!-- Lightbox JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <!-- SweetAlert untuk konfirmasi hapus -->
+    <!-- SweetAlert for delete confirmation -->
     <script>
         document.querySelectorAll('.delete-informasi-btn').forEach(button => {
             button.addEventListener('click', function(e) {
@@ -34,7 +34,7 @@
         });
     </script>
 
-    <!-- SweetAlert untuk Pesan Sukses -->
+    <!-- SweetAlert for success message -->
     @if (session('Berhasil'))
         <script>
             Swal.fire({
@@ -44,7 +44,7 @@
                 animation: true,
                 position: 'top-right',
                 showConfirmButton: false,
-                timer: 3000,
+                timer: 1500,
                 timerProgressBar: true,
                 didOpen: (toast) => {
                     toast.addEventListener('mouseenter', Swal.stopTimer);
@@ -54,13 +54,13 @@
         </script>
     @endif
 
-    <!-- SweetAlert untuk Pesan Error jika form gagal -->
+    <!-- SweetAlert for error message if form validation fails -->
     @if ($errors->any())
         <script>
             Swal.fire({
                 toast: true,
                 icon: 'error',
-                title: 'Informasi harus diisi terlebih dahulu.',
+                title: 'Informasi Harus Di Isi Terlebih Dahulu!',
                 animation: true,
                 position: 'top-right',
                 showConfirmButton: false,
@@ -83,7 +83,7 @@
             </button>
         </div>
 
-        <!-- Tabel Menampilkan Informasi -->
+        <!-- Table to display information -->
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -98,11 +98,19 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $informasi->judul }}</td>
-                        <td>{{ $informasi->deskripsi }}</td>
                         <td>
-                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editModal{{ $informasi->id }}">
+                            <!-- Button to trigger modal for detail view -->
+                            <button type="button" class="btn btn-primary btn-sm text-white" data-toggle="modal" data-target="#detailModal{{ $informasi->id }}">
+                                <i class="fas fa-eye"></i> 
+                            </button>
+                        </td>
+                        <td>
+                            <!-- Button to trigger modal for editing -->
+                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateModal{{ $informasi->id }}">
                                 <i class="fas fa-pencil-alt"></i>
                             </button>
+
+                            <!-- Button for delete -->
                             <form action="{{ route('destroy.informasi', $informasi->id) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
@@ -112,12 +120,72 @@
                             </form>
                         </td>
                     </tr>
-                    @include('admin.informasi.edit')  <!-- Include modal untuk edit informasi -->
+
+                    <!-- Modal to update information -->
+                    <div class="modal fade" id="updateModal{{ $informasi->id }}" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="defaultModalLabel">Edit Informasi</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form action="{{ route('update.informasi', $informasi->id) }}" method="POST" enctype="multipart/form-data">
+                                    @method('PUT')
+                                    @csrf
+                                    <div class="modal-body">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-12">
+                                                <label>Judul</label>
+                                                <input type="text" name="judul" value="{{ old('judul', $informasi->judul) }}" class="form-control" placeholder="Masukan Judul">
+                                                @error('judul')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                            <div class="form-group col-md-12">
+                                                <label>Deskripsi</label>
+                                                <textarea name="deskripsi" class="form-control" placeholder="Masukan Deskripsi">{{ old('deskripsi', $informasi->deskripsi) }}</textarea>
+                                                @error('deskripsi')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                        <button type="submit" class="btn btn-primary">Simpan</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal to display information detail -->
+                    <div class="modal fade" id="detailModal{{ $informasi->id }}" tabindex="-1" role="dialog" aria-labelledby="detailModalLabel{{ $informasi->id }}" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="detailModalLabel{{ $informasi->id }}">Detail Informasi</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>{{ $informasi->deskripsi }}</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 @endforeach
             </tbody>
         </table>
 
-        <!-- Modal untuk membuat informasi baru -->
+        <!-- Modal to create new information -->
         @include('admin.informasi.create')
     </div>
 @endsection

@@ -70,7 +70,7 @@
                     animation: true,
                     position: 'top-right',
                     showConfirmButton: false,
-                    timer: 3000,
+                    timer: 1500,
                     timerProgressBar: true,
                     didOpen: (toast) => {
                         toast.addEventListener('mouseenter', Swal.stopTimer);
@@ -86,11 +86,11 @@
                 Swal.fire({
                     toast: true,
                     icon: 'error',
-                    title: 'Tentang Kami harus diisi terlebih dahulu.',
+                    title: 'Tentang Kami Harus Di Isi Terlebih Dahulu!',
                     animation: true,
                     position: 'top-right',
                     showConfirmButton: false,
-                    timer: 3000,
+                    timer: 1500,
                     timerProgressBar: true,
                     didOpen: (toast) => {
                         toast.addEventListener('mouseenter', Swal.stopTimer);
@@ -106,7 +106,7 @@
         <form action="{{ route('tentang_kami.store') }}" method="POST">
             @csrf
             <div class="form-group">
-                <label for="description">Deskripsi</label>
+                <label for="description">Deskripsi :</label>
                 <textarea name="description" id="editor" class="form-control">{{ old('description') }}</textarea>
                 @error('description')
                     <div class="text-danger mt-1">{{ $message }}</div>

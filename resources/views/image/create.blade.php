@@ -2,13 +2,12 @@
 
 @section('content')
     <div class="container">
-        <h2>Upload Image</h2>
 
-        <form action="{{ route('image.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('image.store', $data->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group" hidden>
                 <label for="menus_id">Select Menu</label>
-                <select name="menus_id" id="menus_id" class="form-control" required>
+                <select name="menus_id" id="menus_id" class="form-control"~>
                     <option value="">Choose Menu</option>
                     @foreach ($menus as $menu)
                         <option value="{{ $menu->id }}" {{ $menu->id == $data->id ? 'selected' : '' }}>
@@ -19,11 +18,15 @@
             </div>
 
             <div class="form-group">
-                <label for="image">Upload Image</label>
-                <input type="file" name="image" id="image" class="form-control" required>
+                <label for="image">Upload Foto :</label>
+                <input type="file" name="image" id="image" class="form-control"~>
+                @error('image')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
 
-            <button type="submit" class="btn btn-primary">Upload Image</button>
+            <button type="submit" class="btn btn-primary">Tambah Foto</button>
+            <a href="{{ route('image.index', $data->id) }}" class="btn btn-dark">Kembali</a>
         </form>
     </div>
 @endsection

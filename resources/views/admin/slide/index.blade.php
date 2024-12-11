@@ -81,7 +81,7 @@
                 Swal.fire({
                     toast: true,
                     icon: 'error',
-                    title: 'Judul dan Foto harus diisi terlebih dahulu.',
+                    title: 'Judul dan Foto Harus Di Isi Terlebih Dahulu!',
                     animation: true,
                     position: 'top-right',
                     showConfirmButton: false,
@@ -123,7 +123,7 @@
                         <td>
                             <!-- Tambahkan link gambar untuk Lightbox -->
                             <a href="{{ asset('storage/' . $slide->photo_path) }}" data-lightbox="gallery" data-title="{{ $slide->judul }}">
-                                <img src="{{ asset('storage/' . $slide->photo_path) }}" class="card-img-top" alt="..." style="width: 50px; "> <!-- Mengurangi ukuran gambar -->
+                                <img src="{{ asset('storage/' . $slide->photo_path) }}" class="card-img-top" alt="..." style="width: 70px; "> <!-- Mengurangi ukuran gambar -->
                             </a>
                         </td>
                         <td>
