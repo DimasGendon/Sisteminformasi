@@ -11,7 +11,7 @@
                 <form action="{{ route('mitra.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label for="foto">Unggah Foto</label>
+                        <label for="foto">Unggah Foto :</label>
                         <input type="file" class="form-control" id="foto" name="foto[]" multiple>
                         
                         <!-- Display error messages for 'foto' -->

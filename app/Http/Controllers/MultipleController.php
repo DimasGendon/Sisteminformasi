@@ -16,9 +16,15 @@ class MultipleController extends Controller
         return redirect()->route('menu.edit', $data->id);
     }
 
+    $data = Menu::findOrFail($menu); // Ambil menu berdasarkan ID
+    if ($data->type === 'Image Data') {
+        return redirect()->route('image.index', $data->id);
+    }
+
     $menus = Menu::all(); // Ambil semua menu jika tipe tidak 'Single Data'
     return view('multiple.index', compact('menus', 'data'));
 }
+
 
 
 
@@ -29,20 +35,20 @@ class MultipleController extends Controller
         return view('multiple.create', compact('data', 'menus')); // Pass the menu to the view
     }
     public function store(Request $request)
-{
-    $request->validate([
-        'menus_id' => 'required|exists:menus,id', // Validate that the menu exists
-        'description' => 'required', // Ensure description is provided
-    ]);
+    {
+        $request->validate([
+            'menus_id' => 'required|exists:menus,id', // Validate that the menu exists
+            'description' => 'required', // Ensure description is provided
+        ]);
 
-    // Create the Multiple entry with validated data
-    Multiple::create([
-        'menus_id' => $request->menus_id,
-        'description' => $request->description,
-    ]);
+        // Create the Multiple entry with validated data
+        Multiple::create([
+            'menus_id' => $request->menus_id,
+            'description' => $request->description,
+        ]);
 
-    return redirect()->route('multiple.index', $request->menus_id)->with('success', 'Anda Berhasil Menambahkan Data Ini');
-}
+        return redirect()->route('multiple.index', $request->menus_id)->with('success', 'Data Ini Berhasil Di Tambahkan');
+    }
 
     public function edit($id)
     {
@@ -68,7 +74,7 @@ class MultipleController extends Controller
             return redirect()->route('menu.edit', $menu->id);
         }
 
-        return redirect()->route('multiple.index', $multiple->menus_id)->with('info', 'Anda Berhasil Memperbaharui Data Ini');
+        return redirect()->route('multiple.index', $multiple->menus_id)->with('info', 'Data Ini Berhasil Di Perbarui');
     }
 
 
@@ -81,7 +87,7 @@ class MultipleController extends Controller
         $multiple->delete();
 
         // Redirect back to the index page with a success message
-        return redirect()->route('multiple.index', $multiple->menus_id)->with('error', 'Anda Berhasil Menghapus Data Ini');
+        return redirect()->route('multiple.index', $multiple->menus_id)->with('error', 'Data Ini Berhasil Di Hapus');
     }
 
     public function show($menu)

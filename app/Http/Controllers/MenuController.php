@@ -42,14 +42,14 @@ class MenuController extends Controller
             // Pesan custom untuk validasi
             'name.required' => 'Nama menu harus diisi.',
             'type.required' => 'Tipe menu harus dipilih.',
-            'type.in' => 'Tipe menu hanya boleh dipilih antara "Single Data" dan "Multiple".',
+            'type.in' => 'Tipe menu hanya boleh dipilih antara "Single Data" dan "Multiple Data" dan "Image Data".',
         ]);
 
         // Menyimpan data yang divalidasi ke dalam database
         Menu::create($request->only('name', 'type', 'description'));
 
         // Redirect dengan pesan sukses
-        return redirect()->route('menu.index')->with('success', 'Menu berhasil ditambahkan.');
+        return redirect()->route('menu.index')->with('success', 'Menu Berhasil Di Tambahkan');
     }
 
 
@@ -88,7 +88,7 @@ class MenuController extends Controller
         $menu->update($request->only('name', 'type', 'description'));
 
         // Redirect kembali ke index dengan pesan sukses
-        return redirect()->route('menu.index')->with('success', 'Menu berhasil diperbarui');
+        return redirect()->route('menu.index')->with('success', 'Menu Berhasil Di Perbarui');
     }
 
     /**
@@ -99,7 +99,7 @@ class MenuController extends Controller
         $menu = Menu::findOrFail($id);
         $menu->delete();
 
-        return redirect()->route('menu.index')->with('error', 'Menu berhasil dihapus.');
+        return redirect()->route('menu.index')->with('error', 'Menu Berhasil Di Hapus');
     }
 
     public function showMultiple($id)
@@ -115,4 +115,4 @@ class MenuController extends Controller
         $data = Menu::findOrFail($id);
         return view('sidebare', compact('menus', 'data'));
     }
-} 
+}

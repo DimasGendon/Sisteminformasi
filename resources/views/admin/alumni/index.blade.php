@@ -44,7 +44,7 @@
                 animation: true,
                 position: 'top-right',
                 showConfirmButton: false,
-                timer: 3000,
+                timer: 1500,
                 timerProgressBar: true,
                 didOpen: (toast) => {
                     toast.addEventListener('mouseenter', Swal.stopTimer);
@@ -54,13 +54,13 @@
         </script>
     @endif
 
-    <!-- Error Message for missing data, triggered after form submission if validation fails -->
+    <!-- Error Message for missing data, triggered after f  orm submission if validation fails -->
     @if ($errors->any())
         <script>
             Swal.fire({
                 toast: true,
                 icon: 'error',
-                title: 'Alumni harus diisi terlebih dahulu.',
+                title: 'Alumni Harus Di Isi Terlebih Dahulu!',
                 animation: true,
                 position: 'top-right',
                 showConfirmButton: false,

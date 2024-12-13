@@ -1,14 +1,14 @@
 <section class="Feautes section">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
+            {{-- <div class="col-lg-12">
                 <div class="section-title">
                     <h2>We Are Always Ready to Help You & Your Family</h2>
                     <img src="{{ asset('TemplateGuest/img/section-img.png') }}" alt="#">
                     <p>Lorem ipsum dolor sit amet consectetur adipiscing elit praesent aliquet. pretiumts</p>
                 </div>
-            </div>
-        </div>
+            </div> --}}
+        {{-- </div>
         <div class="row">
             <div class="col-lg-4 col-12">
                 <!-- Start Single features -->
@@ -44,5 +44,5 @@
                 <!-- End Single features -->
             </div>
         </div>
-    </div>
+    </div> --}}
 </section>

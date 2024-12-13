@@ -1,5 +1,5 @@
 
-@section('content')
+{{-- @section('content') --}}
 <div class="container">
     <h1 class="text-center">Galeri Slide</h1>
     <div class="row mt-4">
@@ -17,4 +17,4 @@
         @endforelse
     </div>
 </div>
-@endsection
+{{-- @endsection --}}

@@ -1,5 +1,5 @@
 <section class="appointment">
-    <div class="container">
+    {{-- <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title">
@@ -8,7 +8,7 @@
                     <p>Lorem ipsum dolor sit amet consectetur adipiscing elit praesent aliquet. pretiumts</p>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="row">
             <div class="col-lg-6 col-md-12 col-12">
                 <form class="form" action="#">

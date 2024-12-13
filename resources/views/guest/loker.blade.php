@@ -1,5 +1,5 @@
 
-<section class="portfolio section">
+<section class="pricing-table section" id="loker">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">

@@ -10,7 +10,7 @@ use App\Models\Alumni;
 use App\Models\Mitra;
 use App\Models\Informasi;
 use App\Models\Loker;
-
+use App\Models\TentangKami;
 use Illuminate\Http\Request;
 
 class GuestController extends Controller
@@ -19,13 +19,14 @@ class GuestController extends Controller
     {
         $menus = Menu::all();
         $multiples = Multiple::all();
-        $slides = Slide::all(); 
+        $slides = Slide::all();
+        $tentangkamis = TentangKami::all();
         $kontaks = Kontak::all();
         $alumnis = Alumni::all();
         $mitras = Mitra::all();
         $lokers = Loker::all();
         $informasis = Informasi::all();
-        return view('layout.guest', compact('menus','multiples', 'slides',
+        return view('layout.guest', compact('menus','multiples', 'slides', 'tentangkamis',
         'kontaks','alumnis','mitras','informasis','lokers'));
     }
 

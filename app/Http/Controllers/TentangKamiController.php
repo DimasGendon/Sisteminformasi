@@ -57,7 +57,7 @@ class TentangKamiController extends Controller
 
         // Redirect ke halaman edit dan flash success message
         return redirect()->route('tentang_kami.edit', $tentangKami->id)
-            ->with('Berhasil', 'Tentang Kami Berhasil Di Tambah!');
+            ->with('Berhasil', 'Tentang Kami Berhasil Di Tambahkan');
     }
 
     // Menampilkan form untuk mengedit description
@@ -88,6 +88,6 @@ class TentangKamiController extends Controller
 
         // Redirect kembali ke halaman edit dengan ID yang sesuai dan flash success message
         return redirect()->route('tentang_kami.edit', $id)
-            ->with('Berhasil', 'Tentang Kami Berhasil diperbarui!');
+            ->with('Berhasil', 'Tentang Kami Berhasil di Perbarui');
     }
 }

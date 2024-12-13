@@ -9,49 +9,47 @@ use Illuminate\Http\Request;
 
 class ImageController extends Controller
 {
+    // Display all images for a menu
     public function index($id)
     {
         $menus = menu::all();
         $data = Menu::find($id);
         $images = Image::all();
 
-        // Menampilkan view dengan data gambar
-        return view('image.index', compact('data','images', 'menus'));
+        return view('image.index', compact('data', 'images', 'menus'));
     }
 
-
+    // Show the form to upload a new image
     public function create($id)
     {
-        $menus = menu::all();
+        $menus = Menu::all();
         $data = Menu::find($id);
-        $images = Image::all();
-        // Menampilkan form untuk membuat gambar baru
-        return view('image.create', compact('data','images', 'menus'));
+        return view('image.create', compact('data', 'menus'));
     }
 
-   // Method untuk menyimpan gambar dengan validasi
-   public function store(Request $request, $id)
-   {
-       // Validasi request yang masuk
-       $request->validate([
-           'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validasi gambar
-       ], [
-           'image.required' => 'Harap pilih gambar untuk diupload.',
-           'image.image' => 'File yang diunggah harus berupa gambar.',
-           'image.mimes' => 'Hanya file dengan format jpeg, png, jpg, gif, dan svg yang diperbolehkan.',
-           'image.max' => 'Ukuran gambar tidak boleh lebih dari 2MB.',
-       ]);
+    // Store image after validation
+    public function store(Request $request, $id)
+    {
+        // Validate the image
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,webp,svg|max:2048', // Validasi gambar
+        ], [
+            'image.required' => 'Harap pilih gambar untuk diupload.',
+            'image.image' => 'File yang diunggah harus berupa gambar.',
+            'image.mimes' => 'Hanya file dengan format jpeg, png, jpg, gif, dan svg yang diperbolehkan.',
+            'image.max' => 'Ukuran gambar tidak boleh lebih dari 2MB.',
+        ]);
 
-       // Jika file gambar ada, simpan ke storage
-       if ($request->hasFile('image')) {
-           $imagePath = $request->file('image')->store('images', 'public'); // Menyimpan gambar di folder 'images'
+        // If the image file exists, save it to storage
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('images', 'public'); // Save image to storage
 
-           // Simpan path gambar ke database
-           Image::create([
-               'image' => $imagePath,
-               'menu_id' => $id, // Id menu yang terkait
-           ]);
-       }
+            // Save the image details to the database
+            Image::create([
+                'image' => $imagePath,
+                'menus_id' => $id, // The ID of the associated menu
+            ]);
+        }
 
        // Redirect dengan pesan sukses
        return redirect()->route('image.index', $id)
@@ -61,52 +59,49 @@ class ImageController extends Controller
 
     public function edit($id)
     {
-        $image = Image::findOrFail($id); // Temukan gambar berdasarkan ID
-        $menus = Menu::all(); // Ambil semua menu (atau sesuai kebutuhan)
-        return view('image.edit', compact('image', 'menus')); // Kembalikan view edit
+        $image = Image::findOrFail($id);
+        $menus = Menu::all();
+        return view('image.edit', compact('image', 'menus'));
     }
 
-    // Fungsi untuk memperbarui gambar
+    // Update the image
     public function update(Request $request, $id)
     {
         $request->validate([
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-
+    
         $imageModel = Image::findOrFail($id);
-
-        // Cek apakah ada gambar baru yang di-upload
+    
+        // Check if a new image is uploaded
         if ($request->hasFile('image')) {
-            // Hapus gambar lama jika perlu
+            // Delete the old image from storage if it exists
             if ($imageModel->image) {
                 Storage::delete('public/' . $imageModel->image);
             }
-
-            // Simpan gambar baru
-            $path = $request->file('image')->store('images', 'public'); // Atur lokasi penyimpanan sesuai kebutuhan
+    
+            // Store the new image
+            $path = $request->file('image')->store('images', 'public');
             $imageModel->image = $path;
         }
-
-        // Simpan perubahan di database
+    
+        // Save the changes to the image record
         $imageModel->save();
-
-        // Redirect ke halaman yang sesuai dengan pesan sukses
-        return redirect()->route('image.index', $imageModel->menus_id)->with('success', 'Gambar berhasil diperbarui.');
-
+    
+        // Redirect back to the image index page for the menu
+        return redirect()->route('image.index', $imageModel->menus_id)
+            ->with('success', 'Gambar berhasil diperbarui.');
     }
-
-
-
-
+    
+    // Delete the image
     public function destroy($id)
     {
-        // Find the Multiple entry by ID or fail if not found
-        $image = image::findOrFail($id);
-        // Delete the image entry
+        $image = Image::findOrFail($id);
+        // Delete the image file
+        Storage::delete('public/' . $image->image);
         $image->delete();
 
-        // Redirect back to the index page with a success message
-        return redirect()->route('image.index', $image->menus_id)->with('error', 'Anda Berhasil Menghapus Data Ini');
+        return redirect()->route('image.index', $image->menu_id)
+                         ->with('error', 'Foto Berhasil Di Hapus');
     }
-
 }

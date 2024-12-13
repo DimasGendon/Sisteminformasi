@@ -103,8 +103,9 @@
                                 </td>
                                 <td>
                                     <a href="{{ route('menu.edit', $menu->id) }}" class="btn btn-sm btn-warning">
-                                        <i class="fas fa-edit"></i> <!-- Ikon pensil untuk tombol edit -->
+                                        <i class="fas fa-pencil-alt"></i> <!-- Ikon pensil untuk tombol edit -->
                                     </a>
+                                    
                                     <form action="{{ route('menu.destroy', $menu->id) }}" method="POST" style="display:inline;">
                                         @csrf
                                         @method('DELETE')
