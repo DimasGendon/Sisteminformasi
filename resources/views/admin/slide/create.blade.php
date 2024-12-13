@@ -15,7 +15,12 @@
                         <div class="form-group col-md-12">
                             <label>Judul :</label>
                             <input type="text" name="judul" class="form-control @error('judul') is-invalid @enderror" placeholder="Boleh kosong" value="{{ old('judul') }}">
+                            @error('judul')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
+
+
 
                         <!-- Foto input field with validation error display -->
                         <div class="form-group col-md-12">

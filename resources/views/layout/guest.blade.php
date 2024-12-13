@@ -66,94 +66,38 @@
     <!-- End Preloader -->
 
     <!-- Get Pro Button -->
-    <ul class="pro-features">
-        <a class="get-pro" href="#">Get Pro</a>
-        <li class="big-title">Pro Version Available on Themeforest</li>
-        <li class="title">Pro Version Features</li>
-        <li>2+ premade home pages</li>
-        <li>20+ html pages</li>
-        <li>Color Plate With 12+ Colors</li>
-        <li>Sticky Header / Sticky Filters</li>
-        <li>Working Contact Form With Google Map</li>
-    </ul>
-
+  
     <!-- Header Area -->
     <header class="header">
-        <!-- Topbar -->
-        <div class="topbar">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-5 col-12">
-                        <!-- Contact -->
-                        <ul class="top-link">
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Doctors</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">FAQ</a></li>
-                        </ul>
-                        <!-- End Contact -->
-                    </div>
-                    <div class="col-lg-6 col-md-7 col-12">
-                        <!-- Top Contact -->
-                        <ul class="top-contact">
-                            <li><i class="fa fa-phone"></i>+880 1234 56789</li>
-                            <li><i class="fa fa-envelope"></i><a
-                                    href="mailto:support@yourmail.com">support@yourmail.com</a></li>
-                        </ul>
-                        <!-- End Top Contact -->
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Topbar -->
         <!-- Header Inner -->
         <div class="header-inner">
             <div class="container">
                 <div class="inner">
-                    <div class="row">
+                    <div class="row align-items-center"> <!-- Menambahkan align-items-center untuk vertikal alignment -->
                         <div class="col-lg-3 col-md-3 col-12">
                             <!-- Start Logo -->
                             <div class="logo">
-                                <a href="index.html"><img src="{{ asset('TemplateGuest/img/logo.png') }}" alt="#"></a>
+                                <a href="index.html"><img src="{{ asset('foto/logo.png') }}" alt="#"></a>
                             </div>
                             <!-- End Logo -->
-                            <!-- Mobile Nav -->
-                            <div class="mobile-nav"></div>
-                            <!-- End Mobile Nav -->
                         </div>
-                        <div class="col-lg-7 col-md-9 col-12">
+                        <div class="col-lg-9 col-md-9 col-12">
                             <!-- Main Menu -->
                             <div class="main-menu">
                                 <nav class="navigation">
-                                    <ul class="nav menu">
-                                        <li class="active"><a href="#">Home <i
-                                                    class="icofont-rounded-down"></i></a>
-                                            <ul class="dropdown">
-                                                <li><a href="index.html">Home Page 1</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">Doctos </a></li>
-                                        <li><a href="#">Services </a></li>
-                                        <li><a href="#">Pages <i class="icofont-rounded-down"></i></a>
-                                            <ul class="dropdown">
-                                                <li><a href="404.html">404 Error</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">Blogs <i class="icofont-rounded-down"></i></a>
-                                            <ul class="dropdown">
-                                                <li><a href="blog-single.html">Blog Details</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="contact.html">Contact Us</a></li>
+                                    <ul class="nav menu d-flex justify-content-center"> <!-- Menambahkan d-flex justify-content-center untuk perataan menu -->
+                                        <li><a href="#">Home</a></li>
+                                        <li><a href="#">Tentang Kami</a></li>
+                                        <li><a href="#">Informasi</a></li>
+                                        <li><a href="#">Informasi</a></li>
+                                        <li><a href="#">Loker</a></li>
+                                        <li><a href="#">MOU</a></li>
+                                        <li><a href="#">Alumni</a></li>
+                                        <li><a href="#">Contact Us</a></li>
                                     </ul>
                                 </nav>
                             </div>
                             <!--/ End Main Menu -->
-                        </div>
-                        <div class="col-lg-2 col-12">
-                            <div class="get-quote">
-                                <a href="appointment.html" class="btn">Book Appointment</a>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -161,12 +105,36 @@
         </div>
         <!--/ End Header Inner -->
     </header>
+    
     <!-- End Header Area -->
 
+    {{-- @include('guest.home') --}}
+
     <!-- Slider Area -->
-    {{-- @include('guest.slide') --}}
+<<<<<<< Updated upstream
+    
+       @include('guest.slide')
+        
     <!--/ End Slider Area -->
 
+  
+    
+   
+=======
+    {{-- <section class="slider"> --}}
+        <div class="hero-slider owl-carousel owl-theme owl-loaded">
+            <!-- Start Single Slider -->
+            
+            <!-- End Single Slider -->
+            <!-- Start Single Slider -->
+            
+            <!-- Start End Slider -->
+            <!-- Start Single Slider -->
+            
+            <!-- End Single Slider -->
+       @include('guest.slide')
+    <!--/ End Slider Area -->
+        </div>
     <!-- Start Schedule Area -->
     {{-- <section class="schedule">
 		<div class="container">
@@ -232,6 +200,7 @@
 	</section> --}}
     <!--/End Start schedule Area -->
 
+>>>>>>> Stashed changes
     <!-- Start Feautes -->
     @include('guest.feature')
     <!--/ End Feautes -->
@@ -249,7 +218,7 @@
     <!--/ End Call to action -->
 
     <!-- Start portfolio -->
-    @include('guest.portofolio')
+    @include('guest.loker')
     <!--/ End portfolio -->
 
     <!-- Start service -->
@@ -257,21 +226,21 @@
     <!--/ End service -->
 
     <!-- Pricing Table -->
-    @include('guest.pricing')
+    @include('guest.informasi')
     <!--/ End Pricing Table -->
 
 
 
     <!-- Start Blog Area -->
-    @include('guest.blog')
+    @include('guest.alumni')
     <!-- End Blog Area -->
 
     <!-- Start clients -->
-    @include('guest.client')
+    @include('guest.mitra')
     <!--/Ens clients -->
 
     <!-- Start Appointment -->
-    @include('guest.appointment')
+    @include('guest.kontak')
     <!-- End Appointment -->
 
     <!-- Start Newsletter Area -->

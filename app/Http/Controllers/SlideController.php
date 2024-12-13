@@ -19,70 +19,77 @@ class SlideController extends Controller
 
     public function store(Request $request)
     {
+        // Validasi input, buat 'judul' menjadi optional
         $request->validate([
+            'judul' => 'nullable|string|max:255', // Membolehkan judul kosong
             'photo' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048', // Validasi foto
         ], [
-            // Custom error messages in Indonesian
-            'photo.required' => 'Foto wajib diunggah.',
+            // Pesan error khusus
+            'judul.required' => 'Judul foto wajib diisi.',
+            'photo.required' => 'Foto Wajib Diunggah!.',
             'photo.image' => 'File yang diunggah harus berupa gambar.',
             'photo.mimes' => 'File gambar yang diizinkan hanya bertipe: jpg, jpeg, png, gif.',
             'photo.max' => 'Ukuran file gambar maksimal 2MB.',
         ]);
-    
+
+        // Memproses file foto
         if ($request->hasFile('photo')) {
-            // Ambil file foto yang diupload
             $photoFile = $request->file('photo');
-    
-            // Buat nama file unik
-            $photoName = uniqid() . '.jpg';  // Pastikan ekstensi file selalu .jpg
-    
-            // Lokasi penyimpanan di direktori public/storage/slide
+            $photoName = uniqid() . '.jpg'; // Nama file unik
             $folderPath = public_path('storage/slide');
-    
+
             // Membuat folder jika belum ada
             if (!file_exists($folderPath)) {
-                mkdir($folderPath, 0777, true); // Folder dan semua subfoldernya akan dibuat jika belum ada
+                mkdir($folderPath, 0777, true);
             }
-    
-            // Path lengkap untuk menyimpan foto
+
+            // Path untuk menyimpan foto
             $path = $folderPath . '/' . $photoName;
-    
-            // Ubah ukuran foto menggunakan Intervention Image dan simpan dalam format jpg
-            Image::make($photoFile)->encode('jpg', 75)  // Memastikan gambar disimpan dalam format .jpg
+
+            // Mengubah ukuran foto menggunakan Intervention Image dan menyimpannya sebagai .jpg
+            Image::make($photoFile)->encode('jpg', 75)
                 ->resize(300, 300, function ($constraint) {
                     $constraint->aspectRatio();
                     $constraint->upsize();
                 })->save($path);
-    
-            // Simpan path foto ke database
+
+            // Menyimpan data ke database
             Slide::create([
-                'judul' => $request->judul,
+                'judul' => $request->judul,  // Judul bisa kosong
                 'photo_path' => 'slide/' . $photoName,
             ]);
-    
-            return redirect()->route('slide')->with('Berhasil', 'Foto berhasil diupload!');
+
+            // Mengarahkan dan mengirimkan pesan sukses
+            return redirect()->route('admin.slide.index')->with('Berhasil', 'Slide Berhasil Di Tambahkan');
+        } else {
+            // Jika tidak ada file yang diunggah, kembalikan error foto
+            return redirect()->back()->withErrors(['photo' => 'Harap pilih foto untuk diunggah.']);
         }
-    
-        return back()->with('error', 'Gagal mengupload foto.');
     }
-    
+
+
+
+
+
 
     public function destroy($id)
     {
-        // Cari slide berdasarkan ID
+        // Mencari data slide berdasarkan ID
         $slide = Slide::findOrFail($id);
 
-        // Hapus file foto dari storage
+        // Hapus file gambar dari penyimpanan
         $photoPath = public_path('storage/' . $slide->photo_path);
+
         if (File::exists($photoPath)) {
-            File::delete($photoPath); // Hapus file foto
+            // Jika file gambar ada, hapus file gambar
+            File::delete($photoPath);
         }
 
         // Hapus data slide dari database
         $slide->delete();
 
-        // Redirect kembali ke index dengan pesan sukses
-        return redirect()->route('slide')->with('Berhasil', 'Foto berhasil dihapus!');
+        // Kembali ke halaman index slide dengan pesan sukses
+        return redirect()->route('admin.slide.index')->with('Berhasil', 'Slide berhasil dihapus!');
     }
 
 }

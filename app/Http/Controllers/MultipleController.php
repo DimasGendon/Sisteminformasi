@@ -9,21 +9,22 @@ use Illuminate\Http\Request;
 
 class MultipleController extends Controller
 {
-    public function index()
-    {
-        // Ambil semua data menu
-        $data = Menu::all(); // Use $data instead of $menus
-
-        // Cek apakah ada tipe "Single Data" dan alihkan langsung ke halaman edit
-        foreach ($data as $menu) {
-            if ($menu->type === 'Single Data') {
-                return redirect()->route('menu.edit', $menu->id);
-            }
-        }
-
-        // Kirimkan data menus ke view jika tidak ada tipe "Single Data"
-        return view('multiple.index', compact('data')); // Pass $data instead of $menus
+    public function index($menu)
+{
+    $data = Menu::findOrFail($menu); // Ambil menu berdasarkan ID
+    if ($data->type === 'Single Data') {
+        return redirect()->route('menu.edit', $data->id);
     }
+
+    $data = Menu::findOrFail($menu); // Ambil menu berdasarkan ID
+    if ($data->type === 'Image Data') {
+        return redirect()->route('image.index', $data->id);
+    }
+
+    $menus = Menu::all(); // Ambil semua menu jika tipe tidak 'Single Data'
+    return view('multiple.index', compact('menus', 'data'));
+}
+
 
 
 
@@ -65,14 +66,13 @@ class MultipleController extends Controller
         ]);
 
         $multiple = Multiple::findOrFail($id);
+        $multiple->update($request->only(['menus_id', 'description']));
 
-        // Update description
-        $multiple->description = $request->description;
-
-        // Update menu ID
-        $multiple->menus_id = $request->menus_id;
-
-        $multiple->save();
+        // Pastikan tipe menu tetap tidak berubah
+        $menu = Menu::findOrFail($request->menus_id);
+        if ($menu->type === 'Single Data') {
+            return redirect()->route('menu.edit', $menu->id);
+        }
 
         return redirect()->route('multiple.index', $multiple->menus_id)->with('info', 'Data Ini Berhasil Di Perbarui');
     }

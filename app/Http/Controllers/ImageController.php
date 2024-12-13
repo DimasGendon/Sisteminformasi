@@ -12,9 +12,9 @@ class ImageController extends Controller
     // Display all images for a menu
     public function index($id)
     {
-        $menus = Menu::all();
+        $menus = menu::all();
         $data = Menu::find($id);
-        $images = Image::where('menus_id', $id)->get(); // Show images for this menu
+        $images = Image::all();
 
         return view('image.index', compact('data', 'images', 'menus'));
     }
@@ -51,12 +51,12 @@ class ImageController extends Controller
             ]);
         }
 
-        // Redirect with success message
-        return redirect()->route('image.index', $id)
-                         ->with('Berhasil', 'Foto Berhasil Di Tambahkan');
-    }
+       // Redirect dengan pesan sukses
+       return redirect()->route('image.index', $id)
+           ->with('Berhasil', 'Gambar berhasil ditambahkan!');
+   }
+   
 
-    // Edit the image
     public function edit($id)
     {
         $image = Image::findOrFail($id);

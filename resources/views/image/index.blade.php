@@ -1,5 +1,54 @@
 @extends('layout.admin')
 
+@push('script')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+   document.addEventListener("DOMContentLoaded", function() {
+
+        const menuType = "{{ $data->type }}";
+        if (menuType === 'Image Data') {
+            // Secara otomatis mengarahkan ke halaman untuk membuat menu image
+            window.location.href = "{{ route('image.index', $data->id) }}";  // Gantilah dengan rute yang sesuai
+        }
+    }
+
+    <!-- SweetAlert for Success Message -->
+    @if (session('Berhasil'))
+            Swal.fire({
+                toast: true,
+                icon: 'success',
+                title: '{{ session('Berhasil') }}',
+                animation: true,
+                position: 'top-right',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer);
+                    toast.addEventListener('mouseleave', Swal.resumeTimer);
+                }
+            });
+    @endif
+
+    <!-- SweetAlert for Validation Errors -->
+    @if ($errors->any())
+            Swal.fire({
+                toast: true,
+                icon: 'error',
+                title: '{{ $errors->first() }}',
+                animation: true,
+                position: 'top-right',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer);
+                    toast.addEventListener('mouseleave', Swal.resumeTimer);
+                }
+            }));
+    @endif
+</script>
+
 @section('content')
     <div class="container">
 
@@ -43,48 +92,6 @@
             </tbody>
         </table>
     </div>
-
-    <!-- SweetAlert for Success Message -->
-    @if (session('Berhasil'))
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script>
-            Swal.fire({
-                toast: true,
-                icon: 'success',
-                title: '{{ session('Berhasil') }}',
-                animation: true,
-                position: 'top-right',
-                showConfirmButton: false,
-                timer: 3000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer);
-                    toast.addEventListener('mouseleave', Swal.resumeTimer);
-                }
-            });
-        </script>
-    @endif
-
-    <!-- SweetAlert for Validation Errors -->
-    @if ($errors->any())
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script>
-            Swal.fire({
-                toast: true,
-                icon: 'error',
-                title: '{{ $errors->first() }}',
-                animation: true,
-                position: 'top-right',
-                showConfirmButton: false,
-                timer: 3000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer);
-                    toast.addEventListener('mouseleave', Swal.resumeTimer);
-                }
-            });
-        </script>
-    @endif
 
     <!-- Include Lightbox CSS and JS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet" />
