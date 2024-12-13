@@ -112,7 +112,8 @@
     {{-- @include('guest.home') --}}
 
     <!-- Slider Area -->
-    {{-- <section class="slider"> --}}
+    @include('guest.dashboardslide')
+    {{-- <section class="slider">
         <div class="hero-slider owl-carousel owl-theme owl-loaded">
             <!-- Start Single Slider -->
             @foreach ($slides as $slide)
@@ -135,7 +136,7 @@
             @endforeach
             <!-- End Single Slider -->
         </div>
-    </section> --}}
+    </section>  --}}
     <!--/ End Slider Area -->
 
     <!-- Start Feautes -->

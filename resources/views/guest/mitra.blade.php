@@ -1,4 +1,13 @@
-
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="section-title">
+                <h2>Mitra</h2>
+                {{-- <img src="{{ asset('TemplateGuest/img/section-img.png') }}" alt="#"> --}}
+                {{-- <p>Here you can find the latest alumni added to the list. Admin can add new alumni and manage them.</p> --}}
+            </div>
+        </div>
+       
 
 <div class="clients overlay">
     <div class="container">
@@ -17,6 +26,7 @@
         </div>
     </div>
 </div>
+
 
 <style>
     /* Container untuk tiap client */

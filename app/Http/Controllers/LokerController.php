@@ -61,6 +61,8 @@ class LokerController extends Controller
             // If no file is uploaded, return an error message
             return redirect()->back()->withErrors(['foto' => 'Harap Pilih Foto Untuk Di Unggah!']);
         }
+
+        return back()->with('error', 'Gagal mengupload foto.');
     }
 
 
