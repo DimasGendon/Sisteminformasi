@@ -7,7 +7,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-7">
-                                <div class="text">
+                                {{-- <div class="text">
                                     <h1>{{ $slide->judul ?? 'We Provide Medical Services That You Can Trust!' }}</h1>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed nisl
                                         pellentesque, faucibus libero eu, gravida quam.</p>
@@ -15,7 +15,7 @@
                                         <a href="#" class="btn">Get Appointment</a>
                                         <a href="#" class="btn primary">Learn More</a>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>

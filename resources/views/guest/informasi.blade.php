@@ -1,7 +1,7 @@
 
 
-<section class="pricing-table section">
-    <div class="container">
+<section class="pricing-table section" id="informasi">
+    {{-- <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title">
@@ -10,7 +10,7 @@
                     <p>Lorem ipsum dolor sit amet consectetur adipiscing elit praesent aliquet. pretiumts</p>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="row">
             @foreach ($informasis as $informasi)
             <!-- Single Table -->
@@ -23,7 +23,7 @@
                     <!-- Table List -->
                     <ul class="table-list">
                         <li><strong>Description:</strong></li>
-                        <li>{{ $informasi->deskripsi }}</li>
+                        <li>{{  Str::limit($informasi->deskripsi, 100) }}</li>
                     </ul>                   
                 </div>
             </div>

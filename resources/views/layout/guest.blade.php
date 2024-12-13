@@ -87,13 +87,12 @@
                                 <nav class="navigation">
                                     <ul class="nav menu d-flex justify-content-center"> <!-- Menambahkan d-flex justify-content-center untuk perataan menu -->
                                         <li><a href="#">Home</a></li>
-                                        <li><a href="#">Tentang Kami</a></li>
-                                        <li><a href="#">Informasi</a></li>
-                                        <li><a href="#">Informasi</a></li>
-                                        <li><a href="#">Loker</a></li>
+                                        <li><a href="#tentang_kami">Tentang Kami</a></li>
+                                        <li><a href="#informasi">Informasi</a></li>
+                                        <li><a href="#loker">Loker</a></li>
                                         <li><a href="#">MOU</a></li>
-                                        <li><a href="#">Alumni</a></li>
-                                        <li><a href="#">Contact Us</a></li>
+                                        <li><a href="#alumni">Alumni</a></li>
+                                        <li><a href="#kontak">Contact Us</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -111,16 +110,6 @@
     {{-- @include('guest.home') --}}
 
     <!-- Slider Area -->
-<<<<<<< Updated upstream
-    
-       @include('guest.slide')
-        
-    <!--/ End Slider Area -->
-
-  
-    
-   
-=======
     {{-- <section class="slider"> --}}
         <div class="hero-slider owl-carousel owl-theme owl-loaded">
             <!-- Start Single Slider -->
@@ -200,7 +189,6 @@
 	</section> --}}
     <!--/End Start schedule Area -->
 
->>>>>>> Stashed changes
     <!-- Start Feautes -->
     @include('guest.feature')
     <!--/ End Feautes -->
@@ -219,6 +207,9 @@
 
     <!-- Start portfolio -->
     @include('guest.loker')
+    <!--/ End portfolio -->
+    <!-- Start portfolio -->
+    @include('guest.tentang_kami')
     <!--/ End portfolio -->
 
     <!-- Start service -->

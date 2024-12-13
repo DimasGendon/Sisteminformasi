@@ -1,4 +1,4 @@
-<section class="why-choose section">
+{{-- <section class="why-choose section">
     <div class="container">
      
         <div class="row">
@@ -59,4 +59,4 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}

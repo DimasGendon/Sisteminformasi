@@ -54,7 +54,7 @@
         </script>
     @endif
 
-    <!-- Error Message for missing data, triggered after form submission if validation fails -->
+    <!-- Error Message for missing data, triggered after f  orm submission if validation fails -->
     @if ($errors->any())
         <script>
             Swal.fire({

@@ -63,7 +63,7 @@ Route::delete('/multiple/{menu}', [MultipleController::class, 'destroy'])->name(
 //Image
 // Route to display images for a specific menu
 Route::get('/image/{id}', [ImageController::class, 'index'])->name('image.index')->middleware('auth');
-    Route::get('image/create/{id}', [ImageController::class, 'create'])->name('image.create')->middleware('auth');
+Route::get('image/create/{id}', [ImageController::class, 'create'])->name('image.create')->middleware('auth');
 Route::post('/image/{id}', [ImageController::class, 'store'])->name('image.store')->middleware('auth');
 Route::get('/image/{id}/edit', [ImageController::class, 'edit'])->name('image.edit')->middleware('auth');
 Route::put('/image/{id}', [ImageController::class, 'update'])->name('image.update')->middleware('auth');

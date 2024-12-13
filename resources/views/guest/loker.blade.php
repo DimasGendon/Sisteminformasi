@@ -1,10 +1,5 @@
 
-<<<<<<< Updated upstream:resources/views/guest/loker.blade.php
-
-
-=======
->>>>>>> Stashed changes:resources/views/guest/portofolio.blade.php
-<section class="portfolio section">
+<section class="pricing-table section" id="loker">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
