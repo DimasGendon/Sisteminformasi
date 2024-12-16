@@ -67,6 +67,25 @@
             });
         </script>
     @endif
+
+    @if ($errors->has('error'))
+    <script>
+        Swal.fire({
+            toast: true,
+            icon: 'error',
+            title: '{{ $errors->first('error') }}',
+            animation: true,
+            position: 'top-right',
+            showConfirmButton: false,
+            timer: 1500,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer);
+                toast.addEventListener('mouseleave', Swal.resumeTimer);
+            }
+        });
+    </script>
+@endif
 @endpush
 
 @section('content')
