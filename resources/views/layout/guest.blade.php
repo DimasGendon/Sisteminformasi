@@ -104,6 +104,78 @@
             </div>
         </div>
     </header>
+    
+    <style>
+    /* Navbar Styling */
+    .header {
+        padding: 10px 0; /* Padding navbar untuk mengurangi tinggi dan memberi jarak di atas */
+    }
+    
+    /* Mengatur header-inner agar tidak terlalu tinggi */
+    .header-inner {
+        padding: 0;
+    }
+    
+    /* Mengatur logo agar lebih kompak */
+    .logo img {
+        max-height: 100px;  /* Ukuran logo yang lebih kecil agar tidak terlalu besar */
+    }
+    
+    /* Menyesuaikan posisi navbar */
+    .main-menu {
+        padding: 0;
+        margin: 0;
+    }
+    
+    /* Mengatur menu utama */
+    .nav.menu {
+        display: flex;
+        justify-content: space-around; /* Membuat jarak antar menu */
+        align-items: center;
+    }
+    
+    /* Styling menu items */
+    .nav.menu li {
+        list-style: none;
+    }
+    
+    .nav.menu li a {
+        color: #151414; /* Warna teks */
+        font-size: 16px;
+        font-weight: 600;
+        padding: 10px 15px;
+        text-decoration: none; /* Hapus garis bawah */
+        transition: all 0.3s ease;
+    }
+    
+    /* Efek hover pada link */
+    .nav.menu li a:hover {
+        background-color: #007bff; /* Warna latar belakang saat hover */
+        border-radius: 5px; /* Menambahkan sudut melengkung */
+    }
+    
+    /* Responsif: navbar tetap rapi pada layar kecil */
+    @media (max-width: 768px) {
+        .header {
+            padding: 5px 0; /* Padding lebih kecil pada layar kecil */
+        }
+    
+        .logo img {
+            max-height: 40px;  /* Ukuran logo lebih kecil di perangkat mobile */
+        }
+    
+        .nav.menu {
+            flex-direction: column; /* Mengubah menu menjadi vertikal pada perangkat kecil */
+            align-items: center;
+        }
+    
+        .nav.menu li a {
+            padding: 10px;  /* Padding lebih besar untuk kemudahan klik */
+            font-size: 18px;
+        }
+    }
+    </style>
+    
     <!-- End Header Area -->
 
     {{-- @include('guest.home') --}}
