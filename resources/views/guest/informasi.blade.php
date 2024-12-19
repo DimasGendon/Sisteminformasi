@@ -31,6 +31,7 @@
 
 
 <!-- CSS (Optional) -->
+<style>
 /* Styling untuk Card */
 .single-table {
     background-color: #fff;
@@ -97,3 +98,4 @@
         flex: 0 0 100%; /* Menampilkan 1 kolom per baris pada layar kecil */
     }
 }
+</style>    
