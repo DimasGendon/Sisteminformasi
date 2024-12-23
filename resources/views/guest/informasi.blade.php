@@ -24,7 +24,7 @@
                     <ul class="table-list">
                         <li><strong>Description:</strong></li>
                         <li>{{  Str::limit($informasi->deskripsi, 100) }}</li>
-                    </ul>                   
+                    </ul>
                 </div>
             </div>
             <!-- End Single Table-->

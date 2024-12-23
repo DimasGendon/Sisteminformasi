@@ -1,6 +1,15 @@
 <section class="about-us section" id="tentang_kami">
     <div class="container">
         <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h2>TENTANG KAMI</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
             @foreach ($tentangkamis as $tentangkami)
                 <!-- Single Item -->
                 <div class="col-lg-12 col-md-12 col-12 mb-4">

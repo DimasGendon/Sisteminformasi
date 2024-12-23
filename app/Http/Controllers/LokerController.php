@@ -27,9 +27,12 @@ class LokerController extends Controller
             'foto.*.max' => 'Ukuran file tidak boleh lebih dari 2MB.',
         ]);
 
+        $failedUploads = [];
+
         // Pastikan ada file yang diupload
         if ($request->hasFile('foto')) {
             foreach ($request->file('foto') as $fotoFile) {
+                try{
                 // Buat nama file unik
                 $photoName = uniqid() . '.jpg';  // Pastikan ekstensi file selalu .jpg
 
@@ -54,15 +57,23 @@ class LokerController extends Controller
                 Loker::create([
                     'foto' => 'loker/' . $photoName,
                 ]);
-            }
 
-            return redirect()->route('lokers.index')->with('Berhasil', 'Loker berhasil Di Tambahkan!');
-        } else {
-            // If no file is uploaded, return an error message
-            return redirect()->back()->withErrors(['foto' => 'Harap Pilih Foto Untuk Di Unggah!']);
+            } catch (\Exception $e) {
+                $failedUploads[] = $fotoFile->getClientOriginalName();
+            }
         }
 
-        return back()->with('error', 'Gagal mengupload foto.');
+        if(empty($failedUploads)) {
+            return redirect()->route('lokers.index')->with('Berhasil', 'Loker berhasil Di Tambahkan!');
+        } else {
+
+            return redirect()->route('lokers.index')->withErrors(['foto' => 'File yang dipilih harus memiliki format jpeg, png, jpg, atau gif. ' .implode(',', $failedUploads)]);
+        }
+
+        } else {
+
+            return redirect()->back()->withErrors(['foto' => 'Harap Pilih Foto Untuk Di Unggah!']);
+        }
     }
 
 
