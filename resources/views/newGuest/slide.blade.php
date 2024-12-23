@@ -11,12 +11,10 @@
                         <div class="columns is-gapless is-vcentered">
                             <div class="column is-5">
                                 <div class="caption-inner">
-                                    <h1>Deep dive into Data</h1>
+                                    <h1>BKK SMK Muhammadiyah 1 Genteng</h1>
                                     <div class="caption-divider"></div>
                                     <div class="caption-text">
-                                        <span>Nowadays, data management has become the key for
-                                            businesses who wish to take it to the next level. Our
-                                            fully automated solution changes everything.</span>
+                                        <span>SMK Muhammadiyah 1 Genteng</span>
                                         <div class="action">
                                             <a href="#services" class="button button-cta primary-btn rounded">Get
                                                 started now</a>
