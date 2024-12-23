@@ -18,6 +18,7 @@ use App\Http\Controllers\TentangKamiController;
 use App\Http\Controllers\VimiController;
 use App\Http\Controllers\AlumniController;
 use App\Http\Controllers\InformasiController;
+use App\Http\Controllers\NewTemplateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,8 @@ use App\Http\Controllers\InformasiController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('user', [NewTemplateController::class, 'index'])->name('user'); // Untuk daftar menu
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth'); // Untuk daftar menu
 

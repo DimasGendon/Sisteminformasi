@@ -11,10 +11,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Title -->
-    <title>Mediplus - Free Medical and Doctor Directory HTML Template.</title>
+    <title>Sistem informasi BKK SMKS Muhammadiyah 1 Genteng</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="{{ asset('TemplateGuest/img/favicon.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('TemplateAdmin/images/ligo.png') }}">
 
     <!-- Google Fonts -->
     <link
@@ -69,7 +69,6 @@
 
     <!-- Header Area -->
     <header class="header">
-        <!-- Header Inner -->
         <div class="header-inner">
             <div class="container">
                 <div class="inner">
@@ -78,7 +77,7 @@
                         <div class="col-lg-3 col-md-3 col-12">
                             <!-- Start Logo -->
                             <div class="logo">
-                                <a href="index.html"><img src="{{ asset('foto/logo.png') }}" alt="#"></a>
+                                <a href="index.html"><img src="{{ asset('foto/logo.png') }}" alt="Logo"></a>
                             </div>
                             <!-- End Logo -->
                         </div>
@@ -92,9 +91,9 @@
                                         <li><a href="#tentang_kami">Tentang Kami</a></li>
                                         <li><a href="#informasi">Informasi</a></li>
                                         <li><a href="#loker">Loker</a></li>
-                                        <li><a href="#">MOU</a></li>
+                                        <li><a href="#">Mitra</a></li>
                                         <li><a href="#alumni">Alumni</a></li>
-                                        <li><a href="#kontak">Contact Us</a></li>
+                                        <li><a href="#kontak">Kontak</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -104,39 +103,86 @@
                 </div>
             </div>
         </div>
-        <!--/ End Header Inner -->
     </header>
-
+    
+    <style>
+    /* Navbar Styling */
+    .header {
+        padding: 10px 0; /* Padding navbar untuk mengurangi tinggi dan memberi jarak di atas */
+    }
+    
+    /* Mengatur header-inner agar tidak terlalu tinggi */
+    .header-inner {
+        padding: 0;
+    }
+    
+    /* Mengatur logo agar lebih kompak */
+    .logo img {
+        max-height: 100px;  /* Ukuran logo yang lebih kecil agar tidak terlalu besar */
+    }
+    
+    /* Menyesuaikan posisi navbar */
+    .main-menu {
+        padding: 0;
+        margin: 0;
+    }
+    
+    /* Mengatur menu utama */
+    .nav.menu {
+        display: flex;
+        justify-content: space-around; /* Membuat jarak antar menu */
+        align-items: center;
+    }
+    
+    /* Styling menu items */
+    .nav.menu li {
+        list-style: none;
+    }
+    
+    .nav.menu li a {
+        color: #151414; /* Warna teks */
+        font-size: 16px;
+        font-weight: 600;
+        padding: 10px 15px;
+        text-decoration: none; /* Hapus garis bawah */
+        transition: all 0.3s ease;
+    }
+    
+    /* Efek hover pada link */
+    .nav.menu li a:hover {
+        background-color: #007bff; /* Warna latar belakang saat hover */
+        border-radius: 5px; /* Menambahkan sudut melengkung */
+    }
+    
+    /* Responsif: navbar tetap rapi pada layar kecil */
+    @media (max-width: 768px) {
+        .header {
+            padding: 5px 0; /* Padding lebih kecil pada layar kecil */
+        }
+    
+        .logo img {
+            max-height: 40px;  /* Ukuran logo lebih kecil di perangkat mobile */
+        }
+    
+        .nav.menu {
+            flex-direction: column; /* Mengubah menu menjadi vertikal pada perangkat kecil */
+            align-items: center;
+        }
+    
+        .nav.menu li a {
+            padding: 10px;  /* Padding lebih besar untuk kemudahan klik */
+            font-size: 18px;
+        }
+    }
+    </style>
+    
     <!-- End Header Area -->
 
-    {{-- @include('guest.home') --}}
+  
 
     <!-- Slider Area -->
     @include('guest.dashboardslide')
-    {{-- <section class="slider">
-        <div class="hero-slider owl-carousel owl-theme owl-loaded">
-            <!-- Start Single Slider -->
-            @foreach ($slides as $slide)
-                <img src="{{ asset('storage/' . $slide->photo_path) }}" class="single-slider">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-7">
-                            <div class="text">
-                                <h1>We Provide <span>Medical</span> Services That You Can <span>Trust!</span></h1>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed nisl
-                                    pellentesque, faucibus libero eu, gravida quam. </p>
-                                <div class="button">
-                                    <a href="#" class="btn">Get Appointment</a>
-                                    <a href="#" class="btn primary">Learn More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-            <!-- End Single Slider -->
-        </div>
-    </section>  --}}
+   
     <!--/ End Slider Area -->
 
     <!-- Start Feautes -->

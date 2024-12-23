@@ -11,6 +11,7 @@ use App\Models\Mitra;
 use App\Models\Informasi;
 use App\Models\Loker;
 use App\Models\TentangKami;
+use App\Models\Vimi;
 use Illuminate\Http\Request;
 
 class GuestController extends Controller
@@ -26,8 +27,9 @@ class GuestController extends Controller
         $mitras = Mitra::all();
         $lokers = Loker::all();
         $informasis = Informasi::all();
+        $vimis = vimi::all();
         return view('layout.guest', compact('menus','multiples', 'slides', 'tentangkamis',
-        'kontaks','alumnis','mitras','informasis','lokers'));
+        'kontaks','alumnis','mitras','informasis','lokers','vimis'));
     }
 
     public function showSingle_data($id)
