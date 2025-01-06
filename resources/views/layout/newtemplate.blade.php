@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
 
-    <title>Bulkit :: Home</title>
-    <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+    <title>BKK SMK Muhammadiyah 1 Genteng</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('TemplateAdmin/images/ligo.png') }}">
 
     <!-- Google Tag Manager -->
     <script>
@@ -89,28 +89,29 @@
                 <!-- Navbar menu -->
                 <div id="nav-menu" class="navbar-menu">
                     <!-- Navbar Start -->
-                    <div class="navbar-start">
+                    <div class="navbar-start" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; padding: 0 20px;">
                         <!-- Navbar item -->
-                        <a class="navbar-item is-slide" href="startup-product.html">
-                            Product
-                        </a>
-                        <!-- Navbar item -->
-                        <a class="navbar-item is-slide" href="startup-about.html"> About </a>
-                        <!-- Navbar item -->
-                        <a class="navbar-item is-slide" href="startup-login.html"> Login </a>
+                        <a class="navbar-item is-slide" href="#slide">Home</a>
+                        <a class="navbar-item is-slide" href="#tentang_kami">Tentang Kami</a>
+                        <a class="navbar-item is-slide" href="#informasi">Informasi</a>
+                        <a class="navbar-item is-slide" href="#mitra">Mitra</a>
+                        <a class="navbar-item is-slide" href="#loker">Loker</a>
+                        <a class="navbar-item is-slide" href="#alumni">Alumni</a>
+                        <a class="navbar-item is-slide" href="#kontak">Kontak</a>
                     </div>
-
+                
                     <!-- Navbar end -->
-                    <div class="navbar-end">
+                    <div class="navbar-end" style="margin-left: auto;">
                         <!-- Signup button -->
                         <div class="navbar-item">
-                            <a id="#signup-btn" href="startup-signup.html"
+                            <a id="signup-btn" href="startup-signup.html"
                                 class="button button-signup btn-outlined is-bold btn-align light-btn rounded raised">
                                 Sign up
                             </a>
                         </div>
                     </div>
                 </div>
+                
             </div>
         </nav>
 
@@ -119,7 +120,7 @@
     </div>
     
     <!-- Clients -->
-    @include('newGuest.client')
+    {{-- @include('newGuest.client') --}}
     
     
     <!-- Services -->
@@ -131,35 +132,35 @@
     
     
     <!-- Mockup section -->
-    @include('newGuest.mockup')
+    @include('newGuest.loker')
     
     
     <!-- Team section -->
-    @include('newGuest.team')
+    {{-- @include('newGuest.team') --}}
     
     
     <!-- Features section -->
-    @include('newGuest.feature')
+    {{-- @include('newGuest.feature') --}}
     
     
     <!-- Support cards section -->
-    @include('newGuest.support-card')
+    {{-- @include('newGuest.support-card') --}}
     
     
     <!-- Static Testimonials -->
-    @include('newGuest.static')
+    @include('newGuest.alumni')
     
     
     <!-- Clients grid -->
-    @include('newGuest.client-grid')
+    @include('newGuest.mitra')
     
     
     <!-- Dark footer -->
-    @include('newGuest.dark-footer')
+    @include('newGuest.kontak')
     <!-- /Dark footer -->
     
     <!-- Side navigation -->
-    @include('newGuest.navigation')
+    {{-- @include('newGuest.navigation') --}}
     <!-- /Side navigation -->
     <!-- Back To Top Button -->
     {{-- <div id="backtotop"><a href="#"></a></div>
