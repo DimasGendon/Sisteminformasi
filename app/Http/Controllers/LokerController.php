@@ -3,6 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Loker;
+use App\Models\TentangKami;
+use App\Models\Vimi;
+use App\Models\Slide;
+use App\Models\Informasi;
+use App\Models\Alumni;
+use App\Models\Kontak;
+use App\Models\Mitra;
 use App\Models\Menu;
 use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
@@ -11,7 +18,7 @@ class LokerController extends Controller
 {
     public function index()
     {
-        $lokers = Loker::all();
+        $lokers = Loker::orderBy('id', 'DESC')->paginate(4); // Menampilkan 4 data per halaman
         $menus = Menu::all();
         return view('admin.loker.index', compact('lokers', 'menus'));
     }
@@ -72,5 +79,18 @@ class LokerController extends Controller
         $loker->delete();
 
         return redirect()->route('lokers.index')->with('Berhasil', 'Loker berhasil dihapus.');
+    }
+    public function showAboutUs()
+    {
+        $tentangkamis = TentangKami::all(); // Ambil data Tentang Kami
+        $vimis = Vimi::all();
+        $slides = Slide::all();
+        $informasis = Informasi::all();
+        $kontaks = Kontak::all();
+        $alumnis = Alumni::all();
+        $mitras = Mitra::all();
+        $lokers = Loker::all();
+        return view('newGuest.loker', compact('tentangkamis','vimis','slides','informasis',
+        'kontaks','alumnis','mitras','lokers'));
     }
 }

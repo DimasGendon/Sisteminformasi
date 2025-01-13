@@ -14,17 +14,32 @@
     @endpush
 
     @push('script')
-        <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
+
         <script>
             let editor;
-
+        
             // Fungsi untuk membuat editor CKEditor
             function createEditor() {
                 ClassicEditor
                     .create(document.querySelector('#editor'), {
                         ckfinder: {
                             uploadUrl: "{{ route('store.image', ['_token' => csrf_token()]) }}",
-                        }
+                        },
+                        plugins: [
+                            // Tambahkan plugin yang diperlukan
+                            'List',
+                            'Undo',
+                            'Redo',
+                            'Bold',
+                            'Italic',
+                            'Link',
+                            'Table',
+                            'Heading'
+                        ],
+                        toolbar: [
+                            'undo', 'redo', '|', 'bold', 'italic', 'numberedList', 'bulletedList', 'link', 'insertTable'
+                        ]
                     })
                     .then(newEditor => {
                         editor = newEditor;
@@ -33,50 +48,14 @@
                         console.log(error);
                     });
             }
-
-            // Menangani perubahan jenis field deskripsi
-            function toggleDescriptionField() {
-                const typeSelect = document.querySelector('#type');
-                const descriptionField = document.querySelector('#editor');
-                const descriptionTextarea = document.querySelector('#description-textarea');
-
-                if (typeSelect.value === 'Multiple') {
-                    if (editor) {
-                        editor.destroy();
-                    }
-                    descriptionField.style.display = 'none';
-                    descriptionTextarea.style.display = 'block';
-                } else {
-                    if (descriptionTextarea.style.display === 'block') {
-                        descriptionTextarea.style.display = 'none';
-                        createEditor();
-                    }
-                }
-            }
-
-            // Validate form submission
-            document.querySelector('form').addEventListener('submit', function(e) {
-                const descriptionContent = editor.getData(); // Get content from CKEditor
-
-                if (!descriptionContent.trim()) {  // Check if description is empty
-                    e.preventDefault(); // Prevent form submission
-
-                    // Show SweetAlert if description is empty
-                    Swal.fire({
-                        icon: 'warning',
-                        title: 'Form harus diisi!',
-                        text: 'Harap isi deskripsi terlebih dahulu.',
-                        showConfirmButton: true,
-                        timer: 1500
-                    });
-                }
-            });
-
+        
             document.addEventListener('DOMContentLoaded', function() {
+                // Initialize CKEditor on page load
                 createEditor();
-                document.querySelector('#type').addEventListener('change', toggleDescriptionField);
             });
         </script>
+        
+        
 
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 

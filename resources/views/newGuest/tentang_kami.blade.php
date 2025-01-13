@@ -1,4 +1,9 @@
-<section class="about-us section" id="tentang_kami">
+
+ @extends('layout.templatenew') <!-- Menggunakan layout utama -->
+
+@section('tentang_kami') <!-- Bagian Tentang Kami -->
+
+<section class="about-us section" id="tentang_kami">    
 
 <div class="section section-feature-grey is-medium">
     <div class="container">
@@ -33,16 +38,20 @@
                 <div class="column is-8">
                     <div class="about-item" style="padding: 20px; margin-bottom: 20px; background-color: #f9f9f9; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);">
                         @foreach ($vimis as $vimi)
-                            <div class="about-description" style="font-size: 16px; color: #333; line-height: 1.8; margin-bottom: 15px; font-family: 'Arial', sans-serif;">
+                            <div class="about-description" style="font-size: 16px; color: #333; line-height: 1.8; margin-bottom: 15px; font-family: 'Arial', sans-serif; text-align: justify;">
                                 {!! $vimi->description !!}
                             </div>
                         @endforeach
                     </div>
+                    
                 </div>
                 
             </div>
         </div>
     </div>
 </div>
+
 </section>
+
+@endsection
 

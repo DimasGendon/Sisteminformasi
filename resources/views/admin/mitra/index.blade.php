@@ -1,7 +1,7 @@
-@extends('layout.admin') <!-- Atau layout yang kamu gunakan -->
+@extends('layout.admin')
 
 @push('style')
-    <!-- Tambahkan link CSS untuk Lightbox (jika Anda menggunakan Lightbox2 atau plugin lainnya) -->
+    <!-- Tambahkan link CSS untuk Lightbox -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
 @endpush
 
@@ -50,23 +50,23 @@
         </script>
     @endif
     @if ($errors->has('foto'))
-    <script>
-        Swal.fire({
-            toast: true,
-            icon: 'error',
-            title: '{{ $errors->first('foto') }}',
-            animation: true,
-            position: 'top-right',
-            showConfirmButton: false,
-            timer: 1500,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer);
-                toast.addEventListener('mouseleave', Swal.resumeTimer);
-            }
-        });
-    </script>
-@endif
+        <script>
+            Swal.fire({
+                toast: true,
+                icon: 'error',
+                title: '{{ $errors->first('foto') }}',
+                animation: true,
+                position: 'top-right',
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer);
+                    toast.addEventListener('mouseleave', Swal.resumeTimer);
+                }
+            });
+        </script>
+    @endif
 @endpush
 
 @section('content')
@@ -78,7 +78,7 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>foto</th>
+                    <th>Foto</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -103,13 +103,34 @@
                                 <button type="button" class="btn btn-danger delete-mitra-btn" title="Hapus Mitra">
                                     <i class="fas fa-trash-alt"></i>
                                 </button>
-
                             </form>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
+
+        <!-- Pagination -->
+        <nav aria-label="Navigasi Halaman">
+            <ul class="pagination justify-content-end"> <!-- Menambahkan justify-content-end di sini -->
+                <!-- Tombol Previous -->
+                <li class="page-item {{ $mitras->onFirstPage() ? 'disabled' : '' }}">
+                    <span class="page-link">Previous</span>
+                </li>
+
+                <!-- Nomor Halaman -->
+                @foreach ($mitras->getUrlRange(1, $mitras->lastPage()) as $page => $url)
+                    <li class="page-item {{ $mitras->currentPage() == $page ? 'active' : '' }}">
+                        <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                    </li>
+                @endforeach
+
+                <!-- Tombol Next -->
+                <li class="page-item {{ $mitras->hasMorePages() ? '' : 'disabled' }}">
+                    <a class="page-link" href="{{ $mitras->nextPageUrl() }}">Next</a>
+                </li>
+            </ul>
+        </nav>
 
         @include('admin.mitra.create')
     </div>

@@ -5,9 +5,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Sistem informasi BKK SMKS Muhammadiyah 1 Genteng</title>
+    <title>ADMIN BKK SMKS Muhammadiyah 1 Genteng</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('TemplateAdmin/images/ligo.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('TemplateAdmin/images/FBKK 2.png') }}">
     <link rel="stylesheet" href="{{ asset('TemplateAdmin/vendor/owl-carousel/css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('TemplateAdmin/vendor/owl-carousel/css/owl.theme.default.min.css') }}">
     {{-- <link rel="stylesheet" href="{{ asset('TemplateAdmin/icons/font-awesome-old/css/font-awesome.min.css') }}"> --}}
@@ -241,6 +241,7 @@
                             <span class="nav-text">Informasi</span>
                         </a>
                     </li>
+                    
 
                     <li class="{{ Route::is('vimi.create', 'vimi.edit') ? 'mm-active' : '' }}">
                         <a href="{{ route('vimi.navigate') }}" aria-expanded="false">

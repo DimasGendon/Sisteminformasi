@@ -91,11 +91,14 @@
                 @foreach ($slides as $slide)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $slide->judul }}</td> <!-- Menampilkan Judul Foto -->
+                        <td>
+                            <!-- Menampilkan judul atau "Tidak ada judul" jika kosong -->
+                            {{ $slide->judul ?: 'Tidak ada' }}
+                        </td>
                         <td>
                             <!-- Tambahkan link gambar untuk Lightbox -->
                             <a href="{{ asset('storage/' . $slide->photo_path) }}" data-lightbox="gallery" data-title="{{ $slide->judul }}">
-                                <img src="{{ asset('storage/' . $slide->photo_path) }}" class="card-img-top" alt="..." style="width: 50px;"> <!-- Mengurangi ukuran gambar -->
+                                <img src="{{ asset('storage/' . $slide->photo_path) }}" class="card-img-top" alt="..." style="width: 50px;">
                             </a>
                         </td>
                         <td>
@@ -110,6 +113,7 @@
                     </tr>
                 @endforeach
             </tbody>
+            
         </table>
 
         @include('admin.slide.create')
