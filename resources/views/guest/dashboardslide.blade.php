@@ -6,9 +6,7 @@
                     <div class="row">
                         <div class="col-lg-7">
                             <div class="text">
-                                <h1>We Provide <span>Medical</span> Services That You Can <span>Trust!</span></h1>
-                             
-                              
+                                <h1>{{ $slide->judul }}</h1>                                               
                             </div>
                         </div>
                     </div>
@@ -37,3 +35,4 @@
         });
     });
 </script>
+
