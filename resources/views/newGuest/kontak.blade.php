@@ -1,179 +1,86 @@
 <section class="about-us section" id="kontak">
-    <footer id="dark-footer" class="footer footer-dark">
+    <footer id="dark-footer" class="footer footer-dark" style="position: relative;">
         <div class="container">
             <div class="columns">
-                <div class="column is-3">
+                <!-- Kolom Kontak -->
+                <div class="column is-4">
                     <div class="fl-col fl-node-5ent3qyarcgk fl-col-bg-color fl-col-small" data-node="5ent3qyarcgk">
                         <div class="fl-col-content fl-node-content">
                             <div class="fl-module fl-module-heading fl-node-snjz2p5m4cye" data-node="snjz2p5m4cye">
                                 <div class="fl-module-content fl-node-content">
-                                    <h4 class="fl-heading">
-                                        <span class="fl-heading-text">Kontak kami</span>
+                                    <h4 class="fl-heading" style="font-size: 30px; font-weight: bold;">
+                                        <span class="fl-heading-text">KONTAK KAMI</span>
                                     </h4>
                                 </div>
                             </div>
-                            <div class="fl-module fl-module-icon fl-node-vjh1krsnetl3" data-node="vjh1krsnetl3">
+                            <div class="fl-module fl-module-icon fl-node-icons" data-node="icons">
                                 <div class="fl-module-content fl-node-content">
                                     <div class="fl-icon-wrap">
-                                        <span class="fl-icon">
-                                            <a href="https://maps.app.goo.gl/Gdmh13GqMeQwfPWp7" target="_blank"
-                                                tabindex="-1" aria-hidden="true"
-                                                aria-labelledby="fl-icon-text-vjh1krsnetl3" rel="noopener">
-                                                <i class="fas fa-map-marked-alt" aria-hidden="true"></i>
-                                            </a>
-                                        </span>
-                                        <div id="fl-icon-text-vjh1krsnetl3" class="fl-icon-text">
-                                            <a href="https://maps.app.goo.gl/Gdmh13GqMeQwfPWp7" target="_blank"
-                                                class="fl-icon-text-link fl-icon-text-wrap" rel="noopener">
-                                                <p class="address-text">Jl. KH Imam Bahri No.10, Dusun Krajan, Genteng
-                                                    Wetan, Kec. Genteng, Kabupaten Banyuwangi, Jawa Timur 68465</p>
-                                            </a>
+                                        <div class="contact-icons">
+                                            <!-- Alamat -->
+                                            <div class="contact-item">
+                                                <span class="fl-icon">
+                                                    <a href="https://maps.app.goo.gl/Gdmh13GqMeQwfPWp7" target="_blank"
+                                                        tabindex="-1" aria-hidden="true" rel="noopener">
+                                                        <i class="fas fa-map-marked-alt" aria-hidden="true"></i>
+                                                    </a>
+                                                </span>
+                                                <div class="fl-icon-text">
+                                                    <a href="https://maps.app.goo.gl/Gdmh13GqMeQwfPWp7" target="_blank"
+                                                        class="fl-icon-text-link fl-icon-text-wrap" rel="noopener">
+                                                        <p class="address-text">Jl. KH Imam Bahri No.10, Dusun Krajan,
+                                                            Genteng Wetan, Kec. Genteng, Kabupaten Banyuwangi, Jawa
+                                                            Timur 68465</p>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            <!-- Telepon -->
+                                            <div class="contact-item">
+                                                <span class="fl-icon">
+                                                    <a href="tel:082230101978" target="_blank" tabindex="-1"
+                                                        aria-hidden="true" rel="noopener">
+                                                        <i class="fas fa-phone" aria-hidden="true"></i>
+                                                    </a>
+                                                </span>
+                                                <div class="fl-icon-text">
+                                                    <a href="tel:082230101978" target="_blank"
+                                                        class="fl-icon-text-link fl-icon-text-wrap" rel="noopener">
+                                                        <p>0822-3010-1978</p>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            <!-- Email -->
+                                            <div class="contact-item">
+                                                <span class="fl-icon">
+                                                    <a href="mailto:smkmuhi.genteng1968@gmail.com" target="_blank"
+                                                        tabindex="-1" aria-hidden="true" rel="noopener">
+                                                        <i class="far fa-envelope" aria-hidden="true"></i>
+                                                    </a>
+                                                </span>
+                                                <div class="fl-icon-text">
+                                                    <a href="mailto:smkmuhi.genteng1968@gmail.com" target="_blank"
+                                                        class="fl-icon-text-link fl-icon-text-wrap" rel="noopener">
+                                                        <p>smkmuhi.genteng1968@gmail.com</p>
+                                                    </a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="fl-module fl-module-icon fl-node-gfqvuy3cbstn" data-node="gfqvuy3cbstn">
-                                <div class="fl-module-content fl-node-content">
-                                    <div class="fl-icon-wrap">
-                                        <span class="fl-icon">
-                                            <a href="tel:082230101978" target="_blank" tabindex="-1" aria-hidden="true"
-                                                aria-labelledby="fl-icon-text-gfqvuy3cbstn" rel="noopener">
-                                                <i class="fas fa-phone" aria-hidden="true"></i>
-                                            </a>
-                                        </span>
-                                        <div id="fl-icon-text-gfqvuy3cbstn" class="fl-icon-text">
-                                            <a href="tel:082230101978" target="_blank"
-                                                class="fl-icon-text-link fl-icon-text-wrap" rel="noopener">
-                                                <p>0822-3010-1978</p>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="fl-module fl-module-icon fl-node-knvtwu3rfx8h" data-node="knvtwu3rfx8h">
-                                <div class="fl-module-content fl-node-content">
-                                    <div class="fl-icon-wrap">
-                                        <span class="fl-icon">
-                                            <a href="mailto:smkmuhi.genteng1968@gmail.com" target="_blank"
-                                                tabindex="-1" aria-hidden="true"
-                                                aria-labelledby="fl-icon-text-knvtwu3rfx8h" rel="noopener">
-                                                <i class="far fa-envelope" aria-hidden="true"></i>
-                                            </a>
-                                        </span>
-                                        <div id="fl-icon-text-knvtwu3rfx8h" class="fl-icon-text">
-                                            <a href="mailto:smkmuhi.genteng1968@gmail.com" target="_blank"
-                                                class="fl-icon-text-link fl-icon-text-wrap" rel="noopener">
-                                                <p>smkmuhi.genteng1968@gmail.com</p>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <style>
-                                /* Mengatur .fl-icon-wrap untuk flexbox agar ikon dan teks berjejer secara horizontal */
-                                .fl-icon-wrap {
-                                    display: flex;
-                                    align-items: center;
-                                    /* Menyelaraskan item secara vertikal di tengah */
-                                    margin-bottom: 10px;
-                                    /* Memberikan jarak antara setiap kontak */
-                                }
-
-                                /* Memberikan ruang antara ikon dan teks */
-                                .fl-icon-wrap .fl-icon {
-                                    margin-right: 10px;
-                                    /* Menambahkan jarak antara ikon dan teks */
-                                }
-
-                                /* Menyelaraskan teks dengan ikon secara horizontal */
-                                .fl-icon-text {
-                                    display: flex;
-                                    align-items: center;
-                                    /* Menyelaraskan teks di tengah vertikal */
-                                }
-
-                                /* Mengubah warna teks link menjadi putih */
-                                .fl-icon-text-link,
-                                .fl-icon-text-link p {
-                                    color: white;
-                                    /* Menetapkan warna teks menjadi putih */
-                                    text-decoration: none;
-                                    /* Menghapus garis bawah pada teks */
-                                }
-
-                                /* Efek hover pada teks link */
-                                .fl-icon-text-link:hover,
-                                .fl-icon-text-link p:hover {
-                                    color: #ff6347;
-                                    /* Mengubah warna teks menjadi merah tomat saat hover */
-                                }
-
-                                /* Menetapkan warna teks alamat menjadi putih */
-                                .address-text {
-                                    color: white;
-                                    word-wrap: break-word;
-                                    /* Memastikan alamat dapat terbungkus dengan benar */
-                                }
-
-                                /* Mengubah warna ikon menjadi putih */
-                                .fl-icon a i {
-                                    color: white !important;
-                                }
-
-                                /* Efek hover pada ikon */
-                                .fl-icon a:hover i {
-                                    color: #ff6347;
-                                    /* Mengubah warna ikon menjadi merah tomat saat hover */
-                                }
-
-                                /* Mengubah ukuran ikon */
-                                .fl-icon a i {
-                                    color: white !important;
-                                    font-size: 20px;
-                                    /* Menambahkan ukuran font lebih besar untuk ikon */
-                                }
-
-                                /* Efek hover pada ikon dengan ukuran yang lebih besar */
-                                .fl-icon a:hover i {
-                                    color: #ff6347;
-                                    /* Mengubah warna ikon menjadi merah tomat saat hover */
-                                    font-size: 26px;
-                                    /* Menambah sedikit ukuran ikon saat hover */
-                                }
-                            </style>
-                            <style>
-                                /* Change the icon color to white */
-                                .fl-icon a i {
-                                    color: white !important;
-                                    /* Set the icon color to white */
-                                }
-
-                                /* Optional: Add a hover effect to change color on hover */
-                                .fl-icon a:hover i {
-                                    color: #ff6347;
-                                    /* Change the icon color on hover (example: tomato red) */
-                                }
-                            </style>
-
                         </div>
                     </div>
                 </div>
 
-                <div class="column is-3">
+                <!-- Kolom Logo dan Sosial Media -->
+                <div class="column is-2">
                     <div class="footer-column">
                         <div class="footer-logo">
-                            <img class="switcher-logo-w" src="{{ asset('foto/bkk1.png') }}" alt="" />
+                            <img class="switcher-logo-w" src="{{ asset('foto/bkk1.png') }}" alt=""
+                                style="height: 80px;" />
                         </div>
-
-                        <style>
-                            .footer-logo img {
-                                width: 50px;
-                                /* Menyesuaikan ukuran lebar logo */
-                                height: auto;
-                                /* Memastikan rasio gambar tetap terjaga */
-                            }
-                        </style>
 
                         <div class="footer-header">
                             <nav class="level is-mobile">
@@ -217,90 +124,16 @@
                             </nav>
                         </div>
 
-                        <style>
-                            /* Change the icon color to white */
-                            .social-icons a i {
-                                color: white !important;
-                                /* Ensures the icons are white */
-                            }
-
-                            /* Optional: Add a hover effect to change color on hover */
-                            .social-icons a:hover i {
-                                color: #ff6347;
-                                /* Change color on hover (example: tomato red) */
-                            }
-                        </style>
-
-
                         <div class="copyright">
                             <span class="moto light-text">Designed with by BKK SMK Muhammadiyah 1 Genteng.</span>
                         </div>
                     </div>
                 </div>
 
-                <style>
-                    .social-icons {
-                        display: flex;
-                        justify-content: space-evenly;
-                        align-items: center;
-                        flex-wrap: wrap;
-                        gap: 15px;
-                    }
-
-                    .social-icons .col-lg-4,
-                    .social-icons .col-md-4,
-                    .social-icons .col-12 {
-                        display: flex;
-                        justify-content: center;
-                    }
-
-                    .social-icons .form-control {
-                        display: flex;
-                        align-items: center;
-                    }
-
-                    .address-text {
-                        max-width: 280px;
-                        word-wrap: break-word;
-                        overflow: hidden;
-                    }
-
-                    /* Modify footer nav styling */
-                    .footer-nav {
-                        margin-top: 20px;
-                        text-align: center;
-                    }
-
-                    .footer-nav h4 {
-                        font-size: 18px;
-                        margin-bottom: 15px;
-                        color: #fff;
-                    }
-
-                    .footer-nav ul {
-                        list-style-type: none;
-                        padding: 0;
-                    }
-
-                    .footer-nav ul li {
-                        font-size: 14px;
-                        margin: 10px 0;
-                    }
-
-                    .footer-nav ul li a {
-                        text-decoration: none;
-                        color: #fff;
-                    }
-
-                    .footer-nav ul li a:hover {
-                        color: #ff6347;
-                    }
-                </style>
-
-
-                <div class="column is-2">
-                    <h4>Navigasi Link</h4>
-                    <ul>
+                <!-- Kolom Navigasi Link -->
+                <div class="column is-2.3" style="text-align: center;">
+                    <h4 class="navigasi-link">Navigasi Link</h4>
+                    <ul style="list-style-type: none; padding: 0;">
                         <li><a href="{{ route('tentang_kami.show') }}">Tentang Kami</a></li>
                         <li><a href="{{ route('informasi.show') }}">Informasi</a></li>
                         <li><a href="{{ route('alumni.show') }}">Alumni</a></li>
@@ -309,50 +142,14 @@
                     </ul>
                 </div>
 
-                <style>
-                    /* Styling for the 'Navigasi' section */
-                    .column h4 {
-                        font-size: 20px;
-                        /* Decreased font size for the heading */
-                        font-weight: bold;
-                        margin-bottom: 15px;
-                        color: #fff;
-                    }
 
-                    .column ul {
-                        list-style: none;
-                        padding: 0;
-                    }
-
-                    .column ul li {
-                        margin-bottom: 8px;
-                        /* Slightly smaller space between items */
-                    }
-
-                    .column ul li a {
-                        font-size: 13px;
-                        /* Decreased font size for list items */
-                        color: #fff;
-                        text-decoration: none;
-                    }
-
-                    .column ul li a:hover {
-                        color: #ff6347;
-                        /* Color change on hover */
-                    }
-                </style>
-
-
+                <!-- Kolom Peta -->
                 <div class="column">
                     <div class="footer-column">
-                        <div class="footer-header">
-                            {{-- <h3>Our Location</h3> --}}
-                        </div>
                         <div class="fl-map">
                             <iframe
                                 src="https://www.google.com/maps/embed/v1/place?q=SMKS+Muhammadiyah+1+Genteng&amp;key=AIzaSyD09zQ9PNDNNy9TadMuzRV_UsPUoWKntt8"
                                 aria-hidden="true" width="300" height="225"></iframe>
-                            <!-- Adjusted to smaller size -->
                         </div>
                     </div>
                 </div>
@@ -361,3 +158,137 @@
         </div>
     </footer>
 </section>
+
+<style>
+    .navigasi-link {
+        font-size: 24px;
+    }
+
+    /* Memperbesar ukuran font untuk judul 'Kontak Kami' */
+    .fl-heading-text {
+        font-size: 20px;
+        /* Sesuaikan ukuran font sesuai kebutuhan */
+        font-weight: bold;
+        /* Membuat teks menjadi lebih tebal */
+    }
+
+    /* Gaya untuk ikon kontak */
+    .contact-icons {
+        display: flex;
+        /* Menata item kontak secara horizontal */
+        flex-direction: column;
+        /* Menata kontak dalam kolom */
+        align-items: flex-start;
+        /* Menempatkan ikon di kiri dan teks di sebelah kanan */
+    }
+
+    .contact-item {
+        display: flex;
+        /* Menggunakan flex untuk menata ikon dan teks secara horizontal */
+        align-items: center;
+        /* Menyelaraskan ikon dan teks secara vertikal */
+        margin-bottom: 15px;
+        /* Memberikan jarak antar item */
+    }
+
+    .contact-item i {
+        font-size: 24px;
+        /* Ukuran ikon */
+        color: white;
+        margin-right: 10px;
+        /* Memberikan jarak antara ikon dan teks */
+    }
+
+    .contact-item a:hover i {
+        color: #ff6347;
+        /* Warna ikon saat hover */
+    }
+
+    .contact-item p {
+        color: white;
+        font-size: 14px;
+        margin: 0;
+        /* Menghilangkan margin default */
+    }
+
+    /* Gaya untuk bagian teks kontak */
+    .fl-icon-text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        /* Memastikan teks berada di sebelah kanan ikon */
+    }
+
+    /* CSS untuk posisi copyright */
+    .footer {
+        position: relative;
+        padding-bottom: 40px;
+        /* Memberikan sedikit ruang agar teks tidak terlalu rapat dengan bagian bawah */
+    }
+
+    .copyright {
+        position: absolute;
+        bottom: 10px;
+        /* Menempatkan teks di bagian bawah */
+        left: 50%;
+        /* Menempatkan di tengah secara horizontal */
+        transform: translateX(-50%);
+        /* Menggeser teks kembali agar benar-benar terpusat */
+        color: white;
+        font-size: 12px;
+    }
+
+    /* Gaya untuk ikon kontak */
+    .contact-icons {
+        display: flex;
+        flex-direction: column;
+        /* Menata ikon secara vertikal */
+        align-items: flex-start;
+        /* Menempatkan ikon di sebelah kiri */
+    }
+
+    .contact-item {
+        margin-bottom: 15px;
+        /* Memberikan jarak antara kontak */
+    }
+
+    .contact-item i {
+        font-size: 15px;
+        /* Ukuran ikon */
+        color: white;
+    }
+
+    .contact-item a:hover i {
+        color: #ff6347;
+        /* Warna ikon saat hover */
+    }
+
+    .contact-item p {
+        color: white;
+        font-size: 14px;
+        margin: 5px 0 0;
+    }
+
+    /* Gaya untuk ikon media sosial */
+    .social-icons {
+        display: flex;
+        /* Menggunakan Flexbox untuk penataan */
+        justify-content: space-between;
+        /* Membuat ruang antara elemen ikon */
+        align-items: center;
+        /* Memastikan ikon sejajar secara vertikal */
+    }
+
+    .social-icons a {
+        margin: 0 10px;
+        /* Memberikan jarak antar ikon */
+    }
+
+    .social-icons a i {
+        color: white !important;
+    }
+
+    .social-icons a:hover i {
+        color: #ff6347;
+    }
+</style>

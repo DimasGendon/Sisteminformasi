@@ -42,11 +42,10 @@
         ***********************************-->
         <div class="nav-header">
             <a href="index.html" class="brand-logo">
-                <img class="w-32 h-32 rounded-full" src="{{ asset('TemplateAdmin/images/li.png') }}" alt="Nama Brand"
-                    style="width: 70px; height: 90px; border-radius: 40%;">
+                {{-- <img class="w-32 h-32 rounded-full" src="{{ asset('TemplateAdmin/images/li.png') }}" alt="Nama Brand"
+                    style="width: 70px; height: 90px; border-radius: 40%;"> --}}
                 <img class="logo-compact" src="{{ asset('TemplateAdmin/images/logo-text.png') }}" alt="">
-                <img class="brand-title" src="{{ asset('TemplateAdmin/images/lo.png') }}" alt="">
-            </a>
+             </a>
 
             <div class="nav-control">
                 <div class="hamburger">

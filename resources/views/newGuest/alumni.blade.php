@@ -58,8 +58,10 @@
         background-color: #fff;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         box-sizing: border-box;
-        min-height: 350px; /* Set a fixed minimum height for each card */
-        height: 100%; /* Ensure uniform height for all cards */
+        min-height: 350px; /* Menetapkan tinggi minimum yang seragam pada setiap card */
+        height: 100%; /* Memastikan semua card memiliki tinggi yang sama */
+        display: flex; /* Menggunakan flex untuk menyeimbangkan konten di dalam card */
+        flex-direction: column; /* Membuat elemen di dalam card terorganisir secara vertikal */
     }
 
     .alumni-card:hover {
@@ -73,19 +75,22 @@
         border-radius: 50%;
         margin-bottom: 20px;
         object-fit: cover;
+        margin-left: auto;
+        margin-right: auto; /* Center the image */
     }
 
     .alumni-name {
         font-size: 1.5rem;
         font-weight: bold;
         margin-bottom: 10px;
-        flex-grow: 1; /* Allow space to grow for name */
+        flex-grow: 0; /* Membatasi agar judul tidak tumbuh */
     }
 
     .alumni-major, .alumni-work {
         font-size: 1rem;
         color: #555;
         margin-bottom: 5px;
+        flex-grow: 0; /* Membatasi agar deskripsi tidak tumbuh dan menyeimbangkan tinggi card */
     }
 
     /* Ensure proper spacing between elements inside the card */
@@ -93,7 +98,7 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        flex-grow: 1;
+        flex-grow: 1; /* Membuat isi card tetap tumbuh jika diperlukan */
     }
 
     /* Responsive Adjustments */

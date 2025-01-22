@@ -84,7 +84,7 @@
             flex-direction: column;
             z-index: 1000;
 
-            div {
+                {
                 background-color: #1e1e27;
                 box-shadow: 0 5px 10px rgba(#000, 0.15);
                 padding: 1.25rem;
@@ -213,31 +213,41 @@
                         <!-- Logo Dark -->
                         <img class="dark-logo switcher-logo" src="{{ asset('foto/navbar.png') }}" alt="Logo Dark" />
                     </a>
-                    
+
                     <style>
                         /* Pastikan gambar logo tidak terdistorsi */
-                        img.light-logo, img.dark-logo {
-                            max-width: 400px;  /* Menentukan lebar maksimal logo di desktop (dalam px) */
-                            height: auto;      /* Menjaga rasio gambar */
-                            object-fit: contain; /* Menjaga proporsi gambar dalam batas kontainer */
+                        img.light-logo,
+                        img.dark-logo {
+                            max-width: 400px;
+                            /* Menentukan lebar maksimal logo di desktop (dalam px) */
+                            height: auto;
+                            /* Menjaga rasio gambar */
+                            object-fit: contain;
+                            /* Menjaga proporsi gambar dalam batas kontainer */
                         }
-                        
+
                         /* Responsif untuk desktop */
                         @media (min-width: 820px) {
-                            img.light-logo, img.dark-logo {
-                                max-width: 400px;  /* Ukuran logo untuk perangkat desktop */
+
+                            img.light-logo,
+                            img.dark-logo {
+                                max-width: 400px;
+                                /* Ukuran logo untuk perangkat desktop */
                             }
                         }
-                        
+
                         /* Responsif untuk perangkat mobile */
                         @media (max-width: 768px) {
-                            img.light-logo, img.dark-logo {
-                                max-width: 150px;  /* Ukuran logo lebih besar di perangkat mobile */
+
+                            img.light-logo,
+                            img.dark-logo {
+                                max-width: 150px;
+                                /* Ukuran logo lebih besar di perangkat mobile */
                             }
                         }
                     </style>
-                    
-                    
+
+
 
 
 
@@ -265,7 +275,7 @@
                     <div class="navbar-start"
                         style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; padding: 0 20px;">
                         <!-- Navbar item -->
-                        <a class="navbar-item is-slide" href="{{ route('user') }}">Home</a>
+                        <a class="navbar-item is-slide" href="{{ route('user') }}">Beranda</a>
                         <a class="navbar-item is-slide" href="{{ route('tentang_kami.show') }}">Tentang Kami</a>
                         <a class="navbar-item is-slide" href="{{ route('informasi.show') }}">Informasi</a>
                         <a class="navbar-item is-slide" href="{{ route('mitra.show') }}">Mitra</a>
@@ -297,52 +307,206 @@
 
 
     <!-- Services -->
-    <section class="about-us section" id="informasi">
-        <div id="services" class="section is-medium">
-            <div class="container">
-                <!-- Title -->
-                <div class="section-title-wrapper">
-                    <div class="bg-number">1</div>
-                    <h2 class="title section-title has-text-centered dark-text">
-                        INFORMASI
-                    </h2>
-                </div>
+        <section class="about-us section" id="informasi">
+            <div id="services" class="section is-medium">
+                <div class="container">
+                    <!-- Title -->
+                    <div class="section-title-wrapper">
+                        <div class="bg-number">1</div>
+                        <h2 class="title section-title has-text-centered dark-text">
+                            INFORMASI
+                        </h2>
+                    </div>
 
-                <div class="content-wrapper">
-                    <div class="columns is-vcentered is-multiline has-text-centered">
-                        <!-- Foreach block -->
-                        @foreach ($informasis as $informasi)
-                            <div class="column is-2-desktop is-4-tablet is-6-mobile">
-                                <div class="startup-icon-box"
-                                    style="box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); border-radius: 10px; overflow: hidden; background: #fff; padding: 20px; transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; justify-content: space-between; height: 100%; border: 1px solid #ddd;">
-                                    <div class="is-icon-reveal"
-                                        style="margin-bottom: 15px; display: flex; justify-content: center; align-items: center;">
-                                        <!-- Checkmark icon -->
-                                        <i class="fas fa-check-circle" style="font-size: 40px; color: #4a90e2;"></i>
+                    <div class="content-wrapper">
+                        <div class="columns is-vcentered is-multiline has-text-centered">
+                            <!-- Foreach block -->
+                            @foreach ($informasis as $index => $informasi)
+                                <div class="column is-2-desktop is-4-tablet is-6-mobile card-item"
+                                    style="{{ $index >= 5 ? 'display: none;' : '' }}">
+                                    <div class="startup-icon-box">
+                                        <!-- Judul Card -->
+                                        <div class="box-title">
+                                            {{ $informasi->judul }}
+                                        </div>
+                                        <!-- Garis pemisah di bawah judul -->
+                                        <div class="content-divider"></div>
+
+                                        <!-- Konten dalam card (deskripsi) -->
+                                        <p class="box-content">
+                                            {{ Str::limit($informasi->deskripsi, 150) }}
+                                        </p>
+
+                                        <!-- Garis pemisah di bawah deskripsi -->
+                                        <div class="content-divider"></div>
+
+                                        <!-- Ikon centang -->
+                                        <div class="is-icon-reveal">
+                                            <i class="fas fa-check-circle" style="font-size: 40px; color: #4a90e2;"></i>
+                                        </div>
                                     </div>
-                
-                                    <div class="box-title"
-                                        style="font-weight: bold; font-size: 16px; margin-bottom: 10px; color: #333; text-align: center; flex-grow: 1;">
-                                        {{ $informasi->judul }}
-                                    </div>
-                
-                                    <p class="box-content is-tablet-padded"
-                                        style="font-size: 14px; color: #555; line-height: 1.6; text-align: center; margin-bottom: 20px;">
-                                        {{ Str::limit($informasi->deskripsi, 150) }}
-                                    </p>
                                 </div>
+                            @endforeach
+                        </div>
+
+                        <!-- Tombol untuk menampilkan lebih banyak informasi -->
+                        @if (count($informasis) > 5)
+                            <div class="has-text-centered is-title-reveal pt-20 pb-20">
+                                <!-- Ganti # dengan URL yang benar menuju informasi.show -->
+                                <a href="{{ route('informasi.show') }}"
+                                class="button button-cta btn-align primary-btn raised rounded" id="seeMoreButton">Lihat
+                                Selengkapnya</a>
                             </div>
-                        @endforeach
-                    </div>
-                    <div class="has-text-centered is-title-reveal pt-20 pb-20">
-                        <a href="#" class="button button-cta primary-btn rounded raised">Learn more</a>
+                        @endif
+
                     </div>
                 </div>
-                
-                
             </div>
-        </div>
-    </section>
+        </section>
+
+        <script>
+            // Menangani tombol "Lihat Selengkapnya"
+            document.getElementById('show-more').addEventListener('click', function(event) {
+                event.preventDefault();
+
+                // Menampilkan card tambahan
+                let hiddenCards = document.querySelectorAll('.card-item[style="display: none;"]');
+
+                hiddenCards.forEach(card => {
+                    card.style.display = 'block'; // Tampilkan card
+                });
+
+                // Menyembunyikan tombol setelah menampilkan semua card
+                this.style.display = 'none';
+            });
+        </script>
+
+        <style>
+            /* Gaya untuk Card */
+            /* Menyusun kolom dengan 5 card sejajar secara konsisten */
+    .columns.is-vcentered.is-multiline.has-text-centered {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr); /* 5 kolom sama lebar */
+        gap: 20px; /* Menambahkan jarak antar card */
+    }
+
+    /* Ukuran card tetap konsisten */
+    .column.is-2-desktop {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+        padding: 0;
+    }
+
+    .startup-icon-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border-radius: 10px;
+        background: #fff;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border: 1px solid #ddd;
+        height: 380px;
+        transition: transform 0.3s, box-shadow 0.3s;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    /* Membuat semua bagian card (judul, konten, dan ikon) memiliki tinggi yang konsisten */
+    .box-title, .box-content, .is-icon-reveal {
+        display: flex;
+        flex-shrink: 0; /* Pastikan tidak ada bagian yang menyusut */
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .box-title {
+        font-weight: bold;
+        font-size: 16px;
+        margin-bottom: 10px;
+        color: #333;
+        line-height: 1.2;
+        height: 4.3em; /* Menjaga tinggi judul tetap konsisten */
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* Batasi teks hanya 3 baris */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* Membuat bagian konten card (deskripsi) memiliki tinggi terbatas dan titik tiga di akhir */
+.box-content {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    margin: 10px 0;
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 7; /* Membatasi jumlah baris, sesuaikan jika perlu */
+    -webkit-box-orient: vertical; /* Membuat box fleksibel secara vertikal */
+    height: 7em; /* Tentukan tinggi tetap untuk deskripsi */
+}
+
+/* Agar ikon centang tetap berada di bawah */
+.is-icon-reveal {
+    margin-top: auto; /* Posisikan ikon centang ke bawah */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px; /* Pastikan ikon memiliki tinggi yang konsisten */
+}
+
+
+    /* Garis pemisah */
+    .content-divider {
+        margin: 10px 0;
+        border-bottom: 2px solid #4a90e2;
+        width: 100%;
+    }
+
+    /* Responsif untuk tablet dan mobile, tetap menjaga ukuran card yang konsisten */
+    @media (max-width: 1024px) {
+        .columns.is-vcentered.is-multiline.has-text-centered {
+            grid-template-columns: repeat(3, 1fr); /* 3 card per baris untuk tablet */
+        }
+
+        .column.is-2-desktop {
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .columns.is-vcentered.is-multiline.has-text-centered {
+            grid-template-columns: repeat(2, 1fr); /* 2 card per baris untuk layar kecil */
+        }
+
+        .column.is-2-desktop {
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .columns.is-vcentered.is-multiline.has-text-centered {
+            grid-template-columns: 1fr; /* 1 card per baris untuk layar ponsel */
+        }
+
+        .column.is-2-desktop {
+            width: 100%;
+        }
+    }
+
+        </style>
+
+
+
+
+
 
     <!-- Feature highlight -->
     {{-- @include('newGuest.tentang_kami') --}}
@@ -532,30 +696,6 @@
                                     id="seeMoreAlumniButton">Lihat Selengkapnya</a>
                             </div>
                         @endif
-
-                        <!-- Show all the alumni when "Lihat Selengkapnya" is clicked -->
-                        {{-- <div class="columns is-vcentered is-multiline is-centered" id="allAlumni"
-                            style="display: none;">
-                            @foreach ($alumnis as $index => $alumni)
-                                <!-- Show only the alumni after the first 3 -->
-                                @if ($index >= 3)
-                                    <div class="column is-12-mobile is-6-tablet is-4-desktop is-4-widescreen">
-                                        <!-- Single Alumni Item -->
-                                        <div class="alumni-card">
-                                            <div class="card-image">
-                                                <img class="alumni-photo"
-                                                    src="{{ asset('storage/' . $alumni->foto) }}" alt="Foto Alumni">
-                                            </div>
-                                            <div class="card-content">
-                                                <h3 class="alumni-name">{{ $alumni->nama }}</h3>
-                                                <p class="alumni-major">Jurusan: {{ $alumni->jurusan }}</p>
-                                                <p class="alumni-work">Working at: {{ $alumni->bekerja }}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endif
-                            @endforeach
-                        </div> --}}
                     </div>
                     <div class="column"></div>
                 </div>
@@ -566,12 +706,17 @@
     <style>
         /* Style for Alumni Section */
         .alumni-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             border: 1px solid #e0e0e0;
             border-radius: 10px;
             padding: 20px;
             text-align: center;
             background-color: #fff;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            /* Ensure all cards have equal height */
         }
 
         .alumni-card:hover {
@@ -585,6 +730,9 @@
             border-radius: 50%;
             margin-bottom: 20px;
             object-fit: cover;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .alumni-name {
@@ -597,6 +745,7 @@
         .alumni-work {
             font-size: 1rem;
             color: #555;
+            margin: 10px 0;
         }
 
         /* Responsive Adjustments */
@@ -631,18 +780,24 @@
             padding: 10px;
         }
 
-        /* After revealing all alumni, show 3 per row */
-        #allAlumni {
+        /* Ensuring all cards have the same size */
+        .alumni-card {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 350px;
+            /* Set a fixed height for the cards */
         }
 
-        /* Adjust to 3 items per row in larger screens */
-        .column.is-12-mobile.is-6-tablet.is-4-desktop.is-4-widescreen {
-            flex: 0 0 32%;
-            /* Adjust for 3 items per row */
-            margin-bottom: 20px;
+        /* Adjust the width of cards for larger screens */
+        @media (min-width: 1024px) {
+            .column.is-12-mobile.is-6-tablet.is-4-desktop {
+                display: flex;
+                justify-content: center;
+                flex: 0 0 30%;
+                /* 3 items per row */
+                padding: 10px;
+            }
         }
     </style>
 
@@ -665,167 +820,163 @@
 
     <!-- Clients mitra -->
     <section class="about-us section" id="mitra">
-   
-    
+
+
         <div class="container">
             <h2 class="title section-title has-text-centered dark-text">
                 MITRA
             </h2>
-           <section class="customer-logos slider">
-            @foreach ($mitras as $mitra)
-            <div class="slide"><img src="storage/{{ $mitra->foto }}"></div>
-            @endforeach
-           </section>
+            <section class="customer-logos slider">
+                @foreach ($mitras as $mitra)
+                    <div class="slide"><img src="storage/{{ $mitra->foto }}"></div>
+                @endforeach
+            </section>
         </div>
     </section>
-    
+
     <style>
-        h2{
-      text-align:center;
-      padding: 20px;
-    }
-    /* Slider */
-    
-    .slick-slide {
-        margin: 0px 20px;
-    }
-    
-    .slick-slide img {
-        width: 100%;
-    }
-    
-    .slick-slider
-    {
-        position: relative;
-        display: block;
-        box-sizing: border-box;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-                user-select: none;
-        -webkit-touch-callout: none;
-        -khtml-user-select: none;
-        -ms-touch-action: pan-y;
+        h2 {
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Slider */
+
+        .slick-slide {
+            margin: 0px 20px;
+        }
+
+        .slick-slide img {
+            width: 100%;
+        }
+
+        .slick-slider {
+            position: relative;
+            display: block;
+            box-sizing: border-box;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-touch-callout: none;
+            -khtml-user-select: none;
+            -ms-touch-action: pan-y;
             touch-action: pan-y;
-        -webkit-tap-highlight-color: transparent;
-    }
-    
-    .slick-list
-    {
-        position: relative;
-        display: block;
-        overflow: hidden;
-        margin: 0;
-        padding: 0;
-    }
-    .slick-list:focus
-    {
-        outline: none;
-    }
-    .slick-list.dragging
-    {
-        cursor: pointer;
-        cursor: hand;
-    }
-    
-    .slick-slider .slick-track,
-    .slick-slider .slick-list
-    {
-        -webkit-transform: translate3d(0, 0, 0);
-           -moz-transform: translate3d(0, 0, 0);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .slick-list {
+            position: relative;
+            display: block;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        .slick-list:focus {
+            outline: none;
+        }
+
+        .slick-list.dragging {
+            cursor: pointer;
+            cursor: hand;
+        }
+
+        .slick-slider .slick-track,
+        .slick-slider .slick-list {
+            -webkit-transform: translate3d(0, 0, 0);
+            -moz-transform: translate3d(0, 0, 0);
             -ms-transform: translate3d(0, 0, 0);
-             -o-transform: translate3d(0, 0, 0);
-                transform: translate3d(0, 0, 0);
-    }
-    
-    .slick-track
-    {
-        position: relative;
-        top: 0;
-        left: 0;
-        display: block;
-    }
-    .slick-track:before,
-    .slick-track:after
-    {
-        display: table;
-        content: '';
-    }
-    .slick-track:after
-    {
-        clear: both;
-    }
-    .slick-loading .slick-track
-    {
-        visibility: hidden;
-    }
-    
-    .slick-slide
-    {
-        display: none;
-        float: left;
-        height: 100%;
-        min-height: 1px;
-    }
-    [dir='rtl'] .slick-slide
-    {
-        float: right;
-    }
-    .slick-slide img
-    {
-        display: block;
-    }
-    .slick-slide.slick-loading img
-    {
-        display: none;
-    }
-    .slick-slide.dragging img
-    {
-        pointer-events: none;
-    }
-    .slick-initialized .slick-slide
-    {
-        display: block;
-    }
-    .slick-loading .slick-slide
-    {
-        visibility: hidden;
-    }
-    .slick-vertical .slick-slide
-    {
-        display: block;
-        height: auto;
-        border: 1px solid transparent;
-    }
-    .slick-arrow.slick-hidden {
-        display: none;
-    }
+            -o-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+        }
+
+        .slick-track {
+            position: relative;
+            top: 0;
+            left: 0;
+            display: block;
+        }
+
+        .slick-track:before,
+        .slick-track:after {
+            display: table;
+            content: '';
+        }
+
+        .slick-track:after {
+            clear: both;
+        }
+
+        .slick-loading .slick-track {
+            visibility: hidden;
+        }
+
+        .slick-slide {
+            display: none;
+            float: left;
+            height: 100%;
+            min-height: 1px;
+        }
+
+        [dir='rtl'] .slick-slide {
+            float: right;
+        }
+
+        .slick-slide img {
+            display: block;
+        }
+
+        .slick-slide.slick-loading img {
+            display: none;
+        }
+
+        .slick-slide.dragging img {
+            pointer-events: none;
+        }
+
+        .slick-initialized .slick-slide {
+            display: block;
+        }
+
+        .slick-loading .slick-slide {
+            visibility: hidden;
+        }
+
+        .slick-vertical .slick-slide {
+            display: block;
+            height: auto;
+            border: 1px solid transparent;
+        }
+
+        .slick-arrow.slick-hidden {
+            display: none;
+        }
     </style>
-    
+
     <script>
-        
-        $(document).ready(function(){
-        $('.customer-logos').slick({
-            slidesToShow: 6,
-            slidesToScroll: 1,
-            autoplay: true,
-            autoplaySpeed: 1500,
-            arrows: false,
-            dots: false,
-            pauseOnHover: false,
-            responsive: [{
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 4
-                }
-            }, {
-                breakpoint: 520,
-                settings: {
-                    slidesToShow: 3
-                }
-            }]
+        $(document).ready(function() {
+            $('.customer-logos').slick({
+                slidesToShow: 6,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 1500,
+                arrows: false,
+                dots: false,
+                pauseOnHover: false,
+                responsive: [{
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 4
+                    }
+                }, {
+                    breakpoint: 520,
+                    settings: {
+                        slidesToShow: 3
+                    }
+                }]
+            });
         });
-    });
     </script>
 
 
@@ -931,7 +1082,7 @@
     {{-- <script src="https://maps.google.com/maps/api/js?key=AIzaSyAGLO_M5VT7BsVdjMjciKoH1fFJWWdhDPU"></script> --}}
     <script src="{{ asset('newTemplate/assets/js/app.js') }}"></script>
     <script src="{{ asset('newTemplate/assets/js/core.js') }}"></script>
-    
+
 </body>
 
 </html>

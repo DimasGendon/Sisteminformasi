@@ -23,7 +23,7 @@
             <div class="columns is-multiline">
                 <!-- Tentang Kami -->
                 <div class="column is-4">
-                    <div class="about-item" style="padding: 20px; margin-bottom: 20px; background-color: #f9f9f9; border-radius: 8px;">
+                    <div class="about-item" style="padding: 20px; margin-bottom: 20px; background-color: #f9f9f9; border-radius: 8px; border: 2px solid #ddd; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
                         @foreach ($tentangkamis as $tentangkami)
                             <h4 class="about-title" style="font-size: 24px; color: #007bff; margin-bottom: 10px;">
                                 {{ $tentangkami->judul }}
@@ -34,6 +34,7 @@
                         @endforeach
                     </div>
                 </div>
+                
                 <!-- Visi & Misi -->
                 <div class="column is-8">
                     <div class="about-item" style="padding: 20px; margin-bottom: 20px; background-color: #f9f9f9; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);">
