@@ -10,10 +10,21 @@
             .form-group {
                 margin-bottom: 1.5rem;
             }
+            ul,
+            ol,
+            li {
+                position: relative;
+                visibility: visible;
+                display: list-item;
+                list-style-type: decimal;
+                padding-left: 20px;
+                /* Pastikan ul dan ol terlihat */
+            }
         </style>
     @endpush
 
     @push('script')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
 
         <script>

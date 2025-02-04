@@ -128,7 +128,7 @@
             <ul class="pagination justify-content-end"> <!-- Pagination berada di sebelah kanan -->
                 <!-- Previous Button -->
                 <li class="page-item {{ $alumnis->onFirstPage() ? 'disabled' : '' }}">
-                    <span class="page-link">Previous</span>
+                    <span class="page-link">Back</span>
                 </li>
 
                 <!-- Page Number Links -->

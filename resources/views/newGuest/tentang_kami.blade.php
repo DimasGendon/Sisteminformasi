@@ -6,7 +6,7 @@
 <section class="about-us section" id="tentang_kami">    
 
 <div class="section section-feature-grey is-medium">
-    <div class="container">
+    {{-- <div class="container"> --}}
         <!-- Title -->
         <div class="section-title-wrapper">
             <div class="bg-number">2</div>
@@ -51,6 +51,26 @@
         </div>
     </div>
 </div>
+
+<style>
+    .section {
+            padding: 0rem 1.5rem;
+        }
+
+        @media screen and (min-width: 1024px) {
+            .section {
+                padding: 0rem 3rem;
+            }
+
+            .section.is-medium {
+                padding: 3rem 4.5rem;
+            }
+
+            .section.is-large {
+                padding: 18rem 6rem;
+            }
+        }
+</style>
 
 </section>
 

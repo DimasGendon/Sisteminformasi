@@ -10,6 +10,22 @@
             .form-group {
                 margin-bottom: 1.5rem;
             }
+
+            ol {
+                list-style-type: decimal;
+                /* Menampilkan angka */
+                padding-left: 40px;
+                /* Pindahkan angka ke kanan */
+            }
+
+            li {
+                position: relative;
+                visibility: visible;
+                display: list-item;
+                list-style-type: decimal;
+                padding-left: 20px;
+                /* Pastikan ul dan ol terlihat */
+            }
         </style>
     @endpush
 
@@ -28,6 +44,7 @@
                     })
                     .then(newEditor => {
                         editor = newEditor;
+
                     })
                     .catch(error => {
                         console.log(error);
@@ -62,7 +79,7 @@
             document.querySelector('form').addEventListener('submit', function(e) {
                 const descriptionContent = editor ? editor.getData() : ''; // Get content from CKEditor if it exists
 
-                if (!descriptionContent.trim()) {  // Check if description is empty
+                if (!descriptionContent.trim()) { // Check if description is empty
                     e.preventDefault(); // Prevent form submission
 
                     // Show SweetAlert if description is empty
@@ -126,7 +143,6 @@
                 });
             </script>
         @endif
-
     @endpush
 
     <div class="container mt-4">

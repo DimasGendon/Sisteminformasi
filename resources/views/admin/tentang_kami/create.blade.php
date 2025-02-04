@@ -10,6 +10,16 @@
             .form-group {
                 margin-bottom: 1.5rem;
             }
+            ul,
+            ol,
+            li {
+                position: relative;
+                visibility: visible;
+                display: list-item;
+                list-style-type: decimal;
+                padding-left: 20px;
+                /* Pastikan ul dan ol terlihat */
+            }
         </style>
     @endpush
 

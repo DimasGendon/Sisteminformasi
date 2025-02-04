@@ -5,21 +5,37 @@
         <style>
             .ck-editor__editable_inline {
                 height: 450px;
+                /* Ensure CKEditor is above other elements */
             }
 
             .form-group {
                 margin-bottom: 1.5rem;
             }
+
+            ul,
+            ol,
+            li {
+                position: relative;
+                visibility: visible;
+                display: list-item;
+                list-style-type: decimal;
+                padding-left: 20px;
+                /* Pastikan ul dan ol terlihat */
+            }
+
         </style>
     @endpush
 
     @push('script')
+        <!-- Add jQuery CDN -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
         <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
         <script>
             let editor;
 
-            // Create CKEditor
+            // Fungsi untuk membuat editor CKEditor
             function createEditor() {
                 ClassicEditor
                     .create(document.querySelector('#editor'), {
@@ -27,32 +43,17 @@
                             uploadUrl: "{{ route('store.image', ['_token' => csrf_token()]) }}",
                         }
                     })
-                    .then(newEditor => {
-                        editor = newEditor;
-                    })
                     .catch(error => {
                         console.log(error);
                     });
             }
 
             document.addEventListener('DOMContentLoaded', function() {
+                // Initialize CKEditor on page load
                 createEditor();
-
-                // SweetAlert2 for success message
-                @if(session('success'))
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Berhasil!',
-                        text: '{{ session('success') }}',
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 1500,
-                        timerProgressBar: true
-                    });
-                @endif
             });
         </script>
+
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         @if (session('Berhasil'))
             <script>
@@ -104,7 +105,6 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Simpan</button>
-            <!-- Tombol Kembali, arahkan ke halaman create -->
         </form>
     </div>
 @endsection

@@ -23,7 +23,7 @@ class SlideController extends Controller
         // Validasi input, buat 'judul' menjadi optional
         $request->validate([
             'judul' => 'nullable|string|max:255', // Membolehkan judul kosong
-            'photo' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048', // Validasi foto
+            'photo' => 'required|image|mimes:jpg,jpeg,png,gif|max:8120', // Validasi foto
         ], [
             // Pesan error khusus
             'judul.required' => 'Judul foto wajib diisi.',

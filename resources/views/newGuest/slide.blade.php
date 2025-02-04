@@ -3,27 +3,38 @@
     <div class="Wallop-list">
         @foreach ($slides as $index => $slide)
             <div class="Wallop-item {{ $index === 0 ? 'Wallop-item--current' : '' }} has-background-image"
-                data-background="https://via.placeholder.com/1920x1080"
-                data-demo-background="{{ asset('storage/' . $slide->photo_path) }}">
+                style="background-image: url('{{ asset('storage/' . $slide->photo_path) }}');">
                 <div class="Wallop-overlay"></div>
                 <div class="Wallop-caption-wrapper">
                     <div class="container">
                         <div class="columns is-gapless is-vcentered">
                             <div class="column is-5">
                                 <div class="caption-inner">
-                                    <h1>BKK SMK Muhammadiyah 1 Genteng</h1>
+                                    <h1>BKK SMKS Muhammadiyah 1 Genteng</h1>
                                     <div class="caption-divider"></div>
-                                    <div class="caption-text">
-                                        <span>SMK Muhammadiyah 1 Genteng</span>
-                                        {{-- <div class="action">
-                                            <a href="#services" class="button button-cta primary-btn rounded">Get
-                                                started now</a>
-                                        </div> --}}
-                                    </div>
+                                    
+                                    <!-- Breadcrumb in h2 with all text in white -->
+                                    <h2 style="font-size: 20px; white-space: nowrap; color: white;">
+                                        <!-- Dynamic Text Based on Page -->
+                                        @if(request()->is('user'))
+                                            <span></span>
+                                        @elseif(request()->is('tentang-kami'))
+                                            <span><a href="{{ route('user') }}" style="color: white;">Beranda</a> → Tentang Kami</span>
+                                        @elseif(request()->is('show-informasi'))
+                                            <span><a href="{{ route('user') }}" style="color: white;">Beranda</a> → Informasi</span>
+                                        @elseif(request()->is('show-loker'))
+                                            <span><a href="{{ route('user') }}" style="color: white;">Beranda</a> → Loker</span>
+                                        @elseif(request()->is('show-mitra'))
+                                            <span><a href="{{ route('user') }}" style="color: white;">Beranda</a> → Mitra</span>
+                                        @elseif(request()->is('show-alumni'))
+                                            <span><a href="{{ route('user') }}" style="color: white;">Beranda</a> → Alumni</span>
+                                        @endif
+                                    </h2>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    
                 </div>
             </div>
         @endforeach

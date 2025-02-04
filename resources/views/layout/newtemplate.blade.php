@@ -203,54 +203,16 @@
     <div class="infraloader is-active"></div>
 
     <!-- Hero and nav -->
-    <div class="hero is-cover is-relative is-fullheight is-default is-bold">
-        <nav class="navbar navbar-wrapper navbar-fade navbar-light is-transparent">
+    <div class=" is-cover is-relative is-fullheight is-default is-bold">
+        <nav class="navbar navbar-wrapper navbar-fade navbar-light is-transparent" style="z-index: 9999">
             <div class="container">
                 <div class="navbar-brand">
                     <a class="navbar-item">
                         <!-- Logo Light -->
-                        <img class="light-logo" src="{{ asset('foto/navbar.png') }}" alt="Logo Light" />
-                        <!-- Logo Dark -->
                         <img class="dark-logo switcher-logo" src="{{ asset('foto/navbar.png') }}" alt="Logo Dark" />
+                        <img class="light-logo" style=""  src="{{ asset('foto/navbar.png') }}" alt="Logo Light" />
+                        <!-- Logo Dark -->
                     </a>
-
-                    <style>
-                        /* Pastikan gambar logo tidak terdistorsi */
-                        img.light-logo,
-                        img.dark-logo {
-                            max-width: 400px;
-                            /* Menentukan lebar maksimal logo di desktop (dalam px) */
-                            height: auto;
-                            /* Menjaga rasio gambar */
-                            object-fit: contain;
-                            /* Menjaga proporsi gambar dalam batas kontainer */
-                        }
-
-                        /* Responsif untuk desktop */
-                        @media (min-width: 820px) {
-
-                            img.light-logo,
-                            img.dark-logo {
-                                max-width: 400px;
-                                /* Ukuran logo untuk perangkat desktop */
-                            }
-                        }
-
-                        /* Responsif untuk perangkat mobile */
-                        @media (max-width: 768px) {
-
-                            img.light-logo,
-                            img.dark-logo {
-                                max-width: 150px;
-                                /* Ukuran logo lebih besar di perangkat mobile */
-                            }
-                        }
-                    </style>
-
-
-
-
-
 
                     <!-- Responsive toggle -->
                     <div class="custom-burger" data-target="nav-menu">
@@ -275,24 +237,24 @@
                     <div class="navbar-start"
                         style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; padding: 0 20px;">
                         <!-- Navbar item -->
-                        <a class="navbar-item is-slide" href="{{ route('user') }}">Beranda</a>
-                        <a class="navbar-item is-slide" href="{{ route('tentang_kami.show') }}">Tentang Kami</a>
-                        <a class="navbar-item is-slide" href="{{ route('informasi.show') }}">Informasi</a>
-                        <a class="navbar-item is-slide" href="{{ route('mitra.show') }}">Mitra</a>
-                        <a class="navbar-item is-slide" href="{{ route('loker.show') }}">Loker</a>
-                        <a class="navbar-item is-slide" href="{{ route('alumni.show') }}">Alumni</a>
-                        <a class="navbar-item is-slide" href="#kontak">Kontak</a>
+                        <a class="navbar-item is-slide" href="{{ route('user') }}" style="color: black">Beranda</a>
+                        <a class="navbar-item is-slide" href="{{ route('tentang_kami.show') }}" style="color: black">Tentang Kami</a>
+                        <a class="navbar-item is-slide" href="{{ route('informasi.show') }}"  style="color: black">Informasi</a>
+                        <a class="navbar-item is-slide" href="{{ route('mitra.show') }}"  style="color: black">Mitra</a>
+                        <a class="navbar-item is-slide" href="{{ route('loker.show') }}"  style="color: black">Loker</a>
+                        <a class="navbar-item is-slide" href="{{ route('alumni.show') }}"  style="color: black">Alumni</a>
+                        <a class="navbar-item is-slide" href="#kontak"  style="color: black">Kontak</a>
                     </div>
 
                     <!-- Navbar end -->
                     <div class="navbar-end" style="margin-left: auto;">
                         <!-- Signup button -->
-                        <div class="navbar-item">
+                        {{-- <div class="navbar-item">
                             <a id="signup-btn" href="startup-signup.html"
                                 class="button button-signup btn-outlined is-bold btn-align light-btn rounded raised">
                                 Sign up
                             </a>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
 
