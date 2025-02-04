@@ -26,12 +26,11 @@ class LokerController extends Controller
     {
         // Validasi input dengan pesan kustom
         $request->validate([
-            'foto.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'foto.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120',
         ], [
             'foto.*.required' => 'Harap pilih foto untuk diunggah.',
             'foto.*.image' => 'File yang dipilih harus berupa gambar.',
             'foto.*.mimes' => 'File yang dipilih harus memiliki format jpeg, png, jpg, atau gif.',
-            'foto.*.max' => 'Ukuran file tidak boleh lebih dari 2MB.',
         ]);
 
         $failedUploads = [];

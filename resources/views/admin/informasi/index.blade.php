@@ -190,7 +190,7 @@
             <ul class="pagination justify-content-end">
                 <!-- Previous Button -->
                 <li class="page-item {{ $informasis->onFirstPage() ? 'disabled' : '' }}">
-                    <a class="page-link" href="{{ $informasis->previousPageUrl() }}" aria-label="Previous">Previous</a>
+                    <a class="page-link" href="{{ $informasis->previousPageUrl() }}" aria-label="Previous">Back</a>
                 </li>
 
                 <!-- Page Numbers -->

@@ -12,10 +12,10 @@
     <link rel="stylesheet" href="{{ asset('TemplateAdmin/vendor/owl-carousel/css/owl.theme.default.min.css') }}">
     {{-- <link rel="stylesheet" href="{{ asset('TemplateAdmin/icons/font-awesome-old/css/font-awesome.min.css') }}"> --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="{{ asset('TemplateAdmin/vendor/jqvmap/css/jqvmap.min.css') }}" rel="stylesheet">
-    @stack('style')
-
+    {{-- <link href="{{ asset('TemplateAdmin/vendor/jqvmap/css/jqvmap.min.css') }}" rel="stylesheet"> --}}
+    
     <link href="{{ asset('TemplateAdmin/css/style.css') }}" rel="stylesheet">
+    @stack('style')
 </head>
 
 <body>
@@ -41,12 +41,20 @@
             Nav header start
         ***********************************-->
         <div class="nav-header">
-            <a href="index.html" class="brand-logo">
-                {{-- <img class="w-32 h-32 rounded-full" src="{{ asset('TemplateAdmin/images/li.png') }}" alt="Nama Brand"
-                    style="width: 70px; height: 90px; border-radius: 40%;"> --}}
-                <img class="logo-compact" src="{{ asset('TemplateAdmin/images/logo-text.png') }}" alt="">
-             </a>
-
+            <a href="index.html" class="brand-logo" style="display: flex; align-items: center; justify-content: center;">
+                <!-- Logo gambar persegi panjang -->
+                <img class="brand-image" 
+                src="{{ asset('TemplateAdmin/images/FBKK 2.png') }}" 
+                alt="Nama Brand"
+                style="width: 120px; height: auto; margin-right: 15px;">
+                <!-- Logo teks -->
+                <img class="logo-compact" 
+                     src="{{ asset('TemplateAdmin/images/logo-text.png') }}" 
+                     alt="Logo Text" 
+                     style="height: 40px; object-fit: contain;">
+            </a>
+            
+            
             <div class="nav-control">
                 <div class="hamburger">
                     <span class="line"></span><span class="line"></span><span class="line"></span>
@@ -185,7 +193,7 @@
                         </a>
                     </li>
 
-                    <li class="nav-label first">Menu Baru</li>
+                    {{-- <li class="nav-label first">Menu Baru</li>
                     <li class="{{ Route::is('menu.index', 'menu.create', 'menu.edit') ? 'mm-active' : '' }}">
                         <a href="{{ route('menu.index') }}" aria-expanded="false">
                             <i class="fas fa-bars"></i> <!-- Ikon Menu Utama -->
@@ -204,7 +212,7 @@
                                 </li>
                             @endforeach
                         </ul>
-                    </li>
+                    </li> --}}
                     {{-- <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="fas fa-image"></i>

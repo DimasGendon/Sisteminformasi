@@ -1,4 +1,5 @@
 @extends('layout.admin')
+
 @push('script')
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @if (session('Berhasil'))
@@ -20,63 +21,103 @@
         </script>
     @endif
 @endpush
+
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-3 col-sm-6">
-                <div class="card">
-                    <div class="stat-widget-two card-body">
-                        <div class="stat-content">
-                            <div class="stat-text">Today Expenses </div>
-                            <div class="stat-digit"> <i class="fa fa-usd"></i>8500</div>
+            <!-- Dashboard Item 1: Slide -->
+            <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+                <div class="card text-center">
+                    <a href="{{ route('admin.slide.index') }}" style="color: black;">
+                        <div class="card-body">
+                            <i class="fa fa-image" style="font-size: 3em;"></i>
+                            <h5 class="card-title mt-2">Slide</h5>
                         </div>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-success w-85" role="progressbar" aria-valuenow="85"
-                                aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
+                    </a>
                 </div>
             </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="card">
-                    <div class="stat-widget-two card-body">
-                        <div class="stat-content">
-                            <div class="stat-text">Income Detail</div>
-                            <div class="stat-digit"> <i class="fa fa-usd"></i>7800</div>
+
+            <!-- Dashboard Item 2: Tentang Kami -->
+            <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+                <div class="card text-center">
+                    <a href="{{ route('tentang_kami.create') }}" style="color: black;">
+                        <div class="card-body">
+                            <i class="fa fa-info-circle" style="font-size: 3em;"></i>
+                            <h5 class="card-title mt-2">Tentang Kami</h5>
                         </div>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-primary w-75" role="progressbar" aria-valuenow="78"
-                                aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
+                    </a>
                 </div>
             </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="card">
-                    <div class="stat-widget-two card-body">
-                        <div class="stat-content">
-                            <div class="stat-text">Task Completed</div>
-                            <div class="stat-digit"> <i class="fa fa-usd"></i> 500</div>
+
+            <!-- Dashboard Item 3: Informasi -->
+            <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+                <div class="card text-center">
+                    <a href="{{ route('informasi') }}" style="color: black;">
+                        <div class="card-body">
+                            <i class="fa fa-bullhorn" style="font-size: 3em;"></i>
+                            <h5 class="card-title mt-2">Informasi</h5>
                         </div>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-warning w-50" role="progressbar" aria-valuenow="50"
-                                aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
+                    </a>
                 </div>
             </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="card">
-                    <div class="stat-widget-two card-body">
-                        <div class="stat-content">
-                            <div class="stat-text">Task Completed</div>
-                            <div class="stat-digit"> <i class="fa fa-usd"></i>650</div>
+
+            <!-- Dashboard Item 4: Visi Misi -->
+            <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+                <div class="card text-center">
+                    <a href="{{ route('vimi.create') }}" style="color: black;">
+                        <div class="card-body">
+                            <i class="fa fa-bullseye" style="font-size: 3em;"></i>
+                            <h5 class="card-title mt-2">Visi Misi</h5>
                         </div>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-danger w-65" role="progressbar" aria-valuenow="65"
-                                aria-valuemin="0" aria-valuemax="100"></div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Dashboard Item 5: Mitra -->
+            <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+                <div class="card text-center">
+                    <a href="{{ route('mitra.show') }}" style="color: black;">
+                        <div class="card-body">
+                            <i class="fa fa-handshake" style="font-size: 3em;"></i>
+                            <h5 class="card-title mt-2">Mitra</h5>
                         </div>
-                    </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Dashboard Item 6: Loker -->
+            <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+                <div class="card text-center">
+                    <a href="{{ route('loker.show') }}" style="color: black;">
+                        <div class="card-body">
+                            <i class="fa fa-briefcase" style="font-size: 3em;"></i>
+                            <h5 class="card-title mt-2">Loker</h5>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Dashboard Item 7: Alumni -->
+            <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+                <div class="card text-center">
+                    <a href="{{ route('alumni.show') }}" style="color: black;">
+                        <div class="card-body">
+                            <i class="fa fa-graduation-cap" style="font-size: 3em;"></i>
+                            <h5 class="card-title mt-2">Alumni</h5>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Dashboard Item 8: Kontak -->
+            <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+                <div class="card text-center">
+                    <a href="#kontak" style="color: black;">
+                        <div class="card-body">
+                            <i class="fa fa-envelope" style="font-size: 3em;"></i>
+                            <h5 class="card-title mt-2">Kontak</h5>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>

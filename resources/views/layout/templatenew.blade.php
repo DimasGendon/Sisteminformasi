@@ -191,6 +191,18 @@
                 transform: scale(1);
             }
         }
+        ol {
+    list-style-type: decimal; /* Menampilkan angka */
+    padding-left: 40px; /* Pindahkan angka ke kanan */
+}
+            li {
+                position: relative;
+                visibility: visible;
+                display: list-item;
+                list-style-type: decimal;
+                padding-left: 10px;
+                /* Pastikan ul dan ol terlihat */
+            }
     </style>
 </head>
 
@@ -204,9 +216,9 @@
     <div class="infraloader is-active"></div>
 
     <!-- Hero and nav -->
-    <div class="hero is-cover is-relative is-fullheight is-default is-bold">
-        <nav class="navbar navbar-wrapper navbar-fade navbar-light is-transparent">
-            <div class="container">
+    <div >
+        <nav class="navbar navbar-wrapper navbar-fade navbar-light is-transparent" style="z-index: 999">
+            <div class="container" style="z-index: 999">
                 <div class="navbar-brand">
                     <a class="navbar-item">
                         <!-- Logo Light -->
@@ -265,17 +277,17 @@
                     <div class="navbar-start"
                         style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; padding: 0 20px;">
                         <!-- Navbar item -->
-                        <a class="navbar-item is-slide" href="{{ route('user') }}">Home</a>
-                        <a class="navbar-item is-slide" href="{{ route('tentang_kami.show') }}">Tentang Kami</a>
-                        <a class="navbar-item is-slide" href="{{ route('informasi.show') }}">Informasi</a>
-                        <a class="navbar-item is-slide" href="{{ route('mitra.show') }}">Mitra</a>
-                        <a class="navbar-item is-slide" href="{{ route('loker.show') }}">Loker</a>
-                        <a class="navbar-item is-slide" href="{{ route('alumni.show') }}">Alumni</a>
-                        <a class="navbar-item is-slide" href="#kontak">Kontak</a>
+                        <a class="navbar-item is-slide" href="{{ route('user') }}" style="color: black">Beranda</a>
+                        <a class="navbar-item is-slide" href="{{ route('tentang_kami.show') }}" style="color: black">Tentang Kami</a>
+                        <a class="navbar-item is-slide" href="{{ route('informasi.show') }}"  style="color: black">Informasi</a>
+                        <a class="navbar-item is-slide" href="{{ route('mitra.show') }}"  style="color: black">Mitra</a>
+                        <a class="navbar-item is-slide" href="{{ route('loker.show') }}"  style="color: black">Loker</a>
+                        <a class="navbar-item is-slide" href="{{ route('alumni.show') }}"  style="color: black">Alumni</a>
+                        <a class="navbar-item is-slide" href="#kontak"  style="color: black">Kontak</a>
                     </div>
 
                     <!-- Navbar end -->
-                    <div class="navbar-end" style="margin-left: auto;">
+                    {{-- <div class="navbar-end" style="margin-left: auto;">
                         <!-- Signup button -->
                         <div class="navbar-item">
                             <a id="signup-btn" href="startup-signup.html"
@@ -283,14 +295,14 @@
                                 Sign up
                             </a>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
 
             </div>
         </nav>
         <!-- Hero Wallop Slider -->
-        @include('newGuest.slide')
-    </div>
+        {{-- @include('newGuest.slide') --}}
+    
 
     @yield('tentang_kami')
 
@@ -303,6 +315,7 @@
     @yield('mitra')
 
     @include('newGuest.kontak')
+</div>
 
  
 

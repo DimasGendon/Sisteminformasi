@@ -132,7 +132,7 @@
         <nav aria-label="Page navigation">
             <ul class="pagination justify-content-end"> <!-- Pagination berada di sebelah kanan -->
                 <li class="page-item {{ $lokers->onFirstPage() ? 'disabled' : '' }}">
-                    <a class="page-link" href="{{ $lokers->previousPageUrl() }}">Previous</a>
+                    <a class="page-link" href="{{ $lokers->previousPageUrl() }}">Back</a>
                 </li>
                 @foreach ($lokers->getUrlRange(1, $lokers->lastPage()) as $page => $url)
                     <li class="page-item {{ $lokers->currentPage() == $page ? 'active' : '' }}">

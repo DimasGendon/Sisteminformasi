@@ -103,7 +103,8 @@
             <tbody>
                 @foreach ($mitras as $mitra)
                     <tr>
-                        <td>{{ $mitra->id }}</td>
+
+                                                <td>{{ $loop->iteration }}</td>
                         <td>
                             <!-- Tambahkan link gambar untuk Lightbox -->
                             <a href="{{ asset('storage/' . $mitra->foto) }}" data-lightbox="gallery"
@@ -133,7 +134,7 @@
             <ul class="pagination justify-content-end"> <!-- Menambahkan justify-content-end di sini -->
                 <!-- Tombol Previous -->
                 <li class="page-item {{ $mitras->onFirstPage() ? 'disabled' : '' }}">
-                    <span class="page-link">Previous</span>
+                    <span class="page-link">Back</span>
                 </li>
 
                 <!-- Nomor Halaman -->

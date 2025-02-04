@@ -70,6 +70,31 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <style>
+                                /* Memperbesar ukuran ikon */
+                                .fl-icon i {
+                                    font-size: 40px;
+                                    /* Ukuran ikon yang lebih besar */
+                                }
+
+                                /* Opsional: Jika ingin spesifik untuk ikon tertentu */
+                                .fl-icon .fa-map-marked-alt {
+                                    font-size: 25px;
+                                    /* Ukuran lebih besar untuk ikon peta */
+                                }
+
+                                .fl-icon .fa-phone {
+                                    font-size: 25px;
+                                    /* Ukuran lebih besar untuk ikon telepon */
+                                }
+
+                                .fl-icon .fa-envelope {
+                                    font-size: 25px;
+                                    /* Ukuran lebih besar untuk ikon email */
+                                }
+                            </style>
+
                         </div>
                     </div>
                 </div>
@@ -124,23 +149,51 @@
                             </nav>
                         </div>
 
-                        <div class="copyright">
-                            <span class="moto light-text">Designed with by BKK SMK Muhammadiyah 1 Genteng.</span>
-                        </div>
+
                     </div>
                 </div>
 
                 <!-- Kolom Navigasi Link -->
-                <div class="column is-2.3" style="text-align: center;">
-                    <h4 class="navigasi-link">Navigasi Link</h4>
+                <div class="column is-2.3" style="color: white;">
+                    <h4 class="fl-heading" style="font-size: 30px; font-weight: bold;">
+                        <span class="fl-heading-text">NAVIGASI LINK</span>
+                    </h4>
                     <ul style="list-style-type: none; padding: 0;">
-                        <li><a href="{{ route('tentang_kami.show') }}">Tentang Kami</a></li>
-                        <li><a href="{{ route('informasi.show') }}">Informasi</a></li>
-                        <li><a href="{{ route('alumni.show') }}">Alumni</a></li>
-                        <li><a href="{{ route('loker.show') }}">Loker</a></li>
-                        <li><a href="{{ route('mitra.show') }}">Mitra</a></li>
+                        <li>
+                            <a href="{{ route('tentang_kami.show') }}" class="navigasi-item">Tentang Kami</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('informasi.show') }}" class="navigasi-item">Informasi</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('alumni.show') }}" class="navigasi-item">Alumni</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('loker.show') }}" class="navigasi-item">Loker</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('mitra.show') }}" class="navigasi-item">Mitra</a>
+                        </li>
                     </ul>
                 </div>
+
+                <style>
+                    .navigasi-item {
+                        color: white;
+                        transition: color 0.3s ease;
+                    }
+
+                    .navigasi-item:hover,
+                    .navigasi-item:focus {
+                        color: black;
+                    }
+
+                    .navigasi-item:active {
+                        color: gray;
+                    }
+                </style>
+
+
 
 
                 <!-- Kolom Peta -->
@@ -157,6 +210,71 @@
             </div>
         </div>
     </footer>
+    <div style="background-color: #444f60; padding: 10px;" class="copyright">
+        <div class="fl-row-content-wrap">
+            <div class="fl-row-content fl-row-fixed-width fl-node-content">
+                <div class="fl-col-group fl-node-o013hl2wzpv5" data-node="o013hl2wzpv5">
+                    <div class="fl-col fl-node-9q7wsfmjkt4x fl-col-bg-color" data-node="9q7wsfmjkt4x">
+                        <div class="fl-col-content fl-node-content">
+                            <div class="fl-module fl-module-rich-text fl-node-eaq46pgdvums" data-node="eaq46pgdvums">
+                                <div class="fl-module-content fl-node-content">
+                                    <div class="fl-rich-text">
+                                        <p style="text-align: center; color: white;">
+                                            Designed by BKK SMKS Muhammadiyah 1 Genteng
+                                        </p>
+                                        <!-- Divider line -->
+                                        <hr style="border: 1px solid white; width: 50%; margin: 10px auto;">
+                                        <p style="text-align: center; font-size: 10px; opacity: 0.4; color: white;">
+                                            Copyright by BKK SMKS Muhammadiyah 1 Genteng
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    </div>
+    
+
+    <style>
+        .copyright {
+            width: 93.1%;
+            /* Mengatur lebar footer agar penuh */
+            padding-top: 6px;
+            padding-bottom: 3px;
+        }
+
+        /* Memperbesar ukuran ikon */
+        .fl-icon i {
+            font-size: 30px;
+            /* Ukuran ikon yang lebih besar */
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            /* Spacing the elements to the far left and far right */
+            align-items: center;
+            /* Aligns text vertically to the center */
+            width: 100%;
+            /* Ensures the container spans full width */
+        }
+
+        .footer-text-left {
+            text-align: left;
+            /* Align text to the left */
+        }
+
+        .footer-text-right {
+            text-align: right;
+            /* Align text to the right */
+        }
+    </style>
+
 </section>
 
 <style>
@@ -235,7 +353,7 @@
         transform: translateX(-50%);
         /* Menggeser teks kembali agar benar-benar terpusat */
         color: white;
-        font-size: 12px;
+        font-size: 15px;
     }
 
     /* Gaya untuk ikon kontak */
@@ -259,7 +377,7 @@
     }
 
     .contact-item a:hover i {
-        color: #ff6347;
+        color: #000000;
         /* Warna ikon saat hover */
     }
 
