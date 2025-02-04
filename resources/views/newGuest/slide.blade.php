@@ -15,10 +15,10 @@
                                     <div class="caption-divider"></div>
                                     <div class="caption-text">
                                         <span>SMK Muhammadiyah 1 Genteng</span>
-                                        <div class="action">
+                                        {{-- <div class="action">
                                             <a href="#services" class="button button-cta primary-btn rounded">Get
                                                 started now</a>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>

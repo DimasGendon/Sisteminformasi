@@ -19,6 +19,7 @@ use App\Http\Controllers\VimiController;
 use App\Http\Controllers\AlumniController;
 use App\Http\Controllers\InformasiController;
 use App\Http\Controllers\NewTemplateController;
+use App\Models\TentangKami;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,11 +82,15 @@ Route::delete('slide/{id}', [SlideController::class, 'destroy'])->name('admin.sl
 Route::get('/mitra', [MitraController::class, 'index'])->name('mitra.index')->middleware('auth');
 Route::post('mitrapost', [MitraController::class, 'store'])->name('mitra.store')->middleware('auth');
 Route::delete('mitra/{id}', [MitraController::class, 'destroy'])->name('mitra.destroy')->middleware('auth');
+Route::get('/show-mitra', [MitraController::class, 'showAboutUs'])->name('mitra.show');
+
 
 //lokers
 Route::get('/Loker', [LokerController::class, 'index'])->name('lokers.index')->middleware('auth');
 Route::post('Lokerpost', [LokerController::class, 'store'])->name('lokers.store')->middleware('auth');
 Route::delete('Loker/{id}', [LokerController::class, 'destroy'])->name('lokers.destroy')->middleware('auth');
+Route::get('/show-loker', [LokerController::class, 'showAboutUs'])->name('loker.show');
+
 
 //Kontak
 Route::get('kontak', [KontakController::class, 'navigateToKontak'])->name('kontak.navigate')->middleware('auth');
@@ -100,6 +105,8 @@ Route::get('tentang', [TentangKamiController::class, 'navigateToTentangKami'])->
 Route::post('tentang', [TentangKamiController::class, 'store'])->name('tentang_kami.store')->middleware('auth');
 Route::get('tentang/{id}/edit', [TentangKamiController::class, 'edit'])->name('tentang_kami.edit')->middleware('auth');
 Route::put('tentang/{id}', [TentangKamiController::class, 'update'])->name('tentang_kami.update')->middleware('auth');
+Route::get('/tentang-kami', [TentangKamiController::class, 'showAboutUs'])->name('tentang_kami.show');
+
 
 //Visi Misi
 Route::get('vimi/create', [VimiController::class, 'create'])->name('vimi.create')->middleware('auth');
@@ -115,16 +122,19 @@ Route::post('alumni', [AlumniController::class, 'store'])->name('alumni.store')-
 Route::get('alumni/{alumni}/edit', [AlumniController::class, 'edit'])->name('alumni.edit')->middleware('auth');
 Route::put('alumni/{alumni}', [AlumniController::class, 'update'])->name('alumni.update')->middleware('auth');
 Route::delete('alumni/{alumni}', [AlumniController::class, 'destroy'])->name('alumni.destroy')->middleware('auth');
+Route::get('/show-alumni', [AlumniController::class, 'showAboutUs'])->name('alumni.show');
+
 
 //Informasi
 Route::get('informasi', [InformasiController::class, 'index'])->name('informasi')->middleware('auth');
 Route::post('informasi', [InformasiController::class, 'store'])->name('store.informasi')->middleware('auth');
 Route::put('informasi/{id}', [InformasiController::class, 'update'])->name('update.informasi')->middleware('auth');
 Route::delete('informasi/{id}', [InformasiController::class, 'destroy'])->name('destroy.informasi')->middleware('auth');
+Route::get('/show-informasi', [InformasiController::class, 'showAboutUs'])->name('informasi.show');
 
 
 
 //Guest
-Route::get('/', [GuestController::class, 'index'])->name(name: 'guest');
-Route::get('/guest/single//{id}', [GuestController::class, 'showSingle_data'])->name(name: 'showSingle_data.guest');
-Route::get('/guest/multiple/{id}', [GuestController::class, 'showMultiple_data'])->name(name: 'showMultiple_data.guest');
+// // Route::get('/', [GuestController::class, 'index'])->name(name: 'guest');
+// Route::get('/guest/single//{id}', [GuestController::class, 'showSingle_data'])->name(name: 'showSingle_data.guest');
+// Route::get('/guest/multiple/{id}', [GuestController::class, 'showMultiple_data'])->name(name: 'showMultiple_data.guest');

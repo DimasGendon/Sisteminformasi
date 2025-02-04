@@ -3,6 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alumni;
+use App\Models\TentangKami;
+use App\Models\Vimi;
+use App\Models\Slide;
+use App\Models\Informasi;
+use App\Models\Loker;
+use App\Models\Kontak;
+use App\Models\Mitra;
 use App\Models\Menu;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
@@ -12,7 +19,7 @@ class AlumniController extends Controller
 {
     public function index()
     {
-        $alumnis = Alumni::all();
+        $alumnis = Alumni::orderBy('id', 'DESC')->paginate(5);
         $menus = Menu::all();
         return view('admin.alumni.index', compact('alumnis', 'menus'));
     }
@@ -147,5 +154,18 @@ class AlumniController extends Controller
         $alumni->delete();
 
         return redirect()->route('alumni.index')->with('Berhasil', 'Alumni Berhasil Di Hapus');
+    }
+    public function showAboutUs()
+    {
+        $tentangkamis = TentangKami::all(); // Ambil data Tentang Kami
+        $vimis = Vimi::all();
+        $slides = Slide::all();
+        $informasis = Informasi::all();
+        $kontaks = Kontak::all();
+        $alumnis = Alumni::all();
+        $mitras = Mitra::all();
+        $lokers = Loker::all();
+        return view('newGuest.alumni', compact('tentangkamis','vimis','slides','informasis',
+        'kontaks','alumnis','mitras','lokers'));
     }
 }

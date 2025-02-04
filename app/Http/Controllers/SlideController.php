@@ -7,12 +7,13 @@ use App\Models\Menu;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\HigherOrderWhenProxy;
 
 class SlideController extends Controller
 {
     public function index()
     {
-        $slides = Slide::all();
+        $slides = Slide::orderBy('id', 'DESC')->get();
         $menus = Menu::all();
         return view('admin.slide.index', compact('slides', 'menus'));
     }

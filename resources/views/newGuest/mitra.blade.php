@@ -1,63 +1,169 @@
+@extends('layout.templatenew') <!-- Menggunakan layout utama -->
+
+@section('mitra') <!-- Bagian Tentang Kami -->
+
+
 <section class="about-us section" id="mitra">
+   
+    
     <div class="container">
-        <!-- Title -->
-        <div class="section-title-wrapper">
-            <div class="bg-number"><i class="material-icons">domain</i></div>
-            <h2 class="title section-title has-text-centered dark-text">
-                MITRA.
-            </h2>
-            <div class="subtitle section-subtitle has-text-centered">
-                Lebih dari <b>5 Mitra</b> yang bekerja sama dengan kami.
-            </div>
-        </div>
-
-        <div class="content-wrapper">
-            <!-- Grid -->
-            <div class="grid-clients">
-                <div class="columns is-vcentered is-multiline">
-                    @foreach ($mitras as $mitra)
-                        <div class="column is-one-fifth">
-                            <!-- Client -->
-                            <a class="client-link">
-                                <img class="client" src="{{ asset('storage/' . $mitra->foto) }}" alt="mitra" />
-                            </a>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-
-        <!-- CTA -->
-        <div class="has-text-centered is-title-reveal pt-40 pb-40">
-            <a href="landing-v3-pricing.html" class="button button-cta btn-align primary-btn raised rounded">Get
-                started
-                Now</a>
-        </div>
+        <h2 class="title section-title has-text-centered dark-text">
+            MITRA
+        </h2>
+       <section class="customer-logos slider">
+        @foreach ($mitras as $mitra)
+        <div class="slide"><img src="storage/{{ $mitra->foto }}"></div>
+        @endforeach
+       </section>
     </div>
 </section>
 
 <style>
-    /* Ensure clients' images are centered */
-    .client-link {
-        display: inline-block;
-        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
-    }
+    h2{
+  text-align:center;
+  padding: 20px;
+}
+/* Slider */
 
-    .client {
-        display: block;
-        max-width: 100%;
-        height: auto;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+.slick-slide {
+    margin: 0px 20px;
+}
 
-    /* Hover Effect - Moves and scales the image */
-    .client-link:hover .client {
-        transform: scale(1.1); /* Scale the image by 10% */
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Add a subtle shadow when hovered */
-    }
+.slick-slide img {
+    width: 100%;
+}
 
-    /* Optional: Add space between images */
-    .column {
-        padding: 10px;
-    }
+.slick-slider
+{
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+            user-select: none;
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -ms-touch-action: pan-y;
+        touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.slick-list
+{
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+.slick-list:focus
+{
+    outline: none;
+}
+.slick-list.dragging
+{
+    cursor: pointer;
+    cursor: hand;
+}
+
+.slick-slider .slick-track,
+.slick-slider .slick-list
+{
+    -webkit-transform: translate3d(0, 0, 0);
+       -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+         -o-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+}
+
+.slick-track
+{
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+}
+.slick-track:before,
+.slick-track:after
+{
+    display: table;
+    content: '';
+}
+.slick-track:after
+{
+    clear: both;
+}
+.slick-loading .slick-track
+{
+    visibility: hidden;
+}
+
+.slick-slide
+{
+    display: none;
+    float: left;
+    height: 100%;
+    min-height: 1px;
+}
+[dir='rtl'] .slick-slide
+{
+    float: right;
+}
+.slick-slide img
+{
+    display: block;
+}
+.slick-slide.slick-loading img
+{
+    display: none;
+}
+.slick-slide.dragging img
+{
+    pointer-events: none;
+}
+.slick-initialized .slick-slide
+{
+    display: block;
+}
+.slick-loading .slick-slide
+{
+    visibility: hidden;
+}
+.slick-vertical .slick-slide
+{
+    display: block;
+    height: auto;
+    border: 1px solid transparent;
+}
+.slick-arrow.slick-hidden {
+    display: none;
+}
 </style>
+
+<script>
+    
+    $(document).ready(function(){
+    $('.customer-logos').slick({
+        slidesToShow: 6,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 1500,
+        arrows: false,
+        dots: false,
+        pauseOnHover: false,
+        responsive: [{
+            breakpoint: 768,
+            settings: {
+                slidesToShow: 4
+            }
+        }, {
+            breakpoint: 520,
+            settings: {
+                slidesToShow: 3
+            }
+        }]
+    });
+});
+</script>
+@endsection

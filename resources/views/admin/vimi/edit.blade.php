@@ -15,7 +15,6 @@
 
     @push('script')
         <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
             let editor;
 
@@ -35,25 +34,60 @@
                     });
             }
 
+            // Fungsi untuk menangani perubahan jenis field deskripsi
+            function toggleDescriptionField() {
+                const typeSelect = document.querySelector('#type');
+                const descriptionField = document.querySelector('#editor');
+                const descriptionTextarea = document.querySelector('#description-textarea');
+
+                if (typeSelect.value === 'Multiple') {
+                    // Hiding CKEditor and showing textarea if type is 'Multiple'
+                    if (editor) {
+                        editor.destroy();
+                        editor = null; // Reset editor
+                    }
+                    descriptionField.style.display = 'none';
+                    descriptionTextarea.style.display = 'block';
+                } else {
+                    // Re-create the CKEditor if the type is changed to something else
+                    if (!editor) {
+                        descriptionField.style.display = 'block';
+                        descriptionTextarea.style.display = 'none';
+                        createEditor();
+                    }
+                }
+            }
+
+            // Validate form submission
+            document.querySelector('form').addEventListener('submit', function(e) {
+                const descriptionContent = editor ? editor.getData() : ''; // Get content from CKEditor if it exists
+
+                if (!descriptionContent.trim()) {  // Check if description is empty
+                    e.preventDefault(); // Prevent form submission
+
+                    // Show SweetAlert if description is empty
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Form harus diisi!',
+                        text: 'Harap isi deskripsi terlebih dahulu.',
+                        showConfirmButton: true,
+                        timer: 1500
+                    });
+                }
+            });
+
             document.addEventListener('DOMContentLoaded', function() {
+                // Initialize CKEditor on page load
                 createEditor();
 
-                // SweetAlert2 untuk menampilkan pesan sukses
-                @if(session('success'))
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Berhasil!',
-                        text: '{{ session('success') }}',
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 1500,
-                        timerProgressBar: true
-                    });
-                @endif
+                // Listen to changes in the select field
+                document.querySelector('#type').addEventListener('change', toggleDescriptionField);
             });
         </script>
+
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        <!-- SweetAlert for success or validation errors -->
         @if (session('Berhasil'))
             <script>
                 Swal.fire({
@@ -72,6 +106,8 @@
                 });
             </script>
         @endif
+
+        <!-- Update the error message here for Indonesian language -->
         @if ($errors->has('description'))
             <script>
                 Swal.fire({

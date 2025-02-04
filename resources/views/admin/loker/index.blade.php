@@ -1,7 +1,7 @@
 @extends('layout.admin') <!-- Atau layout yang kamu gunakan -->
 
 @push('style')
-    <!-- Tambahkan link CSS untuk Lightbox (jika Anda menggunakan Lightbox2 atau plugin lainnya) -->
+    <!-- Tambahkan link CSS untuk Lightbox -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
 @endpush
 
@@ -97,7 +97,7 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>foto</th>
+                    <th>Foto</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -127,6 +127,23 @@
                 @endforeach
             </tbody>
         </table>
+
+        <!-- Pagination -->
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-end"> <!-- Pagination berada di sebelah kanan -->
+                <li class="page-item {{ $lokers->onFirstPage() ? 'disabled' : '' }}">
+                    <a class="page-link" href="{{ $lokers->previousPageUrl() }}">Previous</a>
+                </li>
+                @foreach ($lokers->getUrlRange(1, $lokers->lastPage()) as $page => $url)
+                    <li class="page-item {{ $lokers->currentPage() == $page ? 'active' : '' }}">
+                        <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                    </li>
+                @endforeach
+                <li class="page-item {{ $lokers->hasMorePages() ? '' : 'disabled' }}">
+                    <a class="page-link" href="{{ $lokers->nextPageUrl() }}">Next</a>
+                </li>
+            </ul>
+        </nav>
 
         @include('admin.loker.create')
     </div>

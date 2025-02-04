@@ -54,7 +54,7 @@
         </script>
     @endif
 
-    <!-- Error Message for missing data, triggered after f  orm submission if validation fails -->
+    <!-- Error Message for missing data, triggered after form submission if validation fails -->
     @if ($errors->any())
         <script>
             Swal.fire({
@@ -122,6 +122,29 @@
                 @endforeach
             </tbody>
         </table>
+
+        <!-- Pagination -->
+        <nav aria-label="...">
+            <ul class="pagination justify-content-end"> <!-- Pagination berada di sebelah kanan -->
+                <!-- Previous Button -->
+                <li class="page-item {{ $alumnis->onFirstPage() ? 'disabled' : '' }}">
+                    <span class="page-link">Previous</span>
+                </li>
+
+                <!-- Page Number Links -->
+                @foreach ($alumnis->getUrlRange(1, $alumnis->lastPage()) as $page => $url)
+                    <li class="page-item {{ $alumnis->currentPage() == $page ? 'active' : '' }}">
+                        <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                    </li>
+                @endforeach
+
+                <!-- Next Button -->
+                <li class="page-item {{ $alumnis->hasMorePages() ? '' : 'disabled' }}">
+                    <a class="page-link" href="{{ $alumnis->nextPageUrl() }}">Next</a>
+                </li>
+            </ul>
+        </nav>
+
         @include('admin.alumni.create')
     </div>
 @endsection

@@ -5,9 +5,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Sistem Informasi BKK SMKS Muhammadiyah 1 Genteng</title>
+    <title>ADMIN Sistem Informasi BKK SMKS Muhammadiyah 1 Genteng</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('TemplateAdmin/images/ligo.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('TemplateAdmin/images/FBKK 2.png') }}">
     <link href="{{ asset('TemplateAdmin/css/style.css') }}" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -21,7 +21,7 @@
                     <div class="card shadow-lg">
                         <div class="card-body">
                             <div class="text-center mb-4">
-                                <img src="{{ asset('TemplateAdmin/images/ligo.png') }}" alt="Logo" style="width: 80px;">
+                                <img src="{{ asset('TemplateAdmin/images/FBKK 2.png') }}" alt="Logo" style="width: 80px;">
                                 <h4 class="mt-3">Sign in to your account</h4>
                             </div>
                             <form action="{{ route('store.login') }}" method="POST">

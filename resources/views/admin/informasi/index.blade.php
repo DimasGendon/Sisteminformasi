@@ -185,6 +185,28 @@
             </tbody>
         </table>
 
+        <!-- Pagination -->
+        <nav aria-label="...">
+            <ul class="pagination justify-content-end">
+                <!-- Previous Button -->
+                <li class="page-item {{ $informasis->onFirstPage() ? 'disabled' : '' }}">
+                    <a class="page-link" href="{{ $informasis->previousPageUrl() }}" aria-label="Previous">Previous</a>
+                </li>
+
+                <!-- Page Numbers -->
+                @foreach ($informasis->getUrlRange(1, $informasis->lastPage()) as $page => $url)
+                    <li class="page-item {{ $informasis->currentPage() == $page ? 'active' : '' }}">
+                        <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                    </li>
+                @endforeach
+
+                <!-- Next Button -->
+                <li class="page-item {{ $informasis->hasMorePages() ? '' : 'disabled' }}">
+                    <a class="page-link" href="{{ $informasis->nextPageUrl() }}" aria-label="Next">Next</a>
+                </li>
+            </ul>
+        </nav>
+
         <!-- Modal to create new information -->
         @include('admin.informasi.create')
     </div>
