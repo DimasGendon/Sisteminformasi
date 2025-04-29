@@ -11,9 +11,9 @@ class LoginController extends Controller
 {
     public function index()
     {
-        $images = Image::all();
-        $menus = Menu::all();
-        return view('login', compact('images', 'menus'));
+        // $images = Image::all();
+        // $menus = Menu::all();
+        return view('login');
     }
 
     public function store(Request $request)

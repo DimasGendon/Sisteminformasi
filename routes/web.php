@@ -138,6 +138,5 @@ Route::get('/show-informasi', [InformasiController::class, 'showAboutUs'])->name
 // // Route::get('/', [GuestController::class, 'index'])->name(name: 'guest');
 // Route::get('/guest/single//{id}', [GuestController::class, 'showSingle_data'])->name(name: 'showSingle_data.guest');
 // Route::get('/guest/multiple/{id}', [GuestController::class, 'showMultiple_data'])->name(name: 'showMultiple_data.guest');
-Route::get('cobacked', function () {
-    return view('coba');
-});
+// Route::get('cobacked', function () {
+//     return view('coba');

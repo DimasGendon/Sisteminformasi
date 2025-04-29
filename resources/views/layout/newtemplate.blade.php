@@ -666,101 +666,85 @@
     </section>
 
     <style>
-        /* Style for Alumni Section */
-        .alumni-card {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            border: 1px solid #e0e0e0;
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            background-color: #fff;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            height: 100%;
-            /* Ensure all cards have equal height */
-        }
+     /* Alumni Card Style */
+.alumni-card {
+    box-sizing: border-box;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #fff;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
 
-        .alumni-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
+.alumni-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
 
-        .alumni-photo {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            margin-bottom: 20px;
-            object-fit: cover;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
+.alumni-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 20px auto;
+}
 
-        .alumni-name {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
+.alumni-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
 
-        .alumni-major,
-        .alumni-work {
-            font-size: 1rem;
-            color: #555;
-            margin: 10px 0;
-        }
+.alumni-major,
+.alumni-work {
+    font-size: 1rem;
+    color: #555;
+    margin: 10px 0;
+}
 
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            .alumni-name {
-                font-size: 1.2rem;
-            }
+/* Responsive Font */
+@media (max-width: 768px) {
+    .alumni-name {
+        font-size: 1.2rem;
+    }
+    .alumni-major,
+    .alumni-work {
+        font-size: 0.9rem;
+    }
+}
 
-            .alumni-major,
-            .alumni-work {
-                font-size: 0.9rem;
-            }
-        }
+/* Grid Layout */
+.alumni-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
 
-        /* Button Style */
-        .button-cta {
-            margin-top: 20px;
-            font-size: 16px;
-            padding: 12px 30px;
-        }
+/* Each card wrapper */
+.alumni-column {
+    flex: 0 0 calc(33.333% - 13.33px); /* 3 per row with gap */
+    display: flex;
+    margin-bottom: 20px;
+}
 
-        /* Default grid layout for first 3 alumni */
-        .columns.is-centered {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
+/* Responsive for tablet and mobile */
+@media (max-width: 1024px) {
+    .alumni-column {
+        flex: 0 0 calc(50% - 10px); /* 2 per row on tablet */
+    }
+}
+@media (max-width: 600px) {
+    .alumni-column {
+        flex: 0 0 100%; /* full width on mobile */
+    }
+}
 
-        .column.is-12-mobile.is-6-tablet.is-4-desktop {
-            display: flex;
-            justify-content: center;
-            padding: 10px;
-        }
-
-        /* Ensuring all cards have the same size */
-        .alumni-card {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 350px;
-            /* Set a fixed height for the cards */
-        }
-
-        /* Adjust the width of cards for larger screens */
-        @media (min-width: 1024px) {
-            .column.is-12-mobile.is-6-tablet.is-4-desktop {
-                display: flex;
-                justify-content: center;
-                flex: 0 0 30%;
-                /* 3 items per row */
-                padding: 10px;
-            }
-        }
     </style>
 
     <script>

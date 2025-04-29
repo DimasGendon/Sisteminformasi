@@ -1,3 +1,5 @@
+
+
 @extends('layout.admin')
 
 @section('content')
@@ -24,33 +26,17 @@
     @endpush
 
     @push('script')
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
-
+        <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
         <script>
             let editor;
-        
+
             // Fungsi untuk membuat editor CKEditor
             function createEditor() {
                 ClassicEditor
                     .create(document.querySelector('#editor'), {
                         ckfinder: {
                             uploadUrl: "{{ route('store.image', ['_token' => csrf_token()]) }}",
-                        },
-                        plugins: [
-                            // Tambahkan plugin yang diperlukan
-                            'List',
-                            'Undo',
-                            'Redo',
-                            'Bold',
-                            'Italic',
-                            'Link',
-                            'Table',
-                            'Heading'
-                        ],
-                        toolbar: [
-                            'undo', 'redo', '|', 'bold', 'italic', 'numberedList', 'bulletedList', 'link', 'insertTable'
-                        ]
+                        }
                     })
                     .then(newEditor => {
                         editor = newEditor;
@@ -59,18 +45,34 @@
                         console.log(error);
                     });
             }
-        
+
+            // Menangani perubahan jenis field deskripsi
+            function toggleDescriptionField() {
+                const typeSelect = document.querySelector('#type');
+                const descriptionField = document.querySelector('#editor');
+                const descriptionTextarea = document.querySelector('#description-textarea');
+
+                if (typeSelect.value === 'Multiple') {
+                    if (editor) {
+                        editor.destroy();
+                    }
+                    descriptionField.style.display = 'none';
+                    descriptionTextarea.style.display = 'block';
+                } else {
+                    if (descriptionTextarea.style.display === 'block') {
+                        descriptionTextarea.style.display = 'none';
+                        createEditor();
+                    }
+                }
+            }
+
             document.addEventListener('DOMContentLoaded', function() {
-                // Initialize CKEditor on page load
                 createEditor();
+                document.querySelector('#type').addEventListener('change', toggleDescriptionField);
             });
         </script>
-        
-        
-
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-        <!-- SweetAlert for success or validation errors -->
+        
         @if (session('Berhasil'))
             <script>
                 Swal.fire({
@@ -90,7 +92,7 @@
             </script>
         @endif
 
-        <!-- Update the error message here for Indonesian language -->
+        <!-- SweetAlert for validation errors -->
         @if ($errors->has('description'))
             <script>
                 Swal.fire({
