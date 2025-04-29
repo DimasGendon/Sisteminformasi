@@ -34,9 +34,12 @@ class MitraController extends Controller
             'foto.*.max' => 'Ukuran file tidak boleh lebih dari 2MB.',
         ]);
 
+        $failedUploads =[];
+
         // Pastikan ada file yang diupload
         if ($request->hasFile('foto')) {
             foreach ($request->file('foto') as $fotoFile) {
+                try{
                 // Buat nama file unik
                 $photoName = uniqid() . '.jpg';  // Pastikan ekstensi file selalu .jpg
 
@@ -61,15 +64,23 @@ class MitraController extends Controller
                 Mitra::create([
                     'foto' => 'mitra/' . $photoName,
                 ]);
-            }
 
+            }catch(\Exception $e) {
+                $failedUploads[] = $fotoFile->getClientOriginalName();
+            }
+        }
+
+        if(emty($failedUploads)) {
             return redirect()->route('mitra.index')->with('Berhasil', 'Mitra Berhasil Di Tambahkan');
+        } else {
+
+            return redirect()->route('mitra.index')->withErrors(['foto' => 'File yang dipilih harus memiliki format jpeg, png, jpg, atau gif.'. implode(',', $failedUploads)]);
+        }
+
         } else {
             // If no file is uploaded, return an error message
             return redirect()->back()->withErrors(['foto' => 'Harap Pilih Foto Untuk Di Unggah!']);
         }
-
-        return back()->with('error', 'Gagal mengupload foto.');
     }
 
 
